@@ -3,13 +3,10 @@
 namespace App\Service;
 
 use App\Entity\Payment;
-use App\Entity\TrainingSession;
-use App\Entity\UserProfile;
 use GuzzleHttp\Client;
-use SendinBlue\Client\Api\TransactionalEmailsApi;
-use SendinBlue\Client\ApiException;
-use SendinBlue\Client\Configuration;
-use SendinBlue\Client\Model\SendSmtpEmail;
+use Brevo\Client\Api\TransactionalEmailsApi;
+use Brevo\Client\Configuration;
+use Brevo\Client\Model\SendSmtpEmail;
 
 class BrevoService
 {
@@ -17,53 +14,13 @@ class BrevoService
 
     public function __construct(public string $brevoApiKey)
     {
-        $config = Configuration::getDefaultConfiguration()->setApiKey('api-key', $brevoApiKey);
+        $config = Configuration::getDefaultConfiguration()
+            ->setApiKey('api-key', $brevoApiKey);
 
         $this->api = new TransactionalEmailsApi(
             new Client(),
             $config
         );
-    }
-
-    /**
-     * @throws ApiException
-     */
-    public function sendWelcomeMail(string $email, string $fullName): void
-    {
-        $mail = new SendSmtpEmail([
-            'to' => [
-                ['email' => $email]
-            ],
-            'templateId' => 1,
-            'params' => [
-                'FullName' => $fullName,
-                'Email' => $email
-            ]
-        ]);
-
-        $this->api->sendTransacEmail($mail);
-    }
-
-    /**
-     * @throws ApiException
-     */
-    public function sendTrainingSessionBooking(string $email, UserProfile $userProfile, TrainingSession $session): void {
-
-        $mail = new SendSmtpEmail([
-            'to' => [
-                ['email' => $email]
-            ],
-            'templateId' => 7,
-            'params' => [
-                'FullName' => $userProfile->getFullName(),
-                'Email' => $email,
-                'Date' => $session->getStartAt()->format('Y-m-d'),
-                'StartAt' => $session->getStartAt()->format('H:i'),
-                'EndAt' => $session->getEndAt()->format('H:i'),
-            ]
-        ]);
-
-        $this->api->sendTransacEmail($mail);
     }
 
     /**
