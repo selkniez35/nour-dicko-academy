@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+
+    <div style="max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+
+        <h1>Paiement de l'adhésion</h1>
+
+        <hr>
+
+        <p><strong>Adhésion :</strong> {{ membership.userProfile.fullName() }}</p>
+        <p><strong>Statut :</strong> {{ membership.status.label }}</p>
+        <p><strong>Montant :</strong> {{ membership.price ?? 100 }} €</p>
+
+        <hr>
+
+        <form method="POST">
+            <button type="submit"
+                    style="
+                    background-color: #28a745;
+                    color: white;
+                    padding: 12px 20px;
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    width: 100%;
+                ">
+                💳 Payer maintenant
+            </button>
+        </form>
+
+    </div>
+
+{% endblock %}

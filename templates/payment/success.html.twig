@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement réussi{% endblock %}
+
+{% block body %}
+
+    <div style="max-width: 600px; margin: 50px auto; text-align: center;">
+
+        <h1>✅ Paiement réussi</h1>
+
+        <p>Votre adhésion est maintenant active.</p>
+
+        <a href="{{ path('app_home') }}"
+           style="display:inline-block; margin-top:20px; padding:10px 15px; background:#007bff; color:white; text-decoration:none; border-radius:6px;">
+            Retour accueil
+        </a>
+
+    </div>
+
+{% endblock %}
