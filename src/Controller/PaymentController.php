@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Membership;
 use App\Entity\Payment;
 use App\Enum\PaymentMethod;
 use App\Enum\PaymentStatus;
@@ -10,25 +9,29 @@ use App\Repository\PaymentRepository;
 use App\Service\BrevoService;
 use App\Service\StripeService;
 use Doctrine\ORM\EntityManagerInterface;
-use SendinBlue\Client\ApiException;
-use Stripe\Exception\ApiErrorException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/payment')]
+#[Route('/')]
 class PaymentController extends AbstractController
 {
 
     public function __construct(private readonly BrevoService $brevoService){}
+
+    #[Route('/', name: 'app_home')]
+    public function index(): Response
+    {
+        return $this->render('payment/index.html.twig');
+    }
+
     /**
      * @throws ApiErrorException
      * @throws ApiException
      */
     #[Route('/checkout/{id}', name: 'app_pay')]
     public function pay(
-        Membership $membership,
         EntityManagerInterface $em,
         StripeService $stripeService
     ): Response {
@@ -37,8 +40,6 @@ class PaymentController extends AbstractController
 
         $payment->setInternalRef(uniqid('pay_', true));
         $payment->setStatus(PaymentStatus::PENDING);
-        $payment->setMembership($membership);
-        $payment->setAmount((int) ($membership->getPrice() * 100));
         $payment->setMethod(PaymentMethod::CARD);
         $payment->setUser($this->getUser());
 
