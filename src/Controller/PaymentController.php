@@ -7,7 +7,6 @@ use App\Entity\Payment;
 use App\Enum\PaymentMethod;
 use App\Enum\PaymentStatus;
 use App\Repository\PaymentRepository;
-use App\Service\BrevoService;
 use App\Service\StripeService;
 use Doctrine\ORM\EntityManagerInterface;
 use SendinBlue\Client\ApiException;
@@ -17,16 +16,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/payment')]
+#[Route('/')]
 class PaymentController extends AbstractController
 {
 
-    public function __construct(private readonly BrevoService $brevoService){}
+    public function __construct(){}
     /**
      * @throws ApiErrorException
      * @throws ApiException
      */
-    #[Route('/checkout/{id}', name: 'app_pay')]
+    #[Route('checkout/{id}', name: 'app_pay')]
     public function pay(
         Membership $membership,
         EntityManagerInterface $em,
@@ -54,7 +53,7 @@ class PaymentController extends AbstractController
     /**
      * @throws ApiException
      */
-    #[Route('/success', name: 'app_payment_success')]
+    #[Route('success', name: 'app_payment_success')]
     public function success(Request $request, PaymentRepository $paymentRepository): Response
     {
         $sessionId = $request->query->get('session_id');
@@ -72,7 +71,7 @@ class PaymentController extends AbstractController
         ]);
     }
 
-    #[Route('/cancel', name: 'app_payment_cancel')]
+    #[Route('cancel', name: 'app_payment_cancel')]
     public function cancel(): Response
     {
         return $this->render('payment/cancel.html.twig');

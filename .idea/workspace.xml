@@ -302,6 +302,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\var\www\nour-dicko-academy\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ma-boxe-guingamp" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner configuration_file="$PROJECT_DIR$/ma-boxe-guingamp/phpunit.xml.dist" scope="XML" use_alternative_configuration_file="true" />
