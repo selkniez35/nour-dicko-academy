@@ -33,9 +33,6 @@ class Payment
     #[ORM\Column]
     private int $amount;
 
-    #[ORM\Column(length: 10)]
-    private string $currency = 'eur';
-
     #[ORM\Column]
     private DateTimeImmutable $createdAt;
 
@@ -47,14 +44,6 @@ class Payment
 
     #[ORM\Column(nullable: true, enumType: PaymentMethod::class)]
     private ?PaymentMethod $method = null;
-
-    #[ORM\ManyToOne(inversedBy: 'payments')]
-    #[ORM\JoinColumn]
-    private ?Membership $membership = null;
-
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'payments')]
-    #[ORM\JoinColumn]
-    private User|UserInterface $user;
 
     public function __construct(){
         $this->paidAt = new DateTimeImmutable();
@@ -114,18 +103,6 @@ class Payment
         return $this;
     }
 
-    public function getMembership(): ?Membership
-    {
-        return $this->membership;
-    }
-
-    public function setMembership(?Membership $membership): self
-    {
-        $this->membership = $membership;
-
-        return $this;
-    }
-
     public function getStripeSessionId(): string
     {
         return $this->stripeSessionId;
@@ -157,16 +134,6 @@ class Payment
         $this->internalRef = $internalRef;
     }
 
-    public function getCurrency(): string
-    {
-        return $this->currency;
-    }
-
-    public function setCurrency(string $currency): void
-    {
-        $this->currency = $currency;
-    }
-
     public function getCreatedAt(): DateTimeImmutable
     {
         return $this->createdAt;
@@ -186,18 +153,6 @@ class Payment
     {
         $this->lastStripeEventId = $lastStripeEventId;
     }
-
-    public function getUser(): UserInterface|User
-    {
-        return $this->user;
-    }
-
-    public function setUser(UserInterface|User $user): void
-    {
-        $this->user = $user;
-    }
-
-
 
 
 }

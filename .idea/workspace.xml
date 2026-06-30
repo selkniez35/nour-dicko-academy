@@ -4,12 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00162a55-b367-4f20-a43a-a0455caf2c41" name="Changes" comment="Refactor PaymentController routes and remove unused BrevoService">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/reference.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/reference.php" afterDir="false" />
+    <list default="true" id="00162a55-b367-4f20-a43a-a0455caf2c41" name="Changes" comment="Refactor PaymentController routes and add payment confirmation page">
+      <change afterPath="$PROJECT_DIR$/src/Controller/MembershipController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/MembershipPlanController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Membership.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/MembershipPlan.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Enum/MembershipStatus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Enum/MembershipStatusReason.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MemberStatusRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MembershipPlanRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MembershipRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,61 +70,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="7.382034771330482E-111" />
-      <entry key="MS500" value="9.59137253923629E-23" />
-      <entry key="S2" value="5.03835603564642E-6" />
-      <entry key="S5" value="0.014380408111659894" />
-      <entry key="S10" value="0.22105188371268558" />
-      <entry key="S30" value="1.4792164344889742" />
-      <entry key="S60" value="2.421237098237765" />
-      <entry key="M2" value="3.1082421113239063" />
-      <entry key="M5" value="3.615012458817055" />
-      <entry key="M10" value="3.8024415640925406" />
-      <entry key="M15" value="3.8671629646157815" />
-      <entry key="M30" value="3.9408388719449023" />
-      <entry key="H1" value="4.118586175594933" />
-      <entry key="H2" value="4.657492275420054" />
-      <entry key="H4" value="5.4131177229111005" />
-      <entry key="D1" value="6.647262376818966" />
-      <entry key="W1" value="6.946884747145493" />
-    </decayedCancelled>
-    <decayedSelected>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000029370195" />
-      <entry key="S5" value="1.0003865117785709" />
-      <entry key="S10" value="1.0196599028118365" />
-      <entry key="S30" value="1.2698943473772735" />
-      <entry key="S60" value="1.519513568039636" />
-      <entry key="M2" value="1.7207728962992683" />
-      <entry key="M5" value="1.8772419243029925" />
-      <entry key="M10" value="1.9366119390136944" />
-      <entry key="M15" value="1.9572817798289117" />
-      <entry key="M30" value="1.9784077778865576" />
-      <entry key="H1" value="1.9891449731392046" />
-      <entry key="H2" value="1.9945576771304943" />
-      <entry key="H4" value="1.9972751260963517" />
-      <entry key="D1" value="1.9995453378684398" />
-      <entry key="W1" value="1.9999350356071737" />
+      <entry key="S2" value="1.000000000001101" />
+      <entry key="S5" value="1.0000290473317064" />
+      <entry key="S10" value="1.0091549626829586" />
+      <entry key="S30" value="1.4333908196698435" />
+      <entry key="S60" value="2.171451349549109" />
+      <entry key="M2" value="3.3486615780179574" />
+      <entry key="M5" value="6.409161230817067" />
+      <entry key="M10" value="9.120705740876312" />
+      <entry key="M15" value="10.435896711981234" />
+      <entry key="M30" value="12.04593255614847" />
+      <entry key="H1" value="13.106826103576143" />
+      <entry key="H2" value="14.110585532188512" />
+      <entry key="H4" value="15.115902737394606" />
+      <entry key="D1" value="16.59159548930664" />
+      <entry key="W1" value="16.938722854329015" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="2.4079679075453285E-86" />
+      <entry key="S5" value="5.660152139897197E-35" />
+      <entry key="S10" value="7.669825444249964E-18" />
+      <entry key="S30" value="2.4881561742294403E-6" />
+      <entry key="S60" value="0.002126961385434202" />
+      <entry key="M2" value="0.06438001424799372" />
+      <entry key="M5" value="0.5043490990251329" />
+      <entry key="M10" value="1.0038021168871716" />
+      <entry key="M15" value="1.2629622069127906" />
+      <entry key="M30" value="1.5892210596790493" />
+      <entry key="H1" value="1.7827920426249415" />
+      <entry key="H2" value="1.8882683969763578" />
+      <entry key="H4" value="1.9433295563766995" />
+      <entry key="D1" value="1.9904411864552913" />
+      <entry key="W1" value="1.9986316435084024" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.8828124999999995E-4" />
-      <entry key="MS500" value="0.21763764082403103" />
-      <entry key="S2" value="0.6830241088138125" />
-      <entry key="S5" value="0.8720421989136795" />
-      <entry key="S10" value="1.1560073826471997" />
-      <entry key="S30" value="2.693698089016296" />
-      <entry key="S60" value="3.901775241437707" />
-      <entry key="M2" value="4.80522490820872" />
-      <entry key="M5" value="5.481435526430266" />
-      <entry key="M10" value="5.733399976615592" />
-      <entry key="M15" value="5.820619300668958" />
-      <entry key="M30" value="5.91730480537484" />
-      <entry key="H1" value="6.106749838081698" />
-      <entry key="H2" value="6.6515520005795" />
-      <entry key="H4" value="7.410139558319556" />
-      <entry key="D1" value="8.646764390608219" />
-      <entry key="W1" value="8.946813555903137" />
+      <entry key="MS100" value="3.884455487084564E-4" />
+      <entry key="MS500" value="0.20790552459372658" />
+      <entry key="S2" value="0.6752529768621706" />
+      <entry key="S5" value="0.8546739829077401" />
+      <entry key="S10" value="0.9332919534058391" />
+      <entry key="S30" value="1.4014637391760478" />
+      <entry key="S60" value="2.152198813583717" />
+      <entry key="M2" value="3.3986911004471616" />
+      <entry key="M5" value="6.90412984806361" />
+      <entry key="M10" value="10.118088448108258" />
+      <entry key="M15" value="11.694000018464296" />
+      <entry key="M30" value="13.632363642739584" />
+      <entry key="H1" value="14.888114293576557" />
+      <entry key="H2" value="15.998067944751812" />
+      <entry key="H4" value="17.058827951103517" />
+      <entry key="D1" value="18.581967147920235" />
+      <entry key="W1" value="18.93734450136664" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -281,7 +293,7 @@
     "copilot.chat.legacySessionMetadata.migrated": "true",
     "git-widget-placeholder": "master",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "//wsl.localhost/Ubuntu/var/www/nour-dicko-academy/templates",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu/var/www/nour-dicko-academy/src/Repository",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -293,8 +305,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\var\www\nour-dicko-academy\src\Repository" />
+      <recent name="\\wsl.localhost\Ubuntu\var\www\nour-dicko-academy\src\Enum" />
+      <recent name="\\wsl.localhost\Ubuntu\var\www\nour-dicko-academy\src\Entity" />
+      <recent name="\\wsl.localhost\Ubuntu\var\www\nour-dicko-academy\src\Controller" />
       <recent name="\\wsl.localhost\Ubuntu\var\www\nour-dicko-academy\templates" />
-      <recent name="\\wsl.localhost\Ubuntu\var\www\nour-dicko-academy\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -320,7 +335,7 @@
       <updated>1782783624401</updated>
       <workItem from="1782783625907" duration="397000" />
       <workItem from="1782784303137" duration="407000" />
-      <workItem from="1782842243578" duration="7244000" />
+      <workItem from="1782842243578" duration="8106000" />
     </task>
     <task id="LOCAL-00001" summary="Implement payment workflow with Stripe integration, enums, and email notifications">
       <option name="closed" value="true" />
@@ -362,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782859178460</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Refactor PaymentController routes and add payment confirmation page">
+      <option name="closed" value="true" />
+      <created>1782860113009</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1782860113009</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,6 +413,7 @@
     <MESSAGE value="Add http_discovery.yaml configuration and update BrevoService for new API usage" />
     <MESSAGE value="Add payment processing functionality with Stripe integration" />
     <MESSAGE value="Refactor PaymentController routes and remove unused BrevoService" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor PaymentController routes and remove unused BrevoService" />
+    <MESSAGE value="Refactor PaymentController routes and add payment confirmation page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor PaymentController routes and add payment confirmation page" />
   </component>
 </project>

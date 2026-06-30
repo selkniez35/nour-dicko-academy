@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Membership;
 use App\Entity\Payment;
 use App\Enum\PaymentMethod;
 use App\Enum\PaymentStatus;
@@ -16,20 +17,19 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('')]
 class PaymentController extends AbstractController
 {
-    public function __construct(private readonly StripeService $stripeService){
-    }
+    public function __construct(private readonly StripeService $stripeService){}
     /**
      * @throws ApiErrorException
      */
     #[Route('/', name: 'app_pay')]
-    public function pay(EntityManagerInterface $em): Response {
+    public function pay(EntityManagerInterface $em, Membership $membership): Response {
 
         $payment = new Payment();
 
         $payment->setInternalRef(uniqid('pay_', true));
         $payment->setStatus(PaymentStatus::PENDING);
         $payment->setMethod(PaymentMethod::CARD);
-        $payment->setUser($this->getUser());
+        $payment->setAmount((int) ($membership->getPrice() * 100));
 
         $em->persist($payment);
 
