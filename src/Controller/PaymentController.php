@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\MembershipPlan;
 use App\Entity\Payment;
 use App\Enum\PaymentMethod;
 use App\Enum\PaymentStatus;
@@ -22,14 +23,14 @@ class PaymentController extends AbstractController
      * @throws ApiErrorException
      */
     #[Route('/checkout/{id}', name: 'app_pay')]
-    public function pay(EntityManagerInterface $em): Response {
+    public function pay(EntityManagerInterface $em, MembershipPlan $membershipPlan): Response {
 
         $payment = new Payment();
 
         $payment->setInternalRef(uniqid('pay_', true));
         $payment->setStatus(PaymentStatus::PENDING);
         $payment->setMethod(PaymentMethod::CARD);
-        $payment->setAmount(50);
+        $payment->setAmount($membershipPlan->getPrice() * 100);
 
         $em->persist($payment);
 
