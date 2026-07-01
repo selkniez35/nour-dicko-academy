@@ -2,8 +2,6 @@ name: Symfony Preprod CI
 
 on:
     push:
-        branches:
-            - develop
         tags:
             - 'v*.*.*'
 

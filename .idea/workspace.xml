@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00162a55-b367-4f20-a43a-a0455caf2c41" name="Changes" comment="Add GitHub Actions workflow for Symfony pre-production CI" />
+    <list default="true" id="00162a55-b367-4f20-a43a-a0455caf2c41" name="Changes" comment="Update deployment configuration and refactor Stripe service settings">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/stripe.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,61 +61,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.413770727202178" />
-      <entry key="MS500" value="3.4311933967323274" />
-      <entry key="S2" value="5.464538172587498" />
-      <entry key="S5" value="6.289803928289712" />
-      <entry key="S10" value="6.6260298084421105" />
-      <entry key="S30" value="6.8708388646666485" />
-      <entry key="S60" value="6.934835714087941" />
-      <entry key="M2" value="6.967305290602546" />
-      <entry key="M5" value="7.011879620499667" />
-      <entry key="M10" value="7.217068897779069" />
-      <entry key="M15" value="7.459849304442352" />
-      <entry key="M30" value="7.98510500365636" />
-      <entry key="H1" value="9.095691102545048" />
-      <entry key="H2" value="12.625668845520687" />
-      <entry key="H4" value="18.40084361125624" />
-      <entry key="D1" value="29.48799233384241" />
-      <entry key="W1" value="32.4617303965459" />
+      <entry key="MS100" value="6.383057265592293E-80" />
+      <entry key="MS500" value="1.4487910290227956E-16" />
+      <entry key="S2" value="1.0971131916638544E-4" />
+      <entry key="S5" value="0.02606757158318225" />
+      <entry key="S10" value="0.16145457010912176" />
+      <entry key="S30" value="0.5488218515570182" />
+      <entry key="S60" value="0.8315000525156447" />
+      <entry key="M2" value="1.3727373415233284" />
+      <entry key="M5" value="3.2176282835693994" />
+      <entry key="M10" value="5.4202680623460395" />
+      <entry key="M15" value="6.745376470065744" />
+      <entry key="M30" value="8.740897453818576" />
+      <entry key="H1" value="10.743786542069325" />
+      <entry key="H2" value="14.675216969719434" />
+      <entry key="H4" value="20.70817638302299" />
+      <entry key="D1" value="32.30290592890105" />
+      <entry key="W1" value="35.432612112872796" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="2.722691499477634E-171" />
-      <entry key="S60" value="8.09035003280912E-86" />
-      <entry key="M2" value="4.7205093000858636E-43" />
-      <entry key="M5" value="2.3751212354216565E-17" />
-      <entry key="M10" value="9.830090992905183E-9" />
-      <entry key="M15" value="7.612567048790926E-6" />
-      <entry key="M30" value="0.006065698965551345" />
-      <entry key="H1" value="0.17336249377457216" />
-      <entry key="H2" value="0.9299438762696292" />
-      <entry key="H4" value="2.155685816453698" />
-      <entry key="D1" value="4.345649585603734" />
-      <entry key="W1" value="4.900804512429697" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0" />
+      <entry key="M2" value="1.0" />
+      <entry key="M5" value="1.0" />
+      <entry key="M10" value="1.0000000040582604" />
+      <entry key="M15" value="1.0000042207151707" />
+      <entry key="M30" value="1.0045165654728716" />
+      <entry key="H1" value="1.1495956186857406" />
+      <entry key="H2" value="1.8638505284152869" />
+      <entry key="H4" value="3.077669174633997" />
+      <entry key="D1" value="5.319033034445688" />
+      <entry key="W1" value="5.896505098567664" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.282687226708733" />
-      <entry key="MS500" value="3.3345734246746956" />
-      <entry key="S2" value="5.422771142456433" />
-      <entry key="S5" value="6.270486879044978" />
-      <entry key="S10" value="6.615853720928117" />
-      <entry key="S30" value="6.867322665400018" />
-      <entry key="S60" value="6.933061477397627" />
-      <entry key="M2" value="6.96641405523429" />
-      <entry key="M5" value="7.011512187820593" />
-      <entry key="M10" value="7.216845443644982" />
-      <entry key="M15" value="7.459675920700562" />
-      <entry key="M30" value="7.991037497708931" />
-      <entry key="H1" value="9.268842336226466" />
-      <entry key="H2" value="13.555207846434968" />
-      <entry key="H4" value="20.556086270081323" />
-      <entry key="D1" value="33.833496026515554" />
-      <entry key="W1" value="37.36251144373374" />
+      <entry key="MS100" value="5.902020957961378E-11" />
+      <entry key="MS500" value="0.00899912220585449" />
+      <entry key="S2" value="0.30810734490580927" />
+      <entry key="S5" value="0.6502258635171919" />
+      <entry key="S10" value="0.9510468213821109" />
+      <entry key="S30" value="1.4726056937807235" />
+      <entry key="S60" value="1.7916603804944473" />
+      <entry key="M2" value="2.350839031325912" />
+      <entry key="M5" value="4.2073785379834945" />
+      <entry key="M10" value="6.414656983034621" />
+      <entry key="M15" value="7.741485525777405" />
+      <entry key="M30" value="9.743353372969121" />
+      <entry key="H1" value="11.892201839552497" />
+      <entry key="H2" value="16.538187893317122" />
+      <entry key="H4" value="23.785165540737328" />
+      <entry key="D1" value="37.621751653439176" />
+      <entry key="W1" value="41.32908771845337" />
     </decayedShown>
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -346,7 +350,7 @@
       <workItem from="1782784303137" duration="407000" />
       <workItem from="1782842243578" duration="8938000" />
       <workItem from="1782863201658" duration="356000" />
-      <workItem from="1782864732818" duration="5872000" />
+      <workItem from="1782864732818" duration="6963000" />
     </task>
     <task id="LOCAL-00001" summary="Implement payment workflow with Stripe integration, enums, and email notifications">
       <option name="closed" value="true" />
@@ -460,18 +464,69 @@
       <option name="project" value="LOCAL" />
       <updated>1782883072903</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Update workspace configuration for GitHub Actions and adjust recent branch settings">
+      <option name="closed" value="true" />
+      <created>1782883267562</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1782883267562</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Update deployment configuration and enhance package metadata">
+      <option name="closed" value="true" />
+      <created>1782883874135</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1782883874135</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Update deployment configuration and refactor Stripe service settings">
+      <option name="closed" value="true" />
+      <created>1782884068731</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1782884068731</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="develop" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -498,6 +553,9 @@
     <MESSAGE value="Refactor CSS styles for pricing section and update HTML structure" />
     <MESSAGE value="Update styles and HTML structure for improved design and layout" />
     <MESSAGE value="Add GitHub Actions workflow for Symfony pre-production CI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add GitHub Actions workflow for Symfony pre-production CI" />
+    <MESSAGE value="Update workspace configuration for GitHub Actions and adjust recent branch settings" />
+    <MESSAGE value="Update deployment configuration and enhance package metadata" />
+    <MESSAGE value="Update deployment configuration and refactor Stripe service settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update deployment configuration and refactor Stripe service settings" />
   </component>
 </project>
