@@ -1,118 +1,163 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* =========================
+   DESIGN SYSTEM LUXE
+========================= */
+
 :root{
-    --primary:#0d6efd;
-    --bg:#f5f7fb;
-    --card:#ffffff;
-    --border:#e5e7eb;
-    --text:#111827;
-    --muted:#6b7280;
+    --bg: #F5EDD8;        /* fond crème */
+    --text: #1A1A1A;      /* noir profond */
+    --gold: #C9922A;      /* or */
+    --white: #FFFFFF;
+    --dark: #0D0D0D;
 }
+
+/* =========================
+   GLOBAL
+========================= */
 
 body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:Inter,system-ui,sans-serif;
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
+
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar{
-    background:white;
+    background: var(--dark) !important;
+    border-bottom: 2px solid var(--gold);
 }
+
+.navbar a{
+    color: var(--white) !important;
+    font-weight: 600;
+}
+
+/* =========================
+   PRICING SECTION
+========================= */
 
 .pricing{
-    padding:80px 0;
+    padding: 80px 0;
 }
 
-.pricing-card{
-
-    background:var(--card);
-
-    border:1px solid var(--border);
-
-    border-radius:20px;
-
-    padding:40px;
-
-    height:100%;
-
-    transition:.25s;
-
-    box-shadow:0 8px 30px rgba(0,0,0,.05);
-
-}
-
-.pricing-card:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:0 20px 50px rgba(0,0,0,.08);
-
-}
-
-.pricing-card h3{
-
-    font-weight:700;
-
-    margin-bottom:20px;
-
-}
-
-.price{
-
-    font-size:48px;
-
-    font-weight:800;
-
-    color:var(--primary);
-
-    margin-bottom:30px;
-
-}
-
-.pricing-card ul{
-
-    list-style:none;
-
-    padding:0;
-
-    margin-bottom:35px;
-
-}
-
-.pricing-card li{
-
-    padding:8px 0;
-
-    color:var(--muted);
-
-}
-
-.btn{
-
-    border-radius:12px;
-
-    padding:14px;
-
-    font-weight:600;
-
-}
+/* =========================
+   BADGE
+========================= */
 
 .badge{
-
-    padding:.6rem 1rem;
-
-    font-size:.85rem;
-
+    background: var(--dark) !important;
+    color: var(--gold);
+    padding: 8px 14px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border: 1px solid var(--gold);
 }
 
-.display-4{
+/* =========================
+   TITLES
+========================= */
 
-    font-weight:800;
-
+h1{
+    font-weight: 800;
 }
 
 .lead{
+    color: rgba(26,26,26,0.7);
+}
 
-    max-width:600px;
+/* =========================
+   PRICING CARD
+========================= */
 
-    margin:auto;
+.plan-link{
+    text-decoration:none;
+    color:inherit;
+    display:block;
+}
 
+.plan-card{
+    background: var(--white);
+    border: 1px solid rgba(201,146,42,0.3);
+    border-radius: 20px;
+    padding: 40px;
+    height: 100%;
+    transition: all .25s ease;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+
+    display:flex;
+    flex-direction: column;
+}
+
+.plan-card:hover{
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.plan-title{
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   PRICE
+========================= */
+
+.plan-price{
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 25px;
+}
+
+.plan-price span{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.plan-features{
+    list-style:none;
+    padding:0;
+    margin-bottom: 30px;
+}
+
+.plan-features li{
+    padding: 6px 0;
+    color: rgba(26,26,26,0.75);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn-primary{
+    background: var(--gold);
+    border: none;
+    font-weight: 700;
+}
+
+.btn-primary:hover{
+    background: #b88422;
+}
+
+/* =========================
+   LAYOUT FIX
+========================= */
+
+.row{
+    align-items: stretch;
 }
