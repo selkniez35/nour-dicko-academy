@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00162a55-b367-4f20-a43a-a0455caf2c41" name="Changes" comment="Add membership management features with enums and controllers">
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
+    <list default="true" id="00162a55-b367-4f20-a43a-a0455caf2c41" name="Changes" comment="Add membership management features and update asset configurations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/stimulus_bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/stimulus_bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MembershipPlanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MembershipPlanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MembershipController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Membership.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Membership.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Membership.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/StripeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/StripeService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +33,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="267" />
+    <option name="cachedIndexableFilesCount" value="268" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -355,6 +348,7 @@
       <workItem from="1782784303137" duration="407000" />
       <workItem from="1782842243578" duration="8938000" />
       <workItem from="1782863201658" duration="356000" />
+      <workItem from="1782864732818" duration="1204000" />
     </task>
     <task id="LOCAL-00001" summary="Implement payment workflow with Stripe integration, enums, and email notifications">
       <option name="closed" value="true" />
@@ -412,7 +406,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782861010148</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add membership management features and update asset configurations">
+      <option name="closed" value="true" />
+      <created>1782864893599</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1782864893599</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,6 +444,7 @@
     <MESSAGE value="Refactor PaymentController routes and remove unused BrevoService" />
     <MESSAGE value="Refactor PaymentController routes and add payment confirmation page" />
     <MESSAGE value="Add membership management features with enums and controllers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add membership management features with enums and controllers" />
+    <MESSAGE value="Add membership management features and update asset configurations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add membership management features and update asset configurations" />
   </component>
 </project>

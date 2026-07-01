@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Membership;
 use App\Entity\Payment;
 use App\Enum\PaymentMethod;
 use App\Enum\PaymentStatus;
 use App\Repository\PaymentRepository;
 use App\Service\StripeService;
 use Doctrine\ORM\EntityManagerInterface;
+use Stripe\Exception\ApiErrorException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,14 +22,14 @@ class PaymentController extends AbstractController
      * @throws ApiErrorException
      */
     #[Route('/checkout/{id}', name: 'app_pay')]
-    public function pay(EntityManagerInterface $em, Membership $membership): Response {
+    public function pay(EntityManagerInterface $em): Response {
 
         $payment = new Payment();
 
         $payment->setInternalRef(uniqid('pay_', true));
         $payment->setStatus(PaymentStatus::PENDING);
         $payment->setMethod(PaymentMethod::CARD);
-        $payment->setAmount((int) ($membership->getPrice() * 100));
+        $payment->setAmount(50);
 
         $em->persist($payment);
 

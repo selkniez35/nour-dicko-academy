@@ -6,7 +6,6 @@ use App\Entity\Payment;
 use Stripe\Exception\ApiErrorException;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
-use App\Entity\Membership;
 
 class StripeService
 {

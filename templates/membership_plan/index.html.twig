@@ -34,11 +34,8 @@
                                 <li>✓ Assurance fédérale</li>
                             </ul>
 
-                            <a
-                                    href="{{ path('app_membership_new', {
-                                        plan: plan.id
-                                    }) }}"
-                                    class="btn btn-primary w-100"
+                            <a href="{{ path('app_pay', {id: plan.id}) }}"
+                                class="btn btn-primary w-100"
                             >
                                 Choisir cette formule
                             </a>
