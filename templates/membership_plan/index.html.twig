@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choisir une formule{% endblock %}
+
+{% block body %}
+
+    <section class="container py-5">
+
+        <div class="text-center mb-5">
+            <h1 class="fw-bold">Choisissez votre formule</h1>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+
+            {% for plan in plans %}
+
+                <div class="col-lg-4">
+
+                    <div class="card border-0 shadow-sm h-100">
+
+                        <div class="card-body p-4 text-center">
+
+                            <h3 class="fw-bold mb-3">
+                                {{ plan.label }}
+                            </h3>
+
+                            <div class="display-5 fw-bold text-primary mb-4">
+                                {{ plan.price }}€
+                            </div>
+
+                            <ul class="list-unstyled text-muted mb-4">
+                                <li>✓ Licence incluse</li>
+                                <li>✓ Accès aux entraînements</li>
+                                <li>✓ Assurance fédérale</li>
+                            </ul>
+
+                            <a
+                                    href="{{ path('app_membership_new', {
+                                        plan: plan.id
+                                    }) }}"
+                                    class="btn btn-primary w-100"
+                            >
+                                Choisir cette formule
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+{% endblock %}

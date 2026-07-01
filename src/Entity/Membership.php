@@ -17,10 +17,6 @@ class Membership
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'memberships')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?UserProfile $userProfile = null;
-
     #[ORM\Column(length: 20)]
     private string $season;
 
@@ -35,9 +31,6 @@ class Membership
 
     #[ORM\Column]
     private DateTimeImmutable $updatedAt;
-
-    #[ORM\OneToMany(targetEntity: Document::class, mappedBy: 'membership', cascade: ['persist', 'remove'])]
-    private Collection $documents;
 
     #[ORM\Column(type: 'float')]
     private ?float $price = 100;
@@ -58,7 +51,6 @@ class Membership
         $this->payments = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
-        $this->documents = new ArrayCollection();
 
     }
 
@@ -143,7 +135,6 @@ class Membership
     {
         if (!$this->payments->contains($payment)) {
             $this->payments->add($payment);
-            $payment->setMembership($this);
         }
 
         return $this;
@@ -151,53 +142,6 @@ class Membership
 
     public function removePayment(Payment $payment): self
     {
-        if ($this->payments->removeElement($payment)) {
-            if ($payment->getMembership() === $this) {
-                $payment->setMembership(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getUserProfile(): ?UserProfile
-    {
-        return $this->userProfile;
-    }
-
-    public function setUserProfile(UserProfile $userProfile): self
-    {
-        $this->userProfile = $userProfile;
-        return $this;
-    }
-
-    public function getDocuments(): Collection
-    {
-        return $this->documents;
-    }
-
-    public function setDocuments(Collection $documents): void
-    {
-        $this->documents = $documents;
-    }
-
-    public function addDocument(Document $document): self
-    {
-        if (!$this->documents->contains($document)) {
-            $this->documents->add($document);
-            $document->setMembership($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDocument(Document $document): self
-    {
-        if ($this->documents->removeElement($document)) {
-            if ($document->getMembership() === $this) {
-                $document->setMembership(null);
-            }
-        }
 
         return $this;
     }

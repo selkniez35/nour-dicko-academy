@@ -2,34 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Mon application{% endblock %}</title>
 
-    <link rel="icon" href="{{ asset('images/logos/favicon.ico') }}">
-    <title>MA Boxe Guingamp</title>
-
-    {{ encore_entry_link_tags('app') }}
+    {% block stylesheets %}
+    {% endblock %}
 </head>
+<body>
 
-<body class="d-flex flex-column min-vh-100 app-body">
+{% block body %}
+{% endblock %}
 
-{# FLASH MESSAGES #}
-<div class="position-fixed top-0 start-50 translate-middle-x w-100" style="z-index:9999;">
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="alert alert-{{ label }} text-center m-0 rounded-0 shadow-sm">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endfor %}
-</div>
-
-{# CONTENU PRINCIPAL #}
-<main class="flex-grow-1">
-    {% block body %}{% endblock %}
-</main>
-
-{{ encore_entry_script_tags('app') }}
+{% block javascripts %}
+{% endblock %}
 
 </body>
 </html>

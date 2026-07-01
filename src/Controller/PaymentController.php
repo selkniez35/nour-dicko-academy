@@ -21,7 +21,7 @@ class PaymentController extends AbstractController
     /**
      * @throws ApiErrorException
      */
-    #[Route('/', name: 'app_pay')]
+    #[Route('/checkout/{id}', name: 'app_pay')]
     public function pay(EntityManagerInterface $em, Membership $membership): Response {
 
         $payment = new Payment();
