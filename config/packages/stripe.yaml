@@ -1,17 +1,5 @@
-services:
-    stripe.client:
-        class: 'Stripe\StripeClient'
-        arguments:
-            - '%env(STRIPE_SECRET_KEY)%'
+# config/packages/stripe.yaml
 
-    Stripe\StripeClient: '@stripe.client'
-
-
-services:
-    stripe.client:
-        class: 'Stripe\StripeClient'
-        arguments:
-            - '%env(STRIPE_SECRET_KEY)%'
-
-    Stripe\StripeClient: '@stripe.client'
-
+stripe:
+    secret_key: '%env(STRIPE_SECRET_KEY)%'
+    public_key: '%env(STRIPE_PUBLIC_KEY)%'
