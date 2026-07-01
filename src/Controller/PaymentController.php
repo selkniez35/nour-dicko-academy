@@ -41,7 +41,7 @@ class PaymentController extends AbstractController
         return $this->redirect($url);
     }
 
-    #[Route('/success', name: 'app_payment_success')]
+    #[Route('/payment/success', name: 'app_payment_success')]
     public function success(Request $request, PaymentRepository $paymentRepository): Response
     {
         $sessionId = $request->query->get('session_id');
