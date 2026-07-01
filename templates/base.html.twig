@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Nour Dicko Academy{% endblock %}</title>
 
-    <title>{% block title %}Mon application{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% block stylesheets %}
-    {% endblock %}
-</head>
-<body>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
 
-{% block body %}
-{% endblock %}
+    <body>
 
-{% block javascripts %}
-{% endblock %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="/">
+                    Nour Dicko Academy
+                </a>
+            </div>
+        </nav>
 
-</body>
+        <main class="py-4">
+            {% block body %}{% endblock %}
+        </main>
+
+        {% block javascripts %}
+                    {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+    </body>
 </html>

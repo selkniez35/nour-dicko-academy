@@ -1,319 +1,118 @@
-/* =========================
-   GLOBAL
-========================= */
-
-body {
-    margin: 0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    background: #000;
-    color: white;
+:root{
+    --primary:#0d6efd;
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --text:#111827;
+    --muted:#6b7280;
 }
 
-/* =========================
-   HERO (HOME + REGISTER)
-========================= */
-
-.hero {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /* background-image: url('/public/images/logos/ma-boxe-guingamp.jpeg'); */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,system-ui,sans-serif;
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
+.navbar{
+    background:white;
 }
 
-/* contenu au-dessus de l’overlay */
-.hero-content {
-    position: relative;
-    z-index: 2;
-    width: 100%;
+.pricing{
+    padding:80px 0;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+.pricing-card{
 
-.navbar {
-    backdrop-filter: blur(10px);
-    background: rgba(0,0,0,0.65) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:40px;
+
+    height:100%;
+
+    transition:.25s;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.05);
+
 }
 
-.navbar .nav-link {
-    color: rgba(255,255,255,0.85) !important;
+.pricing-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+
 }
 
-.navbar .nav-link:hover {
-    color: #fff !important;
+.pricing-card h3{
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
 }
 
-/* =========================
-   FORM STYLE (REGISTER / LOGIN)
-========================= */
+.price{
 
-.form-box {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    backdrop-filter: blur(18px);
+    font-size:48px;
 
-    padding: 35px;
-    border-radius: 16px;
+    font-weight:800;
 
-    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+    color:var(--primary);
+
+    margin-bottom:30px;
+
 }
 
-.card {
-    color: #212529;
+.pricing-card ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin-bottom:35px;
+
 }
 
-/* inputs bootstrap */
-input,
-select,
-textarea {
-    border-radius: 10px !important;
+.pricing-card li{
+
+    padding:8px 0;
+
+    color:var(--muted);
+
 }
 
-/* labels Symfony */
-label {
-    color: inherit;
-    font-weight: 500;
+.btn{
+
+    border-radius:12px;
+
+    padding:14px;
+
+    font-weight:600;
+
 }
 
-/* =========================
-   BUTTONS
-========================= */
+.badge{
 
-.btn {
-    border-radius: 10px;
-    font-weight: 600;
+    padding:.6rem 1rem;
+
+    font-size:.85rem;
+
 }
 
-.btn-danger {
-    background: #dc3545;
+.display-4{
+
+    font-weight:800;
+
 }
 
-.btn-danger:hover {
-    background: #bb2d3b;
-}
+.lead{
 
-/* =========================
-   TYPO
-========================= */
+    max-width:600px;
 
-h1, h2, h3 {
-    letter-spacing: 1px;
-    font-weight: 700;
-}
+    margin:auto;
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-    .hero {
-        text-align: center;
-        padding: 20px;
-    }
-
-    .form-box {
-        padding: 25px;
-    }
-
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-}
-
-.form-check {
-    margin-bottom: .5rem;
-}
-
-.form-check-label {
-    margin-left: .3rem;
-}
-.roles-checkbox-group .form-check {
-    display: inline-block;
-    margin-right: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.roles-checkbox-group .form-check-input {
-    margin-top: 0.3rem;
-}
-
-.roles-checkbox-group .form-check-label {
-    margin-left: 0.3rem;
-    color: inherit;
-}
-
-.document-dropzone {
-    transition: 0.2s;
-    cursor: pointer;
-}
-
-.document-dropzone.border-primary {
-    border: 2px dashed #0d6efd;
-    background: #f8f9ff;
-}
-
-.drop-zone {
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-
-.drop-zone.border-primary {
-    background-color: #eef6ff;
-    border-color: #0d6efd !important;
-}
-
-#calendar {
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-    min-height: 600px;
-}
-
-/* =========================
-   CALENDAR CONTAINER
-========================= */
-
-#calendar {
-    background: white;
-    padding: 14px;
-    border-radius: 14px;
-    min-height: 650px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-/* =========================
-   FULLCALENDAR CLEAN STYLE
-========================= */
-
-.fc {
-    background: white !important;
-    font-size: 13px;
-}
-
-/* header */
-.fc .fc-toolbar-title {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-/* buttons */
-.fc .fc-button {
-    background: #f2f2f2 !important;
-    border: none !important;
-    color: #333 !important;
-    border-radius: 8px !important;
-}
-
-.fc .fc-button:hover {
-    background: #e8e8e8 !important;
-}
-
-.fc .fc-button-primary:not(:disabled).fc-button-active {
-    background: #dc3545 !important;
-    color: white !important;
-}
-
-/* grid */
-.fc-theme-standard td,
-.fc-theme-standard th {
-    border-color: #eee;
-}
-
-/* slots */
-.fc .fc-timegrid-slot {
-    height: 48px;
-}
-
-/* remove ugly all-day row spacing */
-.fc .fc-timegrid-axis {
-    width: 60px;
-}
-
-/* events reset */
-.fc .fc-event {
-    border: none !important;
-    background: transparent !important;
-}
-
-/* hover */
-.fc .fc-timegrid-event:hover {
-    transform: scale(1.02);
-    transition: 0.15s ease;
-    cursor: pointer;
-}
-
-/* =========================
-   DAYS HEADER (LUN, MAR, etc.)
-========================= */
-
-.fc .fc-col-header-cell-cushion {
-    color: #6b7280 !important; /* gris propre */
-    text-decoration: none !important;
-    font-weight: 500;
-    font-size: 12px;
-}
-
-/* enlève le bleu des liens */
-.fc .fc-col-header-cell-cushion:hover {
-    color: #dc3545 !important;
-}
-
-/* =========================
-   NUMÉRO DU JOUR
-========================= */
-
-.fc .fc-daygrid-day-number {
-    color: #374151 !important;
-    text-decoration: none !important;
-    font-size: 13px;
-}
-
-/* today highlight soft */
-.fc .fc-day-today .fc-daygrid-day-number {
-    background: #dc3545;
-    color: white !important;
-    padding: 2px 6px;
-    border-radius: 6px;
-}
-
-/* enlève TOUT style lien bleu */
-.fc a {
-    color: inherit !important;
-    text-decoration: none !important;
-}
-
-/* =========================
-   FOOTER CUSTOM STYLES
-========================= */
-
-footer {
-    font-size: 0.95rem;
-}
-
-footer h5, footer h6 {
-    letter-spacing: 0.5px;
-}
-
-footer .btn-outline-danger:hover {
-    color: white;
-}
-
-footer ul li a:hover {
-    color: #dc3545 !important;
-    transition: color 0.2s ease-in-out;
 }

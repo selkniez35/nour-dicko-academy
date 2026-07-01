@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00162a55-b367-4f20-a43a-a0455caf2c41" name="Changes" comment="Add membership management features and update asset configurations">
+    <list default="true" id="00162a55-b367-4f20-a43a-a0455caf2c41" name="Changes" comment="Update redirection routes and adjust payment success URL formatting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MembershipController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Membership.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/StripeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/StripeService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,61 +61,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.000000000001101" />
-      <entry key="S5" value="1.0000290473317064" />
-      <entry key="S10" value="1.0091549626829586" />
-      <entry key="S30" value="1.4333908196698435" />
-      <entry key="S60" value="2.171451349549109" />
-      <entry key="M2" value="3.3486615780179574" />
-      <entry key="M5" value="6.409161230817067" />
-      <entry key="M10" value="9.120705740876312" />
-      <entry key="M15" value="10.435896711981234" />
-      <entry key="M30" value="12.04593255614847" />
-      <entry key="H1" value="13.106826103576143" />
-      <entry key="H2" value="14.110585532188512" />
-      <entry key="H4" value="15.115902737394606" />
-      <entry key="D1" value="16.59159548930664" />
-      <entry key="W1" value="16.938722854329015" />
+      <entry key="MS100" value="1.0915053559966017" />
+      <entry key="MS500" value="1.6198538499694932" />
+      <entry key="S2" value="1.887303767922352" />
+      <entry key="S5" value="1.9532985452881588" />
+      <entry key="S10" value="1.9763700862317315" />
+      <entry key="S30" value="1.9920604931322485" />
+      <entry key="S60" value="1.9960223356593207" />
+      <entry key="M2" value="1.998009186159787" />
+      <entry key="M5" value="1.9992031983575185" />
+      <entry key="M10" value="1.9996018141922938" />
+      <entry key="M15" value="1.9998531887155133" />
+      <entry key="M30" value="2.049178234895461" />
+      <entry key="H1" value="3.0207891941201734" />
+      <entry key="H2" value="6.7530431641144295" />
+      <entry key="H4" value="12.490762680287913" />
+      <entry key="D1" value="22.832764033963937" />
+      <entry key="W1" value="25.51713272340003" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.4079679075453285E-86" />
-      <entry key="S5" value="5.660152139897197E-35" />
-      <entry key="S10" value="7.669825444249964E-18" />
-      <entry key="S30" value="2.4881561742294403E-6" />
-      <entry key="S60" value="0.002126961385434202" />
-      <entry key="M2" value="0.06438001424799372" />
-      <entry key="M5" value="0.5043490990251329" />
-      <entry key="M10" value="1.0038021168871716" />
-      <entry key="M15" value="1.2629622069127906" />
-      <entry key="M30" value="1.5892210596790493" />
-      <entry key="H1" value="1.7827920426249415" />
-      <entry key="H2" value="1.8882683969763578" />
-      <entry key="H4" value="1.9433295563766995" />
-      <entry key="D1" value="1.9904411864552913" />
-      <entry key="W1" value="1.9986316435084024" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="2.9035805441944527E-152" />
+      <entry key="S60" value="2.6420135041769337E-76" />
+      <entry key="M2" value="2.6975699691062766E-38" />
+      <entry key="M5" value="1.898800453762311E-15" />
+      <entry key="M10" value="8.789300441129497E-8" />
+      <entry key="M15" value="3.2794094628936175E-5" />
+      <entry key="M30" value="0.01258963416247827" />
+      <entry key="H1" value="0.2497590732598404" />
+      <entry key="H2" value="1.1161943073467895" />
+      <entry key="H4" value="2.361712327069528" />
+      <entry key="D1" value="4.412265381797168" />
+      <entry key="W1" value="4.911466943044057" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.884455487084564E-4" />
-      <entry key="MS500" value="0.20790552459372658" />
-      <entry key="S2" value="0.6752529768621706" />
-      <entry key="S5" value="0.8546739829077401" />
-      <entry key="S10" value="0.9332919534058391" />
-      <entry key="S30" value="1.4014637391760478" />
-      <entry key="S60" value="2.152198813583717" />
-      <entry key="M2" value="3.3986911004471616" />
-      <entry key="M5" value="6.90412984806361" />
-      <entry key="M10" value="10.118088448108258" />
-      <entry key="M15" value="11.694000018464296" />
-      <entry key="M30" value="13.632363642739584" />
-      <entry key="H1" value="14.888114293576557" />
-      <entry key="H2" value="15.998067944751812" />
-      <entry key="H4" value="17.058827951103517" />
-      <entry key="D1" value="18.581967147920235" />
-      <entry key="W1" value="18.93734450136664" />
+      <entry key="MS100" value="0.20249777685630913" />
+      <entry key="MS500" value="1.2449003736974225" />
+      <entry key="S2" value="1.7750718052478867" />
+      <entry key="S5" value="1.9066768956943976" />
+      <entry key="S10" value="1.9527606064929504" />
+      <entry key="S30" value="1.984123293195061" />
+      <entry key="S60" value="1.9920452503544086" />
+      <entry key="M2" value="1.9960185173672735" />
+      <entry key="M5" value="1.9984064199504312" />
+      <entry key="M10" value="1.9992034272636445" />
+      <entry key="M15" value="1.999620210348374" />
+      <entry key="M30" value="2.0616152425876884" />
+      <entry key="H1" value="3.270286898838017" />
+      <entry key="H2" value="7.86876941623961" />
+      <entry key="H4" value="14.85199766930356" />
+      <entry key="D1" value="27.244882548940012" />
+      <entry key="W1" value="30.428576328178313" />
     </decayedShown>
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -348,7 +350,7 @@
       <workItem from="1782784303137" duration="407000" />
       <workItem from="1782842243578" duration="8938000" />
       <workItem from="1782863201658" duration="356000" />
-      <workItem from="1782864732818" duration="1204000" />
+      <workItem from="1782864732818" duration="4820000" />
     </task>
     <task id="LOCAL-00001" summary="Implement payment workflow with Stripe integration, enums, and email notifications">
       <option name="closed" value="true" />
@@ -414,7 +416,31 @@
       <option name="project" value="LOCAL" />
       <updated>1782864893599</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Update payment workflow and adjust membership selection link">
+      <option name="closed" value="true" />
+      <created>1782865952562</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1782865952562</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Update payment processing to use membership plan pricing">
+      <option name="closed" value="true" />
+      <created>1782866194057</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1782866194057</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Update redirection routes and adjust payment success URL formatting">
+      <option name="closed" value="true" />
+      <created>1782866341725</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1782866341725</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,6 +471,9 @@
     <MESSAGE value="Refactor PaymentController routes and add payment confirmation page" />
     <MESSAGE value="Add membership management features with enums and controllers" />
     <MESSAGE value="Add membership management features and update asset configurations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add membership management features and update asset configurations" />
+    <MESSAGE value="Update payment workflow and adjust membership selection link" />
+    <MESSAGE value="Update payment processing to use membership plan pricing" />
+    <MESSAGE value="Update redirection routes and adjust payment success URL formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update redirection routes and adjust payment success URL formatting" />
   </component>
 </project>

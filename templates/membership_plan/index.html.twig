@@ -4,49 +4,64 @@
 
 {% block body %}
 
-    <section class="container py-5">
+    <section class="pricing">
 
-        <div class="text-center mb-5">
-            <h1 class="fw-bold">Choisissez votre formule</h1>
-        </div>
+        <div class="container">
 
-        <div class="row g-4 justify-content-center">
+            <div class="text-center mb-5">
 
-            {% for plan in plans %}
+            <span class="badge bg-primary mb-3">
+                INSCRIPTIONS
+            </span>
 
-                <div class="col-lg-4">
+                <h1 class="display-4 fw-bold">
+                    Choisissez votre formule
+                </h1>
 
-                    <div class="card border-0 shadow-sm h-100">
+                <p class="lead text-secondary">
+                    Rejoignez la Nour Dicko Academy en quelques secondes.
+                </p>
 
-                        <div class="card-body p-4 text-center">
+            </div>
 
-                            <h3 class="fw-bold mb-3">
-                                {{ plan.label }}
-                            </h3>
+            <div class="row justify-content-center g-4">
 
-                            <div class="display-5 fw-bold text-primary mb-4">
-                                {{ plan.price }}€
+                {% for plan in plans %}
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="pricing-card">
+
+                            <h3>{{ plan.label }}</h3>
+
+                            <div class="price">
+                                {{ plan.price }} €
                             </div>
 
-                            <ul class="list-unstyled text-muted mb-4">
-                                <li>✓ Licence incluse</li>
+                            <ul>
+
+                                <li>✓ Licence officielle</li>
                                 <li>✓ Accès aux entraînements</li>
                                 <li>✓ Assurance fédérale</li>
+                                <li>✓ Paiement sécurisé</li>
+
                             </ul>
 
-                            <a href="{{ path('app_pay', {id: plan.id}) }}"
-                                class="btn btn-primary w-100"
-                            >
+                            <a
+                                href="{{ path('app_pay',{id:plan.id}) }}"
+                                class="btn btn-primary btn-lg w-100">
+
                                 Choisir cette formule
+
                             </a>
 
                         </div>
 
                     </div>
 
-                </div>
+                {% endfor %}
 
-            {% endfor %}
+            </div>
 
         </div>
 
