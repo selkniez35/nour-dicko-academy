@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00162a55-b367-4f20-a43a-a0455caf2c41" name="Changes" comment="Update styles and HTML structure for improved design and layout">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="00162a55-b367-4f20-a43a-a0455caf2c41" name="Changes" comment="Add GitHub Actions workflow for Symfony pre-production CI" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +31,11 @@
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
@@ -54,23 +57,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0915053559966017" />
-      <entry key="MS500" value="1.6198538499694932" />
-      <entry key="S2" value="1.887303767922352" />
-      <entry key="S5" value="1.9532985452881588" />
-      <entry key="S10" value="1.9763700862317315" />
-      <entry key="S30" value="1.9920604931322485" />
-      <entry key="S60" value="1.9960223356593207" />
-      <entry key="M2" value="1.998009186159787" />
-      <entry key="M5" value="1.9992031983575185" />
-      <entry key="M10" value="1.9996018141922938" />
-      <entry key="M15" value="1.9998531887155133" />
-      <entry key="M30" value="2.049178234895461" />
-      <entry key="H1" value="3.0207891941201734" />
-      <entry key="H2" value="6.7530431641144295" />
-      <entry key="H4" value="12.490762680287913" />
-      <entry key="D1" value="22.832764033963937" />
-      <entry key="W1" value="25.51713272340003" />
+      <entry key="MS100" value="1.413770727202178" />
+      <entry key="MS500" value="3.4311933967323274" />
+      <entry key="S2" value="5.464538172587498" />
+      <entry key="S5" value="6.289803928289712" />
+      <entry key="S10" value="6.6260298084421105" />
+      <entry key="S30" value="6.8708388646666485" />
+      <entry key="S60" value="6.934835714087941" />
+      <entry key="M2" value="6.967305290602546" />
+      <entry key="M5" value="7.011879620499667" />
+      <entry key="M10" value="7.217068897779069" />
+      <entry key="M15" value="7.459849304442352" />
+      <entry key="M30" value="7.98510500365636" />
+      <entry key="H1" value="9.095691102545048" />
+      <entry key="H2" value="12.625668845520687" />
+      <entry key="H4" value="18.40084361125624" />
+      <entry key="D1" value="29.48799233384241" />
+      <entry key="W1" value="32.4617303965459" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -78,37 +81,37 @@
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
       <entry key="S10" value="0.0" />
-      <entry key="S30" value="2.9035805441944527E-152" />
-      <entry key="S60" value="2.6420135041769337E-76" />
-      <entry key="M2" value="2.6975699691062766E-38" />
-      <entry key="M5" value="1.898800453762311E-15" />
-      <entry key="M10" value="8.789300441129497E-8" />
-      <entry key="M15" value="3.2794094628936175E-5" />
-      <entry key="M30" value="0.01258963416247827" />
-      <entry key="H1" value="0.2497590732598404" />
-      <entry key="H2" value="1.1161943073467895" />
-      <entry key="H4" value="2.361712327069528" />
-      <entry key="D1" value="4.412265381797168" />
-      <entry key="W1" value="4.911466943044057" />
+      <entry key="S30" value="2.722691499477634E-171" />
+      <entry key="S60" value="8.09035003280912E-86" />
+      <entry key="M2" value="4.7205093000858636E-43" />
+      <entry key="M5" value="2.3751212354216565E-17" />
+      <entry key="M10" value="9.830090992905183E-9" />
+      <entry key="M15" value="7.612567048790926E-6" />
+      <entry key="M30" value="0.006065698965551345" />
+      <entry key="H1" value="0.17336249377457216" />
+      <entry key="H2" value="0.9299438762696292" />
+      <entry key="H4" value="2.155685816453698" />
+      <entry key="D1" value="4.345649585603734" />
+      <entry key="W1" value="4.900804512429697" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.20249777685630913" />
-      <entry key="MS500" value="1.2449003736974225" />
-      <entry key="S2" value="1.7750718052478867" />
-      <entry key="S5" value="1.9066768956943976" />
-      <entry key="S10" value="1.9527606064929504" />
-      <entry key="S30" value="1.984123293195061" />
-      <entry key="S60" value="1.9920452503544086" />
-      <entry key="M2" value="1.9960185173672735" />
-      <entry key="M5" value="1.9984064199504312" />
-      <entry key="M10" value="1.9992034272636445" />
-      <entry key="M15" value="1.999620210348374" />
-      <entry key="M30" value="2.0616152425876884" />
-      <entry key="H1" value="3.270286898838017" />
-      <entry key="H2" value="7.86876941623961" />
-      <entry key="H4" value="14.85199766930356" />
-      <entry key="D1" value="27.244882548940012" />
-      <entry key="W1" value="30.428576328178313" />
+      <entry key="MS100" value="1.282687226708733" />
+      <entry key="MS500" value="3.3345734246746956" />
+      <entry key="S2" value="5.422771142456433" />
+      <entry key="S5" value="6.270486879044978" />
+      <entry key="S10" value="6.615853720928117" />
+      <entry key="S30" value="6.867322665400018" />
+      <entry key="S60" value="6.933061477397627" />
+      <entry key="M2" value="6.96641405523429" />
+      <entry key="M5" value="7.011512187820593" />
+      <entry key="M10" value="7.216845443644982" />
+      <entry key="M15" value="7.459675920700562" />
+      <entry key="M30" value="7.991037497708931" />
+      <entry key="H1" value="9.268842336226466" />
+      <entry key="H2" value="13.555207846434968" />
+      <entry key="H4" value="20.556086270081323" />
+      <entry key="D1" value="33.833496026515554" />
+      <entry key="W1" value="37.36251144373374" />
     </decayedShown>
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -286,29 +289,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu/var/www/nour-dicko-academy&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "develop",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu/var/www/nour-dicko-academy",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl.localhost\Ubuntu\var\www\nour-dicko-academy" />
@@ -343,7 +346,7 @@
       <workItem from="1782784303137" duration="407000" />
       <workItem from="1782842243578" duration="8938000" />
       <workItem from="1782863201658" duration="356000" />
-      <workItem from="1782864732818" duration="5548000" />
+      <workItem from="1782864732818" duration="5872000" />
     </task>
     <task id="LOCAL-00001" summary="Implement payment workflow with Stripe integration, enums, and email notifications">
       <option name="closed" value="true" />
@@ -449,7 +452,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782882782293</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Add GitHub Actions workflow for Symfony pre-production CI">
+      <option name="closed" value="true" />
+      <created>1782883072903</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1782883072903</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,6 +497,7 @@
     <MESSAGE value="Refactor styles and update HTML structure for pricing section" />
     <MESSAGE value="Refactor CSS styles for pricing section and update HTML structure" />
     <MESSAGE value="Update styles and HTML structure for improved design and layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update styles and HTML structure for improved design and layout" />
+    <MESSAGE value="Add GitHub Actions workflow for Symfony pre-production CI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add GitHub Actions workflow for Symfony pre-production CI" />
   </component>
 </project>
