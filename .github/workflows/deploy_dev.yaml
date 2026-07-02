@@ -41,8 +41,8 @@ jobs:
             - name: Cache clear
               run: APP_ENV=test php bin/console cache:clear
 
-            - name: Migrations
-              run: APP_ENV=test php bin/console doctrine:migrations:migrate --no-interaction
+            - name: Database schema sync
+              run: APP_ENV=test php bin/console doctrine:schema:update --force
 
             - name: Tests
               run: php bin/phpunit
