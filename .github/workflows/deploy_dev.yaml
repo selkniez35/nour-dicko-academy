@@ -39,10 +39,10 @@ jobs:
               run: echo 'postgresql://nour_dicko_academy_user:qVMO2ozMHyAfzJKRCmkPRmi97SOSHOQd@dpg-d92er5urnols739281g0-a.virginia-postgres.render.com:5432/nour_dicko_academy?sslmode=require' > .env.test
 
             - name: Cache clear
-              run: APP_ENV=test php bin/console cache:clear
+              run: php bin/console cache:clear --env=test
 
             - name: Database schema sync
-              run: APP_ENV=test php bin/console doctrine:schema:update --force
+              run: php bin/console doctrine:schema:update --force
 
             - name: Tests
               run: php bin/phpunit
