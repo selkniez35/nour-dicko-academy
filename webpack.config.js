@@ -1,0 +1,29 @@
+import Encore from '@symfony/webpack-encore';
+
+if (!Encore.isRuntimeEnvironmentConfigured()) {
+    Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
+}
+
+Encore
+    .setOutputPath('public/build/')
+    .setPublicPath('/build')
+
+    .addEntry('app', './assets/app.js')
+
+    .splitEntryChunks()
+    .enableSingleRuntimeChunk()
+
+    .cleanupOutputBeforeBuild()
+
+    .enableSourceMaps(!Encore.isProduction())
+    .enableVersioning(Encore.isProduction())
+
+    // 🔥 IMPORTANT FIX STIMULUS
+    .enableStimulusBridge('./assets/controllers.json')
+
+    .configureBabel((config) => {
+        config.plugins.push(['polyfill-corejs3', { method: 'usage-global', version: '3.49' }]);
+    })
+;
+
+export default Encore.getWebpackConfig();
