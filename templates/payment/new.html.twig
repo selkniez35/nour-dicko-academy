@@ -1,37 +1,126 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paiement{% endblock %}
+{% block title %}Paiement sécurisé{% endblock %}
 
 {% block body %}
 
-    <div style="max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+    <section class="checkout">
 
-        <h1>Paiement de l'adhésion</h1>
+        <div class="container">
 
-        <hr>
+            <div class="checkout-wrapper">
 
-        <p><strong>Adhésion :</strong> {{ membership.userProfile.fullName() }}</p>
-        <p><strong>Statut :</strong> {{ membership.status.label }}</p>
-        <p><strong>Montant :</strong> {{ membership.price ?? 100 }} €</p>
+                <div class="checkout-left">
 
-        <hr>
+                    <div class="checkout-card">
 
-        <form method="POST">
-            <button type="submit"
-                    style="
-                    background-color: #28a745;
-                    color: white;
-                    padding: 12px 20px;
-                    border: none;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    font-size: 16px;
-                    width: 100%;
-                ">
-                💳 Payer maintenant
-            </button>
-        </form>
+                        <div class="checkout-header">
 
-    </div>
+                        <span class="secure-badge">
+                            🔒 Paiement sécurisé Stripe
+                        </span>
+
+                            <h1>
+                                Finaliser votre inscription
+                            </h1>
+
+                            <p>
+                                Votre paiement est crypté et sécurisé.
+                            </p>
+
+                        </div>
+
+                        <div class="checkout-body">
+
+                            <div class="info-row">
+
+                                <span>Adhérent</span>
+
+                                <strong>
+                                    {{ membership.userProfile.fullName() }}
+                                </strong>
+
+                            </div>
+
+                            <div class="info-row">
+
+                                <span>Formule</span>
+
+                                <strong>
+                                    {{ membership.plan.label ?? 'Licence' }}
+                                </strong>
+
+                            </div>
+
+                            <div class="info-row price">
+
+                                <span>Montant</span>
+
+                                <strong>
+                                    {{ membership.price ?? 100 }} €
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                        <form method="POST" class="checkout-form">
+
+                            <button type="submit" class="btn-pay">
+
+                                Payer maintenant
+
+                            </button>
+
+                        </form>
+
+                        <div class="checkout-footer">
+
+                            <small>
+                                🔐 Paiement sécurisé via Stripe • Données cryptées
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="checkout-right">
+
+                    <div class="summary-card">
+
+                        <h3>Résumé</h3>
+
+                        <ul>
+
+                            <li>✔ Accès immédiat</li>
+
+                            <li>✔ Licence officielle</li>
+
+                            <li>✔ Assurance incluse</li>
+
+                            <li>✔ Support prioritaire</li>
+
+                        </ul>
+
+                        <div class="highlight-box">
+
+                            <p>
+                                “Une inscription rapide et sécurisée pour rejoindre
+                                la meilleure académie.”
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 {% endblock %}

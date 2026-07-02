@@ -1,8 +1,7 @@
 {
-  "build/app.css": "/build/app.css",
-  "build/app.js": "/build/app.js",
-  "build/runtime.js": "/build/runtime.js",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-turbo_dist-f1be9d.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-turbo_dist-f1be9d.js",
-  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js-node_modules_bootstrap_dist_css_boots-bd9352.css": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js-node_modules_bootstrap_dist_css_boots-bd9352.css",
-  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js-node_modules_bootstrap_dist_css_boots-bd9352.js": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js-node_modules_bootstrap_dist_css_boots-bd9352.js"
+  "build/app.css": "/build/app.62dea76b.css",
+  "build/app.js": "/build/app.cb0fc149.js",
+  "build/runtime.js": "/build/runtime.0bd3abc1.js",
+  "build/728.801cc83f.css": "/build/728.801cc83f.css",
+  "build/728.3a4aec74.js": "/build/728.3a4aec74.js"
 }

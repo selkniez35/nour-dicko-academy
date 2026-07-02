@@ -1,32 +1,112 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>{% block title %}Nour Dicko Academy{% endblock %}</title>
+
+    <title>
+        {% block title %}Nour Dicko Academy{% endblock %}
+    </title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta
+        name="description"
+        content="Rejoignez la Nour Dicko Academy et réglez votre adhésion en toute sécurité."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
+
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="/">
-            Nour Dicko Academy
-        </a>
-    </div>
-</nav>
+<header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="{{ path('app_membership-plan_index') }}">
+
+                <div class="logo-circle">
+                    ND
+                </div>
+
+                <div class="brand-text">
+
+                    <span class="brand-title">
+                        Nour Dicko
+                    </span>
+
+                    <span class="brand-subtitle">
+                        Academy
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
 
 <main>
+
     {% block body %}{% endblock %}
+
 </main>
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div>
+
+                <h5>Nour Dicko Academy</h5>
+
+                <p>
+                    Excellence • Discipline • Dépassement de soi
+                </p>
+
+            </div>
+
+            <div class="text-end">
+
+                <small>
+                    © {{ "now"|date("Y") }} Nour Dicko Academy
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
 
 </body>
+
 </html>

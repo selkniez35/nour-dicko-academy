@@ -1,3 +1,281 @@
+ /* =========================
+       DESIGN SYSTEM PREMIUM
+       Nour Dicko Academy
+    ========================= */
+
+:root {
+    --bg: #F5EDD8;
+    --text: #1A1A1A;
+    --gold: #C9922A;
+    --white: #FFFFFF;
+    --dark: #0D0D0D;
+    --muted: rgba(26, 26, 26, 0.65);
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
 body {
-    background-color: skyblue;
+    margin: 0;
+    font-family: 'Manrope', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    background: var(--dark);
+    padding: 18px 0;
+    border-bottom: 2px solid var(--gold);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: var(--dark);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.brand-title {
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.brand-subtitle {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    padding: 90px 0 40px;
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 999px;
+    font-size: 12px;
+    margin-bottom: 20px;
+    background: rgba(0,0,0,0.03);
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.hero-title span {
+    color: var(--gold);
+}
+
+.hero-description {
+    max-width: 650px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+/* =========================
+   PRICING
+========================= */
+
+.pricing {
+    padding: 60px 0 100px;
+}
+
+.pricing-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 35px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+    border: 1px solid rgba(201,146,42,0.25);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    border-color: var(--gold);
+}
+
+.pricing-category {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.pricing-price {
+    font-size: 54px;
+    font-weight: 900;
+    color: var(--gold);
+    margin: 15px 0;
+}
+
+.pricing-price span {
+    font-size: 20px;
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.pricing-features li {
+    padding: 6px 0;
+    color: var(--muted);
+}
+
+/* =========================
+   BUTTON GOLD
+========================= */
+
+.btn-gold {
+    background: var(--gold);
+    color: var(--white);
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 700;
+    display: inline-block;
+    text-align: center;
+    transition: 0.2s ease;
+}
+
+.btn-gold:hover {
+    background: #b88422;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   FEATURES SECTION
+========================= */
+
+.feature-box {
+    padding: 30px;
+}
+
+.feature-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   CHECKOUT (Stripe style)
+========================= */
+
+.checkout {
+    padding: 80px 0;
+}
+
+.checkout-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.checkout-card,
+.summary-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+}
+
+.secure-badge {
+    font-size: 12px;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 5px 10px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.info-row.price strong {
+    color: var(--gold);
+    font-size: 20px;
+}
+
+.btn-pay {
+    width: 100%;
+    margin-top: 20px;
+    background: var(--dark);
+    color: var(--white);
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-pay:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+.checkout-footer {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 34px;
+    }
+
+    .checkout-wrapper {
+        grid-template-columns: 1fr;
+    }
 }
