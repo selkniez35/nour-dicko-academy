@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choisir une formule{% endblock %}
+
+{% block body %}
+
+    <section class="pricing">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+            <span class="badge bg-primary mb-3">
+                INSCRIPTIONS
+            </span>
+
+                <h1 class="display-4 fw-bold">
+                    Choisissez votre formule
+                </h1>
+
+                <p class="lead text-muted">
+                    Rejoignez la Nour Dicko Academy en quelques secondes.
+                </p>
+
+            </div>
+
+            <div class="row g-4 justify-content-center align-items-stretch">
+
+                {% for plan in plans %}
+
+                    <div class="col-md-6 col-lg-4 d-flex">
+
+                        <a href="{{ path('app_pay', {id: plan.id}) }}" class="plan-link w-100">
+
+                            <div class="plan-card h-100">
+
+                                <h3 class="plan-title">{{ plan.label }}</h3>
+
+                                <div class="plan-price">
+                                    {{ plan.price }}<span>€</span>
+                                </div>
+
+                                <ul class="plan-features">
+                                    <li>✓ Licence officielle</li>
+                                    <li>✓ Accès aux entraînements</li>
+                                    <li>✓ Assurance fédérale</li>
+                                    <li>✓ Paiement sécurisé</li>
+                                </ul>
+
+                                <div class="btn btn-primary w-100">
+                                    Choisir cette formule
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}
