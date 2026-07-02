@@ -1,26 +1,29 @@
-FROM php:8.5-cli
+FROM php:8.4-fpm
 
+# system deps
 RUN apt-get update && apt-get install -y \
-    git unzip zip curl \
-    libicu-dev libzip-dev libpq-dev \
-    nodejs npm \
-    && docker-php-ext-install pdo pdo_pgsql intl zip
+    git \
+    unzip \
+    zip \
+    libicu-dev \
+    libzip-dev \
+    curl \
+    && docker-php-ext-install intl pdo pdo_pgsql zip opcache
 
+# composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-WORKDIR /app
+WORKDIR /var/www/html
 
 COPY . .
 
-ENV APP_ENV=prod
-ENV APP_DEBUG=0
-ENV COMPOSER_ALLOW_SUPERUSER=1
+# install deps WITHOUT scripts (safe build)
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
-RUN composer install \
-    --no-dev \
-    --optimize-autoloader \
-    --no-interaction
+# run Symfony manually
+RUN php bin/console cache:clear --env=prod
+RUN php bin/console cache:warmup --env=prod
 
-RUN npm install && npm run build
+RUN chown -R www-data:www-data /var/www/html
 
-CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
+CMD ["php-fpm"]
