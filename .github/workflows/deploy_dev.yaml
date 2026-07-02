@@ -36,7 +36,7 @@ jobs:
               run: composer install --no-interaction --prefer-dist --no-progress
 
             - name: Set test DB
-              run: echo "DATABASE_URL="postgresql://nour_dicko_academy_user:qVMO2ozMHyAfzJKRCmkPRmi97SOSHOQd@dpg-d92er5urnols739281g0-a.virginia-postgres.render.com:5432/nour_dicko_academy?sslmode=require" > .env.test
+              run: echo 'postgresql://nour_dicko_academy_user:qVMO2ozMHyAfzJKRCmkPRmi97SOSHOQd@dpg-d92er5urnols739281g0-a.virginia-postgres.render.com:5432/nour_dicko_academy?sslmode=require' > .env.test.local
 
             - name: Cache clear
               run: APP_ENV=test php bin/console cache:clear
