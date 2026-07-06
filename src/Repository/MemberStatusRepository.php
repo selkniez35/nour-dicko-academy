@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Enum\MembershipStatus;
+use App\Entity\MemberStatus;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<MembershipStatus>
+ * @extends ServiceEntityRepository<MemberStatus>
  */
-class MembershipStatusRepository extends ServiceEntityRepository
+class MemberStatusRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, MembershipStatus::class);
+        parent::__construct($registry, MemberStatus::class);
     }
 
     //    /**
-    //     * @return MembershipStatus[] Returns an array of MembershipStatus objects
+    //     * @return MemberStatus[] Returns an array of MemberStatus objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class MembershipStatusRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?MembershipStatus
+    //    public function findOneBySomeField($value): ?MemberStatus
     //    {
     //        return $this->createQueryBuilder('m')
     //            ->andWhere('m.exampleField = :val')
