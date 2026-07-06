@@ -20,3 +20,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     els.forEach((el) => io.observe(el));
 });
+// ═══ Modals des cours ═══
+window.openModal = function(id){
+  const modal = document.getElementById(id);
+  if(modal){
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeModal = function(id){
+  const modal = document.getElementById(id);
+  if(modal){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+};
+
+// Fermer en cliquant sur le fond sombre (hors de la boîte)
+document.addEventListener('click', function(e){
+  if(e.target.classList.contains('modal-overlay')){
+    e.target.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// Fermer avec la touche Échap
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m){
+      m.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+});
