@@ -1,5 +1,5 @@
-import { startStimulusApp } from '@symfony/stimulus-bridge';
+import { Application } from '@hotwired/stimulus';
 
-const app = startStimulusApp();
+const app = Application.start();
 
-export default app;
+// register controllers here if needed

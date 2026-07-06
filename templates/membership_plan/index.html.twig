@@ -11,13 +11,14 @@
       <img src="{{ asset('images/logo-nda.png') }}" alt="Nour Dicko Academy">
     </a>
     <nav aria-label="Navigation principale">
-      <ul class="topbar-menu">
-        <li><a href="#" class="active">Accueil</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#cours">Cours</a></li>
-        <li><a href="#tarifs">Tarifs</a></li>
-        <li><a href="#inscription">Contact</a></li>
-      </ul>
+     <ul class="topbar-menu">
+  <li><a href="#" class="active">Accueil</a></li>
+  <li><a href="#apropos">À propos</a></li>
+  <li><a href="#actualites">Actualités</a></li>
+  <li><a href="#cours">Cours</a></li>
+  <li><a href="#tarifs">Tarifs</a></li>
+  <li><a href="#inscription">Contact</a></li>
+</ul>
     </nav>
     <a class="topbar-cta" href="#inscription">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-3.8 3.8-5.5 7-5.5s6 1.7 7 5.5"/></svg>
@@ -28,6 +29,82 @@
 
 
 {{ include('partials/_hero.html.twig') }}
+
+<!-- ══ À PROPOS ══ -->
+<section id="apropos" class="about2">
+  <div class="about2-grid">
+    <div class="about2-text reveal">
+      <span class="about2-tag">À propos</span>
+      <h2 class="about2-title">Un enseignement<br>de <span>confiance</span></h2>
+      <div class="about2-rule"></div>
+      <blockquote class="about2-quote">
+        Transmettre la connaissance du Coran et de la langue arabe est une mission que je porte au cœur. Nour Dicko Academy est née de la conviction que chaque adulte mérite un accès à un enseignement islamique de qualité, structuré et bienveillant.
+      </blockquote>
+      <div class="about2-sig">
+        <b>Imam Dicko</b>
+        <span>Fondateur de Nour Dicko Academy</span>
+      </div>
+      <div class="about2-vals">
+        <span class="about2-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19V5a2 2 0 012-2h13v16H6a2 2 0 000 4h13"/></svg>
+          Apprendre
+        </span>
+        <span class="about2-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+          Comprendre
+        </span>
+        <span class="about2-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20h16M6 16l4-5 3 3 5-7"/></svg>
+          Progresser
+        </span>
+      </div>
+    </div>
+
+    <div class="about2-photo reveal">
+      <div class="about2-arch-bg"></div>
+      <img src="{{ asset('images/imam-dicko.png') }}" alt="Imam Dicko, fondateur de Nour Dicko Academy">
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACTUALITÉS ══ -->
+<section id="actualites" class="news">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Actualités</span>
+      <h2 class="sec-title">Nos dernières nouvelles</h2>
+      <p class="sec-sub">Suivez l'actualité de Nour Dicko Academy et nos événements à venir.</p>
+    </div>
+
+    <div class="news-grid">
+      <!-- Annonce 1 : Lancement du site -->
+      <article class="news-card reveal">
+        <div class="news-visual">
+  <img src="{{ asset('images/actu-lancement.png') }}" alt="Lancement du site Nour Dicko Academy">
+</div>
+        <div class="news-body">
+          <span class="news-badge">Nouveau</span>
+          <h3>Lancement de notre site</h3>
+          <p>Nour Dicko Academy est désormais en ligne ! Découvrez nos cours, inscrivez-vous et rejoignez notre communauté d'apprentissage.</p>
+          <a href="#cours" class="news-link">Découvrir les cours ›</a>
+        </div>
+      </article>
+
+      <!-- Annonce 2 : Omra -->
+      <article class="news-card reveal">
+       <div class="news-visual">
+  <img src="{{ asset('images/actu-omra.png') }}" alt="Omra organisée par Nour Dicko Academy">
+</div>
+        <div class="news-body">
+          <span class="news-badge news-badge-gold">Événement</span>
+          <h3>Organisation d'une Omra</h3>
+          <p>Nous organisons une Omra pour notre communauté. Les places sont limitées — inscrivez-vous dès maintenant pour réserver la vôtre.</p>
+          <a href="LIEN_FORMULAIRE_OMRA" target="_blank" rel="noopener" class="news-link">S'inscrire à l'Omra ›</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
 <!-- ══ NOS COURS ══ -->
 <section id="cours">
@@ -248,42 +325,7 @@
   </div>
 </section>
 
-<!-- ══ À PROPOS ══ -->
-<section id="apropos" class="about2">
-  <div class="about2-grid">
-    <div class="about2-text reveal">
-      <span class="about2-tag">À propos</span>
-      <h2 class="about2-title">Un enseignement<br>de <span>confiance</span></h2>
-      <div class="about2-rule"></div>
-      <blockquote class="about2-quote">
-        Transmettre la connaissance du Coran et de la langue arabe est une mission que je porte au cœur. Nour Dicko Academy est née de la conviction que chaque adulte mérite un accès à un enseignement islamique de qualité, structuré et bienveillant.
-      </blockquote>
-      <div class="about2-sig">
-        <b>Imam Dicko</b>
-        <span>Fondateur de Nour Dicko Academy</span>
-      </div>
-      <div class="about2-vals">
-        <span class="about2-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19V5a2 2 0 012-2h13v16H6a2 2 0 000 4h13"/></svg>
-          Apprendre
-        </span>
-        <span class="about2-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
-          Comprendre
-        </span>
-        <span class="about2-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20h16M6 16l4-5 3 3 5-7"/></svg>
-          Progresser
-        </span>
-      </div>
-    </div>
 
-    <div class="about2-photo reveal">
-      <div class="about2-arch-bg"></div>
-      <img src="{{ asset('images/imam-dicko.png') }}" alt="Imam Dicko, fondateur de Nour Dicko Academy">
-    </div>
-  </div>
-</section>
 
 <!-- ══ INSCRIPTION ══ -->
 <section id="inscription">
@@ -350,12 +392,13 @@
         <p style="font-size:13px;opacity:.6;margin-top:12px;max-width:280px">Institut d'enseignement islamique en ligne, réservé aux adultes.</p>
       </div>
       <div class="foot-col">
-        <h6>Navigation</h6>
-        <a href="#cours">Nos cours</a>
-        <a href="#tarifs">Tarifs</a>
-        <a href="#apropos">À propos</a>
-        <a href="#inscription">Inscription</a>
-      </div>
+  <h6>Navigation</h6>
+  <a href="#apropos">À propos</a>
+  <a href="#actualites">Actualités</a>
+  <a href="#cours">Nos cours</a>
+  <a href="#tarifs">Tarifs</a>
+  <a href="#inscription">Inscription</a>
+</div>
       <div class="foot-col">
         <h6>Contact</h6>
         <a href="https://wa.me/33782988352" target="_blank" rel="noopener">WhatsApp : 07 82 98 83 52</a>
@@ -369,7 +412,7 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2025 Nour Dicko Academy — Tous droits réservés</span>
+      <span>© 2026 Nour Dicko Academy — Tous droits réservés</span>
       <span>Apprendre · Comprendre · Progresser</span>
     </div>
   </div>
