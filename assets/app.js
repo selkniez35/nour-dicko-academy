@@ -54,3 +54,28 @@ document.addEventListener('keydown', function(e){
     document.body.style.overflow = '';
   }
 });
+// ═══ Navbar active link au scroll ═══
+document.addEventListener('DOMContentLoaded', function(){
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.topbar-menu a');
+
+  function setActive(){
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if(window.scrollY >= sectionTop){
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href').replace('#','');
+      if(href === current){
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', setActive);
+  setActive();
+});
