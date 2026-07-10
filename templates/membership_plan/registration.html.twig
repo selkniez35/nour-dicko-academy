@@ -12,7 +12,14 @@
       <p class="sec-sub">Remplissez le formulaire ci-dessous pour vous inscrire. Nous vous contacterons dans les plus brefs délais pour confirmer votre place.</p>
     </div>
 
-    <form method="POST" action="#">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-error">{{ message }}</div>
+    {% endfor %}
+
+    <form method="POST" action="{{ path('app_registration') }}">
         <!-- Informations personnelles -->
         <div class="insc-section-title">Informations personnelles</div>
         <div class="insc-row">

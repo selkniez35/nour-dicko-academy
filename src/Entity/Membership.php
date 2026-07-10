@@ -16,7 +16,6 @@ class Membership
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
     #[ORM\ManyToOne(inversedBy: 'memberships')]
     #[ORM\JoinColumn(nullable: false)]
     private ?UserProfile $userProfile = null;
@@ -53,13 +52,26 @@ class Membership
     #[ORM\ManyToOne]
     private ?MembershipPlan $plan = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $studentLevel = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $paymentMode = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $paymentMethod = null;
+
+    #[ORM\ManyToMany(targetEntity: MembershipPlan::class)]
+    #[ORM\JoinTable(name: 'membership_selected_plans')]
+    private Collection $selectedCourses;
+
     public function __construct()
     {
         $this->payments = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
         $this->documents = new ArrayCollection();
-
+        $this->selectedCourses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -222,5 +234,57 @@ class Membership
         $this->plan = $plan;
     }
 
+    public function getStudentLevel(): ?string
+    {
+        return $this->studentLevel;
+    }
 
+    public function setStudentLevel(?string $studentLevel): void
+    {
+        $this->studentLevel = $studentLevel;
+    }
+
+    public function getPaymentMode(): ?string
+    {
+        return $this->paymentMode;
+    }
+
+    public function setPaymentMode(?string $paymentMode): void
+    {
+        $this->paymentMode = $paymentMode;
+    }
+
+    public function getPaymentMethod(): ?string
+    {
+        return $this->paymentMethod;
+    }
+
+    public function setPaymentMethod(?string $paymentMethod): void
+    {
+        $this->paymentMethod = $paymentMethod;
+    }
+
+    /**
+     * @return Collection<int, MembershipPlan>
+     */
+    public function getSelectedCourses(): Collection
+    {
+        return $this->selectedCourses;
+    }
+
+    public function addSelectedCourse(MembershipPlan $selectedCourse): self
+    {
+        if (!$this->selectedCourses->contains($selectedCourse)) {
+            $this->selectedCourses->add($selectedCourse);
+        }
+
+        return $this;
+    }
+
+    public function removeSelectedCourse(MembershipPlan $selectedCourse): self
+    {
+        $this->selectedCourses->removeElement($selectedCourse);
+
+        return $this;
+    }
 }

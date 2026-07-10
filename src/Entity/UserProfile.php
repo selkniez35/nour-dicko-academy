@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserProfileRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,12 @@ class UserProfile
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $address = null;
+
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $phoneNumber = null;
+
+    #[ORM\Column(length: 10, nullable: true)]
+    private ?string $gender = null;
 
     #[ORM\Column(length: 32, nullable: true)]
     private ?string $preferredGroup = null;
@@ -136,6 +144,30 @@ class UserProfile
     public function setAddress(string $address): static
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?string $phoneNumber): static
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(?string $gender): static
+    {
+        $this->gender = $gender;
 
         return $this;
     }
