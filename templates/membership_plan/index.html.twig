@@ -220,73 +220,43 @@
     </div>
 
     <div class="courses">
-      <!-- Langue arabe -->
-      <article class="course reveal">
-        <div class="course-icon ic-black"><span class="glyph" lang="ar">ض</span></div>
-        <h3>Langue arabe</h3>
-        <div class="course-level">Niveau avancé requis</div>
-        <div class="course-feats">
-          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><path d="M4 19V5a2 2 0 012-2h13v16H6a2 2 0 000 4h13"/></svg>Lire</span>
-          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><path d="M21 11a8 8 0 01-11.9 7L3 20l2-6.1A8 8 0 1121 11z"/></svg>Comprendre</span>
-          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><circle cx="9" cy="7" r="3.5"/><path d="M3.5 20c.7-3.4 2.8-5 5.5-5s4.8 1.6 5.5 5M16 6l4 4m0-4l-4 4"/></svg>Parler</span>
-        </div>
-        <p>Approfondissez votre maîtrise de la langue arabe : lecture, compréhension et expression orale.</p>
-        <div class="course-when">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
-          <div>
-            <div class="when-day">Lundi ou mardi</div>
-            <div class="when-note">En fonction de la classe</div>
-            <div class="when-hour">19h00 – 20h00</div>
-          </div>
-        </div>
-        <button type="button" class="course-btn" onclick="openModal('modal-arabe')">Découvrir ce cours ›</button>
-      </article>
+        {% for membership in membershipPlans %}
+            <article class="course reveal">
 
-      <!-- Éducation islamique -->
-      <article class="course reveal">
-        <div class="course-icon ic-gold">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#0C0C0C" stroke-width="1.8" aria-hidden="true"><path d="M12 2c0 3-3.5 4-3.5 7a3.5 3.5 0 007 0C15.5 6 12 5 12 2z"/><path d="M4 21v-7h16v7M4 21h16M9 21v-4a3 3 0 016 0v4"/></svg>
-        </div>
-        <h3>Éducation islamique</h3>
-        <div class="course-level">Ouvert à tous</div>
-        <div class="course-feats">
-          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><path d="M12 3c2.5 3.8 6 6.3 6 10a6 6 0 11-12 0c0-3.7 3.5-6.2 6-10z"/></svg>Purification</span>
-          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><circle cx="12" cy="5" r="2.5"/><path d="M12 8v5l-4 6m4-6l4 6"/></svg>Prière</span>
-          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><path d="M12 21V8M12 8c0-3 2-5 6-5v13c-4 0-6 1-6 5zm0 0c0-3-2-5-6-5v13c4 0 6 1 6 5z"/></svg>Invocations</span>
-        </div>
-        <p>Initiation à la purification, à la prière et apprentissage des invocations quotidiennes.</p>
-        <div class="course-when">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
-          <div>
-            <div class="when-day">Mercredi</div>
-            <div class="when-hour">19h00 – 20h00</div>
-          </div>
-        </div>
-        <button type="button" class="course-btn" onclick="openModal('modal-education')">Découvrir ce cours ›</button>
-      </article>
+                {# icône selon membership.icon #}
 
-      <!-- Lecture du Coran -->
-      <article class="course reveal">
-        <div class="course-icon ic-black">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="1.8" aria-hidden="true"><path d="M12 20V7M12 7c0-2.8 2-4.5 7-4.5v13c-5 0-7 1.2-7 4.5zm0 0c0-2.8-2-4.5-7-4.5v13c5 0 7 1.2 7 4.5z"/></svg>
-        </div>
-        <h3>Apprendre à lire le Coran</h3>
-        <div class="course-level">Débutant</div>
-        <div class="course-feats">
-          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><path d="M4 20h16M6 16l6-12 6 12"/><path d="M8.5 12h7"/></svg>Alphabet</span>
-          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><path d="M4 19V5a2 2 0 012-2h13v16H6a2 2 0 000 4h13"/></svg>Lecture</span>
-          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>Progression</span>
-        </div>
-        <p>Apprenez à lire le Coran pas à pas, depuis les bases, dans un cadre bienveillant.</p>
-        <div class="course-when">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
-          <div>
-            <div class="when-day">Jeudi</div>
-            <div class="when-hour">19h00 – 20h00</div>
-          </div>
-        </div>
-        <button type="button" class="course-btn" onclick="openModal('modal-coran')">Découvrir ce cours ›</button>
-      </article>
+                <h3>{{ membership.label }}</h3>
+
+                <div class="course-level">
+                    {{ membership.level }}
+                </div>
+
+                <div class="course-feats">
+                    {% for feature in membership.features %}
+                        {% if feature.type == 'card' %}
+                            <span class="feat">
+                                {{ feature.label }}
+                            </span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <p>{{ membership.description }}</p>
+
+                <div class="course-when">
+                    <div>
+                        {{ membership.schedule }}
+                    </div>
+                </div>
+
+                <button
+                    class="course-btn"
+                    onclick="openModal('modal-{{ membership.id }}')">
+                    Découvrir ce cours ›
+                </button>
+
+            </article>
+        {% endfor %}
     </div>
   </div>
 
@@ -327,14 +297,15 @@
 
       <div class="tar-grid">
           {% for membership in membershipPlans %}
-              <article class="tar-card reveal">
-                  <div class="tar-icon ic-black">
-                      <span class="glyph" lang="ar">ض</span>
+              <article class="tar-card {% if membership.featured %}tar-featured{% endif %} reveal">
+
+                  <div class="tar-kind">
+                      {{ membership.featured ? 'Pack complet' : 'Cours' }}
                   </div>
 
-                  <div class="tar-kind">Cours</div>
-
-                  <h3 class="tar-name">{{ membership.label }}</h3>
+                  <h3 class="tar-name">
+                      {{ membership.label }}
+                  </h3>
 
                   <div class="tar-price">
                       {{ membership.price }} € <small>/an</small>
@@ -342,15 +313,21 @@
 
                   <div class="tar-sep"></div>
 
-                  <div class="tar-prog">Au programme :</div>
+                  <div class="tar-prog">
+                      Au programme :
+                  </div>
 
                   <ul class="tar-list">
-                      <li>Lecture</li>
-                      <li>Compréhension</li>
-                      <li>Expression orale</li>
+                      {% for feature in membership.features %}
+                          {% if feature.type == 'card' %}
+                              <li>{{ feature.label }}</li>
+                          {% endif %}
+                      {% endfor %}
                   </ul>
+                  <a href="#inscription" class="tar-btn">
+                      S'inscrire ›
+                  </a>
 
-                  <a href="#inscription" class="tar-btn">S'inscrire ›</a>
               </article>
           {% endfor %}
       </div>
@@ -378,88 +355,56 @@
 </section>
 
 <!-- ══ MODALS COURS ══ -->
-<div class="modal-overlay" id="modal-arabe">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-arabe')" aria-label="Fermer">×</button>
-    <div class="modal-icon ic-black"><span class="glyph" lang="ar">ض</span></div>
-    <h3 class="modal-title">Langue arabe</h3>
-    <div class="modal-level">Niveau avancé requis</div>
-    <p class="modal-intro">Un parcours complet pour maîtriser la langue arabe à l'oral, dans le cadre d'un enseignement structuré et progressif.</p>
-    <div class="modal-prog-title">Programme détaillé</div>
-    <ul class="modal-list">
-      <li>Lecture fluide de textes arabes variés</li>
-      <li>Compréhension de textes classiques et modernes</li>
-      <li>Expression orale et conversation</li>
-      <li>Enrichissement du vocabulaire</li>
-      <li>Grammaire et conjugaison approfondies</li>
-    </ul>
-    <div class="modal-info">📅 Lundi ou mardi · 19h00 – 20h00 · 1 cours par semaine</div>
-    <a href="#tarifs" class="modal-cta" onclick="closeModal(this.closest('.modal-overlay').id)">Voir les tarifs ›</a>
-  </div>
-</div>
+    {% for membership in membershipPlans %}
+        <div class="modal-overlay" id="modal-{{ membership.id }}">
 
-<div class="modal-overlay" id="modal-coran">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-coran')" aria-label="Fermer">×</button>
-    <div class="modal-icon ic-black">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="1.8" aria-hidden="true"><path d="M12 20V7M12 7c0-2.8 2-4.5 7-4.5v13c-5 0-7 1.2-7 4.5zm0 0c0-2.8-2-4.5-7-4.5v13c5 0 7 1.2 7 4.5z"/></svg>
-    </div>
-    <h3 class="modal-title">Apprendre à lire le Coran</h3>
-    <div class="modal-level">Débutant</div>
-    <p class="modal-intro">Apprenez à lire le Coran depuis les bases, pas à pas, dans un cadre bienveillant et adapté aux débutants complets.</p>
-    <div class="modal-prog-title">Programme détaillé</div>
-    <ul class="modal-list">
-      <li>Apprentissage de l'alphabet arabe</li>
-      <li>Les voyelles courtes et longues</li>
-      <li>Lecture syllabe par syllabe</li>
-      <li>Lecture selon les règles de tajwid</li>
-      <li>Lecture progressive de sourates</li>
-    </ul>
-    <div class="modal-info">📅 Jeudi · 19h00 – 20h00 · 1 cours par semaine</div>
-    <a href="#tarifs" class="modal-cta" onclick="closeModal(this.closest('.modal-overlay').id)">Voir les tarifs ›</a>
-  </div>
-</div>
+            <div class="modal-box">
 
-<div class="modal-overlay" id="modal-education">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-education')" aria-label="Fermer">×</button>
-    <div class="modal-icon ic-gold">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#0C0C0C" stroke-width="1.8" aria-hidden="true"><path d="M12 2c0 3-3.5 4-3.5 7a3.5 3.5 0 007 0C15.5 6 12 5 12 2z"/><path d="M4 21v-7h16v7M4 21h16M9 21v-4a3 3 0 016 0v4"/></svg>
-    </div>
-    <h3 class="modal-title">Éducation islamique</h3>
-    <div class="modal-level">Ouvert à tous</div>
-    <p class="modal-intro">Une initiation à certains fondements de la pratique islamique (voir programme détaillé ci-dessous), accessible à tous les niveaux.</p>
-    <div class="modal-prog-title">Programme détaillé</div>
-    <ul class="modal-list">
-      <li>La purification (règles et pratique)</li>
-      <li>La prière : conditions, gestes et invocations</li>
-      <li>Les invocations quotidiennes</li>
-      <li>Les fondements de la foi (aqida)</li>
-      <li>Les piliers de l'islam expliqués</li>
-    </ul>
-    <div class="modal-info">📅 Mercredi · 19h00 – 20h00 · 1 cours par semaine</div>
-    <a href="#tarifs" class="modal-cta" onclick="closeModal(this.closest('.modal-overlay').id)">Voir les tarifs ›</a>
-  </div>
-</div>
+                <button
+                    class="modal-close"
+                    onclick="closeModal('modal-{{ membership.id }}')">
+                    ×
+                </button>
 
-<div class="modal-overlay" id="modal-pack">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-pack')" aria-label="Fermer">×</button>
-    <div class="modal-icon ic-black">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="1.8" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
-    </div>
-    <h3 class="modal-title">Pack complet</h3>
-    <div class="modal-level">2 cours au choix  <span style="text-decoration:line-through;opacity:.5">450 €</span></div>
-    <p class="modal-intro">Combinez deux cours et économisez 100 €. La formule idéale pour progresser sur plusieurs fronts.</p>
-    <div class="modal-prog-title">Deux formules au choix</div>
-    <ul class="modal-list">
-      <li>Langue arabe + Éducation islamique</li>
-      <li>ou Apprendre à lire le Coran + Éducation islamique</li>
-    </ul>
-    <div class="modal-info">📅 2 cours par semaine · horaires selon les cours choisis</div>
-    <a href="#tarifs" class="modal-cta" onclick="closeModal(this.closest('.modal-overlay').id)">Voir les tarifs ›</a>
-  </div>
-</div>
+                <h3 class="modal-title">
+                    {{ membership.label }}
+                </h3>
+
+                <div class="modal-level">
+                    {{ membership.level }}
+                </div>
+
+                <p class="modal-intro">
+                    {{ membership.description }}
+                </p>
+
+                <div class="modal-prog-title">
+                    Programme détaillé
+                </div>
+
+                <ul class="modal-list">
+                    {% for feature in membership.features %}
+                        {% if feature.type == 'modal' %}
+                            <li>{{ feature.label }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                <div class="modal-info">
+                    📅 {{ membership.schedule }}
+                </div>
+
+                <a
+                    href="#tarifs"
+                    class="modal-cta"
+                    onclick="closeModal(this.closest('.modal-overlay').id)">
+                    Voir les tarifs ›
+                </a>
+
+            </div>
+
+        </div>
+    {% endfor %}
 
 <!-- ══ INSCRIPTION ══ -->
 <section id="inscription">
