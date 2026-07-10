@@ -19,7 +19,6 @@
   <li><a href="#tarifs">Tarifs</a></li>
   <li><a href="#contact">Contact</a></li>
 </ul>
-</ul>
     </nav>
     <a class="topbar-cta" href="#inscription">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-3.8 3.8-5.5 7-5.5s6 1.7 7 5.5"/></svg>
@@ -130,7 +129,7 @@
   </div>
 </section>
 
-  
+
 
   <!-- Partie 2 : L'imam Dicko -->
   <section id="apropos" class="about2">
@@ -326,83 +325,37 @@
   <p class="sec-sub">Trois parcours au choix, une inscription pour toute l'année. Cliquez sur un cours pour découvrir le programme détaillé.</p>
 </div>
 
-    <div class="tar-grid">
-      <!-- Langue arabe -->
-      <article class="tar-card reveal">
-        <div class="tar-icon ic-black"><span class="glyph" lang="ar">ض</span></div>
-        <div class="tar-kind">Cours</div>
-        <h3 class="tar-name">Langue arabe</h3>
-        <div class="tar-price">250 € <small>/an</small></div>
-        <div class="tar-sep"></div>
-        <div class="tar-prog">Au programme :</div>
-        <ul class="tar-list">
-          <li>Lecture</li>
-          <li>Compréhension</li>
-          <li>Expression orale</li>
-        </ul>
-   <a href="#inscription" class="tar-btn">S'inscrire ›</a>
-      </article>
+      <div class="tar-grid">
+          {% for membership in membershipPlans %}
+              <article class="tar-card reveal">
+                  <div class="tar-icon ic-black">
+                      <span class="glyph" lang="ar">ض</span>
+                  </div>
 
-      <!-- Lecture Coran -->
-      <article class="tar-card reveal">
-        <div class="tar-icon ic-black">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="1.8" aria-hidden="true"><path d="M12 20V7M12 7c0-2.8 2-4.5 7-4.5v13c-5 0-7 1.2-7 4.5zm0 0c0-2.8-2-4.5-7-4.5v13c5 0 7 1.2 7 4.5z"/></svg>
-        </div>
-        <div class="tar-kind">Cours</div>
-        <h3 class="tar-name">Apprendre à lire le Coran</h3>
-        <div class="tar-price">250 € <small>/an</small></div>
-        <div class="tar-sep"></div>
-        <div class="tar-prog">Au programme :</div>
-        <ul class="tar-list">
-          <li>Alphabétisation arabe</li>
-          <li>Lecture du Coran</li>
-          <li>Progression pas à pas</li>
-        </ul>
-        <a href="#inscription" class="tar-btn">S'inscrire ›</a>
-      </article>
+                  <div class="tar-kind">Cours</div>
 
-      <!-- Éducation islamique -->
-      <article class="tar-card reveal">
-        <div class="tar-icon ic-gold">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#0C0C0C" stroke-width="1.8" aria-hidden="true"><path d="M12 2c0 3-3.5 4-3.5 7a3.5 3.5 0 007 0C15.5 6 12 5 12 2z"/><path d="M4 21v-7h16v7M4 21h16M9 21v-4a3 3 0 016 0v4"/></svg>
-        </div>
-        <div class="tar-kind">Cours</div>
-        <h3 class="tar-name">Éducation islamique</h3>
-        <div class="tar-price">200 € <small>/an</small></div>
-        <div class="tar-sep"></div>
-        <div class="tar-prog">Au programme :</div>
-        <ul class="tar-list">
-          <li>Purification</li>
-          <li>Prière</li>
-          <li>Invocations</li>
-          <li>Fondements de l'islam</li>
-        </ul>
-        <a href="#inscription" class="tar-btn">S'inscrire ›</a>
-      </article>
+                  <h3 class="tar-name">{{ membership.label }}</h3>
 
-      <!-- Pack complet (mis en avant) -->
-      <article class="tar-card tar-featured reveal">
-        <div class="tar-cap">✦ Pack complet</div>
-        <div class="tar-icon ic-black">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="1.8" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
-        </div>
-        <div class="tar-kind">Pack complet</div>
-        <h3 class="tar-name">Pack complet</h3>
-        <p class="tar-note">2 cours au choix</p>
-        <div class="tar-price">350 € <small>/an</small></div>
-        <div class="tar-sep"></div>
-        <div class="tar-prog">Au choix :</div>
-        <ul class="tar-list">
-          <li>Langue arabe + Éducation islamique</li>
-        </ul>
-        <div class="tar-or">ou</div>
-        <ul class="tar-list">
-          <li>Apprendre à lire le Coran + Éducation islamique</li>
-        </ul>
-        <a href="#inscription" class="tar-btn tar-btn-gold">S'inscrire ›</a>
-    </div>
+                  <div class="tar-price">
+                      {{ membership.price }} € <small>/an</small>
+                  </div>
 
-    <!-- Bandeau garanties -->
+                  <div class="tar-sep"></div>
+
+                  <div class="tar-prog">Au programme :</div>
+
+                  <ul class="tar-list">
+                      <li>Lecture</li>
+                      <li>Compréhension</li>
+                      <li>Expression orale</li>
+                  </ul>
+
+                  <a href="#inscription" class="tar-btn">S'inscrire ›</a>
+              </article>
+          {% endfor %}
+      </div>
+
+      <!-- Bandeau garanties -->
     <div class="tar-guarantees reveal">
       <div class="tar-g">
         <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
