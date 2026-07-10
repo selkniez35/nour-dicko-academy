@@ -297,10 +297,9 @@
 
       <div class="tar-grid">
           {% for membership in membershipPlans %}
-              <article class="tar-card {% if membership.featured %}tar-featured{% endif %} reveal">
-
+              <article class="tar-card reveal">
                   <div class="tar-kind">
-                      {{ membership.featured ? 'Pack complet' : 'Cours' }}
+                      {{ membership.level }}
                   </div>
 
                   <h3 class="tar-name">

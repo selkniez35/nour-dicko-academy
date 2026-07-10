@@ -32,17 +32,13 @@ class MembershipPlan
 
     #[ORM\Column(length:50)]
     private ?string $icon = null;
-
-    #[ORM\Column]
-    private ?bool $featured = false;
-
     #[ORM\OneToMany(
         targetEntity: MembershipFeature::class,
         mappedBy: 'membershipPlan',
         cascade: ['persist','remove'],
         orphanRemoval: true
     )]
-    #[ORM\OrderBy(['position' => 'ASC'])]
+
     private Collection $features;
 
     public function __construct()
@@ -120,16 +116,6 @@ class MembershipPlan
         $this->icon = $icon;
     }
 
-    public function getFeatured(): ?bool
-    {
-        return $this->featured;
-    }
-
-    public function setFeatured(?bool $featured): void
-    {
-        $this->featured = $featured;
-    }
-
     public function getFeatures(): Collection
     {
         return $this->features;
@@ -139,5 +125,4 @@ class MembershipPlan
     {
         $this->features = $features;
     }
-
 }

@@ -20,9 +20,6 @@ class MembershipFeature
     #[ORM\Column(length:255)]
     private ?string $label = null;
 
-    #[ORM\Column]
-    private ?int $position = null;
-
     #[ORM\Column(length:20)]
     private ?string $type = null;
 
@@ -56,16 +53,6 @@ class MembershipFeature
         $this->label = $label;
     }
 
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(?int $position): void
-    {
-        $this->position = $position;
-    }
-
     public function getType(): ?string
     {
         return $this->type;
@@ -75,6 +62,4 @@ class MembershipFeature
     {
         $this->type = $type;
     }
-
-
 }
