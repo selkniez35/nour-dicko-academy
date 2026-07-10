@@ -79,3 +79,21 @@ document.addEventListener('DOMContentLoaded', function(){
   window.addEventListener('scroll', setActive);
   setActive();
 });
+
+window.toggleAvatarMenu = function(){
+  const menu = document.getElementById('avatar-menu');
+  menu.classList.toggle('open');
+};
+window.showSection = function(section){
+  document.querySelectorAll('.db-nav-item').forEach(i => i.classList.remove('active'));
+  document.querySelectorAll('.db-section').forEach(s => s.classList.remove('active'));
+  document.querySelector('[data-section="'+section+'"]').classList.add('active');
+  document.getElementById('section-'+section).classList.add('active');
+};
+// Fermer le menu avatar en cliquant ailleurs
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.db-avatar-wrap')){
+    const menu = document.getElementById('avatar-menu');
+    if(menu) menu.classList.remove('open');
+  }
+});

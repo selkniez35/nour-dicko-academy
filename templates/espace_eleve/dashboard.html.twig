@@ -1,0 +1,247 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon espace — Nour Dicko Academy{% endblock %}
+
+{% block body %}
+<div class="dashboard">
+
+  <!-- Sidebar -->
+  <aside class="db-sidebar">
+    <div class="db-brand">
+      <img src="{{ asset('images/logo-nda.png') }}" alt="NDA">
+    </div>
+    <nav class="db-nav">
+      <a href="#" class="db-nav-item active" data-section="cours">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V7M12 7c0-2.8 2-4.5 7-4.5v13c-5 0-7 1.2-7 4.5zm0 0c0-2.8-2-4.5-7-4.5v13c5 0 7 1.2 7 4.5z"/></svg>
+        Mes cours
+      </a>
+      <a href="#" class="db-nav-item" data-section="calendrier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+        Calendrier
+      </a>
+      <a href="#" class="db-nav-item" data-section="notes">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+  Mes évaluations
+</a>
+      <a href="#" class="db-nav-item" data-section="profil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        Mon profil
+      </a>
+    </nav>
+    <a href="/" class="db-logout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+      Déconnexion
+    </a>
+  </aside>
+
+  <!-- Contenu principal -->
+  <main class="db-main">
+
+    <!-- Header -->
+    <div class="db-header">
+      <div>
+        <h1 class="db-welcome">Bienvenue, <span>Prénom</span> 👋</h1>
+        <p class="db-sub">Voici votre espace personnel Nour Dicko Academy</p>
+      </div>
+      <div class="db-header-right">
+        <div class="db-avatar-wrap">
+  <div class="db-avatar" onclick="toggleAvatarMenu()">P</div>
+  <div class="db-avatar-menu" id="avatar-menu">
+    <a href="#" onclick="showSection('profil'); toggleAvatarMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      Mon profil
+    </a>
+    <a href="/" class="db-avatar-logout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+      Déconnexion
+    </a>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <!-- Section : Mes cours -->
+    <section class="db-section active" id="section-cours">
+      <h2 class="db-section-title">Mes cours</h2>
+
+      <div class="db-cours-grid">
+        <!-- Carte cours -->
+        <div class="db-cours-card">
+          <div class="db-cours-icon">
+            <span class="glyph" lang="ar">ض</span>
+          </div>
+          <div class="db-cours-info">
+            <h3>Langue arabe</h3>
+            <span class="db-cours-badge">Lundi · 19h00</span>
+          </div>
+          <a href="#" class="db-btn-zoom">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            Rejoindre le cours
+          </a>
+        </div>
+      </div>
+
+      <!-- Ressources -->
+      <h3 class="db-subsection-title">Ressources & Supports</h3>
+      <div class="db-resources">
+        <div class="db-resource-item">
+          <div class="db-resource-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+          </div>
+          <div class="db-resource-info">
+            <span class="db-resource-name">Support — Séance 1</span>
+            <span class="db-resource-date">Ajouté le 01/09/2025</span>
+          </div>
+          <a href="#" class="db-resource-dl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+        <div class="db-resource-item db-resource-video">
+          <div class="db-resource-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+          <div class="db-resource-info">
+            <span class="db-resource-name">Enregistrement — Séance 1</span>
+            <span class="db-resource-date">Durée : 58 min</span>
+          </div>
+          <a href="#" class="db-resource-dl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section : Calendrier -->
+    <section class="db-section" id="section-calendrier">
+      <h2 class="db-section-title">Calendrier des cours</h2>
+      <div class="db-calendar">
+        <div class="db-cal-header">
+          <button class="db-cal-nav">‹</button>
+          <span class="db-cal-month">Juillet 2026</span>
+          <button class="db-cal-nav">›</button>
+        </div>
+        <div class="db-cal-days">
+          <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+        </div>
+        <div class="db-cal-grid">
+          {% for i in 1..31 %}
+            <div class="db-cal-day {% if i in [7, 14, 21, 28] %}db-cal-cours{% endif %}">
+              {{ i }}
+              {% if i in [7, 14, 21, 28] %}
+                <span class="db-cal-dot"></span>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="db-cal-legend">
+          <span class="db-cal-dot"></span> Cours prévu
+        </div>
+      </div>
+    </section>
+
+    <!-- Section : Notes -->
+    <section class="db-section" id="section-notes">
+  <h2 class="db-section-title">Mes évaluations</h2>
+  <div class="db-evals">
+    <div class="db-eval-card">
+      <div class="db-eval-header">
+        <span class="db-eval-date">Séance 4 — 28/07/2026</span>
+        <span class="db-note-cours">Langue arabe</span>
+      </div>
+      <div class="db-eval-body">
+        <div class="db-eval-row">
+          <span>Lecture</span>
+          <div class="db-eval-bar"><div class="db-eval-fill" style="width:80%"></div></div>
+          <span class="db-eval-score">16/20</span>
+        </div>
+        <div class="db-eval-row">
+          <span>Compréhension</span>
+          <div class="db-eval-bar"><div class="db-eval-fill" style="width:70%"></div></div>
+          <span class="db-eval-score">14/20</span>
+        </div>
+        <div class="db-eval-row">
+          <span>Expression orale</span>
+          <div class="db-eval-bar"><div class="db-eval-fill" style="width:60%"></div></div>
+          <span class="db-eval-score">12/20</span>
+        </div>
+      </div>
+      <div class="db-eval-comment">
+        <b>Commentaire de l'enseignant :</b> Bon travail, continuez les efforts sur l'expression orale.
+      </div>
+    </div>
+    <div class="db-eval-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <span>Les prochaines évaluations apparaîtront ici</span>
+    </div>
+  </div>
+</section>
+
+    <!-- Section : Profil -->
+    <section class="db-section" id="section-profil">
+      <h2 class="db-section-title">Mon profil</h2>
+      <div class="db-profil-card">
+        <div class="db-profil-avatar">P</div>
+        <div class="db-profil-info">
+          <div class="db-profil-field">
+            <label>Nom complet</label>
+            <span>Prénom Nom</span>
+          </div>
+          <div class="db-profil-field">
+            <label>Adresse email</label>
+            <span>email@exemple.com</span>
+          </div>
+          <div class="db-profil-field">
+            <label>Cours suivi</label>
+            <span>Langue arabe</span>
+          </div>
+          <div class="db-profil-field">
+            <label>Statut</label>
+            <span class="db-profil-badge">Actif</span>
+          </div>
+        </div>
+        <button class="db-profil-edit">Modifier mon profil</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% verbatim %}
+<script>
+document.querySelectorAll('.db-nav-item').forEach(function(item){
+  item.addEventListener('click', function(e){
+    e.preventDefault();
+    const section = this.dataset.section;
+    document.querySelectorAll('.db-nav-item').forEach(i => i.classList.remove('active'));
+    document.querySelectorAll('.db-section').forEach(s => s.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('section-' + section).classList.add('active');
+  });
+});
+
+window.toggleAvatarMenu = function(){
+  const menu = document.getElementById('avatar-menu');
+  menu.classList.toggle('open');
+};
+
+window.showSection = function(section){
+  document.querySelectorAll('.db-nav-item').forEach(i => i.classList.remove('active'));
+  document.querySelectorAll('.db-section').forEach(s => s.classList.remove('active'));
+  const navItem = document.querySelector('[data-section="'+section+'"]');
+  if(navItem) navItem.classList.add('active');
+  const sectionEl = document.getElementById('section-'+section);
+  if(sectionEl) sectionEl.classList.add('active');
+};
+
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.db-avatar-wrap')){
+    const menu = document.getElementById('avatar-menu');
+    if(menu) menu.classList.remove('open');
+  }
+});
+</script>
+{% endverbatim %}
+{% endblock %}
