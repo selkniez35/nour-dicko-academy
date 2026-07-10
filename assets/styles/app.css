@@ -206,7 +206,7 @@ section{padding:84px 24px}
 .when-note{font-size:10.5px;opacity:.65;letter-spacing:.03em}
 .when-hour{font-size:13px;font-weight:600;margin-top:1px}
 /* ═══════════════ BANDEAU INFO ═══════════════ */
-.infoband{padding:0 24px}
+.infoband{padding:0 24px;margin-top:56px}
 .infoband-in{
   max-width:1120px;margin:0 auto;background:var(--paper);
   border:1px solid var(--gold-pale);border-radius:var(--radius);
@@ -283,16 +283,40 @@ section{padding:84px 24px}
 .about2-pill:hover svg{color:#0C0C0C}
 .about2-photo{
   position:relative;
-  min-height:560px;
+  min-height:640px;
   overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.about2-arch-bg{display:none}
+
+
+.about2-arch-bg{
+  position:absolute;
+  top:10%;
+  left:50%;
+  transform:translateX(-50%);
+  width:88%;
+  height:82%;
+  border:2px solid var(--gold);
+  border-radius:50% 50% 0 0 / 38% 38% 0 0;
+  background:radial-gradient(60% 50% at 50% 30%, rgba(201,146,42,.18), transparent 70%);
+  z-index:1;
+}
 .about2-photo img{
-  position:relative;z-index:2;
-  width:100%;height:100%;
-  object-fit:cover;object-position:center;
-  display:block;
+  position:absolute;
+  top:10%;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:2;
+  width:84%;
+  height:80%;
+  object-fit:cover;
+  object-position:center center;
+  border-radius:50% 50% 0 0 / 38% 38% 0 0;
 }
+
+
 /* ═══════════════ TARIFS v2 (4 cartes + garanties) ═══════════════ */
 .tar-grid{
   display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch;
@@ -456,7 +480,11 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
 @media (max-width:960px){
   .courses{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}
   .enroll-grid{grid-template-columns:1fr;max-width:520px}
-  .infoband-in{grid-template-columns:1fr}
+  .infoband-in{
+  max-width:1120px;margin:0 auto;background:var(--white);
+  border:1px solid var(--gold-pale);border-radius:var(--radius);
+  display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--shadow);
+}
   .info-item + .info-item{border-left:none;border-top:1px solid var(--gold-pale)}
   .topbar-menu{display:none}
   .about2-grid{grid-template-columns:1fr}
@@ -531,4 +559,251 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
 
 @media (max-width:760px){
   .news-grid{grid-template-columns:1fr;max-width:420px}
+}
+/* ═══════════════ CONTACT (formulaire) ═══════════════ */
+.contact-form{
+  max-width:720px;margin:0 auto;
+  background:var(--white);
+  border:1px solid var(--gold-pale);
+  border-radius:18px;
+  padding:38px 40px 40px;
+  box-shadow:var(--shadow);
+}
+.cf-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.cf-field{
+  display:flex;flex-direction:column;margin-bottom:20px;
+}
+.cf-field label{
+  font-size:13px;font-weight:600;letter-spacing:.04em;
+  color:var(--ink);margin-bottom:8px;
+}
+.cf-field input,
+.cf-field textarea{
+  font-family:var(--font-body);font-size:14.5px;color:var(--ink);
+  background:var(--paper);
+  border:1.5px solid var(--gold-pale);
+  border-radius:10px;
+  padding:13px 16px;
+  transition:border-color .2s,box-shadow .2s;
+  resize:vertical;
+}
+.cf-field input::placeholder,
+.cf-field textarea::placeholder{color:#a99a78}
+.cf-field input:focus,
+.cf-field textarea:focus{
+  outline:none;
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,146,42,.15);
+}
+.cf-submit{
+  width:100%;
+  background:var(--black);color:var(--gold);
+  font-family:var(--font-body);font-weight:600;font-size:15px;
+  border:none;cursor:pointer;
+  padding:16px;border-radius:999px;margin-top:8px;
+  transition:transform .18s,box-shadow .18s,background .2s,color .2s;
+}
+.cf-submit:hover{
+  transform:translateY(-2px);
+  background:var(--gold);color:#fff;
+  box-shadow:0 8px 22px rgba(201,146,42,.4);
+}
+
+@media (max-width:640px){
+  .contact-form{padding:28px 22px 30px}
+  .cf-row{grid-template-columns:1fr;gap:0}
+}
+/* ═══════════════ MODALS COURS ═══════════════ */
+.modal-overlay{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(12,12,12,.68);
+  backdrop-filter:blur(4px);
+  display:none;
+  align-items:center;justify-content:center;
+  padding:24px;
+}
+.modal-overlay.open{display:flex}
+.modal-box{
+  position:relative;
+  background:var(--white);
+  border-radius:22px;
+  max-width:520px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  padding:44px 40px 36px;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+  animation:modalIn .28s ease;
+}
+@keyframes modalIn{
+  from{opacity:0;transform:translateY(20px) scale(.98)}
+  to{opacity:1;transform:none}
+}
+.modal-close{
+  position:absolute;top:18px;right:20px;
+  width:36px;height:36px;border-radius:50%;
+  border:none;cursor:pointer;
+  background:var(--paper);color:var(--ink);
+  font-size:24px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;
+}
+.modal-close:hover{background:var(--gold);color:#fff}
+.modal-icon{
+  width:70px;height:70px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
+}
+.modal-icon .glyph{font-family:var(--font-ar);font-size:32px;color:var(--gold);line-height:1}
+.modal-icon svg{width:32px;height:32px}
+.modal-title{
+  font-family:var(--font-display);font-size:30px;font-weight:700;
+  text-align:center;color:var(--ink);line-height:1.15;
+}
+.modal-level{
+  text-align:center;font-size:13px;font-weight:700;letter-spacing:.06em;
+  color:var(--gold-deep);text-transform:uppercase;margin-top:6px;
+}
+.modal-intro{
+  text-align:center;font-size:14.5px;opacity:.8;line-height:1.6;
+  margin:18px 0 24px;
+}
+.modal-prog-title{
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-deep);margin-bottom:14px;
+}
+.modal-list{list-style:none;display:flex;flex-direction:column;gap:11px}
+.modal-list li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:14.5px;color:var(--ink);line-height:1.5;
+}
+.modal-list li::before{
+  content:"";flex-shrink:0;width:18px;height:18px;margin-top:2px;border-radius:50%;
+  background:var(--gold);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l4 4L19 7'/%3E%3C/svg%3E") center/12px no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l4 4L19 7'/%3E%3C/svg%3E") center/12px no-repeat;
+}
+.modal-info{
+  margin-top:22px;padding:14px 18px;
+  background:var(--paper);border-radius:12px;
+  font-size:13.5px;font-weight:600;color:var(--ink);text-align:center;
+}
+.modal-cta{
+  display:block;text-align:center;text-decoration:none;
+  margin-top:24px;
+  background:var(--gold);color:#fff;
+  font-weight:600;font-size:15px;
+  padding:16px;border-radius:999px;
+  transition:transform .18s,box-shadow .18s;
+}
+.modal-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(201,146,42,.42)}
+
+@media (max-width:540px){
+  .modal-box{padding:40px 24px 30px}
+  .modal-title{font-size:26px}
+}
+.course-btn{
+  margin-top:22px;width:100%;
+  background:var(--black);color:var(--gold);
+  font-family:var(--font-body);font-weight:600;font-size:14px;
+  border:none;cursor:pointer;
+  padding:15px;border-radius:999px;
+  transition:transform .18s,box-shadow .18s;
+}
+.course-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.22)}
+
+/* ═══════════════ PRÉSENTATION INSTITUT ═══════════════ */
+.institut-section{padding:84px 24px}
+.inst-tagline{
+  font-family:var(--font-display);
+  font-size:clamp(17px,2.2vw,22px);
+  font-style:italic;color:var(--gold-deep);
+  margin-top:10px;
+}
+.inst-rule{
+  display:flex;align-items:center;gap:14px;justify-content:center;
+  margin-top:18px;
+}
+.inst-rule span{height:1px;width:70px;background:var(--gold-pale);display:block}
+.inst-content{
+  display:grid;grid-template-columns:1fr 1fr;gap:52px;
+  align-items:start;margin-top:48px;
+}
+/* Histoire */
+.inst-story-block{margin-bottom:28px}
+.inst-story-block:last-child{margin-bottom:0}
+.inst-story-title{
+  font-family:var(--font-display);font-size:18px;font-weight:700;
+  color:var(--gold-deep);margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.inst-story-title::before{
+  content:"";display:block;width:20px;height:2px;
+  background:var(--gold);border-radius:2px;flex-shrink:0;
+}
+.inst-text{
+  margin-top:0;
+}
+
+/* Colonne droite */
+.inst-right{
+  display:flex;flex-direction:column;gap:10px;
+  margin-top:0;
+}
+
+.inst-vals{
+  display:flex;flex-direction:column;
+  flex-grow:1;
+  justify-content:space-between;
+  gap:0;
+}
+.inst-val-card{
+  display:flex;align-items:center;gap:14px;
+  background:var(--white);
+  border:1px solid var(--gold-pale);
+  border-radius:12px;padding:14px 16px;
+  box-shadow:var(--shadow);
+  transition:transform .2s,box-shadow .2s;
+}
+
+.inst-val-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(20,17,10,.1)}
+.inst-val-ic{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(201,146,42,.1);
+  border:1px solid rgba(201,146,42,.2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;color:var(--gold);
+}
+.inst-val-ic svg{width:18px;height:18px}
+.inst-val-body{flex-grow:1}
+.inst-val-body h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.inst-val-body p{font-size:12px;color:var(--ink);opacity:.65;line-height:1.5}
+.inst-val-arrow{width:14px;height:14px;flex-shrink:0;color:var(--gold);opacity:.5}
+/* Card imam */
+.inst-imam-card{
+  background:var(--white);
+  border:1px solid var(--gold-pale);
+  border-radius:14px;padding:22px 20px;
+  box-shadow:var(--shadow);
+  flex-grow:1;
+}
+.inst-imam-header{
+  display:flex;align-items:center;gap:14px;margin-bottom:14px;
+}
+.inst-imam-logo{
+  width:48px;height:48px;border-radius:50%;
+  object-fit:contain;border:1px solid var(--gold-pale);
+  mix-blend-mode:multiply;
+}
+.inst-imam-header h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.inst-imam-header span{font-size:12px;color:var(--gold-deep);font-weight:600}
+.inst-imam-card p{
+  font-size:13.5px;line-height:1.7;color:var(--ink);opacity:.78;
+  text-align:justify;
+}
+@media (max-width:900px){
+  .inst-content{
+  display:grid;grid-template-columns:1fr 1fr;gap:52px;
+  align-items:start;margin-top:48px;
+}
+  .institut-section{padding:64px 18px}
 }

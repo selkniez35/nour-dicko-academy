@@ -12,12 +12,13 @@
     </a>
     <nav aria-label="Navigation principale">
      <ul class="topbar-menu">
-  <li><a href="#" class="active">Accueil</a></li>
-  <li><a href="#apropos">À propos</a></li>
+  <li><a href="#accueil">Accueil</a></li>
+  <li><a href="#institut">À propos</a></li>
   <li><a href="#actualites">Actualités</a></li>
   <li><a href="#cours">Cours</a></li>
   <li><a href="#tarifs">Tarifs</a></li>
-  <li><a href="#inscription">Contact</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
 </ul>
     </nav>
     <a class="topbar-cta" href="#inscription">
@@ -30,15 +31,116 @@
 
 {{ include('partials/_hero.html.twig') }}
 
-<!-- ══ À PROPOS ══ -->
-<section id="apropos" class="about2">
+<!-- ══ PRÉSENTATION INSTITUT ══ -->
+<section id="institut" class="institut-section">
+  <div class="wrap">
+
+    <!-- En-tête -->
+    <div class="sec-head reveal">
+      <span class="sec-tag">À propos de l'institut</span>
+      <h2 class="sec-title">Nour Dicko Academy</h2>
+      <p class="inst-tagline">Transmettre la connaissance, éclairer les cœurs.</p>
+      <div class="inst-rule">
+        <span></span>
+        <svg viewBox="0 0 16 16" fill="var(--gold)" width="10" height="10"><polygon points="8,0 16,8 8,16 0,8"/></svg>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- Histoire en 2 colonnes -->
+    <div class="inst-content">
+      <div class="inst-text reveal">
+
+        <div class="inst-story-block">
+          <h4 class="inst-story-title">Le déclic</h4>
+          <p>En côtoyant des adultes de plus en plus nombreux à vouloir apprendre le Coran, la langue arabe et les sciences islamiques, l'imam Dicko a constaté un paradoxe douloureux : la volonté est là, mais la vie ne laisse pas de place. Entre les obligations professionnelles, la famille et le quotidien, cet apprentissage est sans cesse reporté.</p>
+        </div>
+
+        <div class="inst-story-block">
+          <h4 class="inst-story-title">La solution</h4>
+          <p>C'est de cette réalité qu'est née Nour Dicko Academy : un institut pensé pour s'adapter à la vie des adultes, et non l'inverse. Des cours en ligne, le soir, à horaire fixe — pour que l'apprentissage trouve enfin sa place dans un emploi du temps chargé.</p>
+        </div>
+
+        <div class="inst-story-block">
+          <h4 class="inst-story-title">Notre mission</h4>
+          <p>Que chaque élève progresse avec des résultats visibles et mesurables. Pas d'apprentissage en surface : un vrai avancement, à son rythme, avec un accompagnement sérieux et bienveillant.</p>
+        </div>
+
+      </div>
+
+      <!-- Valeurs + parcours imam -->
+      <div class="inst-right reveal">
+        <div class="inst-vals">
+          <div class="inst-val-card">
+            <div class="inst-val-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="inst-val-body">
+              <h4>Excellence pédagogique</h4>
+              <p>Des enseignants qualifiés, sélectionnés pour leur maîtrise et leur pédagogie.</p>
+            </div>
+            <svg class="inst-val-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+          <div class="inst-val-card">
+            <div class="inst-val-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="3.5"/><path d="M3 20c.9-3.9 3.6-6 7-6s6.1 2.1 7 6M16 3.5a3.5 3.5 0 010 7M21 20c-.5-2.4-1.8-4-3.7-4.9"/></svg>
+            </div>
+            <div class="inst-val-body">
+              <h4>Classes à effectif réduit</h4>
+              <p>Des groupes limités pour favoriser l'écoute, le suivi et la progression.</p>
+            </div>
+            <svg class="inst-val-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+          <div class="inst-val-card">
+            <div class="inst-val-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="inst-val-body">
+              <h4>100% en ligne</h4>
+              <p>Des cours en direct, accessibles partout, avec un rythme régulier.</p>
+            </div>
+            <svg class="inst-val-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+          <div class="inst-val-card">
+            <div class="inst-val-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div class="inst-val-body">
+              <h4>Engagement annuel</h4>
+              <p>Un cadre structuré sur l'année pour installer des bases solides.</p>
+            </div>
+            <svg class="inst-val-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+        </div>
+
+        <!-- Parcours imam -->
+        <div class="inst-imam-card reveal">
+          <div class="inst-imam-header">
+            <img src="{{ asset('images/logo-nda.png') }}" alt="NDA" class="inst-imam-logo">
+            <div>
+              <h4>Imam Dicko</h4>
+              <span>Fondateur & Directeur pédagogique</span>
+            </div>
+          </div>
+          <p>Baigné dès l'enfance dans un environnement religieux, l'imam Dicko a mémorisé le Coran et maîtrisé les sciences islamiques au Sénégal avant d'obtenir son baccalauréat islamique puis général. Depuis plus de 15 ans, il est imam, enseignant, prêcheur et conférencier à la mosquée Espoir Amal de Rennes.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  
+
+  <!-- Partie 2 : L'imam Dicko -->
+  <section id="apropos" class="about2">
   <div class="about2-grid">
     <div class="about2-text reveal">
       <span class="about2-tag">À propos</span>
       <h2 class="about2-title">Un enseignement<br>de <span>confiance</span></h2>
       <div class="about2-rule"></div>
       <blockquote class="about2-quote">
-        Transmettre la connaissance du Coran et de la langue arabe est une mission que je porte au cœur. Nour Dicko Academy est née de la conviction que chaque adulte mérite un accès à un enseignement islamique de qualité, structuré et bienveillant.
+        Transmettre la connaissance des sciences islamiques et de la langue arabe est une mission qui me tiens particulièrement à cœur. Nour Dicko Academy est née de la conviction que chaque adulte mérite un accès à un enseignement islamique de qualité, structuré et bienveillant.
       </blockquote>
       <div class="about2-sig">
         <b>Imam Dicko</b>
@@ -106,8 +208,11 @@
   </div>
 </section>
 
+
+
+
 <!-- ══ NOS COURS ══ -->
-<section id="cours">
+<section id="cours" class="cours-section">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="sec-tag">Nos cours</span>
@@ -123,7 +228,7 @@
         <div class="course-level">Niveau avancé requis</div>
         <div class="course-feats">
           <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><path d="M4 19V5a2 2 0 012-2h13v16H6a2 2 0 000 4h13"/></svg>Lire</span>
-          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><path d="M21 11a8 8 0 01-11.9 7L3 20l2-6.1A8 8 0 1121 11z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg>Comprendre</span>
+          <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><path d="M21 11a8 8 0 01-11.9 7L3 20l2-6.1A8 8 0 1121 11z"/></svg>Comprendre</span>
           <span class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><circle cx="9" cy="7" r="3.5"/><path d="M3.5 20c.7-3.4 2.8-5 5.5-5s4.8 1.6 5.5 5M16 6l4 4m0-4l-4 4"/></svg>Parler</span>
         </div>
         <p>Approfondissez votre maîtrise de la langue arabe : lecture, compréhension et expression orale.</p>
@@ -135,16 +240,13 @@
             <div class="when-hour">19h00 – 20h00</div>
           </div>
         </div>
-       
+        <button type="button" class="course-btn" onclick="openModal('modal-arabe')">Découvrir ce cours ›</button>
       </article>
 
       <!-- Éducation islamique -->
       <article class="course reveal">
         <div class="course-icon ic-gold">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#0C0C0C" stroke-width="1.8" aria-hidden="true">
-            <path d="M12 2c0 3-3.5 4-3.5 7a3.5 3.5 0 007 0C15.5 6 12 5 12 2z"/>
-            <path d="M4 21v-7h16v7M4 21h16M9 21v-4a3 3 0 016 0v4"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0C0C0C" stroke-width="1.8" aria-hidden="true"><path d="M12 2c0 3-3.5 4-3.5 7a3.5 3.5 0 007 0C15.5 6 12 5 12 2z"/><path d="M4 21v-7h16v7M4 21h16M9 21v-4a3 3 0 016 0v4"/></svg>
         </div>
         <h3>Éducation islamique</h3>
         <div class="course-level">Ouvert à tous</div>
@@ -161,16 +263,13 @@
             <div class="when-hour">19h00 – 20h00</div>
           </div>
         </div>
-       
+        <button type="button" class="course-btn" onclick="openModal('modal-education')">Découvrir ce cours ›</button>
       </article>
 
       <!-- Lecture du Coran -->
       <article class="course reveal">
         <div class="course-icon ic-black">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="1.8" aria-hidden="true">
-            <path d="M12 20V7M12 7c0-2.8 2-4.5 7-4.5v13c-5 0-7 1.2-7 4.5zm0 0c0-2.8-2-4.5-7-4.5v13c5 0 7 1.2 7 4.5z"/>
-            <path d="M3 21h18" stroke-linecap="round"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="1.8" aria-hidden="true"><path d="M12 20V7M12 7c0-2.8 2-4.5 7-4.5v13c-5 0-7 1.2-7 4.5zm0 0c0-2.8-2-4.5-7-4.5v13c5 0 7 1.2 7 4.5z"/></svg>
         </div>
         <h3>Apprendre à lire le Coran</h3>
         <div class="course-level">Débutant</div>
@@ -187,11 +286,10 @@
             <div class="when-hour">19h00 – 20h00</div>
           </div>
         </div>
-       
+        <button type="button" class="course-btn" onclick="openModal('modal-coran')">Découvrir ce cours ›</button>
       </article>
     </div>
   </div>
-</section>
 
 <!-- ══ BANDEAU INFO ══ -->
 <div class="infoband reveal">
@@ -217,14 +315,16 @@
   </div>
 </div>
 
+</section>
+
 <!-- ══ TARIFS ══ -->
 <section id="tarifs" class="tarifs">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="sec-tag">Nos tarifs</span>
-      <h2 class="sec-title">Une inscription pour toute l'année</h2>
-      <p class="sec-sub">Des tarifs simples et transparents, avec des facilités de paiement sans frais.</p>
-    </div>
+  <span class="sec-tag">Nos tarifs</span>
+<h2 class="sec-title">Une inscription pour toute l'année</h2>
+  <p class="sec-sub">Trois parcours au choix, une inscription pour toute l'année. Cliquez sur un cours pour découvrir le programme détaillé.</p>
+</div>
 
     <div class="tar-grid">
       <!-- Langue arabe -->
@@ -240,7 +340,7 @@
           <li>Compréhension</li>
           <li>Expression orale</li>
         </ul>
-        <a href="#contact" class="tar-btn">Choisir ce cours ›</a>
+   <a href="#inscription" class="tar-btn">S'inscrire ›</a>
       </article>
 
       <!-- Lecture Coran -->
@@ -258,7 +358,7 @@
           <li>Lecture du Coran</li>
           <li>Progression pas à pas</li>
         </ul>
-        <a href="#contact" class="tar-btn">Choisir ce cours ›</a>
+        <a href="#inscription" class="tar-btn">S'inscrire ›</a>
       </article>
 
       <!-- Éducation islamique -->
@@ -277,7 +377,7 @@
           <li>Invocations</li>
           <li>Fondements de l'islam</li>
         </ul>
-        <a href="#contact" class="tar-btn">Choisir ce cours ›</a>
+        <a href="#inscription" class="tar-btn">S'inscrire ›</a>
       </article>
 
       <!-- Pack complet (mis en avant) -->
@@ -299,8 +399,7 @@
         <ul class="tar-list">
           <li>Apprendre à lire le Coran + Éducation islamique</li>
         </ul>
-        <a href="#contact" class="tar-btn tar-btn-gold">Choisir le pack ›</a>
-      </article>
+        <a href="#inscription" class="tar-btn tar-btn-gold">S'inscrire ›</a>
     </div>
 
     <!-- Bandeau garanties -->
@@ -325,7 +424,89 @@
   </div>
 </section>
 
+<!-- ══ MODALS COURS ══ -->
+<div class="modal-overlay" id="modal-arabe">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-arabe')" aria-label="Fermer">×</button>
+    <div class="modal-icon ic-black"><span class="glyph" lang="ar">ض</span></div>
+    <h3 class="modal-title">Langue arabe</h3>
+    <div class="modal-level">Niveau avancé requis</div>
+    <p class="modal-intro">Un parcours complet pour maîtriser la langue arabe à l'oral, dans le cadre d'un enseignement structuré et progressif.</p>
+    <div class="modal-prog-title">Programme détaillé</div>
+    <ul class="modal-list">
+      <li>Lecture fluide de textes arabes variés</li>
+      <li>Compréhension de textes classiques et modernes</li>
+      <li>Expression orale et conversation</li>
+      <li>Enrichissement du vocabulaire</li>
+      <li>Grammaire et conjugaison approfondies</li>
+    </ul>
+    <div class="modal-info">📅 Lundi ou mardi · 19h00 – 20h00 · 1 cours par semaine</div>
+    <a href="#tarifs" class="modal-cta" onclick="closeModal(this.closest('.modal-overlay').id)">Voir les tarifs ›</a>
+  </div>
+</div>
 
+<div class="modal-overlay" id="modal-coran">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-coran')" aria-label="Fermer">×</button>
+    <div class="modal-icon ic-black">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="1.8" aria-hidden="true"><path d="M12 20V7M12 7c0-2.8 2-4.5 7-4.5v13c-5 0-7 1.2-7 4.5zm0 0c0-2.8-2-4.5-7-4.5v13c5 0 7 1.2 7 4.5z"/></svg>
+    </div>
+    <h3 class="modal-title">Apprendre à lire le Coran</h3>
+    <div class="modal-level">Débutant</div>
+    <p class="modal-intro">Apprenez à lire le Coran depuis les bases, pas à pas, dans un cadre bienveillant et adapté aux débutants complets.</p>
+    <div class="modal-prog-title">Programme détaillé</div>
+    <ul class="modal-list">
+      <li>Apprentissage de l'alphabet arabe</li>
+      <li>Les voyelles courtes et longues</li>
+      <li>Lecture syllabe par syllabe</li>
+      <li>Lecture selon les règles de tajwid</li>
+      <li>Lecture progressive de sourates</li>
+    </ul>
+    <div class="modal-info">📅 Jeudi · 19h00 – 20h00 · 1 cours par semaine</div>
+    <a href="#tarifs" class="modal-cta" onclick="closeModal(this.closest('.modal-overlay').id)">Voir les tarifs ›</a>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-education">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-education')" aria-label="Fermer">×</button>
+    <div class="modal-icon ic-gold">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0C0C0C" stroke-width="1.8" aria-hidden="true"><path d="M12 2c0 3-3.5 4-3.5 7a3.5 3.5 0 007 0C15.5 6 12 5 12 2z"/><path d="M4 21v-7h16v7M4 21h16M9 21v-4a3 3 0 016 0v4"/></svg>
+    </div>
+    <h3 class="modal-title">Éducation islamique</h3>
+    <div class="modal-level">Ouvert à tous</div>
+    <p class="modal-intro">Une initiation à certains fondements de la pratique islamique (voir programme détaillé ci-dessous), accessible à tous les niveaux.</p>
+    <div class="modal-prog-title">Programme détaillé</div>
+    <ul class="modal-list">
+      <li>La purification (règles et pratique)</li>
+      <li>La prière : conditions, gestes et invocations</li>
+      <li>Les invocations quotidiennes</li>
+      <li>Les fondements de la foi (aqida)</li>
+      <li>Les piliers de l'islam expliqués</li>
+    </ul>
+    <div class="modal-info">📅 Mercredi · 19h00 – 20h00 · 1 cours par semaine</div>
+    <a href="#tarifs" class="modal-cta" onclick="closeModal(this.closest('.modal-overlay').id)">Voir les tarifs ›</a>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-pack">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-pack')" aria-label="Fermer">×</button>
+    <div class="modal-icon ic-black">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="1.8" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+    </div>
+    <h3 class="modal-title">Pack complet</h3>
+    <div class="modal-level">2 cours au choix  <span style="text-decoration:line-through;opacity:.5">450 €</span></div>
+    <p class="modal-intro">Combinez deux cours et économisez 100 €. La formule idéale pour progresser sur plusieurs fronts.</p>
+    <div class="modal-prog-title">Deux formules au choix</div>
+    <ul class="modal-list">
+      <li>Langue arabe + Éducation islamique</li>
+      <li>ou Apprendre à lire le Coran + Éducation islamique</li>
+    </ul>
+    <div class="modal-info">📅 2 cours par semaine · horaires selon les cours choisis</div>
+    <a href="#tarifs" class="modal-cta" onclick="closeModal(this.closest('.modal-overlay').id)">Voir les tarifs ›</a>
+  </div>
+</div>
 
 <!-- ══ INSCRIPTION ══ -->
 <section id="inscription">
@@ -382,6 +563,39 @@
   </div>
 </section>
 
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Contact</span>
+      <h2 class="sec-title">Une question ? Écrivez-nous</h2>
+      <p class="sec-sub">Remplissez le formulaire ci-dessous, nous vous répondrons dans les meilleurs délais.</p>
+    </div>
+
+    <form class="contact-form reveal" method="POST" action="#">
+      <div class="cf-row">
+        <div class="cf-field">
+          <label for="cf-nom">Nom complet</label>
+          <input type="text" id="cf-nom" name="nom" required placeholder="Votre nom">
+        </div>
+        <div class="cf-field">
+          <label for="cf-email">Adresse email</label>
+          <input type="email" id="cf-email" name="email" required placeholder="votre@email.com">
+        </div>
+      </div>
+      <div class="cf-field">
+        <label for="cf-sujet">Sujet</label>
+        <input type="text" id="cf-sujet" name="sujet" required placeholder="L'objet de votre message">
+      </div>
+      <div class="cf-field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" rows="6" required placeholder="Écrivez votre message ici..."></textarea>
+      </div>
+      <button type="submit" class="cf-submit">Envoyer le message</button>
+    </form>
+  </div>
+</section>
+
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="foot-in">
@@ -393,7 +607,7 @@
       </div>
       <div class="foot-col">
   <h6>Navigation</h6>
-  <a href="#apropos">À propos</a>
+  <a href="#institut">À propos</a>
   <a href="#actualites">Actualités</a>
   <a href="#cours">Nos cours</a>
   <a href="#tarifs">Tarifs</a>
