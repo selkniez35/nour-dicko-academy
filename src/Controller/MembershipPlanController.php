@@ -51,6 +51,12 @@ class MembershipPlanController extends AbstractController
         ]);
     }
 
+    #[Route('/inscription', name: 'app_registration', methods: ['GET'])]
+    public function registration(): Response
+    {
+        return $this->render('membership_plan/registration.html.twig');
+    }
+
     #[Route('/contact', name: 'app_contact', methods: ['GET'])]
     public function contact(): Response
     {

@@ -1,62 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact & Inscription — Nour Dicko Academy{% endblock %}
+{% block title %}Contact — Nour Dicko Academy{% endblock %}
 
 {% block body %}
-    <section id="inscription">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="sec-tag">Inscription</span>
-          <h2 class="sec-title">Inscrivez-vous dès maintenant !</h2>
-          <p class="sec-sub">Les places sont limitées — remplissez le formulaire et nous vous recontactons rapidement.</p>
-        </div>
-
-        <div class="enroll-grid">
-          <div class="qr-card reveal">
-            <div class="qr" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31" shape-rendering="crispEdges"><path fill="#FFFFFF" d="M0 0h31v31H0z"/><path stroke="#0D0D0D" d="M1 1.5h7m1 0h1m1 0h1m1 0h4m1 0h1m1 0h1m2 0h7M1 2.5h1m5 0h1m3 0h3m2 0h1m2 0h1m1 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m3 0h1m1 0h2m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m3 0h2m3 0h1m1 0h4m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m2 0h3m3 0h2m1 0h1m3 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h1m2 0h1m1 0h2m2 0h1m2 0h1m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M11 8.5h1m1 0h2m4 0h3M1 9.5h1m1 0h1m3 0h2m2 0h1m2 0h1m3 0h1m2 0h1m2 0h1m2 0h2M2 10.5h2m1 0h2m1 0h1m1 0h4m1 0h2m1 0h1m2 0h2m1 0h1m1 0h1M1 11.5h1m2 0h4m1 0h2m2 0h1m2 0h1m1 0h3m2 0h1m1 0h1m1 0h1m1 0h1M2 12.5h2m4 0h1m1 0h1m1 0h2m1 0h1m2 0h2m1 0h1m2 0h4M1 13.5h1m2 0h2m1 0h3m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m2 0h1m2 0h2M1 14.5h1m1 0h2m4 0h2m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h1M1 15.5h2m1 0h1m1 0h3m1 0h1m1 0h5m1 0h1m1 0h2m1 0h2m1 0h3M1 16.5h1m1 0h2m3 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1M1 17.5h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1M1 18.5h1m2 0h1m1 0h2m1 0h1m1 0h3m1 0h2m1 0h1m1 0h1m1 0h1m1 0h2M1 19.5h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h1m2 0h1m1 0h1M1 20.5h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1M1 21.5h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h5m1 0h1m1 0h2M9 22.5h2m1 0h1m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m1 0h1M1 23.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1M1 24.5h1m5 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1m3 0h1m2 0h2M1 25.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h5m1 0h2m1 0h1m1 0h1M1 26.5h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h1M1 27.5h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2M1 28.5h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h1M1 29.5h7m1 0h2m1 0h1m1 0h1m2 0h2m1 0h2m1 0h1m1 0h1m1 0h1"/></svg>
-            </div>
-            <h4>Scannez pour vous inscrire</h4>
-            <p>Ou cliquez sur le bouton ci-dessous — le formulaire prend 3 minutes.</p>
-            <div class="enroll-cta" style="justify-content:center;margin-top:18px">
-              <a class="btn btn-gold" href="https://forms.gle/QV7yUkXv5qfAxTMR8" target="_blank" rel="noopener">Formulaire d'inscription</a>
-            </div>
-          </div>
-
-          <div class="enroll-steps reveal">
-            <div class="step">
-              <div class="step-n">1</div>
-              <div>
-                <h5>Remplissez le formulaire</h5>
-                <p>Indiquez vos informations, votre niveau et le cours souhaité.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-n">2</div>
-              <div>
-                <h5>Nous vous recontactons</h5>
-                <p>Confirmation de votre place et informations de paiement sous 48h, par WhatsApp.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-n">3</div>
-              <div>
-                <h5>Rejoignez votre classe</h5>
-                <p>Vous recevez le lien de visioconférence et commencez les cours.</p>
-              </div>
-            </div>
-            <div class="enroll-cta">
-              <a class="btn btn-wa" href="https://wa.me/33782988352?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20Nour%20Dicko%20Academy" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.18 8.18 0 01-2.4-1.49 9 9 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z"/><path d="M12.04 2a9.9 9.9 0 00-8.5 14.9L2 22l5.25-1.5A9.92 9.92 0 1012.04 2zm5.8 15.72a8.25 8.25 0 01-11.5.63l-.3-.24-3.1.88.85-3.03-.26-.32a8.25 8.25 0 1114.3 2.08z"/></svg>
-                Contactez-nous via WhatsApp
-              </a>
-            </div>
-            <p style="font-size:12.5px;opacity:.6;margin-top:-6px">📞 07 82 98 83 52 — nous répondons rapidement !</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="contact" class="contact">
       <div class="wrap">
         <div class="sec-head reveal">

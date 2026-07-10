@@ -319,7 +319,10 @@ section{padding:84px 24px}
 
 /* ═══════════════ TARIFS v2 (4 cartes + garanties) ═══════════════ */
 .tar-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, 270px);
+    justify-content:center;
+    gap:20px;
 }
 .tar-card{
   position:relative;
