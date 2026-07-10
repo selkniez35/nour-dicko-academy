@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualités — Nour Dicko Academy{% endblock %}
+
+{% block body %}
+    {{ include('partials/_header.html.twig') }}
+
+    <section id="actualites" class="news">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-tag">Actualités</span>
+          <h2 class="sec-title">Nos dernières nouvelles</h2>
+          <p class="sec-sub">Suivez l'actualité de Nour Dicko Academy et nos événements à venir.</p>
+        </div>
+
+        <div class="news-grid">
+          <!-- Annonce 1 : Lancement du site -->
+          <article class="news-card reveal">
+            <div class="news-visual">
+              <img src="{{ asset('images/actu-lancement.png') }}" alt="Lancement du site Nour Dicko Academy">
+            </div>
+            <div class="news-body">
+              <span class="news-badge">Nouveau</span>
+              <h3>Lancement de notre site</h3>
+              <p>Nour Dicko Academy est désormais en ligne ! Découvrez nos cours, inscrivez-vous et rejoignez notre communauté d'apprentissage.</p>
+              <a href="{{ path('app_courses') }}" class="news-link">Découvrir les cours ›</a>
+            </div>
+          </article>
+
+          <!-- Annonce 2 : Omra -->
+          <article class="news-card reveal">
+            <div class="news-visual">
+              <img src="{{ asset('images/actu-omra.png') }}" alt="Omra organisée par Nour Dicko Academy">
+            </div>
+            <div class="news-body">
+              <span class="news-badge news-badge-gold">Événement</span>
+              <h3>Organisation d'une Omra</h3>
+              <p>Nous organisons une Omra pour notre communauté. Les places sont limitées — inscrivez-vous dès maintenant pour réserver la vôtre.</p>
+              <a href="LIEN_FORMULAIRE_OMRA" target="_blank" rel="noopener" class="news-link">S'inscrire à l'Omra ›</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    {{ include('partials/_footer.html.twig') }}
+{% endblock %}

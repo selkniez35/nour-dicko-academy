@@ -1,0 +1,21 @@
+<header class="topbar">
+  <div class="topbar-in">
+    <a href="{{ path('app_membership-plan_index') }}" class="topbar-logo" aria-label="Nour Dicko Academy — accueil">
+      <img src="{{ asset('images/logo-nda.png') }}" alt="Nour Dicko Academy">
+    </a>
+    <nav aria-label="Navigation principale">
+     <ul class="topbar-menu">
+  <li><a href="{{ path('app_membership-plan_index') }}">Accueil</a></li>
+  <li><a href="{{ path('app_about') }}">À propos</a></li>
+  <li><a href="{{ path('app_news') }}">Actualités</a></li>
+  <li><a href="{{ path('app_courses') }}">Cours</a></li>
+  <li><a href="{{ path('app_prices') }}">Tarifs</a></li>
+  <li><a href="{{ path('app_contact') }}">Contact</a></li>
+</ul>
+    </nav>
+    <a class="topbar-cta" href="{{ path('app_contact') }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-3.8 3.8-5.5 7-5.5s6 1.7 7 5.5"/></svg>
+      S'inscrire
+    </a>
+  </div>
+</header>
