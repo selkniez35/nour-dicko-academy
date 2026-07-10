@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription — Nour Dicko Academy{% endblock %}
+
+{% block body %}
+<!-- ══ INSCRIPTION ══ -->
+<section id="inscription" class="inscription">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Inscription</span>
+      <h2 class="sec-title">Rejoignez Nour Dicko Academy</h2>
+      <p class="sec-sub">Remplissez le formulaire ci-dessous pour vous inscrire. Nous vous contacterons dans les plus brefs délais pour confirmer votre place.</p>
+    </div>
+
+    <form method="POST" action="#">
+        <!-- Informations personnelles -->
+        <div class="insc-section-title">Informations personnelles</div>
+        <div class="insc-row">
+          <div class="insc-field">
+            <label for="insc-nom">Nom <span>*</span></label>
+            <input type="text" id="insc-nom" name="nom" required placeholder="Votre nom">
+          </div>
+          <div class="insc-field">
+            <label for="insc-prenom">Prénom <span>*</span></label>
+            <input type="text" id="insc-prenom" name="prenom" required placeholder="Votre prénom">
+          </div>
+        </div>
+        <div class="insc-row">
+          <div class="insc-field">
+          <label for="insc-ddn">Date de naissance <span>*</span></label>
+          <input type="date" id="insc-ddn" name="date_naissance" required>
+        </div>
+          <div class="insc-field">
+            <label>Sexe <span>*</span></label>
+            <div class="insc-radio-group insc-row-radio">
+          <label class="insc-radio"><input type="radio" name="sexe" value="homme" required><span>Homme</span></label>
+          <label class="insc-radio"><input type="radio" name="sexe" value="femme"><span>Femme</span></label>
+        </div>
+          </div>
+        </div>
+        <div class="insc-row">
+          <div class="insc-field">
+            <label for="insc-tel">Numéro de téléphone <span>*</span></label>
+            <input type="tel" id="insc-tel" name="telephone" required placeholder="06 00 00 00 00">
+          </div>
+          <div class="insc-field">
+            <label for="insc-email">Adresse e-mail <span>*</span></label>
+            <input type="email" id="insc-email" name="email" required placeholder="votre@email.com">
+          </div>
+        </div>
+
+        <!-- Cours -->
+        <div class="insc-section-title">Quel(s) cours souhaitez-vous suivre ? <span>*</span></div>
+        <div class="insc-check-group">
+          <label class="insc-check"><input type="checkbox" name="cours[]" value="arabe"><span>Langue arabe (niveau avancé requis)</span></label>
+          <label class="insc-check"><input type="checkbox" name="cours[]" value="education"><span>Éducation islamique</span></label>
+          <label class="insc-check"><input type="checkbox" name="cours[]" value="coran"><span>Apprendre à lire le Coran (débutant)</span></label>
+        </div>
+
+        <!-- Niveau -->
+        <div class="insc-section-title">Je sais : <span>*</span></div>
+        <div class="insc-field">
+          <div class="insc-radio-group insc-radio-col">
+            <label class="insc-radio"><input type="radio" name="niveau" value="fluide" required><span>Lire l'arabe et le Coran de manière fluide</span></label>
+            <label class="insc-radio"><input type="radio" name="niveau" value="difficultes"><span>Lire l'arabe et le Coran mais avec quelques difficultés</span></label>
+            <label class="insc-radio"><input type="radio" name="niveau" value="quelques-lettres"><span>Reconnaître quelques lettres</span></label>
+            <label class="insc-radio"><input type="radio" name="niveau" value="rien"><span>Je ne sais pas lire l'arabe ni le Coran</span></label>
+          </div>
+        </div>
+
+        <!-- Formule -->
+        <div class="insc-section-title">Formule choisie</div>
+        <div class="insc-field">
+          <div class="insc-radio-group insc-radio-col">
+            <label class="insc-radio"><input type="radio" name="formule" value="arabe"><span>1 cours : Langue arabe – 250 €/an</span></label>
+            <label class="insc-radio"><input type="radio" name="formule" value="education"><span>1 cours : Éducation islamique – 200 €/an</span></label>
+            <label class="insc-radio"><input type="radio" name="formule" value="coran"><span>1 cours : Lecture du Coran – 250 €/an</span></label>
+            <label class="insc-radio"><input type="radio" name="formule" value="pack-arabe"><span>Pack 2 cours (Langue arabe + Éducation islamique) – 350 €/an</span></label>
+            <label class="insc-radio"><input type="radio" name="formule" value="pack-coran"><span>Pack 2 cours (Lecture du Coran + Éducation islamique) – 350 €/an</span></label>
+          </div>
+        </div>
+
+        <!-- Mode de paiement -->
+        <div class="insc-section-title">Mode de paiement souhaité</div>
+        <div class="insc-field">
+          <div class="insc-radio-group insc-row-radio">
+          <label class="insc-radio"><input type="radio" name="mode_paiement" value="1fois"><span>En 1 fois</span></label>
+          <label class="insc-radio"><input type="radio" name="mode_paiement" value="2fois"><span>En 2 fois</span></label>
+          <label class="insc-radio"><input type="radio" name="mode_paiement" value="4fois"><span>En 4 fois</span></label>
+          <label class="insc-radio"><input type="radio" name="mode_paiement" value="10fois"><span>En 10 fois</span></label>
+        </div>
+        </div>
+
+        <!-- Moyen de paiement -->
+        <div class="insc-section-title">Moyen de paiement</div>
+        <div class="insc-field">
+          <div class="insc-radio-group insc-row-radio">
+          <label class="insc-radio"><input type="radio" name="moyen_paiement" value="virement"><span>Virement bancaire</span></label>
+          <label class="insc-radio"><input type="radio" name="moyen_paiement" value="especes"><span>Espèces</span></label>
+        </div>
+        </div>
+
+        <button type="submit" class="insc-submit">Envoyer ma demande d'inscription</button>
+        <p class="insc-note">* Champs obligatoires. Nous vous contacterons dans les plus brefs délais pour confirmer votre place.</p>
+    </form>
+  </div>
+</section>
+{% endblock %}
