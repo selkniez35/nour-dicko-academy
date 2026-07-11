@@ -10,6 +10,7 @@ use App\Security\LoginFormAuthenticator;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
@@ -56,12 +57,12 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-        ]);
+        if ($error) {
+            $this->addFlash('login_error', 'Email ou mot de passe incorrect.');
+        }
+
+        return new RedirectResponse($this->generateUrl('app_membership-plan_index') . '#modal-connexion');
     }
 
     #[Route('/logout', name: 'app_logout')]

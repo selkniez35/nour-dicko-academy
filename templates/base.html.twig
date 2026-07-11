@@ -44,6 +44,11 @@
                 pwd.type = pwd.type === 'password' ? 'text' : 'password';
             }
         }
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.location.hash === '#modal-connexion') {
+                openModal('modal-connexion');
+            }
+        });
     </script>
 
     {% block javascripts %}
