@@ -10,10 +10,6 @@
         "doctrine/doctrine-bundle": "^3.2",
         "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/orm": "^3.6",
-        "getbrevo/brevo-php": "^5.0",
-        "guzzlehttp/guzzle": "^7.14",
-        "nyholm/psr7": "^1.8",
-        "php-http/discovery": "^1.20",
         "phpdocumentor/reflection-docblock": "^6.0",
         "phpstan/phpdoc-parser": "^2.3.3",
         "stripe/stripe-php": ">=20.3.1",
@@ -41,6 +37,7 @@
         "symfony/stimulus-bundle": "^3.2",
         "symfony/string": "8.1.*",
         "symfony/translation": "8.1.*",
+        "symfony/twig-bridge": "8.1.*",
         "symfony/twig-bundle": "8.1.*",
         "symfony/validator": "8.1.*",
         "symfony/web-link": "8.1.*",
@@ -51,7 +48,6 @@
     },
     "config": {
         "allow-plugins": {
-            "php-http/discovery": true,
             "symfony/flex": true,
             "symfony/runtime": true
         },

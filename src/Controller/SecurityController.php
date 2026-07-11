@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Dto\User\UserCreateDto;
 use App\Form\RegisterType;
-use App\Service\BrevoService;
+use App\Service\MailService;
 use App\Service\UserService;
 use App\Security\LoginFormAuthenticator;
 use LogicException;
@@ -18,7 +18,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
 
-    public function __construct(private readonly BrevoService $brevoService){}
+    public function __construct(private readonly MailService $brevoService){}
 
     /**
      */

@@ -3,30 +3,34 @@
 namespace App\Service;
 
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 
-readonly class BrevoService
+final readonly class MailService
 {
-    public function __construct(private MailerInterface $mailer, private string $brevoSenderEmail, private string $brevoSenderName){}
+    public function __construct(
+        private MailerInterface $mailer,
+        private string $mailSenderEmail,
+        private string $mailSenderName,
+    ) {
+    }
 
-    /**
-     * @throws TransportExceptionInterface
-     */
     public function send(
         string $to,
         string $subject,
         string $template,
         array $context = [],
-        ?string $name = null
+        ?string $recipientName = null,
     ): void {
-        $email = new TemplatedEmail()
+        $email = (new TemplatedEmail())
             ->from(new Address(
-                $this->brevoSenderEmail,
-                $this->brevoSenderName
+                $this->mailSenderEmail,
+                $this->mailSenderName
             ))
-            ->to(new Address($to, $name ?? ''))
+            ->to(new Address(
+                $to,
+                $recipientName ?? ''
+            ))
             ->subject($subject)
             ->htmlTemplate($template)
             ->context($context);
