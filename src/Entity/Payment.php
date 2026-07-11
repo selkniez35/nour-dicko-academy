@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
+use App\Enum\CurrencyEnum;
 use App\Enum\PaymentMethod;
 use App\Enum\PaymentStatus;
 use App\Repository\PaymentRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: PaymentRepository::class)]
 #[ORM\Index(name: 'stripe_session_idx', columns: ['stripe_session_id'])]
@@ -33,6 +33,9 @@ class Payment
     #[ORM\Column]
     private int $amount;
 
+    #[ORM\Column(enumType: CurrencyEnum::class)]
+    private CurrencyEnum $currency = CurrencyEnum::EUR;
+
     #[ORM\Column]
     private DateTimeImmutable $createdAt;
 
@@ -44,6 +47,10 @@ class Payment
 
     #[ORM\Column(nullable: true, enumType: PaymentMethod::class)]
     private ?PaymentMethod $method = null;
+
+    #[ORM\ManyToOne(inversedBy: 'payments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     public function __construct(){
         $this->paidAt = new DateTimeImmutable();
@@ -154,5 +161,26 @@ class Payment
         $this->lastStripeEventId = $lastStripeEventId;
     }
 
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCurrency(): CurrencyEnum
+    {
+        return $this->currency;
+    }
+
+    public function setCurrency(CurrencyEnum $currency): void
+    {
+        $this->currency = $currency;
+    }
 
 }

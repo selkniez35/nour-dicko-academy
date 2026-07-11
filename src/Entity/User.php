@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'user_app')]
@@ -32,6 +33,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(targetEntity: Payment::class, mappedBy: 'user')]
     private Collection $payments;
+
+    public function __construct()
+    {
+        $this->payments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
