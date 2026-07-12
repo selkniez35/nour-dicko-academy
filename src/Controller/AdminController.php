@@ -40,17 +40,30 @@ final class AdminController extends AbstractController
         MembershipPlanRepository $planRepository,
         AnnouncementRepository $announcementRepository
     ): Response {
+        $students = $userRepository->findStudents();
+        $teachers = $userRepository->findTeachers();
+        $plans = $planRepository->findAllOrdered();
+        $memberships = $membershipRepository->findLatest(20);
+        $payments = $paymentRepository->findLatest(20);
+        $announcements = $announcementRepository->findLatest(20);
+
         return $this->render('admin/dashboard.html.twig', [
             'stats' => [
-                'students' => $userRepository->countStudents(),
-                'teachers' => $userRepository->countTeachers(),
+                'students' => count($students),
+                'teachers' => count($teachers),
                 'registrations' => $membershipRepository->countPending(),
                 'revenue' => $paymentRepository->getTotalPaidAmount(),
             ],
-            'latestRegistrations' => $membershipRepository->findLatest(5),
-            'latestPayments' => $paymentRepository->findLatest(5),
-            'latestPlans' => $planRepository->findLatest(5),
-            'latestNews' => $announcementRepository->findLatest(5),
+            'students' => $students,
+            'teachers' => $teachers,
+            'plans' => $plans,
+            'memberships' => $memberships,
+            'payments' => $payments,
+            'announcements' => $announcements,
+            'latestRegistrations' => array_slice($memberships, 0, 5),
+            'latestPayments' => array_slice($payments, 0, 5),
+            'latestPlans' => array_slice($plans, 0, 5),
+            'latestNews' => array_slice($announcements, 0, 5),
         ]);
     }
 
@@ -105,6 +118,7 @@ final class AdminController extends AbstractController
     #[Route('/students/new', name: 'student_new')]
     public function studentNew(Request $request, UserService $userService): Response
     {
+
         return $this->handleUserCreate($request, $userService, [UserRole::USER->value], 'Ajouter un élève', 'app_admin_students');
     }
 
