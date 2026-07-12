@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement — Nour Dicko Academy{% endblock %}
+
+{% block body %}
+<main class="admin-form-page">
+    <div class="admin-form-card">
+        <a href="{{ path('admin_payments') }}" class="admin-back-link">← Retour</a>
+
+        <h1>Paiement {{ payment.internalRef }}</h1>
+
+        <p><strong>Utilisateur :</strong> {{ payment.user.profile ? payment.user.profile.fullName : payment.user.email }}</p>
+        <p><strong>Montant :</strong> {{ payment.amount|number_format(2, ',', ' ') }} {{ payment.currency.value }}</p>
+        <p><strong>Statut :</strong> {{ payment.status.value }}</p>
+        <p><strong>Date :</strong> {{ payment.createdAt|date('d/m/Y H:i') }}</p>
+    </div>
+</main>
+{% endblock %}
