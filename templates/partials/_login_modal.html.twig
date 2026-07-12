@@ -29,7 +29,7 @@
       <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
       <a href="#" class="mcf-forgot">Mot de passe oublié ?</a>
       <button type="submit" class="mcf-submit">Se connecter</button>
-      <p class="mcf-signup">Pas encore inscrit ? <a href="{{ path('app_registration') }}" onclick="closeModal('modal-connexion')">S'inscrire</a></p>
+      <p class="mcf-signup">Pas encore inscrit ? <a href="{{ path('app_register') }}" onclick="closeModal('modal-connexion')">S'inscrire</a></p>
     </form>
   </div>
 </div>
