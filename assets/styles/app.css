@@ -37,7 +37,7 @@ body{
   background-size:300px auto;
   background-attachment:fixed;
 }
-.nda-hero{background:transparent}
+
 a{color:inherit}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
 img,svg{display:block;max-width:100%}
@@ -74,6 +74,14 @@ img,svg{display:block;max-width:100%}
   position:relative;
   overflow:hidden;
   padding:34px 24px 0;
+}
+.nda-hero-grid{
+  display:grid;
+  grid-template-columns:1fr 760px 1fr;
+  gap:0;
+  align-items:center;
+  max-width:1400px;
+  margin:0 auto;
 }
 .nda-pattern{
   position:absolute;top:0;bottom:0;left:0;right:0;z-index:0;pointer-events:none;
@@ -460,16 +468,7 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   padding-top:24px;font-size:12px;opacity:.5;
 }
-/* ═══════════════ WHATSAPP FLOTTANT ═══════════════ */
-.wa-float{
-  position:fixed;bottom:26px;right:26px;z-index:60;
-  width:58px;height:58px;border-radius:50%;background:#1FAF57;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 10px 26px rgba(31,175,87,.45);
-  transition:transform .2s;
-}
-.wa-float:hover{transform:scale(1.08)}
-.wa-float svg{width:30px;height:30px}
+
 /* ═══════════════ REVEAL (animations) ═══════════════ */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
@@ -1553,4 +1552,239 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
+}
+
+
+.mcf-switch{
+  text-align:center;font-size:13px;color:var(--ink);opacity:.7;margin-top:8px;
+}
+.mcf-switch a{color:var(--gold-deep);font-weight:600;text-decoration:none;cursor:pointer}
+.mcf-switch a:hover{text-decoration:underline}
+#mcf-error{
+  padding:10px 14px;background:rgba(229,62,62,.08);
+  border-radius:8px;border-left:3px solid #e53e3e;
+}
+/* ═══════════════ POPUP LANCEMENT ═══════════════ */
+.launch-overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(12,12,12,.75);
+  backdrop-filter:blur(5px);
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  animation:fadeIn .4s ease;
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.launch-box{
+  background:var(--white);
+  border-radius:20px;
+  max-width:540px;width:100%;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+  animation:slideUp .4s ease;
+}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:none}
+}
+.launch-close{
+  position:absolute;top:14px;right:14px;z-index:10;
+  width:32px;height:32px;border-radius:50%;
+  border:none;cursor:pointer;
+  background:rgba(0,0,0,.3);color:#fff;
+  font-size:20px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.launch-close:hover{background:rgba(0,0,0,.5)}
+.launch-img{
+  height:200px;overflow:hidden;
+}
+.launch-img img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.launch-body{
+  padding:30px 36px 32px;text-align:center;
+}
+.launch-ar{
+  font-family:var(--font-ar);font-size:16px;color:var(--gold-deep);
+  margin-bottom:14px;
+}
+.launch-title{
+  font-family:var(--font-display);font-size:32px;font-weight:700;
+  color:var(--ink);margin:0 0 10px;
+}
+.launch-rule{
+  width:60px;height:2px;background:var(--gold);
+  margin:0 auto 18px;border-radius:2px;
+}
+.launch-text{
+  font-size:14.5px;color:var(--ink);opacity:.8;line-height:1.7;margin:0 0 26px;
+}
+.launch-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.launch-btn-skip{
+  background:transparent;color:var(--ink);
+  font-family:var(--font-body);font-size:14px;font-weight:500;
+  border:1.5px solid var(--gold-pale);border-radius:999px;
+  padding:12px 24px;cursor:pointer;
+  transition:border-color .2s,background .2s;
+}
+.launch-btn-skip:hover{border-color:var(--gold);background:var(--paper)}
+.launch-btn-cta{
+  background:var(--gold);color:#fff;
+  font-family:var(--font-body);font-size:14px;font-weight:600;
+  border-radius:999px;padding:12px 28px;
+  text-decoration:none;
+  transition:transform .18s,box-shadow .18s;
+}
+.launch-btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,146,42,.4)}
+
+@media (max-width:560px){
+  .launch-body{padding:24px 22px 26px}
+  .launch-title{font-size:26px}
+  .launch-img{height:160px}
+}
+
+.floating-cta{
+  position:fixed;bottom:26px;right:26px;z-index:59;
+  display:flex;align-items:center;gap:12px;
+  background:var(--white);
+  border:1px solid var(--gold-pale);
+  border-radius:999px;
+  padding:10px 10px 10px 18px;
+  box-shadow:0 8px 30px rgba(20,17,10,.15);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+.floating-cta.visible{opacity:1;pointer-events:all}
+.floating-cta span{
+  font-size:13.5px;font-weight:600;color:var(--ink);
+  white-space:nowrap;
+}
+.floating-cta a{
+  background:var(--gold);color:#fff;
+  font-family:var(--font-body);font-size:13.5px;font-weight:600;
+  padding:10px 20px;border-radius:999px;
+  text-decoration:none;white-space:nowrap;
+  transition:transform .18s,box-shadow .18s;
+  flex-shrink:0;
+}
+.floating-cta a:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(201,146,42,.4)}
+@media (max-width:640px){
+  .floating-cta span{display:none}
+  .floating-cta{padding:10px;gap:0;right:16px;bottom:16px}
+}
+
+/* ═══════════════ VERSET & HADITH ═══════════════ */
+.quote-section{padding:72px 24px}
+.quote-grid{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:32px;align-items:center;
+  max-width:900px;margin:0 auto;
+}
+.quote-card{
+  background:var(--white);
+  border:1px solid var(--gold-pale);
+  border-radius:18px;padding:32px 28px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+}
+.quote-icon{
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(201,146,42,.1);
+  border:1px solid rgba(201,146,42,.25);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);flex-shrink:0;
+}
+.quote-icon svg{width:22px;height:22px}
+.quote-ar{
+  font-family:var(--font-ar);
+  font-size:22px;
+  color:var(--gold-deep);
+  line-height:1.8;
+}
+.quote-text{
+  font-family:var(--font-display);
+  font-size:17px;font-style:italic;
+  color:var(--ink);line-height:1.6;
+  margin:0;
+}
+.quote-source{
+  font-size:12px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink);opacity:.45;
+}
+.quote-divider{
+  display:flex;flex-direction:column;
+  align-items:center;gap:10px;
+}
+.quote-divider-line{
+  width:1px;height:60px;
+  background:linear-gradient(180deg,transparent,var(--gold-pale),transparent);
+}
+@media (max-width:760px){
+  .quote-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .quote-divider{
+    flex-direction:row;
+    width:100%;
+  }
+  .quote-divider-line{
+    width:100%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold-pale),transparent);
+  }
+}
+
+/* Citations latérales hero */
+.nda-quote-side{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:16px;
+  padding:0 16px;
+  position:relative;
+}
+.nda-quote-frame{
+  position:relative;
+  background:var(--white);
+  border:1.5px solid var(--gold);
+  border-radius:60% 60% 8px 8px / 40% 40% 8px 8px;
+  padding:36px 28px 40px;
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  box-shadow:0 8px 30px rgba(168,119,24,.1);
+}
+.nda-quote-frame::before{
+  content:"";
+  position:absolute;inset:6px 6px 6px 6px;
+  border:1px solid rgba(201,146,42,.3);
+  border-radius:56% 56% 6px 6px / 36% 36% 6px 6px;
+  pointer-events:none;
+}
+.nda-quote-ar{
+  font-family:var(--font-ar);
+  font-size:22px;color:var(--gold-deep);
+  line-height:1.9;
+  direction:rtl;
+}
+.nda-quote-ornament{
+  color:var(--gold);opacity:.6;font-size:18px;
+}
+.nda-quote-text{
+  font-family:var(--font-display);
+  font-size:14.5px;font-style:italic;
+  color:var(--ink);line-height:1.7;margin:0;
+}
+.nda-quote-src{
+  font-size:10.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-deep);
+}
+.nda-quote-bottom-ornament{
+  color:var(--gold);opacity:.5;font-size:20px;margin-top:4px;
+}
+@media (max-width:1100px){
+  .nda-hero-grid{grid-template-columns:1fr}
+  .nda-quote-side{display:none}
 }
