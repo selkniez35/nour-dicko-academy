@@ -1754,6 +1754,9 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
   padding:36px 28px 40px;
   display:flex;flex-direction:column;align-items:center;gap:14px;
   box-shadow:0 8px 30px rgba(168,119,24,.1);
+  width:100%;
+  min-height:280px;
+  justify-content:center;
 }
 .nda-quote-frame::before{
   content:"";
@@ -2109,5 +2112,3 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
     }
 }
 
-=======
->>>>>>> d49f82d3dc5c8759be85d30001f1cfc57f8189a0

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Annonce - Nour Dicko Academy</title>
+</head>
+<body style="margin:0; padding:0; background:#f4ecd9; font-family:Arial, Helvetica, sans-serif; color:#171717;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4ecd9; padding:30px 12px;">
+    <tr>
+        <td align="center">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:680px;">
+                <tr>
+                    <td align="center" style="padding:10px 0 28px;">
+                        <img src="{{ absolute_url(asset('images/logo-nda.png')) }}" alt="Nour Dicko Academy" width="170" style="display:block; max-width:170px; height:auto;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background:#ffffff; border-radius:24px; overflow:hidden; box-shadow:0 14px 38px rgba(0,0,0,0.08);">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td align="center" style="background:#c9922a; padding:32px 22px;">
+                                    <h1 style="margin:0; font-family:Georgia, 'Times New Roman', serif; font-size:31px; line-height:1.25; color:#ffffff;">
+                                        {{ announcementTitle|default('Nouvelle annonce') }}
+                                    </h1>
+                                    <p style="margin:10px 0 0; color:#fff7e8; font-size:15px; line-height:1.5;">
+                                        Nour Dicko Academy
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td style="padding:42px 44px 20px; font-size:18px; line-height:1.7;">
+                                    <p style="margin:0 0 22px;">As-salāmu ʿalaykum wa raḥmatullāhi wa barakātuh,</p>
+                                    <p style="margin:0 0 22px;">Bonjour <strong>{{ firstName|default('') }} {{ lastName|default('') }}</strong>,</p>
+                                    <p style="margin:0 0 22px;">{{ announcementBody|default('Nous avons une nouvelle importante à vous communiquer.') }}</p>
+                                    {% if announcementUrl is defined and announcementUrl %}
+                                    <table cellpadding="0" cellspacing="0" border="0" style="margin:34px 0;">
+                                        <tr>
+                                            <td align="center" style="background:#c9922a; border-radius:999px;">
+                                                <a href="{{ announcementUrl }}" target="_blank" style="display:inline-block; padding:18px 34px; color:#ffffff; text-decoration:none; font-size:17px; font-weight:bold;">
+                                                    {{ announcementCta|default('En savoir plus') }}
+                                                </a>
+
+                                                <a href="{{ announcementUrl|default('https://nourdicko-academy.fr/#actualites') }}" target="_blank" style="display:inline-block; padding:18px 34px; color:#ffffff; text-decoration:none; font-size:17px; font-weight:bold;">
+    Voir nos actualités
+</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    {% endif %}
+                                    <p style="margin:0 0 26px;">Qu'Allah mette de la bénédiction dans cette démarche.</p>
+                                    <p style="margin:0;">Avec nos salutations,<br><strong style="color:#a87718;">L'équipe Nour Dicko Academy</strong></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" style="padding:30px 20px 0; color:#8d8d8d; font-size:14px; line-height:1.7;">
+                        <p style="margin:0 0 8px;"><strong>Nour Dicko Academy</strong> — نور العلم للجميع</p>
+                        <p style="margin:0 0 8px;">
+                            <a href="https://nourdicko-academy.fr/mentions-legales" style="color:#c9922a; text-decoration:none;">Mentions légales</a>
+                            &nbsp;·&nbsp;
+                            <a href="https://nourdicko-academy.fr/politique-confidentialite" style="color:#c9922a; text-decoration:none;">Politique de confidentialité</a>
+                        </p>
+                        <p style="margin:0; color:#b5b5b5;">Vous recevez cet email car vous êtes inscrit à Nour Dicko Academy.</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+
