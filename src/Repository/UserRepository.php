@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Enum\UserRole;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -45,7 +46,6 @@ class UserRepository extends ServiceEntityRepository
     {
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
-
     }
 
     /**
@@ -73,6 +73,58 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('group', $audience);
 
         return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @return User[]
+     */
+    public function findStudents(): array
+    {
+        return $this->findByRole(UserRole::USER->value);
+    }
+
+    /**
+     * @return User[]
+     */
+    public function findTeachers(): array
+    {
+        return $this->findByRole(UserRole::COACH->value);
+    }
+
+    public function countStudents(): int
+    {
+        return count($this->findStudents());
+    }
+
+    public function countTeachers(): int
+    {
+        return count($this->findTeachers());
+    }
+
+    /**
+     * @return User[]
+     */
+    private function findByRole(string $role): array
+    {
+        $users = $this->createQueryBuilder('u')
+            ->leftJoin('u.profile', 'p')
+            ->addSelect('p')
+            ->getQuery()
+            ->getResult();
+
+        $filtered = array_filter($users, static fn (User $user): bool => in_array($role, $user->getRoles(), true));
+
+        usort($filtered, static function (User $a, User $b): int {
+            $aProfile = $a->getProfile();
+            $bProfile = $b->getProfile();
+
+            $aName = $aProfile ? trim(($aProfile->getLastName() ?? '') . ' ' . ($aProfile->getFirstName() ?? '')) : (string) $a->getEmail();
+            $bName = $bProfile ? trim(($bProfile->getLastName() ?? '') . ' ' . ($bProfile->getFirstName() ?? '')) : (string) $b->getEmail();
+
+            return strcasecmp($aName, $bName);
+        });
+
+        return array_values($filtered);
     }
 
 }

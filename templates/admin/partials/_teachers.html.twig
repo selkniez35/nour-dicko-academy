@@ -1,0 +1,57 @@
+<section class="db-section" id="section-teachers">
+
+    <div class="admin-section-head">
+        <h2 class="db-section-title">Enseignants</h2>
+
+        <a href="{{ path('admin_teacher_new') }}" class="admin-btn-primary">
+            + Ajouter un enseignant
+        </a>
+    </div>
+
+    <div class="admin-table">
+        <div class="admin-table-header">
+            <span>Nom</span>
+            <span>Email</span>
+            <span>Téléphone</span>
+            <span>Statut</span>
+            <span>Actions</span>
+        </div>
+
+        {% for teacher in teachers %}
+            <div class="admin-table-row">
+                <span class="db-eleve-name">
+                    <div class="db-eleve-avatar">
+                        {{ (teacher.profile ? teacher.profile.fullName : teacher.email)|first|upper }}
+                    </div>
+                    {{ teacher.profile ? teacher.profile.fullName : teacher.email }}
+                </span>
+
+                <span>{{ teacher.email }}</span>
+
+                <span>{{ teacher.profile and teacher.profile.phoneNumber ? teacher.profile.phoneNumber : '-' }}</span>
+
+                <span>
+                    <span class="db-eleve-badge db-badge-actif">Actif</span>
+                </span>
+
+                <span class="admin-actions">
+                    <a href="{{ path('admin_user_edit', {id: teacher.id}) }}" class="admin-btn-sm">Voir</a>
+                    <a href="{{ path('admin_user_edit', {id: teacher.id}) }}" class="admin-btn-sm">Modifier</a>
+
+                    <form method="post"
+                          action="{{ path('admin_user_delete', {id: teacher.id}) }}"
+                          style="display:inline"
+                          onsubmit="return confirm('Supprimer cet enseignant ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete-user-' ~ teacher.id) }}">
+                        <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
+                    </form>
+                </span>
+            </div>
+        {% else %}
+            <div class="admin-table-row">
+                <span style="grid-column:1/-1;text-align:center">Aucun enseignant trouvé.</span>
+            </div>
+        {% endfor %}
+    </div>
+
+</section>

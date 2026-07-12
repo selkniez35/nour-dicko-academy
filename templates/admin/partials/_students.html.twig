@@ -1,0 +1,79 @@
+<section class="db-section" id="section-students">
+
+    <div class="admin-section-head">
+        <h2 class="db-section-title">Élèves</h2>
+
+        <a href="{{ path('admin_student_new') }}" class="admin-btn-primary">
+            + Ajouter un élève
+        </a>
+    </div>
+
+    <div class="admin-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+        </svg>
+
+        <input type="text" id="student-search" placeholder="Rechercher un élève...">
+    </div>
+
+    <div class="admin-table">
+        <div class="admin-table-header">
+            <span>Nom</span>
+            <span>Email</span>
+            <span>Date d'inscription</span>
+            <span>Statut</span>
+            <span>Actions</span>
+        </div>
+
+        {% for student in students %}
+            <div class="admin-table-row student-row">
+                <span class="db-eleve-name">
+                    <div class="db-eleve-avatar">
+                        {{ (student.profile ? student.profile.fullName : student.email)|first|upper }}
+                    </div>
+                    {{ student.profile ? student.profile.fullName : student.email }}
+                </span>
+
+                <span>{{ student.email }}</span>
+
+                <span>-</span>
+
+                <span>
+                    {% if 'ROLE_USER' in student.roles %}
+                        <span class="db-eleve-badge db-badge-actif">Vérifié</span>
+                    {% else %}
+                        <span class="db-eleve-badge db-badge-pending">En attente</span>
+                    {% endif %}
+                </span>
+
+                <span class="admin-actions">
+                    <a href="{{ path('admin_user_edit', {id: student.id}) }}" class="admin-btn-sm">Voir</a>
+                    <a href="{{ path('admin_user_edit', {id: student.id}) }}" class="admin-btn-sm">Modifier</a>
+
+                    <form method="post"
+                          action="{{ path('admin_user_delete', {id: student.id}) }}"
+                          style="display:inline"
+                          onsubmit="return confirm('Supprimer cet élève ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete-user-' ~ student.id) }}">
+                        <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
+                    </form>
+                </span>
+            </div>
+        {% else %}
+            <div class="admin-table-row">
+                <span style="grid-column:1/-1;text-align:center">Aucun élève trouvé.</span>
+            </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+<script>
+    document.getElementById('student-search').addEventListener('keyup', function () {
+        const value = this.value.toLowerCase();
+        document.querySelectorAll('.student-row').forEach(function (row) {
+            row.style.display = row.innerText.toLowerCase().includes(value) ? '' : 'none';
+        });
+    });
+</script>

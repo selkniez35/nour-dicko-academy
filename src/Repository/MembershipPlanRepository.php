@@ -16,28 +16,29 @@ class MembershipPlanRepository extends ServiceEntityRepository
         parent::__construct($registry, MembershipPlan::class);
     }
 
-//    /**
-//     * @return MembershipPlan[] Returns an array of MembershipPlan objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('m.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return MembershipPlan[]
+     */
+    public function findLatest(int $limit = 10): array
+    {
+        return $this->createQueryBuilder('m')
+            ->leftJoin('m.features', 'f')->addSelect('f')
+            ->orderBy('m.id', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?MembershipPlan
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @return MembershipPlan[]
+     */
+    public function findAllOrdered(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->leftJoin('m.features', 'f')->addSelect('f')
+            ->orderBy('m.level', 'ASC')
+            ->addOrderBy('m.label', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

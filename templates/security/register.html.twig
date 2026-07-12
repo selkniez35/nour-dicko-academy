@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un compte — Nour Dicko Academy{% endblock %}
+
+{% block body %}
+<section class="inscription">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Compte</span>
+      <h1 class="sec-title">Créer un compte</h1>
+      <p class="sec-sub">Renseignez vos informations pour accéder à votre espace personnel.</p>
+    </div>
+
+    {% for message in app.flashes('success') %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+      <div class="insc-row">
+        <div class="insc-field">
+          {{ form_label(form.firstName) }}
+          {{ form_widget(form.firstName) }}
+          {{ form_errors(form.firstName) }}
+        </div>
+        <div class="insc-field">
+          {{ form_label(form.lastName) }}
+          {{ form_widget(form.lastName) }}
+          {{ form_errors(form.lastName) }}
+        </div>
+      </div>
+
+      <div class="insc-field">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+        {{ form_errors(form.email) }}
+      </div>
+
+      <div class="insc-row">
+        <div class="insc-field">
+          {{ form_label(form.password.first) }}
+          {{ form_widget(form.password.first) }}
+          {{ form_errors(form.password.first) }}
+        </div>
+        <div class="insc-field">
+          {{ form_label(form.password.second) }}
+          {{ form_widget(form.password.second) }}
+          {{ form_errors(form.password.second) }}
+        </div>
+      </div>
+
+      {{ form_rest(form) }}
+
+      <button type="submit" class="insc-submit">Créer mon compte</button>
+    {{ form_end(form) }}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,110 @@
+<section class="db-section active" id="section-overview">
+
+    <h2 class="db-section-title">
+        Vue d'ensemble
+    </h2>
+
+    <div class="admin-stats">
+
+        <div class="admin-stat-card">
+            <div class="admin-stat-icon" style="background:rgba(201,146,42,.12);color:var(--gold)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                </svg>
+            </div>
+            <div>
+                <div class="admin-stat-val">{{ stats.students }}</div>
+                <div class="admin-stat-label">Élèves inscrits</div>
+            </div>
+        </div>
+
+        <div class="admin-stat-card">
+            <div class="admin-stat-icon" style="background:rgba(26,42,74,.1);color:#1a2a4a">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                </svg>
+            </div>
+            <div>
+                <div class="admin-stat-val">{{ stats.teachers }}</div>
+                <div class="admin-stat-label">Enseignants</div>
+            </div>
+        </div>
+
+        <div class="admin-stat-card">
+            <div class="admin-stat-icon" style="background:rgba(34,197,94,.1);color:#16a34a">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2"/>
+                    <path d="M1 10h22"/>
+                </svg>
+            </div>
+            <div>
+                <div class="admin-stat-val">{{ stats.revenue|number_format(2, ',', ' ') }} €</div>
+                <div class="admin-stat-label">Revenus</div>
+            </div>
+        </div>
+
+        <div class="admin-stat-card">
+            <div class="admin-stat-icon" style="background:rgba(239,68,68,.1);color:#dc2626">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                </svg>
+            </div>
+            <div>
+                <div class="admin-stat-val">{{ stats.registrations }}</div>
+                <div class="admin-stat-label">Inscriptions en attente</div>
+            </div>
+        </div>
+
+    </div>
+
+    <h3 class="db-subsection-title">
+        Dernières inscriptions
+    </h3>
+
+    <div class="admin-table">
+        <div class="admin-table-header">
+            <span>Nom</span>
+            <span>Formation</span>
+            <span>Saison</span>
+            <span>Statut</span>
+            <span></span>
+        </div>
+
+        {% for membership in latestRegistrations %}
+            <div class="admin-table-row">
+                <span class="db-eleve-name">
+                    <div class="db-eleve-avatar">
+                        {{ membership.userProfile.fullName|first|upper }}
+                    </div>
+                    {{ membership.userProfile.fullName }}
+                </span>
+                <span>
+                    {{ membership.plan ? membership.plan.label : (membership.studentLevel ?: '-') }}
+                </span>
+                <span>
+                    {{ membership.season }}
+                </span>
+                <span>
+                    {% if membership.status.value == 'active' %}
+                        <span class="db-eleve-badge db-badge-actif">Actif</span>
+                    {% elseif membership.status.value == 'pending' %}
+                        <span class="db-eleve-badge db-badge-pending">En attente</span>
+                    {% elseif membership.status.value == 'suspended' %}
+                        <span class="db-eleve-badge db-badge-pending">Suspendu</span>
+                    {% else %}
+                        <span class="db-eleve-badge db-badge-pending">Essai</span>
+                    {% endif %}
+                </span>
+                <span>
+                    <a href="{{ path('admin_membership_edit', {id: membership.id}) }}" class="admin-btn-sm">Voir</a>
+                </span>
+            </div>
+        {% else %}
+            <div class="admin-table-row">
+                <span style="grid-column:1/-1;text-align:center">Aucune inscription récente.</span>
+            </div>
+        {% endfor %}
+    </div>
+
+</section>
