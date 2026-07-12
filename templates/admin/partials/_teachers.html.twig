@@ -3,7 +3,7 @@
     <div class="admin-section-head">
         <h2 class="db-section-title">Enseignants</h2>
 
-        <a href="{{ path('admin_teacher_new') }}" class="admin-btn-primary">
+        <a href="{{ path('app_admin_teacher_new') }}" class="admin-btn-primary">
             + Ajouter un enseignant
         </a>
     </div>
@@ -35,7 +35,7 @@
                 </span>
 
                 <span class="admin-actions">
-                    <a href="{{ path('admin_user_edit', {id: teacher.id}) }}" class="admin-btn-sm">Voir</a>
+                    <a href="{{ path('app_admin_user_edit', {id: teacher.id}) }}" class="admin-btn-sm">Voir</a>
                     <a href="{{ path('admin_user_edit', {id: teacher.id}) }}" class="admin-btn-sm">Modifier</a>
 
                     <form method="post"

@@ -39,7 +39,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?RedirectResponse
     {
         if (in_array('ROLE_ADMIN', $token->getRoleNames(), true)) {
-            return new RedirectResponse($this->urlGenerator->generate('app_admin'));
+            return new RedirectResponse($this->urlGenerator->generate('app_admin_dashboard'));
         }
 
         return new RedirectResponse($this->urlGenerator->generate('app_membership-plan_index'));
