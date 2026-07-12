@@ -1,0 +1,40 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block title %}
+    Bienvenue !
+{% endblock %}
+
+{% block content %}
+
+    <h2>Bonjour {{ user.profile.fullName }},</h2>
+
+    <p>
+        Bienvenue à la <strong>Nour Dicko Academy</strong>.
+    </p>
+
+    <p>
+        Votre compte a bien été créé.
+    </p>
+
+    <p style="text-align:center;margin:40px 0;">
+
+        <a href="{{ appUrl }}"
+           style="
+            background:#D4AF37;
+            color:#ffffff;
+            text-decoration:none;
+            padding:15px 30px;
+            border-radius:8px;
+            font-weight:bold;
+            display:inline-block;
+       ">
+            Accéder à mon espace
+        </a>
+
+    </p>
+
+    <p>
+        À bientôt !
+    </p>
+
+{% endblock %}
