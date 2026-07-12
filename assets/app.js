@@ -97,3 +97,71 @@ document.addEventListener('click', function(e){
     if(menu) menu.classList.remove('open');
   }
 });
+
+// ═══ Toggle mot de passe ═══
+window.togglePassword = function(inputId, iconId){
+  const input = document.getElementById(inputId);
+  const icon = document.getElementById(iconId);
+  if(!input || !icon) return;
+  if(input.type === 'password'){
+    input.type = 'text';
+    icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19M1 1l22 22"/>';
+  } else {
+    input.type = 'password';
+    icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+  }
+};
+
+// ═══ Switcher connexion / inscription ═══
+window.switchAuth = function(mode){
+  const formConnexion = document.getElementById('form-connexion');
+  const formInscription = document.getElementById('form-inscription');
+  const title = document.getElementById('auth-title');
+  const subtitle = document.getElementById('auth-subtitle');
+  const error = document.getElementById('mcf-error');
+  if(error) error.style.display = 'none';
+  if(mode === 'inscription'){
+    formConnexion.style.display = 'none';
+    formInscription.style.display = 'flex';
+    title.textContent = 'Créer un compte';
+    subtitle.textContent = 'Rejoignez Nour Dicko Academy';
+  } else {
+    formInscription.style.display = 'none';
+    formConnexion.style.display = 'flex';
+    title.textContent = 'Connexion';
+    subtitle.textContent = 'Accédez à votre espace personnel';
+  }
+};
+
+// ═══ Vérification mots de passe ═══
+window.checkPasswords = function(){
+  const pwd = document.getElementById('mcf-reg-password').value;
+  const confirm = document.getElementById('mcf-reg-confirm').value;
+  const error = document.getElementById('mcf-error');
+  if(pwd.length < 8){
+    error.textContent = 'Le mot de passe doit contenir au moins 8 caractères.';
+    error.style.display = 'block';
+    return;
+  }
+  if(pwd !== confirm){
+    error.textContent = 'Les mots de passe ne correspondent pas.';
+    error.style.display = 'block';
+    return;
+  }
+  error.style.display = 'none';
+  // Ton dev branchera ici l'appel API pour créer le compte
+  alert('Compte créé avec succès ! Votre dev branchera cette action.');
+};
+
+// ═══ Avatar menu ═══
+window.toggleAvatarMenu = function(){
+  const menu = document.getElementById('avatar-menu');
+  if(menu) menu.classList.toggle('open');
+};
+
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.db-avatar-wrap') && !e.target.closest('.topbar-btns')){
+    const menu = document.getElementById('avatar-menu');
+    if(menu) menu.classList.remove('open');
+  }
+});

@@ -1534,3 +1534,13 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
   .admin-stats{grid-template-columns:1fr 1fr}
   .admin-table-header,.admin-table-row{grid-template-columns:2fr 2fr 1.5fr 1.5fr}
 }
+
+.mcf-switch{
+  text-align:center;font-size:13px;color:var(--ink);opacity:.7;margin-top:8px;
+}
+.mcf-switch a{color:var(--gold-deep);font-weight:600;text-decoration:none;cursor:pointer}
+.mcf-switch a:hover{text-decoration:underline}
+#mcf-error{
+  padding:10px 14px;background:rgba(229,62,62,.08);
+  border-radius:8px;border-left:3px solid #e53e3e;
+}
