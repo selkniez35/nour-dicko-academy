@@ -165,3 +165,34 @@ document.addEventListener('click', function(e){
     if(menu) menu.classList.remove('open');
   }
 });
+
+// ═══ Popup lancement ═══
+window.closeLaunchPopup = function(){
+  const popup = document.getElementById('launch-popup');
+  if(popup){
+    popup.style.opacity = '0';
+    popup.style.transition = 'opacity .3s';
+    setTimeout(() => popup.style.display = 'none', 300);
+    localStorage.setItem('nda-launch-seen', '1');
+  }
+};
+
+// Afficher la popup seulement si pas déjà vue
+document.addEventListener('DOMContentLoaded', function(){
+  const popup = document.getElementById('launch-popup');
+  if(popup && localStorage.getItem('nda-launch-seen')){
+    popup.style.display = 'none';
+  }
+});
+
+// ═══ CTA flottant — apparaît après le hero ═══
+window.addEventListener('scroll', function(){
+  const cta = document.querySelector('.floating-cta');
+  const hero = document.querySelector('.nda-hero');
+  if(!cta || !hero) return;
+  if(window.scrollY > hero.offsetHeight){
+    cta.classList.add('visible');
+  } else {
+    cta.classList.remove('visible');
+  }
+});
