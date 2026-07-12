@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Demande acceptée - Nour Dicko Academy</title>
+</head>
+<body style="margin:0; padding:0; background:#f4ecd9; font-family:Arial, Helvetica, sans-serif; color:#171717;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4ecd9; padding:30px 12px;">
+    <tr>
+        <td align="center">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:680px;">
+                <tr>
+                    <td align="center" style="padding:10px 0 28px;">
+                        <img src="{{ absolute_url(asset('images/logo-nda.png')) }}" alt="Nour Dicko Academy" width="170" style="display:block; max-width:170px; height:auto;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background:#ffffff; border-radius:24px; overflow:hidden; box-shadow:0 14px 38px rgba(0,0,0,0.08);">
+
+                        <!-- BANDEAU -->
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td align="center" style="background:#166534; padding:32px 22px;">
+                                    <h1 style="margin:0; font-family:Georgia, 'Times New Roman', serif; font-size:31px; line-height:1.25; color:#ffffff;">
+                                        Demande acceptée 🎉
+                                    </h1>
+                                    <p style="margin:10px 0 0; color:#bbf7d0; font-size:15px; line-height:1.5;">
+                                        Votre demande a été validée par notre équipe.
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- CONTENU -->
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td style="padding:42px 44px 20px; font-size:18px; line-height:1.7;">
+                                    <p style="margin:0 0 22px;">As-salāmu ʿalaykum wa raḥmatullāhi wa barakātuh,</p>
+                                    <p style="margin:0 0 22px;">Bonjour <strong>{{ firstName|default('') }} {{ lastName|default('') }}</strong>,</p>
+                                    <p style="margin:0 0 22px;">Nous avons le plaisir de vous informer que votre demande d'inscription à <strong>Nour Dicko Academy</strong> a été <strong>acceptée</strong> par notre équipe.</p>
+                                    <p style="margin:0 0 30px;">Pour finaliser votre inscription et <strong>réserver définitivement votre place</strong>, il vous reste à effectuer votre paiement via le lien ci-dessous.</p>
+
+                                    <!-- RÉCAPITULATIF -->
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f8f2e6; border-radius:16px; margin:30px 0;">
+                                        <tr>
+                                            <td style="padding:28px 30px;">
+                                                <p style="margin:0 0 20px; color:#a87718; font-size:14px; font-weight:bold; letter-spacing:3px; text-transform:uppercase;">Détails de votre inscription</p>
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-size:16px;">
+                                                    <tr>
+                                                        <td style="padding:12px 0; color:#777777; border-bottom:1px solid #dec78f;">Cours</td>
+                                                        <td align="right" style="padding:12px 0; font-weight:bold; border-bottom:1px solid #dec78f;">{{ course|default('Non renseigné') }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding:12px 0; color:#777777; border-bottom:1px solid #dec78f;">Formule</td>
+                                                        <td align="right" style="padding:12px 0; font-weight:bold; border-bottom:1px solid #dec78f;">{{ formula|default('Non renseignée') }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding:12px 0; color:#777777; border-bottom:1px solid #dec78f;">Montant à régler</td>
+                                                        <td align="right" style="padding:12px 0; font-weight:bold; border-bottom:1px solid #dec78f; color:#166534;">{{ paidAmount|default('Non renseigné') }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding:12px 0; color:#777777;">Mode de paiement</td>
+                                                        <td align="right" style="padding:12px 0; font-weight:bold;">{{ paymentMethod|default('Non renseigné') }}</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- IMPORTANT -->
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#fff8e6; border-left:5px solid #c9922a; border-radius:10px; margin:28px 0;">
+                                        <tr>
+                                            <td style="padding:18px 22px; font-size:16px; line-height:1.6;">
+                                                ⚠️ <strong>Important :</strong> votre place sera définitivement réservée uniquement après réception de votre paiement. Le lien de paiement est valable <strong>7 jours</strong>.
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- BOUTON PAIEMENT -->
+                                    <table cellpadding="0" cellspacing="0" border="0" style="margin:34px 0;">
+                                        <tr>
+                                            <td align="center" style="background:#c9922a; border-radius:999px;">
+                                                <a href="{{ paymentUrl|default('#') }}" target="_blank" style="display:inline-block; padding:18px 34px; color:#ffffff; text-decoration:none; font-size:17px; font-weight:bold;">
+                                                    Procéder au paiement →
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <p style="margin:0 0 22px;">Une fois le paiement effectué, vous recevrez un email de confirmation avec votre accès à l'espace élève.</p>
+                                    <p style="margin:0 0 26px;">Pour toute question, n'hésitez pas à nous contacter.</p>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="margin:20px 0;">
+                                        <tr>
+                                            <td align="center" style="background:#0c0c0c; border-radius:999px;">
+                                                <a href="https://nourdicko-academy.fr/contact" target="_blank" style="display:inline-block; padding:14px 28px; color:#ffffff; text-decoration:none; font-size:15px; font-weight:bold;">
+                                                    Contacter l'équipe
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <p style="margin:0 0 26px;">Qu'Allah mette de la bénédiction dans cette démarche.</p>
+                                    <p style="margin:0;">Avec nos salutations,<br><strong style="color:#a87718;">L'équipe Nour Dicko Academy</strong></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- FOOTER -->
+                <tr>
+                    <td align="center" style="padding:30px 20px 0; color:#8d8d8d; font-size:14px; line-height:1.7;">
+                        <p style="margin:0 0 8px;"><strong>Nour Dicko Academy</strong> — نور العلم للجميع</p>
+                        <p style="margin:0 0 8px;">
+                            <a href="https://nourdicko-academy.fr/mentions-legales" style="color:#c9922a; text-decoration:none;">Mentions légales</a>
+                            &nbsp;·&nbsp;
+                            <a href="https://nourdicko-academy.fr/politique-confidentialite" style="color:#c9922a; text-decoration:none;">Politique de confidentialité</a>
+                        </p>
+                        <p style="margin:0; color:#b5b5b5;">Vous recevez cet email car votre demande d'inscription à Nour Dicko Academy a été acceptée.</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
