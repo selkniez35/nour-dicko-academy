@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos cours — Nour Dicko Academy{% endblock %}
+
+{% block body %}
+    <section id="cours" class="cours-section">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-tag">Nos cours</span>
+          <h2 class="sec-title">Trois parcours, un même objectif</h2>
+          <p class="sec-sub">Chaque cours a lieu une fois par semaine, en direct et en ligne, à horaire fixe en soirée.</p>
+        </div>
+
+        <div class="courses">
+            {% for membership in membershipPlans %}
+                <article class="course reveal">
+                    <h3>{{ membership.label }}</h3>
+                    <div class="course-level">{{ membership.level }}</div>
+                    <div class="course-feats">
+                        {% for feature in membership.features %}
+                            {% if feature.type == 'card' %}
+                                <span class="feat">{{ feature.label }}</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <p>{{ membership.description }}</p>
+                    <div class="course-when">
+                        <div>{{ membership.schedule }}</div>
+                    </div>
+                    <button class="course-btn" onclick="openModal('modal-{{ membership.id }}')">
+                        Découvrir ce cours ›
+                    </button>
+                </article>
+            {% endfor %}
+        </div>
+      </div>
+
+      <div class="infoband reveal">
+        <div class="infoband-in">
+          <div class="info-item">
+            <div class="info-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div>
+              <h4>Cours 100% en ligne</h4>
+              <p>Depuis chez vous, où que vous soyez.</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C9922A" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.9-3.9 3.6-6 7-6s6.1 2.1 7 6"/></svg>
+            </div>
+            <div>
+              <h4>1 cours par semaine</h4>
+              <p>Engagement annuel — une progression régulière.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODALS COURS -->
+    {% for membership in membershipPlans %}
+        <div class="modal-overlay" id="modal-{{ membership.id }}">
+            <div class="modal-box">
+                <button class="modal-close" onclick="closeModal('modal-{{ membership.id }}')">×</button>
+                <h3 class="modal-title">{{ membership.label }}</h3>
+                <div class="modal-level">{{ membership.level }}</div>
+                <p class="modal-intro">{{ membership.description }}</p>
+                <div class="modal-prog-title">Programme détaillé</div>
+                <ul class="modal-list">
+                    {% for feature in membership.features %}
+                        {% if feature.type == 'modal' %}
+                            <li>{{ feature.label }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <div class="modal-info">📅 {{ membership.schedule }}</div>
+                <a href="{{ path('app_prices') }}" class="modal-cta">Voir les tarifs ›</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

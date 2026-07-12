@@ -1,0 +1,42 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block title %}
+    Paiement confirmé
+{% endblock %}
+
+{% block content %}
+
+    <h2>Bonjour {{ payment.user.profile.fullName }},</h2>
+
+    <p>
+        Nous avons bien reçu votre paiement.
+    </p>
+
+    <table width="100%" cellpadding="8" cellspacing="0"
+           style="border-collapse:collapse;margin-top:25px;">
+
+        <tr>
+            <td><strong>Référence</strong></td>
+            <td>{{ payment.internalRef }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Montant</strong></td>
+            <td>
+                {{ payment.amount|number_format(2, ',', ' ') }}
+                {{ payment.currency.value }}
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>Date</strong></td>
+            <td>{{ payment.paidAt|date('d/m/Y H:i') }}</td>
+        </tr>
+
+    </table>
+
+    <p style="margin-top:35px;">
+        Merci de votre confiance.
+    </p>
+
+{% endblock %}

@@ -19,12 +19,40 @@
 </head>
 
 <body>
+    {{ include('partials/_header.html.twig') }}
 
-{% block body %}{% endblock %}
+    {% block body %}{% endblock %}
 
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock %}
+    {{ include('partials/_footer.html.twig') }}
 
+    <script>
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        function togglePassword() {
+            const pwd = document.getElementById('mcf-password');
+            if (pwd) {
+                pwd.type = pwd.type === 'password' ? 'text' : 'password';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.location.hash === '#modal-connexion') {
+                openModal('modal-connexion');
+            }
+        });
+    </script>
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </body>
 </html>

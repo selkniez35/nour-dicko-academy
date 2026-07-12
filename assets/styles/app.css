@@ -93,9 +93,10 @@ img,svg{display:block;max-width:100%}
 }
 .nda-arch{
   position:relative;z-index:3;
+  max-width:900px;margin:0 auto;
   padding:34px 48px 120px;
   text-align:center;
-} 
+}
 .nda-arch::before{
   content:"";position:absolute;inset:0;z-index:-1;
   background:#FBF7EC;
@@ -326,7 +327,10 @@ section{padding:84px 24px}
 
 /* ═══════════════ TARIFS v2 (4 cartes + garanties) ═══════════════ */
 .tar-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, 270px);
+    justify-content:center;
+    gap:20px;
 }
 .tar-card{
   position:relative;
@@ -1533,6 +1537,24 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
   .admin-table-header,.admin-table-row{grid-template-columns:2fr 2fr 1.5fr 1.5fr}
 }
 
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.alert-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+
 .mcf-switch{
   text-align:center;font-size:13px;color:var(--ink);opacity:.7;margin-top:8px;
 }
@@ -1766,6 +1788,7 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
   .nda-hero-grid{grid-template-columns:1fr}
   .nda-quote-side{display:none}
 }
+<<<<<<< HEAD
 
 .founder-section {
     position: relative;
@@ -2086,3 +2109,5 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
     }
 }
 
+=======
+>>>>>>> d49f82d3dc5c8759be85d30001f1cfc57f8189a0

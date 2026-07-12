@@ -1,0 +1,35 @@
+<div class="modal-overlay" id="modal-connexion">
+  <div class="modal-box modal-connexion-box">
+    <button class="modal-close" onclick="closeModal('modal-connexion')" aria-label="Fermer">×</button>
+
+    <div class="modal-connexion-header">
+      <img src="{{ asset('images/logo-nda.png') }}" alt="NDA" class="modal-connexion-logo">
+      <h3>Connexion</h3>
+      <p>Accédez à votre espace personnel</p>
+    </div>
+
+    {% for message in app.flashes('login_error') %}
+      <div class="login-error">{{ message }}</div>
+    {% endfor %}
+
+    <form class="modal-connexion-form" method="post" action="{{ path('app_login') }}">
+      <div class="mcf-field">
+        <label for="mcf-email">Adresse email</label>
+        <input type="email" id="mcf-email" name="email" placeholder="votre@email.com" required autocomplete="email">
+      </div>
+      <div class="mcf-field">
+        <label for="mcf-password">Mot de passe</label>
+        <div class="mcf-password-wrap">
+          <input type="password" id="mcf-password" name="password" placeholder="Votre mot de passe" required autocomplete="current-password">
+          <button type="button" class="mcf-eye" onclick="togglePassword()">
+            <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+      <a href="#" class="mcf-forgot">Mot de passe oublié ?</a>
+      <button type="submit" class="mcf-submit">Se connecter</button>
+      <p class="mcf-signup">Pas encore inscrit ? <a href="{{ path('app_register') }}" onclick="closeModal('modal-connexion')">S'inscrire</a></p>
+    </form>
+  </div>
+</div>
