@@ -41,11 +41,11 @@
                 </span>
 
                 <span class="admin-actions">
-                    <a href="{{ path('admin_membership_edit', {id: membership.id}) }}" class="admin-btn-sm">Voir</a>
-                    <a href="{{ path('admin_membership_edit', {id: membership.id}) }}" class="admin-btn-sm">Modifier</a>
+                    <a href="{{ path('app_admin_membership_edit', {id: membership.id}) }}" class="admin-btn-sm">Voir</a>
+                    <a href="{{ path('app_admin_membership_edit', {id: membership.id}) }}" class="admin-btn-sm">Modifier</a>
 
                     <form method="post"
-                          action="{{ path('admin_membership_delete', {id: membership.id}) }}"
+                          action="{{ path('app_admin_membership_delete', {id: membership.id}) }}"
                           style="display:inline"
                           onsubmit="return confirm('Supprimer cette inscription ?');">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete-membership-' ~ membership.id) }}">

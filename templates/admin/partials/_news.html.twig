@@ -3,7 +3,7 @@
     <div class="admin-section-head">
         <h2 class="db-section-title">Actualités</h2>
 
-        <a href="{{ path('admin_announcement_new') }}" class="admin-btn-primary">
+        <a href="{{ path('app_admin_announcement_new') }}" class="admin-btn-primary">
             + Publier une actualité
         </a>
     </div>
@@ -30,11 +30,11 @@
                 </span>
                 <span>{{ announcement.createdAt|date('d/m/Y') }}</span>
                 <span class="admin-actions">
-                    <a href="{{ path('admin_announcement_edit', {id: announcement.id}) }}" class="admin-btn-sm">Voir</a>
-                    <a href="{{ path('admin_announcement_edit', {id: announcement.id}) }}" class="admin-btn-sm">Modifier</a>
+                    <a href="{{ path('app_admin_announcement_edit', {id: announcement.id}) }}" class="admin-btn-sm">Voir</a>
+                    <a href="{{ path('app_admin_announcement_edit', {id: announcement.id}) }}" class="admin-btn-sm">Modifier</a>
 
                     <form method="post"
-                          action="{{ path('admin_announcement_delete', {id: announcement.id}) }}"
+                          action="{{ path('app_admin_announcement_delete', {id: announcement.id}) }}"
                           style="display:inline"
                           onsubmit="return confirm('Supprimer cette actualité ?');">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete-announcement-' ~ announcement.id) }}">

@@ -37,7 +37,7 @@ final class AdminController extends AbstractController
         UserRepository $userRepository,
         MembershipRepository $membershipRepository,
         PaymentRepository $paymentRepository,
-        MembershipPlanRepository $membershipPlanRepository,
+        MembershipPlanRepository $planRepository,
         AnnouncementRepository $announcementRepository
     ): Response {
         return $this->render('admin/dashboard.html.twig', [
@@ -49,7 +49,7 @@ final class AdminController extends AbstractController
             ],
             'latestRegistrations' => $membershipRepository->findLatest(5),
             'latestPayments' => $paymentRepository->findLatest(5),
-            'latestPlans' => $membershipPlanRepository->findLatest(5),
+            'latestPlans' => $planRepository->findLatest(5),
             'latestNews' => $announcementRepository->findLatest(5),
         ]);
     }
@@ -71,10 +71,10 @@ final class AdminController extends AbstractController
     }
 
     #[Route('/trainings', name: 'trainings')]
-    public function trainings(MembershipPlanRepository $membershipPlanRepository): Response
+    public function trainings(MembershipPlanRepository $planRepository): Response
     {
         return $this->render('admin/partials/_trainings.html.twig', [
-            'plans' => $membershipPlanRepository->findAllOrdered(),
+            'plans' => $planRepository->findAllOrdered(),
         ]);
     }
 
@@ -105,13 +105,13 @@ final class AdminController extends AbstractController
     #[Route('/students/new', name: 'student_new')]
     public function studentNew(Request $request, UserService $userService): Response
     {
-        return $this->handleUserCreate($request, $userService, [UserRole::USER->value], 'Ajouter un élève', 'admin_students');
+        return $this->handleUserCreate($request, $userService, [UserRole::USER->value], 'Ajouter un élève', 'app_admin_students');
     }
 
     #[Route('/teachers/new', name: 'teacher_new')]
     public function teacherNew(Request $request, UserService $userService): Response
     {
-        return $this->handleUserCreate($request, $userService, [UserRole::COACH->value], 'Ajouter un enseignant', 'admin_teachers');
+        return $this->handleUserCreate($request, $userService, [UserRole::COACH->value], 'Ajouter un enseignant', 'app_admin_teachers');
     }
 
     #[Route('/users/{id}/edit', name: 'user_edit')]
@@ -128,10 +128,9 @@ final class AdminController extends AbstractController
             }
 
             $entityManager->flush();
-
             $this->addFlash('success', 'Utilisateur mis à jour.');
 
-            return $this->redirectToUserList($user);
+            return $this->redirectToRoute($this->getUserBackRoute($user));
         }
 
         return $this->render('admin/form.html.twig', [
@@ -155,38 +154,24 @@ final class AdminController extends AbstractController
             return $this->redirectToRoute($this->getUserBackRoute($user));
         }
 
-        $backRoute = $this->getUserBackRoute($user);
-
         $entityManager->remove($user);
         $entityManager->flush();
 
         $this->addFlash('success', 'Utilisateur supprimé.');
 
-        return $this->redirectToRoute($backRoute);
+        return $this->redirectToRoute($this->getUserBackRoute($user));
     }
 
     #[Route('/trainings/new', name: 'plan_new')]
     public function planNew(Request $request, EntityManagerInterface $entityManager): Response
     {
-        return $this->handleMembershipPlanForm(
-            $request,
-            new MembershipPlan(),
-            $entityManager,
-            'Ajouter une formation',
-            'admin_trainings'
-        );
+        return $this->handleMembershipPlanForm($request, new MembershipPlan(), $entityManager, 'Ajouter une formation', 'app_admin_trainings');
     }
 
     #[Route('/trainings/{id}/edit', name: 'plan_edit')]
     public function planEdit(Request $request, MembershipPlan $membershipPlan, EntityManagerInterface $entityManager): Response
     {
-        return $this->handleMembershipPlanForm(
-            $request,
-            $membershipPlan,
-            $entityManager,
-            'Modifier une formation',
-            'admin_trainings'
-        );
+        return $this->handleMembershipPlanForm($request, $membershipPlan, $entityManager, 'Modifier une formation', 'app_admin_trainings');
     }
 
     #[Route('/trainings/{id}/delete', name: 'plan_delete', methods: ['POST'])]
@@ -199,7 +184,7 @@ final class AdminController extends AbstractController
         if ($membershipRepository->countForPlan($membershipPlan) > 0) {
             $this->addFlash('error', 'Impossible de supprimer cette formation car elle est utilisée par des inscriptions.');
 
-            return $this->redirectToRoute('admin_trainings');
+            return $this->redirectToRoute('app_admin_trainings');
         }
 
         $entityManager->remove($membershipPlan);
@@ -207,7 +192,7 @@ final class AdminController extends AbstractController
 
         $this->addFlash('success', 'Formation supprimée.');
 
-        return $this->redirectToRoute('admin_trainings');
+        return $this->redirectToRoute('app_admin_trainings');
     }
 
     #[Route('/registrations/{id}/edit', name: 'membership_edit')]
@@ -218,15 +203,14 @@ final class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-
             $this->addFlash('success', 'Inscription mise à jour.');
 
-            return $this->redirectToRoute('admin_registrations');
+            return $this->redirectToRoute('app_admin_registrations');
         }
 
         return $this->render('admin/form.html.twig', [
             'title' => 'Modifier une inscription',
-            'back_route' => 'admin_registrations',
+            'back_route' => 'app_admin_registrations',
             'submit_label' => 'Enregistrer',
             'form' => $form->createView(),
         ]);
@@ -244,31 +228,19 @@ final class AdminController extends AbstractController
 
         $this->addFlash('success', 'Inscription supprimée.');
 
-        return $this->redirectToRoute('admin_registrations');
+        return $this->redirectToRoute('app_admin_registrations');
     }
 
     #[Route('/news/new', name: 'announcement_new')]
     public function announcementNew(Request $request, EntityManagerInterface $entityManager): Response
     {
-        return $this->handleAnnouncementForm(
-            $request,
-            new Announcement(),
-            $entityManager,
-            'Publier une actualité',
-            'admin_news'
-        );
+        return $this->handleAnnouncementForm($request, new Announcement(), $entityManager, 'Publier une actualité', 'app_admin_news');
     }
 
     #[Route('/news/{id}/edit', name: 'announcement_edit')]
     public function announcementEdit(Request $request, Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
-        return $this->handleAnnouncementForm(
-            $request,
-            $announcement,
-            $entityManager,
-            'Modifier une actualité',
-            'admin_news'
-        );
+        return $this->handleAnnouncementForm($request, $announcement, $entityManager, 'Modifier une actualité', 'app_admin_news');
     }
 
     #[Route('/news/{id}/delete', name: 'announcement_delete', methods: ['POST'])]
@@ -283,7 +255,7 @@ final class AdminController extends AbstractController
 
         $this->addFlash('success', 'Actualité supprimée.');
 
-        return $this->redirectToRoute('admin_news');
+        return $this->redirectToRoute('app_admin_news');
     }
 
     #[Route('/payments/{id}', name: 'payment_show')]
@@ -303,9 +275,7 @@ final class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $dto->roles = $roles;
             $userService->createUser($dto);
-
             $this->addFlash('success', 'Utilisateur créé.');
 
             return $this->redirectToRoute($backRoute);
@@ -363,15 +333,10 @@ final class AdminController extends AbstractController
         ]);
     }
 
-    private function redirectToUserList(User $user): Response
-    {
-        return $this->redirectToRoute($this->getUserBackRoute($user));
-    }
-
     private function getUserBackRoute(User $user): string
     {
         return in_array(UserRole::COACH->value, $user->getRoles(), true)
-            ? 'admin_teachers'
-            : 'admin_students';
+            ? 'app_admin_teachers'
+            : 'app_admin_students';
     }
 }

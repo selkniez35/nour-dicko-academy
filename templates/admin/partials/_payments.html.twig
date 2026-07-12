@@ -37,7 +37,7 @@
                 <span>{{ payment.createdAt|date('d/m/Y') }}</span>
 
                 <span class="admin-actions">
-                    <a href="{{ path('admin_payment_show', {id: payment.id}) }}" class="admin-btn-sm">Voir</a>
+                    <a href="{{ path('app_admin_payment_show', {id: payment.id}) }}" class="admin-btn-sm">Voir</a>
                 </span>
             </div>
         {% else %}

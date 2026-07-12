@@ -3,7 +3,7 @@
     <div class="admin-section-head">
         <h2 class="db-section-title">Formations</h2>
 
-        <a href="{{ path('admin_plan_new') }}" class="admin-btn-primary">
+        <a href="{{ path('app_admin_plan_new') }}" class="admin-btn-primary">
             + Ajouter une formation
         </a>
     </div>
@@ -44,11 +44,11 @@
                 </div>
 
                 <div class="admin-actions">
-                    <a href="{{ path('admin_plan_edit', {id: plan.id}) }}" class="admin-btn-sm">Voir</a>
-                    <a href="{{ path('admin_plan_edit', {id: plan.id}) }}" class="admin-btn-sm">Modifier</a>
+                    <a href="{{ path('app_admin_plan_edit', {id: plan.id}) }}" class="admin-btn-sm">Voir</a>
+                    <a href="{{ path('app_admin_plan_edit', {id: plan.id}) }}" class="admin-btn-sm">Modifier</a>
 
                     <form method="post"
-                          action="{{ path('admin_plan_delete', {id: plan.id}) }}"
+                          action="{{ path('app_admin_plan_delete', {id: plan.id}) }}"
                           style="display:inline"
                           onsubmit="return confirm('Supprimer cette formation ?');">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete-plan-' ~ plan.id) }}">

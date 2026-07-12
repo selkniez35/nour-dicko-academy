@@ -36,10 +36,10 @@
 
                 <span class="admin-actions">
                     <a href="{{ path('app_admin_user_edit', {id: teacher.id}) }}" class="admin-btn-sm">Voir</a>
-                    <a href="{{ path('admin_user_edit', {id: teacher.id}) }}" class="admin-btn-sm">Modifier</a>
+                    <a href="{{ path('app_admin_user_edit', {id: teacher.id}) }}" class="admin-btn-sm">Modifier</a>
 
                     <form method="post"
-                          action="{{ path('admin_user_delete', {id: teacher.id}) }}"
+                          action="{{ path('app_admin_user_delete', {id: teacher.id}) }}"
                           style="display:inline"
                           onsubmit="return confirm('Supprimer cet enseignant ?');">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete-user-' ~ teacher.id) }}">
