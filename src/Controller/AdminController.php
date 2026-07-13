@@ -29,6 +29,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/admin', name: 'app_admin_')]
+#[IsGranted('ROLE_ADMIN')]
 final class AdminController extends AbstractController
 {
     #[Route('', name: 'dashboard')]
@@ -39,30 +40,17 @@ final class AdminController extends AbstractController
         MembershipPlanRepository $planRepository,
         AnnouncementRepository $announcementRepository
     ): Response {
-        $students = $userRepository->findStudents();
-        $teachers = $userRepository->findTeachers();
-        $plans = $planRepository->findAllOrdered();
-        $memberships = $membershipRepository->findLatest(20);
-        $payments = $paymentRepository->findLatest(20);
-        $announcements = $announcementRepository->findLatest(20);
-
         return $this->render('admin/dashboard.html.twig', [
             'stats' => [
-                'students' => count($students),
-                'teachers' => count($teachers),
+                'students' => $userRepository->countStudents(),
+                'teachers' => $userRepository->countTeachers(),
                 'registrations' => $membershipRepository->countPending(),
                 'revenue' => $paymentRepository->getTotalPaidAmount(),
             ],
-            'students' => $students,
-            'teachers' => $teachers,
-            'plans' => $plans,
-            'memberships' => $memberships,
-            'payments' => $payments,
-            'announcements' => $announcements,
-            'latestRegistrations' => array_slice($memberships, 0, 5),
-            'latestPayments' => array_slice($payments, 0, 5),
-            'latestPlans' => array_slice($plans, 0, 5),
-            'latestNews' => array_slice($announcements, 0, 5),
+            'latestRegistrations' => $membershipRepository->findLatest(5),
+            'latestPayments' => $paymentRepository->findLatest(5),
+            'latestPlans' => $planRepository->findLatest(5),
+            'latestNews' => $announcementRepository->findLatest(5),
         ]);
     }
 

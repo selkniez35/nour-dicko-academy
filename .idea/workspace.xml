@@ -7,8 +7,40 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="fix(SecurityController): Rename MailService variable for consistency">
+    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="feat: Add versioning files for application and OpenAPI specifications">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AdminUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AdminUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/MembershipAdminType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MembershipAdminType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/MembershipPlanType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MembershipPlanType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AnnouncementRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AnnouncementRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/MembershipPlanRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MembershipPlanRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/MembershipRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MembershipRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PaymentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PaymentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/partials/_news.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/_news.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/partials/_payments.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/_payments.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/partials/_registrations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/_registrations.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/partials/_students.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/_students.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/partials/_teachers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/_teachers.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/partials/_trainings.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/_trainings.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/partials/overview.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/overview.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/payment_show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/payment_show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/partials/_header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +57,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="410" />
+    <option name="cachedIndexableFilesCount" value="10672" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -249,7 +281,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/clock" />
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
-      <path value="$PROJECT_DIR$/vendor/twig/string-extra" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -290,6 +321,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "samyoussama",
     "git.auto.fetch.suggestion.counter": "1",
     "junie.onboarding.icon.badge.shown": "true",
     "junie.plugin.stays.banner.dismissed": "true",
@@ -344,14 +376,7 @@
       <workItem from="1783840332814" duration="4923000" />
       <workItem from="1783878395965" duration="7064000" />
       <workItem from="1783951298139" duration="3210000" />
-    </task>
-    <task id="LOCAL-00001" summary="Add payment and membership management system">
-      <option name="closed" value="true" />
-      <created>1782983662453</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1782983662453</updated>
+      <workItem from="1783970345153" duration="1561000" />
     </task>
     <task id="LOCAL-00002" summary="Remove `MembershipRepository` and update configuration files for Stripe and database setup adjustments.">
       <option name="closed" value="true" />
@@ -737,7 +762,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783965964936</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="feat: Add versioning files for application and OpenAPI specifications">
+      <option name="closed" value="true" />
+      <created>1783970412814</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1783970412815</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -782,7 +815,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add enum classes for document types, training session types, and user roles with labels and choices" />
     <MESSAGE value="Update entrypoints and manifest files with new build assets; add Doctrine DBAL Types import in UserProfile" />
     <MESSAGE value="Refactor membership plan structure: add features and descriptions, update templates for dynamic rendering" />
     <MESSAGE value="Refactor membership plans: implement dynamic rendering for courses and modals, enhance feature handling in MembershipFeature and MembershipPlan entities" />
@@ -807,6 +839,7 @@
     <MESSAGE value="feat(admin): Enhance dashboard data with detailed statistics and latest entries" />
     <MESSAGE value="fix(index): Remove launch popup and navbar HTML code" />
     <MESSAGE value="fix(SecurityController): Rename MailService variable for consistency" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(SecurityController): Rename MailService variable for consistency" />
+    <MESSAGE value="feat: Add versioning files for application and OpenAPI specifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add versioning files for application and OpenAPI specifications" />
   </component>
 </project>
