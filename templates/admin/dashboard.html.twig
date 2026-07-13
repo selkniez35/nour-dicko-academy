@@ -3,197 +3,650 @@
 {% block title %}Administration — Nour Dicko Academy{% endblock %}
 
 {% block body %}
-    <div class="dashboard">
+<div class="dashboard">
 
-        <aside class="db-sidebar db-sidebar-admin">
-
-            <div class="db-brand">
-                <img src="{{ asset('images/logo-nda.png') }}" alt="NDA">
-                <span class="db-admin-badge">Admin</span>
-            </div>
-
-            <nav class="db-nav">
-
-                <a href="#" class="db-nav-item active" data-section="overview">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="7" height="7"/>
-                        <rect x="14" y="3" width="7" height="7"/>
-                        <rect x="3" y="14" width="7" height="7"/>
-                        <rect x="14" y="14" width="7" height="7"/>
-                    </svg>
-                    Tableau de bord
-                </a>
-
-                <a href="#" class="db-nav-item" data-section="students">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-                    </svg>
-                    Élèves
-                </a>
-
-                <a href="#" class="db-nav-item" data-section="teachers">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                    </svg>
-                    Enseignants
-                </a>
-
-                <a href="#" class="db-nav-item" data-section="trainings">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                        <path d="M9 22V12h6v10"/>
-                    </svg>
-                    Classes
-                </a>
-
-                <a href="#" class="db-nav-item" data-section="registrations">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                        <path d="M14 2v6h6"/>
-                        <path d="M12 18v-6"/>
-                        <path d="M9 15h6"/>
-                    </svg>
-                    Inscriptions
-                </a>
-
-                <a href="#" class="db-nav-item" data-section="payments">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="1" y="4" width="22" height="16" rx="2"/>
-                        <path d="M1 10h22"/>
-                    </svg>
-                    Paiements
-                </a>
-
-                <a href="#" class="db-nav-item" data-section="news">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/>
-                        <path d="M18 14h-8"/>
-                        <path d="M15 18h-5"/>
-                        <path d="M10 6h8v4h-8z"/>
-                    </svg>
-                    Actualités
-                </a>
-
-            </nav>
-
-            <a href="{{ path('app_logout') }}" class="db-logout">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
-                    <path d="M16 17l5-5-5-5"/>
-                    <path d="M21 12H9"/>
-                </svg>
-
-                Déconnexion
-            </a>
-
-        </aside>
-
-        <main class="db-main">
-
-            <div class="db-header">
-
-                <div>
-                    <h1 class="db-welcome">
-                        Administration
-                        <span>Nour Dicko Academy</span>
-                    </h1>
-
-                    <p class="db-sub">
-                        Gestion de l'école
-                    </p>
-                </div>
-
-                <div class="db-avatar-wrap">
-
-                    <div class="db-avatar db-avatar-admin"
-                         onclick="toggleAvatarMenu()">
-
-                        {{ app.user.profile.fullName|first|upper }}
-
-                    </div>
-
-                    <div class="db-avatar-menu" id="avatar-menu">
-
-                        <a href="{{ path('app_logout') }}"
-                           class="db-avatar-logout">
-
-                            Déconnexion
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            {% include 'admin/partials/overview.html.twig' %}
-
-            {% include 'admin/partials/_students.html.twig' %}
-
-            {% include 'admin/partials/_teachers.html.twig' %}
-
-            {% include 'admin/partials/_trainings.html.twig' %}
-
-            {% include 'admin/partials/_registrations.html.twig' %}
-
-            {% include 'admin/partials/_payments.html.twig' %}
-
-            {% include 'admin/partials/_news.html.twig' %}
-
-        </main>
-
+  <!-- Sidebar -->
+  <aside class="db-sidebar db-sidebar-admin">
+    <div class="db-brand">
+      <img src="{{ asset('images/logo-nda.png') }}" alt="NDA">
+      <span class="db-admin-badge">Admin</span>
     </div>
+    <nav class="db-nav">
+      <a href="#" class="db-nav-item active" data-section="overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Tableau de bord
+      </a>
+      <a href="#" class="db-nav-item" data-section="eleves">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Élèves
+      </a>
+      <a href="#" class="db-nav-item" data-section="enseignants">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Enseignants
+      </a>
+      <a href="#" class="db-nav-item" data-section="classes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Classes
+      </a>
+      <a href="#" class="db-nav-item" data-section="inscriptions">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>
+        Inscriptions
+      </a>
+      <a href="#" class="db-nav-item" data-section="paiements">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+        Paiements
+      </a>
+      <a href="#" class="db-nav-item" data-section="actualites">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
+        Actualités
+      </a>
+    </nav>
+    <a href="/" class="db-logout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+      Déconnexion
+    </a>
+  </aside>
+
+  <!-- Contenu principal -->
+  <main class="db-main">
+
+    <!-- Header -->
+    <div class="db-header">
+      <div>
+        <h1 class="db-welcome">Administration <span>NDA</span></h1>
+        <p class="db-sub">Gestion complète de Nour Dicko Academy</p>
+      </div>
+      <div class="db-avatar-wrap">
+        <div class="db-avatar db-avatar-admin" onclick="toggleAvatarMenu()">A</div>
+        <div class="db-avatar-menu" id="avatar-menu">
+          <a href="/" class="db-avatar-logout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+            Déconnexion
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section : Tableau de bord -->
+    <section class="db-section active" id="section-overview">
+      <h2 class="db-section-title">Vue d'ensemble</h2>
+
+      <!-- Stats -->
+      <div class="admin-stats">
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon" style="background:rgba(201,146,42,.12);color:var(--gold)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <div class="admin-stat-val">56</div>
+            <div class="admin-stat-label">Élèves inscrits</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon" style="background:rgba(26,42,74,.1);color:#1a2a4a">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>
+          </div>
+          <div>
+            <div class="admin-stat-val">7</div>
+            <div class="admin-stat-label">Enseignants</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon" style="background:rgba(34,197,94,.1);color:#16a34a">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+          </div>
+          <div>
+            <div class="admin-stat-val">20 160 €</div>
+            <div class="admin-stat-label">Revenus annuels</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon" style="background:rgba(239,68,68,.1);color:#dc2626">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>
+          </div>
+          <div>
+            <div class="admin-stat-val">3</div>
+            <div class="admin-stat-label">Nouvelles inscriptions</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dernières inscriptions -->
+      <h3 class="db-subsection-title">Dernières inscriptions</h3>
+      <div class="admin-table">
+        <div class="admin-table-header">
+          <span>Nom</span>
+          <span>Cours</span>
+          <span>Date</span>
+          <span>Statut</span>
+          <span>Action</span>
+        </div>
+        <div class="admin-table-row">
+          <span class="db-eleve-name"><div class="db-eleve-avatar">A</div>Ahmed Martin</span>
+          <span>Langue arabe</span>
+          <span>08/07/2026</span>
+          <span class="db-eleve-badge db-badge-actif">Confirmé</span>
+<span><button class="admin-btn-sm" onclick="openFiche('ahmed', 'confirme')">Voir</button></span>
+          </div>
+        <div class="admin-table-row">
+          <span class="db-eleve-name"><div class="db-eleve-avatar">S</div>Sarah Dupont</span>
+          <span>Éducation islamique</span>
+          <span>07/07/2026</span>
+          <span class="db-eleve-badge db-badge-pending">En attente</span>
+<span><button class="admin-btn-sm" onclick="openFiche('sarah', 'en_attente')">Voir</button></span>
+        </div>
+        <div class="admin-table-row">
+          <span class="db-eleve-name"><div class="db-eleve-avatar">M</div>Mohamed Ali</span>
+          <span>Pack complet</span>
+          <span>06/07/2026</span>
+          <span class="db-eleve-badge db-badge-actif">Confirmé</span>
+<span><button class="admin-btn-sm" onclick="openFiche('ahmed', 'confirme')">Voir</button></span>
+      </div>
+    </section>
+
+    <!-- Section : Élèves -->
+    <section class="db-section" id="section-eleves">
+      <div class="admin-section-head">
+        <h2 class="db-section-title">Élèves</h2>
+
+      </div>
+      <div class="admin-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" placeholder="Rechercher un élève...">
+      </div>
+      <div class="admin-table">
+        <div class="admin-table-header">
+          <span>Nom</span>
+          <span>Email</span>
+          <span>Cours</span>
+          <span>Paiement</span>
+          <span>Statut</span>
+          <span>Actions</span>
+        </div>
+        <div class="admin-table-row">
+          <span class="db-eleve-name"><div class="db-eleve-avatar">A</div>Ahmed Martin</span>
+          <span>ahmed@email.com</span>
+          <span>Langue arabe</span>
+          <span class="db-badge-actif">À jour</span>
+          <span class="db-eleve-badge db-badge-actif">Actif</span>
+          <span class="admin-actions">
+            <button class="admin-btn-sm">Modifier</button>
+            <button class="admin-btn-sm admin-btn-danger">Supprimer</button>
+          </span>
+        </div>
+        <div class="admin-table-row">
+          <span class="db-eleve-name"><div class="db-eleve-avatar">S</div>Sarah Dupont</span>
+          <span>sarah@email.com</span>
+          <span>Éducation islamique</span>
+          <span class="db-badge-pending">En retard</span>
+          <span class="db-eleve-badge db-badge-actif">Actif</span>
+          <span class="admin-actions">
+            <button class="admin-btn-sm">Modifier</button>
+            <button class="admin-btn-sm admin-btn-danger">Supprimer</button>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section : Enseignants -->
+    <section class="db-section" id="section-enseignants">
+      <div class="admin-section-head">
+        <h2 class="db-section-title">Enseignants</h2>
+        <button class="admin-btn-primary" onclick="openModal('modal-add-enseignant')">+ Ajouter un enseignant</button>
+      </div>
+      <div class="admin-table">
+        <div class="admin-table-header">
+          <span>Nom</span>
+          <span>Email</span>
+          <span>Classe(s)</span>
+          <span>Statut</span>
+          <span>Actions</span>
+        </div>
+        <div class="admin-table-row">
+          <span class="db-eleve-name"><div class="db-eleve-avatar">Y</div>Youssef Ben Ali</span>
+          <span>youssef@nda.com</span>
+          <span>Langue arabe A · B</span>
+          <span class="db-eleve-badge db-badge-actif">Actif</span>
+          <span class="admin-actions">
+            <button class="admin-btn-sm">Modifier</button>
+            <button class="admin-btn-sm admin-btn-danger">Supprimer</button>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section : Classes -->
+    <section class="db-section" id="section-classes">
+      <div class="admin-section-head">
+        <h2 class="db-section-title">Classes</h2>
+        <button class="admin-btn-primary">+ Créer une classe</button>
+      </div>
+      <div class="db-cours-grid">
+        <div class="db-cours-card">
+          <div class="db-cours-icon"><span class="glyph" lang="ar">ض</span></div>
+          <div class="db-cours-info">
+            <h3>Langue arabe — Classe A</h3>
+            <span class="db-cours-badge">Lundi · 19h00 · 8/8 élèves</span>
+          </div>
+          <div class="admin-actions">
+            <button class="admin-btn-sm">Gérer</button>
+          </div>
+        </div>
+        <div class="db-cours-card">
+          <div class="db-cours-icon ic-gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0C0C0C" stroke-width="1.8"><path d="M12 2c0 3-3.5 4-3.5 7a3.5 3.5 0 007 0C15.5 6 12 5 12 2z"/><path d="M4 21v-7h16v7M4 21h16M9 21v-4a3 3 0 016 0v4"/></svg>
+          </div>
+          <div class="db-cours-info">
+            <h3>Éducation islamique</h3>
+            <span class="db-cours-badge">Mercredi · 19h00 · 12/100 élèves</span>
+          </div>
+          <div class="admin-actions">
+            <button class="admin-btn-sm">Gérer</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section : Inscriptions -->
+    <section class="db-section" id="section-inscriptions">
+      <h2 class="db-section-title">Demandes d'inscription</h2>
+      <div class="admin-table">
+        <div class="admin-table-header">
+          <span>Nom</span>
+          <span>Cours souhaité</span>
+          <span>Date</span>
+          <span>Statut</span>
+          <span>Actions</span>
+        </div>
+        <div class="admin-table-row">
+          <span class="db-eleve-name"><div class="db-eleve-avatar">F</div>Fatima Ndiaye</span>
+          <span>Lecture du Coran</span>
+          <span>09/07/2026</span>
+          <span class="db-eleve-badge db-badge-pending">En attente</span>
+          <span class="admin-actions">
+            <button class="admin-btn-sm admin-btn-success">Accepter</button>
+            <button class="admin-btn-sm admin-btn-danger">Refuser</button>
+          </span>
+        </div>
+        <div class="admin-table-row">
+          <span class="db-eleve-name"><div class="db-eleve-avatar">K</div>Karim Leblanc</span>
+          <span>Pack complet</span>
+          <span>08/07/2026</span>
+          <span class="db-eleve-badge db-badge-pending">En attente</span>
+          <span class="admin-actions">
+            <button class="admin-btn-sm admin-btn-success">Accepter</button>
+            <button class="admin-btn-sm admin-btn-danger">Refuser</button>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section : Paiements -->
+    <section class="db-section" id="section-paiements">
+      <h2 class="db-section-title">Paiements</h2>
+      <div class="admin-stats" style="margin-bottom:28px">
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon" style="background:rgba(34,197,94,.1);color:#16a34a">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <div>
+            <div class="admin-stat-val">16 800 €</div>
+            <div class="admin-stat-label">Reçus</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon" style="background:rgba(239,68,68,.1);color:#dc2626">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          </div>
+          <div>
+            <div class="admin-stat-val">3 360 €</div>
+            <div class="admin-stat-label">En attente</div>
+          </div>
+        </div>
+      </div>
+      <div class="admin-table">
+        <div class="admin-table-header">
+          <span>Élève</span>
+          <span>Montant</span>
+          <span>Date</span>
+          <span>Mode</span>
+          <span>Statut</span>
+        </div>
+        <div class="admin-table-row">
+          <span class="db-eleve-name"><div class="db-eleve-avatar">A</div>Ahmed Martin</span>
+          <span>250 €</span>
+          <span>01/09/2025</span>
+          <span>Virement</span>
+          <span class="db-eleve-badge db-badge-actif">Payé</span>
+        </div>
+        <div class="admin-table-row">
+          <span class="db-eleve-name"><div class="db-eleve-avatar">S</div>Sarah Dupont</span>
+          <span>200 €</span>
+          <span>01/09/2025</span>
+          <span>Espèces</span>
+          <span class="db-eleve-badge db-badge-pending">En retard</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section : Actualités -->
+    <section class="db-section" id="section-actualites">
+      <div class="admin-section-head">
+        <h2 class="db-section-title">Actualités</h2>
+        <button class="admin-btn-primary">+ Nouvelle actualité</button>
+      </div>
+      <div class="db-resources">
+        <div class="db-resource-item">
+          <div class="db-resource-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+          </div>
+          <div class="db-resource-info">
+            <span class="db-resource-name">Lancement de notre site</span>
+            <span class="db-resource-date">Publié le 06/07/2026</span>
+          </div>
+          <div class="admin-actions">
+            <button class="admin-btn-sm">Modifier</button>
+            <button class="admin-btn-sm admin-btn-danger">Supprimer</button>
+          </div>
+        </div>
+        <div class="db-resource-item">
+          <div class="db-resource-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          </div>
+          <div class="db-resource-info">
+            <span class="db-resource-name">Organisation d'une Omra</span>
+            <span class="db-resource-date">Publié le 06/07/2026</span>
+          </div>
+          <div class="admin-actions">
+            <button class="admin-btn-sm">Modifier</button>
+            <button class="admin-btn-sm admin-btn-danger">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<!-- ══ MODAL FICHE ÉLÈVE ══ -->
+<div class="modal-overlay" id="modal-fiche-ahmed" style="display:none;align-items:center;justify-content:center;">
+  <div class="modal-box" style="max-width:620px;padding:0;overflow:hidden;">
+    <button class="modal-close" onclick="closeFiche('ahmed')" style="position:absolute;top:14px;right:14px;z-index:10;">×</button>
+
+    <!-- En-tête -->
+    <div style="background:#0C0C0C;padding:28px 32px;display:flex;align-items:center;gap:18px;">
+      <div class="db-avatar" style="width:56px;height:56px;font-size:22px;flex-shrink:0;">A</div>
+      <div>
+        <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;margin:0;">Ahmed Martin</h3>
+        <span style="font-size:13px;color:var(--gold);">Demande du 08/07/2026</span>
+      </div>
+      <span style="margin-left:auto;background:rgba(34,197,94,.15);color:#16a34a;font-size:12px;font-weight:700;padding:6px 14px;border-radius:999px;">Confirmé</span>
+    </div>
+
+    <div style="padding:28px 32px;">
+
+      <!-- Infos personnelles -->
+      <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Informations personnelles</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Nom complet</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Ahmed Martin</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Date de naissance</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">15/03/1990</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Email</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">ahmed@email.com</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Téléphone</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">06 12 34 56 78</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Sexe</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Homme</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Niveau</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Je lis avec quelques difficultés</div>
+        </div>
+      </div>
+
+      <!-- Infos inscription -->
+      <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Inscription</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;">
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Cours souhaité</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Langue arabe</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Formule</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">1 cours — 250 €/an</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Mode de paiement</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">En 1 fois</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Moyen de paiement</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Virement bancaire</div>
+        </div>
+      </div>
+
+      <div class="actions-en-attente" style="display:flex;gap:12px;flex-wrap:wrap;padding-bottom:28px;">
+  <button class="admin-btn-success" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:none;cursor:pointer;background:rgba(34,197,94,.12);color:#16a34a;">
+    ✅ Accepter la demande
+  </button>
+  <button class="admin-btn-danger" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:none;cursor:pointer;background:rgba(220,38,38,.08);color:#dc2626;">
+    ❌ Refuser la demande
+  </button>
+</div>
+<div class="actions-confirme" style="display:none;padding-bottom:28px;">
+  <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.1);color:#16a34a;font-size:14px;font-weight:600;padding:12px 20px;border-radius:999px;">
+    ✅ Inscription confirmée — aucune action requise
+  </span>
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL FICHE SARAH ══ -->
+<div class="modal-overlay" id="modal-fiche-sarah" style="display:none;align-items:center;justify-content:center;">
+  <div class="modal-box" style="max-width:620px;padding:0;max-height:90vh;overflow-y:auto;">
+    <button class="modal-close" onclick="closeFiche('sarah')">×</button>
+    <div style="background:#0C0C0C;padding:28px 32px;display:flex;align-items:center;gap:18px;">
+      <div class="db-avatar" style="width:56px;height:56px;font-size:22px;flex-shrink:0;">S</div>
+      <div>
+        <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;margin:0;">Sarah Dupont</h3>
+        <span style="font-size:13px;color:var(--gold);">Demande du 07/07/2026</span>
+      </div>
+      <span style="margin-left:auto;background:rgba(234,179,8,.15);color:#a16207;font-size:12px;font-weight:700;padding:6px 14px;border-radius:999px;">En attente</span>
+    </div>
+    <div style="padding:28px 32px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Informations personnelles</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Nom complet</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Sarah Dupont</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Date de naissance</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">22/06/1995</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Email</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">sarah@email.com</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Téléphone</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">06 98 76 54 32</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Sexe</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Femme</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Niveau</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Je ne sais pas lire l'arabe</div>
+        </div>
+      </div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Inscription</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;">
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Cours souhaité</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Éducation islamique</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Formule</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">1 cours — 200 €/an</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Mode de paiement</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">En 2 fois</div>
+        </div>
+        <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:#888;margin-bottom:4px;">Moyen de paiement</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Virement bancaire</div>
+        </div>
+      </div>
+      <div class="actions-en-attente" style="display:flex;gap:12px;flex-wrap:wrap;padding-bottom:28px;">
+        <button class="admin-btn-success" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:none;cursor:pointer;background:rgba(34,197,94,.12);color:#16a34a;">
+          ✅ Accepter la demande
+        </button>
+        <button class="admin-btn-danger" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:none;cursor:pointer;background:rgba(220,38,38,.08);color:#dc2626;">
+          ❌ Refuser la demande
+        </button>
+      </div>
+      <div class="actions-confirme" style="display:none;padding-bottom:28px;">
+        <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.1);color:#16a34a;font-size:14px;font-weight:600;padding:12px 20px;border-radius:999px;">
+          ✅ Inscription confirmée — aucune action requise
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL AJOUTER ENSEIGNANT ══ -->
+<div class="modal-overlay" id="modal-add-enseignant">
+  <div class="modal-box" style="max-width:580px;max-height:90vh;overflow-y:auto;">
+    <button class="modal-close" onclick="closeModal('modal-add-enseignant')">×</button>
+
+    <div style="text-align:center;margin-bottom:28px;">
+      <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--ink);margin:0 0 6px;">Ajouter un enseignant</h3>
+      <p style="font-size:14px;color:var(--ink);opacity:.6;margin:0;">Créer un nouveau compte enseignant</p>
+    </div>
+
+    <!-- Infos personnelles -->
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Informations personnelles</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Nom <span style="color:var(--gold);">*</span></label>
+        <input type="text" placeholder="Nom" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Prénom <span style="color:var(--gold);">*</span></label>
+        <input type="text" placeholder="Prénom" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Email <span style="color:var(--gold);">*</span></label>
+        <input type="email" placeholder="email@exemple.com" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Téléphone</label>
+        <input type="tel" placeholder="06 00 00 00 00" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+    </div>
+
+    <!-- Infos professionnelles -->
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Informations professionnelles</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Cours enseigné <span style="color:var(--gold);">*</span></label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option value="" disabled selected>Choisir...</option>
+          <option value="arabe">Langue arabe</option>
+          <option value="education">Éducation islamique</option>
+          <option value="coran">Lecture du Coran</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Classe(s) assignée(s)</label>
+        <input type="text" placeholder="Ex : Classe A, Classe B" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+    </div>
+
+    <!-- Accès -->
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Accès</div>
+    <div style="margin-bottom:28px;">
+      <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Mot de passe temporaire <span style="color:var(--gold);">*</span></label>
+      <input type="text" placeholder="Mot de passe temporaire" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      <p style="font-size:12px;color:var(--ink);opacity:.5;margin:6px 0 0;">L'enseignant devra changer ce mot de passe à sa première connexion.</p>
+    </div>
+
+    <!-- Boutons -->
+    <div style="display:flex;gap:12px;justify-content:flex-end;">
+      <button onclick="closeModal('modal-add-enseignant')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Annuler
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+        Créer le compte
+      </button>
+    </div>
+
+  </div>
+</div>
+
+  </main>
+</div>
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
+{{ parent() }}
+{% verbatim %}
+<script>
+document.querySelectorAll('.db-nav-item').forEach(function(item){
+  item.addEventListener('click', function(e){
+    e.preventDefault();
+    const section = this.dataset.section;
+    document.querySelectorAll('.db-nav-item').forEach(i => i.classList.remove('active'));
+    document.querySelectorAll('.db-section').forEach(s => s.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('section-' + section).classList.add('active');
+  });
+});
+window.toggleAvatarMenu = function(){
+  const menu = document.getElementById('avatar-menu');
+  menu.classList.toggle('open');
+};
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.db-avatar-wrap')){
+    const menu = document.getElementById('avatar-menu');
+    if(menu) menu.classList.remove('open');
+  }
+});
+window.closeFiche = function(id){
+  const modal = document.getElementById('modal-fiche-' + id);
+  if(modal){ modal.style.display = 'none'; document.body.style.overflow = ''; }
+};
 
-    <script>
+window.openFiche = function(id, statut){
+  const modal = document.getElementById('modal-fiche-' + id);
+  if(modal){
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    const actionsEnAttente = modal.querySelector('.actions-en-attente');
+    const actionsConfirme = modal.querySelector('.actions-confirme');
+    if(statut === 'en_attente'){
+      if(actionsEnAttente) actionsEnAttente.style.display = 'flex';
+      if(actionsConfirme) actionsConfirme.style.display = 'none';
+    } else {
+      if(actionsEnAttente) actionsEnAttente.style.display = 'none';
+      if(actionsConfirme) actionsConfirme.style.display = 'flex';
+    }
+  }
+};
 
-        document.querySelectorAll('.db-nav-item').forEach(item => {
-
-            item.addEventListener('click', e => {
-
-                e.preventDefault();
-
-                document.querySelectorAll('.db-nav-item')
-                    .forEach(i => i.classList.remove('active'));
-
-                document.querySelectorAll('.db-section')
-                    .forEach(s => s.classList.remove('active'));
-
-                item.classList.add('active');
-
-                document
-                    .getElementById('section-' + item.dataset.section)
-                    .classList.add('active');
-
-            });
-
-        });
-
-        function toggleAvatarMenu() {
-            document
-                .getElementById('avatar-menu')
-                .classList.toggle('open');
-        }
-
-        document.addEventListener('click', function (e) {
-
-            if (!e.target.closest('.db-avatar-wrap')) {
-
-                document
-                    .getElementById('avatar-menu')
-                    .classList.remove('open');
-
-            }
-
-        });
-
-    </script>
-
+</script>
+{% endverbatim %}
 {% endblock %}
+
