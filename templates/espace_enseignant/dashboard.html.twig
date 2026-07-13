@@ -7,6 +7,16 @@
 {% block body %}
 <div class="dashboard">
 
+<div class="welcome-toast" id="welcome-toast">
+  <div class="welcome-toast-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+  </div>
+  <div class="welcome-toast-body">
+    <div class="welcome-toast-title">Bienvenue, Enseignant 👋</div>
+    <div class="welcome-toast-sub">Vous êtes connecté à votre espace enseignant</div>
+  </div>
+</div>
+
   <!-- Sidebar -->
   <aside class="db-sidebar">
     <div class="db-brand">
@@ -87,42 +97,33 @@
 
       <!-- Liste des élèves -->
       <h3 class="db-subsection-title">Mes élèves</h3>
-      <div class="db-eleves-table">
-        <div class="db-eleves-header">
-          <span>Nom</span>
-          <span>Email</span>
-          <span>Dernière séance</span>
-          <span>Statut</span>
-        </div>
-        <div class="db-eleve-row">
-          <span class="db-eleve-name">
-            <div class="db-eleve-avatar">A</div>
-            Ahmed Martin
-          </span>
-          <span>ahmed@email.com</span>
-          <span>07/07/2026</span>
-          <span class="db-eleve-badge db-badge-actif">Actif</span>
-        </div>
-        <div class="db-eleve-row">
-          <span class="db-eleve-name">
-            <div class="db-eleve-avatar">S</div>
-            Sarah Dupont
-          </span>
-          <span>sarah@email.com</span>
-          <span>07/07/2026</span>
-          <span class="db-eleve-badge db-badge-actif">Actif</span>
-        </div>
-        <div class="db-eleve-row">
-          <span class="db-eleve-name">
-            <div class="db-eleve-avatar">M</div>
-            Mohamed Ali
-          </span>
-          <span>mohamed@email.com</span>
-          <span>30/06/2026</span>
-          <span class="db-eleve-badge db-badge-absent">Absent</span>
-        </div>
-      </div>
-    </section>
+<div class="admin-table">
+  <div class="admin-table-header" style="grid-template-columns:2fr 2fr 1.5fr 1.2fr;">
+    <span>Nom</span>
+    <span>Email</span>
+    <span>Dernière séance</span>
+    <span>Statut</span>
+  </div>
+  <div class="admin-table-row" style="grid-template-columns:2fr 2fr 1.5fr 1.2fr;">
+    <span class="db-eleve-name"><div class="db-eleve-avatar">A</div>Ahmed Martin</span>
+    <span>ahmed@email.com</span>
+    <span>07/07/2026</span>
+    <span class="db-eleve-badge db-badge-actif">Actif</span>
+  </div>
+  <div class="admin-table-row" style="grid-template-columns:2fr 2fr 1.5fr 1.2fr;">
+    <span class="db-eleve-name"><div class="db-eleve-avatar">S</div>Sarah Dupont</span>
+    <span>sarah@email.com</span>
+    <span>07/07/2026</span>
+    <span class="db-eleve-badge db-badge-actif">Actif</span>
+  </div>
+  <div class="admin-table-row" style="grid-template-columns:2fr 2fr 1.5fr 1.2fr;">
+    <span class="db-eleve-name"><div class="db-eleve-avatar">M</div>Mohamed Ali</span>
+    <span>mohamed@email.com</span>
+    <span>30/06/2026</span>
+    <span class="db-eleve-badge db-badge-absent" style="background:rgba(239,68,68,.1);color:#dc2626;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px;display:inline-block;">Absent</span>
+  </div>
+</div>
+</section>
 
     <!-- Section : Supports -->
     <section class="db-section" id="section-supports">
@@ -131,7 +132,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
         <span>Déposer un fichier ici</span>
         <small>PDF, Word, PowerPoint acceptés</small>
-        <button class="db-upload-btn">Choisir un fichier</button>
+        <label class="db-upload-btn" style="cursor:pointer;">
+  Choisir un fichier
+  <input type="file" accept=".pdf,.doc,.docx,.ppt,.pptx" style="display:none;" onchange="this.parentElement.textContent = this.files[0] ? this.files[0].name : 'Choisir un fichier'">
+</label>
       </div>
       <div class="db-resources">
         <div class="db-resource-item">
@@ -143,7 +147,7 @@
             <span class="db-resource-date">Ajouté le 01/07/2026 · Partagé avec Classe A</span>
           </div>
           <div class="db-resource-actions">
-            <button class="db-resource-share">Partager</button>
+            <button class="db-resource-share" onclick="openModal('modal-partager-support')">Partager</button>
             <a href="#" class="db-resource-dl">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
             </a>
@@ -159,7 +163,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
         <span>Déposer un enregistrement</span>
         <small>MP4, MOV acceptés</small>
-        <button class="db-upload-btn">Choisir un fichier</button>
+        <label class="db-upload-btn" style="cursor:pointer;">
+  Choisir un fichier
+  <input type="file" accept=".mp4,.mov,.avi" style="display:none;" onchange="this.parentElement.textContent = this.files[0] ? this.files[0].name : 'Choisir un fichier'">
+</label>
       </div>
       <div class="db-resources">
         <div class="db-resource-item db-resource-video">
@@ -171,7 +178,7 @@
             <span class="db-resource-date">Durée : 58 min · Classe A</span>
           </div>
           <div class="db-resource-actions">
-            <button class="db-resource-share">Partager</button>
+            <button class="db-resource-share" onclick="openModal('modal-partager-enregistrement')">Partager</button>
             <a href="#" class="db-resource-dl">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
             </a>
@@ -265,6 +272,90 @@
         <button class="db-profil-edit">Modifier mon profil</button>
       </div>
     </section>
+
+<!-- ══ MODAL PARTAGER SUPPORT ══ -->
+<div class="modal-overlay" id="modal-partager-support">
+  <div class="modal-box" style="max-width:460px;">
+    <button class="modal-close" onclick="closeModal('modal-partager-support')">×</button>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 6px;">Partager le support</h3>
+    <p style="font-size:14px;color:var(--ink);opacity:.6;margin:0 0 24px;">Choisir les classes qui recevront ce support</p>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+      <label style="display:flex;align-items:center;gap:12px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:10px;padding:14px 16px;cursor:pointer;">
+        <input type="checkbox" style="width:18px;height:18px;accent-color:var(--gold);">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Langue arabe — Classe A</div>
+          <div style="font-size:12px;color:var(--ink);opacity:.5;">8 élèves · Lundi 19h00</div>
+        </div>
+      </label>
+      <label style="display:flex;align-items:center;gap:12px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:10px;padding:14px 16px;cursor:pointer;">
+        <input type="checkbox" style="width:18px;height:18px;accent-color:var(--gold);">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Langue arabe — Classe B</div>
+          <div style="font-size:12px;color:var(--ink);opacity:.5;">6 élèves · Mardi 19h00</div>
+        </div>
+      </label>
+      <label style="display:flex;align-items:center;gap:12px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:10px;padding:14px 16px;cursor:pointer;">
+        <input type="checkbox" style="width:18px;height:18px;accent-color:var(--gold);">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Éducation islamique</div>
+          <div style="font-size:12px;color:var(--ink);opacity:.5;">12 élèves · Mercredi 19h00</div>
+        </div>
+      </label>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:flex-end;">
+      <button onclick="closeModal('modal-partager-support')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Annuler
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+        Partager
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL PARTAGER ENREGISTREMENT ══ -->
+<div class="modal-overlay" id="modal-partager-enregistrement">
+  <div class="modal-box" style="max-width:460px;">
+    <button class="modal-close" onclick="closeModal('modal-partager-enregistrement')">×</button>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 6px;">Partager l'enregistrement</h3>
+    <p style="font-size:14px;color:var(--ink);opacity:.6;margin:0 0 24px;">Choisir les classes qui recevront cet enregistrement</p>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+      <label style="display:flex;align-items:center;gap:12px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:10px;padding:14px 16px;cursor:pointer;">
+        <input type="checkbox" style="width:18px;height:18px;accent-color:var(--gold);">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Langue arabe — Classe A</div>
+          <div style="font-size:12px;color:var(--ink);opacity:.5;">8 élèves · Lundi 19h00</div>
+        </div>
+      </label>
+      <label style="display:flex;align-items:center;gap:12px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:10px;padding:14px 16px;cursor:pointer;">
+        <input type="checkbox" style="width:18px;height:18px;accent-color:var(--gold);">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Langue arabe — Classe B</div>
+          <div style="font-size:12px;color:var(--ink);opacity:.5;">6 élèves · Mardi 19h00</div>
+        </div>
+      </label>
+      <label style="display:flex;align-items:center;gap:12px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:10px;padding:14px 16px;cursor:pointer;">
+        <input type="checkbox" style="width:18px;height:18px;accent-color:var(--gold);">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Éducation islamique</div>
+          <div style="font-size:12px;color:var(--ink);opacity:.5;">12 élèves · Mercredi 19h00</div>
+        </div>
+      </label>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:flex-end;">
+      <button onclick="closeModal('modal-partager-enregistrement')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Annuler
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+        Partager
+      </button>
+    </div>
+  </div>
+</div>
 
   </main>
 </div>
