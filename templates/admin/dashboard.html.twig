@@ -170,8 +170,8 @@
           <span class="db-badge-actif">À jour</span>
           <span class="db-eleve-badge db-badge-actif">Actif</span>
           <span class="admin-actions">
-            <button class="admin-btn-sm">Modifier</button>
-            <button class="admin-btn-sm admin-btn-danger">Supprimer</button>
+            <button class="admin-btn-sm" onclick="openModal('modal-edit-ahmed')">Modifier</button>
+            <button class="admin-btn-sm admin-btn-danger" onclick="openModal('modal-delete-ahmed')">Supprimer</button>
           </span>
         </div>
         <div class="admin-table-row">
@@ -181,8 +181,8 @@
           <span class="db-badge-pending">En retard</span>
           <span class="db-eleve-badge db-badge-actif">Actif</span>
           <span class="admin-actions">
-            <button class="admin-btn-sm">Modifier</button>
-            <button class="admin-btn-sm admin-btn-danger">Supprimer</button>
+            <button class="admin-btn-sm" onclick="openModal('modal-edit-sarah')">Modifier</button>>
+            <button class="admin-btn-sm admin-btn-danger" onclick="openModal('modal-delete-sarah')">Supprimer</button>
           </span>
         </div>
       </div>
@@ -219,7 +219,7 @@
     <section class="db-section" id="section-classes">
       <div class="admin-section-head">
         <h2 class="db-section-title">Classes</h2>
-        <button class="admin-btn-primary">+ Créer une classe</button>
+        <button class="admin-btn-primary" onclick="openModal('modal-add-classe')">+ Créer une classe</button>
       </div>
       <div class="db-cours-grid">
         <div class="db-cours-card">
@@ -229,7 +229,7 @@
             <span class="db-cours-badge">Lundi · 19h00 · 8/8 élèves</span>
           </div>
           <div class="admin-actions">
-            <button class="admin-btn-sm">Gérer</button>
+            <button class="admin-btn-sm" onclick="openModal('modal-gerer-arabe')">Gérer</button>
           </div>
         </div>
         <div class="db-cours-card">
@@ -241,7 +241,7 @@
             <span class="db-cours-badge">Mercredi · 19h00 · 12/100 élèves</span>
           </div>
           <div class="admin-actions">
-            <button class="admin-btn-sm">Gérer</button>
+            <button class="admin-btn-sm" onclick="openModal('modal-gerer-education')">Gérer</button>
           </div>
         </div>
       </div>
@@ -596,6 +596,524 @@
   </div>
 </div>
 
+<!-- ══ MODAL MODIFIER AHMED ══ -->
+<div class="modal-overlay" id="modal-edit-ahmed">
+  <div class="modal-box" style="max-width:620px;max-height:90vh;overflow-y:auto;">
+    <button class="modal-close" onclick="closeModal('modal-edit-ahmed')">×</button>
+    <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--ink);margin:0 0 6px;">Modifier — Ahmed Martin</h3>
+    <p style="font-size:14px;color:var(--ink);opacity:.6;margin:0 0 28px;">Modifier les informations de l'élève</p>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Informations personnelles</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Nom</label>
+        <input type="text" value="Martin" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Prénom</label>
+        <input type="text" value="Ahmed" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Email</label>
+        <input type="email" value="ahmed@email.com" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Téléphone</label>
+        <input type="tel" value="06 12 34 56 78" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Date de naissance</label>
+        <input type="text" value="15/03/1990" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Sexe</label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option selected>Homme</option>
+          <option>Femme</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Inscription</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Cours suivi</label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option selected>Langue arabe</option>
+          <option>Éducation islamique</option>
+          <option>Lecture du Coran</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Formule</label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option selected>1 cours — 250 €/an</option>
+          <option>1 cours — 200 €/an</option>
+          <option>Pack 2 cours — 350 €/an</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Mode de paiement</label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option selected>En 1 fois</option>
+          <option>En 2 fois</option>
+          <option>En 4 fois</option>
+          <option>En 10 fois</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Statut</label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option selected>Actif</option>
+          <option>Inactif</option>
+          <option>Suspendu</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:flex-end;">
+      <button onclick="closeModal('modal-edit-ahmed')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Annuler
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+        Sauvegarder
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL MODIFIER SARAH ══ -->
+<div class="modal-overlay" id="modal-edit-sarah">
+  <div class="modal-box" style="max-width:620px;max-height:90vh;overflow-y:auto;">
+    <button class="modal-close" onclick="closeModal('modal-edit-sarah')">×</button>
+    <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--ink);margin:0 0 6px;">Modifier — Sarah Dupont</h3>
+    <p style="font-size:14px;color:var(--ink);opacity:.6;margin:0 0 28px;">Modifier les informations de l'élève</p>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Informations personnelles</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Nom</label>
+        <input type="text" value="Dupont" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Prénom</label>
+        <input type="text" value="Sarah" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Email</label>
+        <input type="email" value="sarah@email.com" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Téléphone</label>
+        <input type="tel" value="06 98 76 54 32" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Date de naissance</label>
+        <input type="text" value="22/06/1995" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Sexe</label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option>Homme</option>
+          <option selected>Femme</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Inscription</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Cours suivi</label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option>Langue arabe</option>
+          <option selected>Éducation islamique</option>
+          <option>Lecture du Coran</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Formule</label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option>1 cours — 250 €/an</option>
+          <option selected>1 cours — 200 €/an</option>
+          <option>Pack 2 cours — 350 €/an</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Mode de paiement</label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option>En 1 fois</option>
+          <option selected>En 2 fois</option>
+          <option>En 4 fois</option>
+          <option>En 10 fois</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Statut</label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option selected>Actif</option>
+          <option>Inactif</option>
+          <option>Suspendu</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:flex-end;">
+      <button onclick="closeModal('modal-edit-sarah')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Annuler
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+        Sauvegarder
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL SUPPRIMER AHMED ══ -->
+<div class="modal-overlay" id="modal-delete-ahmed">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-delete-ahmed')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" width="28" height="28"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Supprimer Ahmed Martin ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      Cette action est <strong>irréversible</strong>. Toutes les données de cet élève seront définitivement supprimées.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-delete-ahmed')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Annuler
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#dc2626;color:#fff;cursor:pointer;">
+        Supprimer définitivement
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL SUPPRIMER SARAH ══ -->
+<div class="modal-overlay" id="modal-delete-sarah">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-delete-sarah')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" width="28" height="28"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Supprimer Sarah Dupont ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      Cette action est <strong>irréversible</strong>. Toutes les données de cet élève seront définitivement supprimées.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-delete-sarah')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Annuler
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#dc2626;color:#fff;cursor:pointer;">
+        Supprimer définitivement
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL CRÉER UNE CLASSE ══ -->
+<div class="modal-overlay" id="modal-add-classe">
+  <div class="modal-box" style="max-width:580px;max-height:90vh;overflow-y:auto;">
+    <button class="modal-close" onclick="closeModal('modal-add-classe')">×</button>
+
+    <div style="text-align:center;margin-bottom:28px;">
+      <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--ink);margin:0 0 6px;">Créer une classe</h3>
+      <p style="font-size:14px;color:var(--ink);opacity:.6;margin:0;">Configurer une nouvelle classe</p>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Informations de la classe</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      <div style="grid-column:1/-1;">
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Nom de la classe <span style="color:var(--gold);">*</span></label>
+        <input type="text" placeholder="Ex : Langue arabe — Classe A" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Cours associé <span style="color:var(--gold);">*</span></label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option value="" disabled selected>Choisir...</option>
+          <option>Langue arabe</option>
+          <option>Éducation islamique</option>
+          <option>Lecture du Coran</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Enseignant assigné <span style="color:var(--gold);">*</span></label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option value="" disabled selected>Choisir...</option>
+          <option>Youssef Ben Ali</option>
+          <option>Imam Dicko</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Jour du cours <span style="color:var(--gold);">*</span></label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option value="" disabled selected>Choisir...</option>
+          <option>Lundi</option>
+          <option>Mardi</option>
+          <option>Mercredi</option>
+          <option>Jeudi</option>
+          <option>Vendredi</option>
+          <option>Samedi</option>
+          <option>Dimanche</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Horaire <span style="color:var(--gold);">*</span></label>
+        <input type="text" value="19h00 – 20h00" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Places maximum <span style="color:var(--gold);">*</span></label>
+        <input type="number" placeholder="Ex : 20" min="1" max="100" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:flex-end;padding-bottom:8px;">
+      <button onclick="closeModal('modal-add-classe')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Annuler
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+        Créer la classe
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ MODAL GÉRER CLASSE ARABE ══ -->
+<div class="modal-overlay" id="modal-gerer-arabe">
+  <div class="modal-box" style="max-width:640px;max-height:90vh;overflow-y:auto;">
+    <button class="modal-close" onclick="closeModal('modal-gerer-arabe')">×</button>
+
+    <!-- En-tête -->
+    <div style="background:#0C0C0C;border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:18px;margin-bottom:28px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-ar);font-size:24px;color:#fff;flex-shrink:0;">ض</div>
+      <div>
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:#fff;margin:0 0 4px;">Langue arabe — Classe A</h3>
+        <span style="font-size:13px;color:var(--gold);">Lundi · 19h00 – 20h00 · Youssef Ben Ali</span>
+      </div>
+      <div style="margin-left:auto;text-align:right;">
+        <div style="font-size:22px;font-weight:700;color:var(--gold);">8<span style="font-size:14px;opacity:.6;">/20</span></div>
+        <div style="font-size:11px;color:rgba(244,235,214,.5);">places</div>
+      </div>
+    </div>
+
+    <!-- Infos classe -->
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Informations de la classe</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;">
+      <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;color:#888;margin-bottom:4px;">Cours</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);">Langue arabe</div>
+      </div>
+      <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;color:#888;margin-bottom:4px;">Enseignant</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);">Youssef Ben Ali</div>
+      </div>
+      <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;color:#888;margin-bottom:4px;">Jour</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);">Lundi</div>
+      </div>
+      <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;color:#888;margin-bottom:4px;">Horaire</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);">19h00 – 20h00</div>
+      </div>
+    </div>
+
+    <!-- Liste élèves -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);">Élèves inscrits</div>
+      <button style="font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;border:none;background:var(--gold);color:#fff;cursor:pointer;">+ Ajouter un élève</button>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--gold-pale);border-radius:12px;overflow:hidden;margin-bottom:24px;">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--black);padding:10px 16px;gap:12px;">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,214,.6);">Nom</span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,214,.6);">Statut</span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,214,.6);">Action</span>
+      </div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:12px 16px;gap:12px;align-items:center;border-top:1px solid var(--gold-pale);">
+        <span style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink);font-weight:500;">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">A</div>
+          Ahmed Martin
+        </span>
+        <span><span style="background:rgba(34,197,94,.12);color:#16a34a;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;">Actif</span></span>
+        <span><button style="font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid rgba(220,38,38,.2);background:rgba(220,38,38,.06);color:#dc2626;cursor:pointer;">Retirer</button></span>
+      </div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:12px 16px;gap:12px;align-items:center;border-top:1px solid var(--gold-pale);">
+        <span style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink);font-weight:500;">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">M</div>
+          Mohamed Ali
+        </span>
+        <span><span style="background:rgba(34,197,94,.12);color:#16a34a;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;">Actif</span></span>
+        <span><button style="font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid rgba(220,38,38,.2);background:rgba(220,38,38,.06);color:#dc2626;cursor:pointer;">Retirer</button></span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div style="display:flex;gap:12px;justify-content:flex-end;padding-bottom:8px;">
+      <button onclick="closeModal('modal-gerer-arabe')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Fermer
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+        Modifier la classe
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ MODAL GÉRER CLASSE ÉDUCATION ══ -->
+<div class="modal-overlay" id="modal-gerer-education">
+  <div class="modal-box" style="max-width:640px;max-height:90vh;overflow-y:auto;">
+    <button class="modal-close" onclick="closeModal('modal-gerer-education')">×</button>
+
+    <!-- En-tête -->
+    <div style="background:#0C0C0C;border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:18px;margin-bottom:28px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0C0C0C" stroke-width="1.8" width="24" height="24"><path d="M12 2c0 3-3.5 4-3.5 7a3.5 3.5 0 007 0C15.5 6 12 5 12 2z"/><path d="M4 21v-7h16v7M4 21h16M9 21v-4a3 3 0 016 0v4"/></svg>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:#fff;margin:0 0 4px;">Éducation islamique</h3>
+        <span style="font-size:13px;color:var(--gold);">Mercredi · 19h00 – 20h00 · Imam Dicko</span>
+      </div>
+      <div style="margin-left:auto;text-align:right;">
+        <div style="font-size:22px;font-weight:700;color:var(--gold);">12<span style="font-size:14px;opacity:.6;">/100</span></div>
+        <div style="font-size:11px;color:rgba(244,235,214,.5);">places</div>
+      </div>
+    </div>
+
+    <!-- Infos classe -->
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Informations de la classe</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;">
+      <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;color:#888;margin-bottom:4px;">Cours</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);">Éducation islamique</div>
+      </div>
+      <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;color:#888;margin-bottom:4px;">Enseignant</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);">Imam Dicko</div>
+      </div>
+      <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;color:#888;margin-bottom:4px;">Jour</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);">Mercredi</div>
+      </div>
+      <div style="background:var(--paper);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;color:#888;margin-bottom:4px;">Horaire</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);">19h00 – 20h00</div>
+      </div>
+    </div>
+
+    <!-- Liste élèves -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);">Élèves inscrits</div>
+      <button style="font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;border:none;background:var(--gold);color:#fff;cursor:pointer;">+ Ajouter un élève</button>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--gold-pale);border-radius:12px;overflow:hidden;margin-bottom:24px;">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--black);padding:10px 16px;gap:12px;">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,214,.6);">Nom</span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,214,.6);">Statut</span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,214,.6);">Action</span>
+      </div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:12px 16px;gap:12px;align-items:center;border-top:1px solid var(--gold-pale);">
+        <span style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink);font-weight:500;">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">S</div>
+          Sarah Dupont
+        </span>
+        <span><span style="background:rgba(234,179,8,.12);color:#a16207;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;">En attente</span></span>
+        <span><button style="font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid rgba(220,38,38,.2);background:rgba(220,38,38,.06);color:#dc2626;cursor:pointer;">Retirer</button></span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div style="display:flex;gap:12px;justify-content:flex-end;padding-bottom:8px;">
+      <button onclick="closeModal('modal-gerer-education')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Fermer
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+        Modifier la classe
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ MINI-MODAL AJOUTER ÉLÈVE — CLASSE ARABE ══ -->
+<div class="modal-overlay" id="modal-add-eleve-arabe" style="display:none;z-index:200;">
+  <div class="modal-box" style="max-width:480px;max-height:80vh;overflow-y:auto;">
+    <button class="modal-close" onclick="closeSubModal('modal-add-eleve-arabe')">×</button>
+    <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--ink);margin:0 0 6px;">Ajouter un élève</h3>
+    <p style="font-size:13px;color:var(--ink);opacity:.6;margin:0 0 20px;">Langue arabe — Classe A</p>
+
+    <div style="background:var(--paper);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="opacity:.4;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Rechercher un élève..." style="border:none;background:transparent;font-family:var(--font-body);font-size:14px;color:var(--ink);width:100%;">
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:12px;background:var(--white);border:1.5px solid var(--gold-pale);border-radius:10px;padding:12px 16px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">S</div>
+        <div style="flex-grow:1;">
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Sarah Dupont</div>
+          <div style="font-size:12px;color:var(--ink);opacity:.5;">Éducation islamique</div>
+        </div>
+        <button style="font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;border:none;background:var(--gold);color:#fff;cursor:pointer;">Ajouter</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:var(--white);border:1.5px solid var(--gold-pale);border-radius:10px;padding:12px 16px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">F</div>
+        <div style="flex-grow:1;">
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Fatima Ndiaye</div>
+          <div style="font-size:12px;color:var(--ink);opacity:.5;">Lecture du Coran</div>
+        </div>
+        <button style="font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;border:none;background:var(--gold);color:#fff;cursor:pointer;">Ajouter</button>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;">
+      <button onclick="closeSubModal('modal-add-eleve-arabe')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Fermer
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MINI-MODAL AJOUTER ÉLÈVE — CLASSE ÉDUCATION ══ -->
+<div class="modal-overlay" id="modal-add-eleve-education" style="display:none;z-index:200;">
+  <div class="modal-box" style="max-width:480px;max-height:80vh;overflow-y:auto;">
+    <button class="modal-close" onclick="closeSubModal('modal-add-eleve-education')">×</button>
+    <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--ink);margin:0 0 6px;">Ajouter un élève</h3>
+    <p style="font-size:13px;color:var(--ink);opacity:.6;margin:0 0 20px;">Éducation islamique</p>
+
+    <div style="background:var(--paper);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="opacity:.4;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Rechercher un élève..." style="border:none;background:transparent;font-family:var(--font-body);font-size:14px;color:var(--ink);width:100%;">
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:12px;background:var(--white);border:1.5px solid var(--gold-pale);border-radius:10px;padding:12px 16px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">A</div>
+        <div style="flex-grow:1;">
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Ahmed Martin</div>
+          <div style="font-size:12px;color:var(--ink);opacity:.5;">Langue arabe</div>
+        </div>
+        <button style="font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;border:none;background:var(--gold);color:#fff;cursor:pointer;">Ajouter</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:var(--white);border:1.5px solid var(--gold-pale);border-radius:10px;padding:12px 16px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">K</div>
+        <div style="flex-grow:1;">
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Karim Leblanc</div>
+          <div style="font-size:12px;color:var(--ink);opacity:.5;">Pack complet</div>
+        </div>
+        <button style="font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;border:none;background:var(--gold);color:#fff;cursor:pointer;">Ajouter</button>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;">
+      <button onclick="closeSubModal('modal-add-eleve-education')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Fermer
+      </button>
+    </div>
+  </div>
+</div>
+
   </main>
 </div>
 {% endblock %}
@@ -604,6 +1122,20 @@
 {{ parent() }}
 {% verbatim %}
 <script>
+
+window.openSubModal = function(id){
+  const modal = document.getElementById(id);
+  if(modal){ 
+    modal.style.setProperty('display', 'flex', 'important');
+  }
+};
+window.closeSubModal = function(id){
+  const modal = document.getElementById(id);
+  if(modal){ 
+    modal.style.setProperty('display', 'none', 'important');
+  }
+};
+
 document.querySelectorAll('.db-nav-item').forEach(function(item){
   item.addEventListener('click', function(e){
     e.preventDefault();
