@@ -52,11 +52,6 @@ class UserProfile
     #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
-
-    #[ORM\ManyToOne(targetEntity: CoachGroup::class)]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?CoachGroup $coachGroup = null;
-
     #[ORM\OneToMany(targetEntity: Membership::class, mappedBy: 'userProfile', cascade: ['persist', 'remove'])]
     private Collection $memberships;
 
@@ -216,18 +211,6 @@ class UserProfile
     public function setAdaptedSupport(bool $adaptedSupport): static
     {
         $this->adaptedSupport = $adaptedSupport;
-
-        return $this;
-    }
-
-    public function getCoachGroup(): ?CoachGroup
-    {
-        return $this->coachGroup;
-    }
-
-    public function setCoachGroup(?CoachGroup $coachGroup): static
-    {
-        $this->coachGroup = $coachGroup;
 
         return $this;
     }

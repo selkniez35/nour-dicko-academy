@@ -33,6 +33,18 @@ class AnnouncementRepository extends ServiceEntityRepository
     /**
      * @return Announcement[]
      */
+    public function findLatest(int $limit = 10): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Announcement[]
+     */
     public function findAllOrdered(): array
     {
         return $this->createQueryBuilder('a')

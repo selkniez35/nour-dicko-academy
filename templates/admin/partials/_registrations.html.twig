@@ -1,0 +1,63 @@
+<section class="db-section" id="section-registrations">
+
+    <div class="admin-section-head">
+        <h2 class="db-section-title">Inscriptions</h2>
+    </div>
+
+    <div class="admin-table">
+        <div class="admin-table-header">
+            <span>Nom</span>
+            <span>Formation</span>
+            <span>Saison</span>
+            <span>Statut</span>
+            <span>Actions</span>
+        </div>
+
+        {% for membership in memberships %}
+            <div class="admin-table-row">
+                <span class="db-eleve-name">
+                    <div class="db-eleve-avatar">
+                        {{ (membership.userProfile ? membership.userProfile.fullName : '-')|first|upper }}
+                    </div>
+                    {{ membership.userProfile ? membership.userProfile.fullName : '-' }}
+                </span>
+
+                <span>
+                    {{ membership.plan ? membership.plan.label : (membership.studentLevel ?: '-') }}
+                </span>
+
+                <span>{{ membership.season }}</span>
+
+                <span>
+                    {% if membership.status.value == 'active' %}
+                        <span class="db-eleve-badge db-badge-actif">Actif</span>
+                    {% elseif membership.status.value == 'pending' %}
+                        <span class="db-eleve-badge db-badge-pending">En attente</span>
+                    {% elseif membership.status.value == 'suspended' %}
+                        <span class="db-eleve-badge db-badge-pending">Suspendu</span>
+                    {% else %}
+                        <span class="db-eleve-badge db-badge-pending">Essai</span>
+                    {% endif %}
+                </span>
+
+                <span class="admin-actions">
+                    <a href="{{ path('app_admin_membership_edit', {id: membership.id}) }}" class="admin-btn-sm">Voir</a>
+                    <a href="{{ path('app_admin_membership_edit', {id: membership.id}) }}" class="admin-btn-sm">Modifier</a>
+
+                    <form method="post"
+                          action="{{ path('app_admin_membership_delete', {id: membership.id}) }}"
+                          style="display:inline"
+                          onsubmit="return confirm('Supprimer cette inscription ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete-membership-' ~ membership.id) }}">
+                        <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
+                    </form>
+                </span>
+            </div>
+        {% else %}
+            <div class="admin-table-row">
+                <span style="grid-column:1/-1;text-align:center">Aucune inscription trouvée.</span>
+            </div>
+        {% endfor %}
+    </div>
+
+</section>

@@ -11,6 +11,9 @@
         <li><a href="{{ path('app_courses') }}">Cours</a></li>
         <li><a href="{{ path('app_prices') }}">Tarifs</a></li>
         <li><a href="{{ path('app_contact') }}">Contact</a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+          <li><a href="{{ path('app_admin_dashboard') }}">Admin</a></li>
+        {% endif %}
       </ul>
     </nav>
     <div class="topbar-btns">

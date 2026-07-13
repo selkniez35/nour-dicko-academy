@@ -1,0 +1,64 @@
+<section class="db-section" id="section-trainings">
+
+    <div class="admin-section-head">
+        <h2 class="db-section-title">Formations</h2>
+
+        <a href="{{ path('app_admin_plan_new') }}" class="admin-btn-primary">
+            + Ajouter une formation
+        </a>
+    </div>
+
+    <div class="db-cours-grid">
+        {% for plan in plans %}
+            <div class="db-cours-card">
+                <div class="db-cours-icon">
+                    {% if plan.icon %}
+                        <img src="{{ asset(plan.icon) }}" alt="{{ plan.label }}">
+                    {% else %}
+                        📚
+                    {% endif %}
+                </div>
+
+                <div class="db-cours-info">
+                    <h3>{{ plan.label }}</h3>
+
+                    {% if plan.description %}
+                        <p>{{ plan.description|u.truncate(120, '...') }}</p>
+                    {% endif %}
+
+                    <div class="db-cours-badge">
+                        Niveau : {{ plan.level }}
+                    </div>
+
+                    <div class="db-cours-badge">
+                        🗓 {{ plan.schedule }}
+                    </div>
+
+                    <div class="db-cours-badge">
+                        💰 {{ plan.price|number_format(2, ',', ' ') }} €
+                    </div>
+
+                    <div class="db-cours-badge">
+                        ✨ {{ plan.features|length }} fonctionnalité(s)
+                    </div>
+                </div>
+
+                <div class="admin-actions">
+                    <a href="{{ path('app_admin_plan_edit', {id: plan.id}) }}" class="admin-btn-sm">Voir</a>
+                    <a href="{{ path('app_admin_plan_edit', {id: plan.id}) }}" class="admin-btn-sm">Modifier</a>
+
+                    <form method="post"
+                          action="{{ path('app_admin_plan_delete', {id: plan.id}) }}"
+                          style="display:inline"
+                          onsubmit="return confirm('Supprimer cette formation ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete-plan-' ~ plan.id) }}">
+                        <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <p>Aucune formation n'a été créée.</p>
+        {% endfor %}
+    </div>
+
+</section>

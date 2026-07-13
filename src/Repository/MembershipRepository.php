@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Membership;
+use App\Entity\MembershipPlan;
+use App\Enum\MembershipStatus;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,28 +18,46 @@ class MembershipRepository extends ServiceEntityRepository
         parent::__construct($registry, Membership::class);
     }
 
-    //    /**
-    //     * @return Membership[] Returns an array of Membership objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+     * @return Membership[]
+     */
+    public function findLatest(int $limit = 10): array
+    {
+        return $this->createQueryBuilder('m')
+            ->leftJoin('m.userProfile', 'profile')->addSelect('profile')
+            ->leftJoin('profile.user', 'user')->addSelect('user')
+            ->leftJoin('m.plan', 'plan')->addSelect('plan')
+            ->orderBy('m.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 
-    //    public function findOneBySomeField($value): ?Membership
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function countPending(): int
+    {
+        return (int) $this->createQueryBuilder('m')
+            ->select('COUNT(m.id)')
+            ->andWhere('m.status = :status')
+            ->setParameter('status', MembershipStatus::PENDING->value)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countAll(): int
+    {
+        return (int) $this->createQueryBuilder('m')
+            ->select('COUNT(m.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countForPlan(MembershipPlan $plan): int
+    {
+        return (int) $this->createQueryBuilder('m')
+            ->select('COUNT(m.id)')
+            ->andWhere('m.plan = :plan')
+            ->setParameter('plan', $plan)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }
