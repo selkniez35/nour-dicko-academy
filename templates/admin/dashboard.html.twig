@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block title %}Administration — Nour Dicko Academy{% endblock %}
 
 {% block body %}
@@ -148,7 +150,7 @@
     <section class="db-section" id="section-eleves">
       <div class="admin-section-head">
         <h2 class="db-section-title">Élèves</h2>
-
+        
       </div>
       <div class="admin-search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -1125,15 +1127,11 @@
 
 window.openSubModal = function(id){
   const modal = document.getElementById(id);
-  if(modal){ 
-    modal.style.setProperty('display', 'flex', 'important');
-  }
+  if(modal){ modal.style.display = 'flex'; }
 };
 window.closeSubModal = function(id){
   const modal = document.getElementById(id);
-  if(modal){ 
-    modal.style.setProperty('display', 'none', 'important');
-  }
+  if(modal){ modal.style.display = 'none'; }
 };
 
 document.querySelectorAll('.db-nav-item').forEach(function(item){
@@ -1176,7 +1174,7 @@ window.openFiche = function(id, statut){
       if(actionsConfirme) actionsConfirme.style.display = 'flex';
     }
   }
-};
+};  
 
 </script>
 {% endverbatim %}

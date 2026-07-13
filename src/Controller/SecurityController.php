@@ -38,7 +38,7 @@ class SecurityController extends AbstractController
 
             $user = $userService->createUser($dto);
 
-            $this->mailService->sendWelcomeMail(
+            $this->mailService->sendWelcome(
                 $user->getEmail(),
                 $user->getProfile()->getFullName(),
             );
