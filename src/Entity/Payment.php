@@ -27,7 +27,7 @@ class Payment
     #[ORM\Column(nullable: true)]
     private ?string $stripePaymentIntent = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(enumType: PaymentStatus::class)]
     private PaymentStatus $status = PaymentStatus::PENDING;
 
     #[ORM\Column]
@@ -51,6 +51,10 @@ class Payment
     #[ORM\ManyToOne(inversedBy: 'payments')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'payments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Membership $membership = null;
 
     public function __construct(){
         $this->paidAt = new DateTimeImmutable();
@@ -181,6 +185,16 @@ class Payment
     public function setCurrency(CurrencyEnum $currency): void
     {
         $this->currency = $currency;
+    }
+
+    public function getMembership(): ?Membership
+    {
+        return $this->membership;
+    }
+
+    public function setMembership(?Membership $membership): void
+    {
+        $this->membership = $membership;
     }
 
 }

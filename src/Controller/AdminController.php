@@ -33,13 +33,8 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class AdminController extends AbstractController
 {
     #[Route('', name: 'dashboard')]
-    public function dashboard(
-        UserRepository $userRepository,
-        MembershipRepository $membershipRepository,
-        PaymentRepository $paymentRepository,
-        MembershipPlanRepository $planRepository,
-        AnnouncementRepository $announcementRepository
-    ): Response {
+    public function dashboard(UserRepository $userRepository, MembershipRepository $membershipRepository, PaymentRepository $paymentRepository, MembershipPlanRepository $planRepository, AnnouncementRepository $announcementRepository): Response {
+
         return $this->render('admin/dashboard.html.twig', [
             'stats' => [
                 'students' => $userRepository->countStudents(),

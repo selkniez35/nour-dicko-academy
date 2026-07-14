@@ -7,10 +7,30 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="fix(SecurityController): Rename MailService variable for consistency">
+    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="Connexion front &lt;=&gt; back #1">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_07_2026_00_02_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_07_2026_00_02__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Teacher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/TeacherRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/nour-dicko-academy.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +64,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -64,61 +83,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000002485432056" />
-      <entry key="MS500" value="1.0477621403929254" />
-      <entry key="S2" value="1.4928540464113822" />
-      <entry key="S5" value="2.0194526276825107" />
-      <entry key="S10" value="2.606187421210315" />
-      <entry key="S30" value="3.8991764917014704" />
-      <entry key="S60" value="4.879398574659837" />
-      <entry key="M2" value="5.732773773175845" />
-      <entry key="M5" value="6.848591345723554" />
-      <entry key="M10" value="8.93847249839977" />
-      <entry key="M15" value="11.352561196150342" />
-      <entry key="M30" value="16.99203625398075" />
-      <entry key="H1" value="22.543619770460232" />
-      <entry key="H2" value="26.85192151773474" />
-      <entry key="H4" value="30.084166400964197" />
-      <entry key="D1" value="50.83922699639753" />
-      <entry key="W1" value="70.98209323113491" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.04581904255183E-273" />
+      <entry key="S2" value="8.647310382429734E-69" />
+      <entry key="S5" value="1.5205507653600285E-27" />
+      <entry key="S10" value="9.896245882521996E-14" />
+      <entry key="S30" value="1.6772485785138694E-4" />
+      <entry key="S60" value="0.03422662078194719" />
+      <entry key="M2" value="0.4905356951248572" />
+      <entry key="M5" value="2.627777296504249" />
+      <entry key="M10" value="5.626351120176808" />
+      <entry key="M15" value="8.340957703578235" />
+      <entry key="M30" value="15.069464800349671" />
+      <entry key="H1" value="22.752674438362785" />
+      <entry key="H2" value="29.21539189316402" />
+      <entry key="H4" value="33.99119916585143" />
+      <entry key="D1" value="56.24344036032596" />
+      <entry key="W1" value="76.86350277755162" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0717936471873147" />
-      <entry key="MS500" value="0.5904963307147651" />
-      <entry key="S2" value="0.8766057213160351" />
-      <entry key="S5" value="0.9486843151404539" />
-      <entry key="S10" value="0.974004268543241" />
-      <entry key="S30" value="0.9912585661677226" />
-      <entry key="S60" value="0.9956196895244803" />
-      <entry key="M2" value="0.9978084922081843" />
-      <entry key="M5" value="1.0052780312288438" />
-      <entry key="M10" value="1.1105172048568501" />
-      <entry key="M15" value="1.290653148103682" />
-      <entry key="M30" value="1.7678085114184536" />
-      <entry key="H1" value="2.3229163770114467" />
-      <entry key="H2" value="2.970985315126806" />
-      <entry key="H4" value="3.694963272314783" />
-      <entry key="D1" value="7.666668419882138" />
-      <entry key="W1" value="11.146532409407722" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000206601" />
+      <entry key="S2" value="1.00267907849644" />
+      <entry key="S5" value="1.161300352153963" />
+      <entry key="S10" value="1.7713673268311068" />
+      <entry key="S30" value="3.8894897157473785" />
+      <entry key="S60" value="5.991780607613489" />
+      <entry key="M2" value="8.331053142057929" />
+      <entry key="M5" value="10.749946792442612" />
+      <entry key="M10" value="11.981896409373123" />
+      <entry key="M15" value="12.587019011925392" />
+      <entry key="M30" value="13.586603982817675" />
+      <entry key="H1" value="14.544198231348954" />
+      <entry key="H2" value="15.478066901947287" />
+      <entry key="H4" value="16.39344295424532" />
+      <entry key="D1" value="20.569779760600582" />
+      <entry key="W1" value="24.12691553988627" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.07179410764712925" />
-      <entry key="MS500" value="0.6845213391449543" />
-      <entry key="S2" value="1.832390579496269" />
-      <entry key="S5" value="2.6998133492703777" />
-      <entry key="S10" value="3.4329276374357383" />
-      <entry key="S30" value="4.832634519217338" />
-      <entry key="S60" value="5.839808430663094" />
-      <entry key="M2" value="6.709396608263897" />
-      <entry key="M5" value="7.843820317439583" />
-      <entry key="M10" value="10.04235217180645" />
-      <entry key="M15" value="12.637311900729474" />
-      <entry key="M30" value="18.75506945483797" />
-      <entry key="H1" value="24.86318675617509" />
-      <entry key="H2" value="29.82078779612182" />
-      <entry key="H4" value="33.77787073953499" />
-      <entry key="D1" value="58.50548759602882" />
-      <entry key="W1" value="82.12854148302472" />
+      <entry key="MS100" value="6.58708640444596E-5" />
+      <entry key="MS500" value="0.14579367122672252" />
+      <entry key="S2" value="0.6195756148203565" />
+      <entry key="S5" value="0.9569773517921567" />
+      <entry key="S10" value="1.6049953515057143" />
+      <entry key="S30" value="3.759252973056431" />
+      <entry key="S60" value="5.922899657380399" />
+      <entry key="M2" value="8.748449955740913" />
+      <entry key="M5" value="13.339122448035605" />
+      <entry key="M10" value="17.585895148293034" />
+      <entry key="M15" value="20.911500356304135" />
+      <entry key="M30" value="28.645828945539" />
+      <entry key="H1" value="37.2905299451438" />
+      <entry key="H2" value="44.68969868674816" />
+      <entry key="H4" value="50.3825066656264" />
+      <entry key="D1" value="76.81265642812392" />
+      <entry key="W1" value="100.99031135319271" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -786,7 +805,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add enum classes for document types, training session types, and user roles with labels and choices" />
     <MESSAGE value="Update entrypoints and manifest files with new build assets; add Doctrine DBAL Types import in UserProfile" />
     <MESSAGE value="Refactor membership plan structure: add features and descriptions, update templates for dynamic rendering" />
     <MESSAGE value="Refactor membership plans: implement dynamic rendering for courses and modals, enhance feature handling in MembershipFeature and MembershipPlan entities" />
@@ -811,6 +829,7 @@
     <MESSAGE value="feat(admin): Enhance dashboard data with detailed statistics and latest entries" />
     <MESSAGE value="fix(index): Remove launch popup and navbar HTML code" />
     <MESSAGE value="fix(SecurityController): Rename MailService variable for consistency" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(SecurityController): Rename MailService variable for consistency" />
+    <MESSAGE value="Connexion front &lt;=&gt; back #1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Connexion front &lt;=&gt; back #1" />
   </component>
 </project>
