@@ -2146,3 +2146,169 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
 .welcome-toast-sub{
   font-size:13px;color:var(--ink);opacity:.6;
 }
+
+/* ═══════════════ CALENDRIER NDA ═══════════════ */
+.db-stat-mini{
+  background:var(--white);border:1px solid var(--gold-pale);
+  border-radius:14px;padding:16px 20px;text-align:center;
+  box-shadow:var(--shadow);
+}
+.db-stat-mini-val{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold-deep);}
+.db-stat-mini-label{font-size:11px;opacity:.6;margin-top:2px;letter-spacing:.06em;text-transform:uppercase;}
+.nda-cal-dayname{
+  text-align:center;padding:12px 4px;
+  font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);
+}
+.nda-cal-day{
+  min-height:64px;padding:8px;
+  border-right:1px solid var(--gold-pale);
+  border-bottom:1px solid var(--gold-pale);
+}
+.nda-cal-day:nth-child(7n){border-right:none;}
+.nda-cal-day.empty{background:var(--paper);}
+.nda-cal-day.weekend{background:#fdf9f0;}
+.nda-cal-day.has-cours{background:rgba(201,146,42,.08);cursor:pointer;}
+.nda-cal-day.has-cours:hover{background:rgba(201,146,42,.18);}
+.nda-cal-day.today{outline:2px solid var(--gold);outline-offset:-2px;}
+.nda-cal-num{font-size:13px;font-weight:600;color:var(--ink);}
+.nda-cal-day.weekend .nda-cal-num{color:#bbb;}
+.nda-cal-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:6px;}
+.nda-cal-time{font-size:10px;font-weight:600;color:var(--gold-deep);margin-top:4px;line-height:1.2;}
+
+.db-class-student-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--gold-pale);
+    border-radius: 14px;
+    margin-bottom: 10px;
+}
+
+.db-class-student-row strong {
+    display: block;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.db-class-student-row span {
+    display: block;
+    color: var(--ink);
+    opacity: 0.55;
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+.db-class-remove-btn {
+    border: 1.5px solid #e3b7a6;
+    background: #fff5f0;
+    color: #b84721;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.db-class-remove-btn:hover {
+    background: #b84721;
+    border-color: #b84721;
+    color: #fff;
+}
+
+.db-class-add-student-btn {
+    border: none;
+    background: var(--gold);
+    color: white;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.db-class-students-table {
+    border: 1px solid var(--gold-pale);
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+}
+
+.db-class-students-head {
+    display: grid;
+    grid-template-columns: 1.5fr 0.7fr 0.7fr;
+    gap: 16px;
+    background: var(--black);
+    color: rgba(255,255,255,.65);
+    padding: 14px 18px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.db-class-student-line {
+    display: grid;
+    grid-template-columns: 1.5fr 0.7fr 0.7fr;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 18px;
+    border-top: 1px solid var(--gold-pale);
+}
+
+.db-class-student-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.db-class-student-name strong {
+    font-size: 14px;
+    color: var(--ink);
+}
+
+.db-class-avatar {
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.db-status-active {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: #eafaf0;
+    color: #159447;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.db-class-remove-btn {
+    border: 1px solid #ffb9b9;
+    background: #fff5f5;
+    color: #d71919;
+    border-radius: 7px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.db-class-remove-btn:hover {
+    background: #d71919;
+    color: white;
+}
