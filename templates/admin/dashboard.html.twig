@@ -998,33 +998,67 @@
     </div>
 
     <!-- Liste élèves -->
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);">Élèves inscrits</div>
-      <button style="font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;border:none;background:var(--gold);color:#fff;cursor:pointer;" onclick="openSubModal('modal-add-eleve-arabe')">+ Ajouter un élève</button>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+    <div style="font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);">
+        Élèves inscrits
     </div>
-    <div style="background:var(--white);border:1px solid var(--gold-pale);border-radius:12px;overflow:hidden;margin-bottom:24px;">
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--black);padding:10px 16px;gap:12px;">
-        <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,214,.6);">Nom</span>
-        <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,214,.6);">Statut</span>
-        <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,214,.6);">Action</span>
-      </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:12px 16px;gap:12px;align-items:center;border-top:1px solid var(--gold-pale);">
-        <span style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink);font-weight:500;">
-          <div style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">A</div>
-          Ahmed Martin
-        </span>
-        <span><span style="background:rgba(34,197,94,.12);color:#16a34a;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;">Actif</span></span>
-        <span><button style="font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid rgba(220,38,38,.2);background:rgba(220,38,38,.06);color:#dc2626;cursor:pointer;">Retirer</button></span>
-      </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:12px 16px;gap:12px;align-items:center;border-top:1px solid var(--gold-pale);">
-        <span style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink);font-weight:500;">
-          <div style="width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">M</div>
-          Mohamed Ali
-        </span>
-        <span><span style="background:rgba(34,197,94,.12);color:#16a34a;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;">Actif</span></span>
-        <span><button style="font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid rgba(220,38,38,.2);background:rgba(220,38,38,.06);color:#dc2626;cursor:pointer;">Retirer</button></span>
-      </div>
+
+    <button type="button" class="db-class-add-student-btn">
+        + Ajouter un élève
+    </button>
+</div>
+
+<div class="db-class-students-table">
+    <div class="db-class-students-head">
+        <div>Nom</div>
+        <div>Statut</div>
+        <div>Action</div>
     </div>
+
+    <div class="db-class-student-line" data-student-row>
+        <div class="db-class-student-name">
+            <span class="db-class-avatar">A</span>
+            <strong>Ahmed Martin</strong>
+        </div>
+
+        <div>
+            <span class="db-status-active">Actif</span>
+        </div>
+
+        <div>
+            <button
+                type="button"
+                class="db-class-remove-btn"
+                data-remove-student
+                data-student-name="Ahmed Martin"
+            >
+                Retirer
+            </button>
+        </div>
+    </div>
+
+    <div class="db-class-student-line" data-student-row>
+        <div class="db-class-student-name">
+            <span class="db-class-avatar">M</span>
+            <strong>Mohamed Ali</strong>
+        </div>
+
+        <div>
+            <span class="db-status-active">Actif</span>
+        </div>
+
+        <div>
+            <button
+                type="button"
+                class="db-class-remove-btn"
+                data-remove-student
+                data-student-name="Mohamed Ali"
+            >
+                Retirer
+            </button>
+        </div>
+    </div>
+</div>
 
     <!-- Actions -->
     <div style="display:flex;gap:12px;justify-content:flex-end;padding-bottom:8px;">
@@ -1098,6 +1132,9 @@
         </span>
         <span><span style="background:rgba(234,179,8,.12);color:#a16207;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;">En attente</span></span>
         <span><button style="font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid rgba(220,38,38,.2);background:rgba(220,38,38,.06);color:#dc2626;cursor:pointer;">Retirer</button></span>
+      
+</div>
+      
       </div>
     </div>
 
@@ -1439,6 +1476,25 @@
 {{ parent() }}
 {% verbatim %}
 <script>
+
+document.addEventListener('click', function (event) {
+    const button = event.target.closest('[data-remove-student]');
+
+    if (!button) {
+        return;
+    }
+
+    const row = button.closest('[data-student-row]');
+    const studentName = button.dataset.studentName || 'cet élève';
+
+    const ok = window.confirm('Retirer ' + studentName + ' de cette classe ?');
+
+    if (!ok) {
+        return;
+    }
+
+    row.remove();
+});
 
 // ═══ Calendrier Admin (complet) ═══
 const TOUS_COURS_ADMIN = {
