@@ -19,7 +19,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
 
-    public function __construct(private readonly MailService $mailService){}
+    public function __construct(private readonly MailService $brevoService){}
 
     /**
      */
@@ -38,7 +38,7 @@ class SecurityController extends AbstractController
 
             $user = $userService->createUser($dto);
 
-            $this->mailService->sendWelcome(
+            $this->brevoService->sendWelcomeMail(
                 $user->getEmail(),
                 $user->getProfile()->getFullName(),
             );

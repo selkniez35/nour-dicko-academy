@@ -125,31 +125,72 @@
 
     <!-- Section : Calendrier -->
     <section class="db-section" id="section-calendrier">
-      <h2 class="db-section-title">Calendrier des cours</h2>
-      <div class="db-calendar">
-        <div class="db-cal-header">
-          <button class="db-cal-nav">‹</button>
-          <span class="db-cal-month">Juillet 2026</span>
-          <button class="db-cal-nav">›</button>
-        </div>
-        <div class="db-cal-days">
-          <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
-        </div>
-        <div class="db-cal-grid">
-          {% for i in 1..31 %}
-            <div class="db-cal-day {% if i in [7, 14, 21, 28] %}db-cal-cours{% endif %}">
-              {{ i }}
-              {% if i in [7, 14, 21, 28] %}
-                <span class="db-cal-dot"></span>
-              {% endif %}
-            </div>
-          {% endfor %}
-        </div>
-        <div class="db-cal-legend">
-          <span class="db-cal-dot"></span> Cours prévu
-        </div>
-      </div>
-    </section>
+  <h2 class="db-section-title">Mon calendrier de cours</h2>
+
+  <!-- Stats -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;">
+    <div class="db-stat-mini">
+      <div class="db-stat-mini-val" id="stat-seances">—</div>
+      <div class="db-stat-mini-label">Séances prévues</div>
+    </div>
+    <div class="db-stat-mini">
+      <div class="db-stat-mini-val" id="stat-jour">—</div>
+      <div class="db-stat-mini-label">Jour du cours</div>
+    </div>
+    <div class="db-stat-mini">
+      <div class="db-stat-mini-val">19h–20h</div>
+      <div class="db-stat-mini-label">Horaire</div>
+    </div>
+  </div>
+
+  <!-- Sélecteur de cours (ton dev remplacera par le vrai cours de l'élève) -->
+  <div style="margin-bottom:20px;text-align:center;">
+    <select id="cours-filter" onchange="setCoursFilter()" style="font-family:var(--font-body);font-size:14px;background:var(--white);border:1.5px solid var(--gold-pale);border-radius:10px;padding:10px 18px;color:var(--ink);cursor:pointer;">
+      <option value="lundi">Langue arabe — Classe A (Lundi)</option>
+      <option value="mardi">Langue arabe — Classe B (Mardi)</option>
+      <option value="mercredi">Éducation islamique (Mercredi)</option>
+      <option value="jeudi">Lecture du Coran (Jeudi)</option>
+    </select>
+  </div>
+
+  <!-- Navigation -->
+  <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:24px;">
+    <button onclick="prevMonthEleve()" style="background:var(--black);color:var(--gold);border:none;cursor:pointer;width:38px;height:38px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;">‹</button>
+    <div id="nav-title-eleve" style="font-family:var(--font-display);font-size:24px;font-weight:700;min-width:220px;text-align:center;"></div>
+    <button onclick="nextMonthEleve()" style="background:var(--black);color:var(--gold);border:none;cursor:pointer;width:38px;height:38px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;">›</button>
+  </div>
+
+  <!-- Grille -->
+  <div style="background:var(--white);border-radius:18px;border:1px solid var(--gold-pale);overflow:hidden;box-shadow:var(--shadow);">
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);background:var(--black);">
+      <div class="nda-cal-dayname">Lun</div>
+      <div class="nda-cal-dayname">Mar</div>
+      <div class="nda-cal-dayname">Mer</div>
+      <div class="nda-cal-dayname">Jeu</div>
+      <div class="nda-cal-dayname">Ven</div>
+      <div class="nda-cal-dayname">Sam</div>
+      <div class="nda-cal-dayname">Dim</div>
+    </div>
+    <div id="cal-days-eleve" style="display:grid;grid-template-columns:repeat(7,1fr);"></div>
+  </div>
+
+  <!-- Légende -->
+  <div style="display:flex;align-items:center;gap:24px;margin-top:18px;justify-content:center;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.7;">
+      <div style="width:12px;height:12px;border-radius:50%;background:rgba(201,146,42,.3);border:1px solid var(--gold);"></div>
+      Mon cours
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.7;">
+      <div style="width:12px;height:12px;border-radius:50%;background:#f5f5f5;border:1px solid #ddd;"></div>
+      Week-end
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.7;">
+      <div style="width:12px;height:12px;border-radius:50%;border:2px solid var(--gold);"></div>
+      Aujourd'hui
+    </div>
+  </div>
+</section>
+    
 
     <!-- Section : Notes -->
     <section class="db-section" id="section-notes">
@@ -223,6 +264,137 @@
 {{ parent() }}
 {% verbatim %}
 <script>
+
+// ═══ Calendrier Élève ═══
+const TOUS_COURS = {
+  "2026-09-07":"19h-20h","2026-09-08":"19h-20h","2026-09-09":"19h-20h","2026-09-10":"19h-20h",
+  "2026-09-14":"19h-20h","2026-09-15":"19h-20h","2026-09-16":"19h-20h","2026-09-17":"19h-20h",
+  "2026-09-21":"19h-20h","2026-09-22":"19h-20h","2026-09-23":"19h-20h","2026-09-24":"19h-20h",
+  "2026-09-28":"18h30-19h30","2026-09-29":"18h30-19h30","2026-09-30":"18h30-19h30",
+  "2026-10-01":"18h30-19h30","2026-10-05":"18h30-19h30","2026-10-06":"18h30-19h30",
+  "2026-10-07":"18h30-19h30","2026-10-08":"18h30-19h30",
+  "2026-10-12":"19h30-20h30","2026-10-13":"19h30-20h30","2026-10-14":"19h30-20h30","2026-10-15":"19h30-20h30",
+  "2026-10-19":"19h30-20h30","2026-10-20":"19h30-20h30","2026-10-21":"19h30-20h30","2026-10-22":"19h30-20h30",
+  "2026-10-26":"19h30-20h30","2026-10-27":"19h30-20h30","2026-10-28":"19h30-20h30","2026-10-29":"19h30-20h30",
+  "2026-11-02":"19h30-20h30","2026-11-03":"19h30-20h30","2026-11-04":"19h30-20h30","2026-11-05":"19h30-20h30",
+  "2026-11-09":"19h30-20h30","2026-11-10":"19h30-20h30","2026-11-11":"19h30-20h30","2026-11-12":"19h30-20h30",
+  "2026-11-16":"19h30-20h30","2026-11-17":"19h30-20h30","2026-11-18":"19h30-20h30","2026-11-19":"19h30-20h30",
+  "2026-11-23":"19h30-20h30","2026-11-24":"19h30-20h30","2026-11-25":"19h30-20h30","2026-11-26":"19h30-20h30",
+  "2026-11-30":"19h30-20h30",
+  "2026-12-01":"19h30-20h30","2026-12-02":"19h30-20h30","2026-12-03":"19h30-20h30",
+  "2026-12-07":"19h30-20h30","2026-12-08":"19h30-20h30","2026-12-09":"19h30-20h30","2026-12-10":"19h30-20h30",
+  "2026-12-14":"19h30-20h30","2026-12-15":"19h30-20h30","2026-12-16":"19h30-20h30","2026-12-17":"19h30-20h30",
+  "2026-12-21":"19h30-20h30","2026-12-22":"19h30-20h30","2026-12-23":"19h30-20h30","2026-12-24":"19h30-20h30",
+  "2026-12-28":"19h30-20h30","2026-12-29":"19h30-20h30","2026-12-30":"19h30-20h30","2026-12-31":"19h30-20h30",
+  "2027-01-04":"19h30-20h30","2027-01-05":"19h30-20h30","2027-01-06":"19h30-20h30","2027-01-07":"19h30-20h30",
+  "2027-01-11":"19h30-20h30","2027-01-12":"19h30-20h30","2027-01-13":"19h30-20h30","2027-01-14":"19h30-20h30",
+  "2027-01-18":"19h30-20h30","2027-01-19":"19h30-20h30","2027-01-20":"19h30-20h30","2027-01-21":"19h30-20h30",
+  "2027-01-25":"19h30-20h30","2027-01-26":"19h30-20h30","2027-01-27":"19h30-20h30","2027-01-28":"19h30-20h30",
+  "2027-02-01":"19h30-20h30","2027-02-02":"19h30-20h30","2027-02-03":"19h30-20h30","2027-02-04":"19h30-20h30",
+  "2027-03-15":"19h30-20h30","2027-03-16":"19h30-20h30","2027-03-17":"19h30-20h30","2027-03-18":"19h30-20h30",
+  "2027-03-22":"19h30-20h30","2027-03-23":"19h30-20h30","2027-03-24":"19h30-20h30","2027-03-25":"19h30-20h30",
+  "2027-03-29":"19h30-20h30","2027-03-30":"19h30-20h30","2027-03-31":"19h30-20h30",
+  "2027-04-01":"19h30-20h30","2027-04-05":"19h30-20h30","2027-04-06":"19h30-20h30","2027-04-07":"19h30-20h30","2027-04-08":"19h30-20h30",
+  "2027-04-12":"19h30-20h30","2027-04-13":"19h30-20h30","2027-04-14":"19h30-20h30","2027-04-15":"19h30-20h30",
+  "2027-04-19":"19h30-20h30","2027-04-20":"19h30-20h30","2027-04-21":"19h30-20h30","2027-04-22":"19h30-20h30",
+  "2027-04-26":"19h30-20h30","2027-04-27":"19h30-20h30","2027-04-28":"19h30-20h30","2027-04-29":"19h30-20h30",
+  "2027-05-03":"19h30-20h30","2027-05-04":"19h30-20h30","2027-05-05":"19h30-20h30","2027-05-06":"19h30-20h30",
+  "2027-05-10":"19h30-20h30","2027-05-11":"19h30-20h30","2027-05-12":"19h30-20h30","2027-05-13":"19h30-20h30",
+  "2027-05-17":"19h30-20h30","2027-05-18":"19h30-20h30","2027-05-19":"19h30-20h30","2027-05-20":"19h30-20h30",
+  "2027-05-24":"19h30-20h30","2027-05-25":"19h30-20h30","2027-05-26":"19h30-20h30","2027-05-27":"19h30-20h30",
+  "2027-05-31":"19h30-20h30",
+  "2027-06-01":"19h30-20h30","2027-06-02":"19h30-20h30","2027-06-03":"19h30-20h30",
+  "2027-06-07":"19h30-20h30","2027-06-08":"19h30-20h30","2027-06-09":"19h30-20h30","2027-06-10":"19h30-20h30",
+  "2027-06-14":"19h30-20h30","2027-06-15":"19h30-20h30","2027-06-16":"19h30-20h30","2027-06-17":"19h30-20h30",
+  "2027-06-21":"19h30-20h30","2027-06-22":"19h30-20h30","2027-06-23":"19h30-20h30","2027-06-24":"19h30-20h30"
+};
+
+// Mapping jour → numéro (0=dim, 1=lun, 2=mar, 3=mer, 4=jeu)
+const JOUR_MAP = { 'lundi':1, 'mardi':2, 'mercredi':3, 'jeudi':4 };
+const JOUR_LABEL = { 'lundi':'Lundi', 'mardi':'Mardi', 'mercredi':'Mercredi', 'jeudi':'Jeudi' };
+let currentCours = 'lundi';
+
+function getCoursFiltres(jour){
+  const jourNum = JOUR_MAP[jour];
+  const filtered = {};
+  Object.keys(TOUS_COURS).forEach(function(dateStr){
+    const d = new Date(dateStr);
+    if(d.getDay() === jourNum) filtered[dateStr] = TOUS_COURS[dateStr];
+  });
+  return filtered;
+}
+
+const MONTHS_ELEVE = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+let eleveYear = 2026, eleveMonth = 8;
+
+function padEleve(n){ return String(n).padStart(2,'0'); }
+
+function renderCalEleve(){
+  const title = document.getElementById('nav-title-eleve');
+  const grid = document.getElementById('cal-days-eleve');
+  if(!title || !grid) return;
+  title.textContent = MONTHS_ELEVE[eleveMonth] + ' ' + eleveYear;
+  grid.innerHTML = '';
+  const cours = getCoursFiltres(currentCours);
+  const firstDay = new Date(eleveYear, eleveMonth, 1).getDay();
+  const offset = (firstDay === 0) ? 6 : firstDay - 1;
+  const daysInMonth = new Date(eleveYear, eleveMonth+1, 0).getDate();
+  const today = new Date();
+  for(let i = 0; i < offset; i++){
+    const d = document.createElement('div');
+    d.className = 'nda-cal-day empty';
+    grid.appendChild(d);
+  }
+  let count = 0;
+  for(let day = 1; day <= daysInMonth; day++){
+    const date = new Date(eleveYear, eleveMonth, day);
+    const dow = date.getDay();
+    const dateStr = eleveYear+'-'+padEleve(eleveMonth+1)+'-'+padEleve(day);
+    const isWeekend = dow === 0 || dow === 6;
+    const isCours = cours[dateStr];
+    const isToday = date.toDateString() === today.toDateString();
+    if(isCours) count++;
+    const d = document.createElement('div');
+    let cls = 'nda-cal-day';
+    if(isWeekend) cls += ' weekend';
+    if(isCours) cls += ' has-cours';
+    if(isToday) cls += ' today';
+    d.className = cls;
+    let inner = '<div class="nda-cal-num">'+day+'</div>';
+    if(isCours){
+      inner += '<div class="nda-cal-dot"></div>';
+      inner += '<div class="nda-cal-time">'+cours[dateStr]+'</div>';
+    }
+    d.innerHTML = inner;
+    grid.appendChild(d);
+  }
+  // Mise à jour stats
+  const totalCours = Object.keys(getCoursFiltres(currentCours)).length;
+  const statSeances = document.getElementById('stat-seances');
+  const statJour = document.getElementById('stat-jour');
+  if(statSeances) statSeances.textContent = totalCours;
+  if(statJour) statJour.textContent = JOUR_LABEL[currentCours];
+}
+
+window.setCoursFilter = function(){
+  const sel = document.getElementById('cours-filter');
+  if(sel) currentCours = sel.value;
+  renderCalEleve();
+};
+window.prevMonthEleve = function(){
+  eleveMonth--;
+  if(eleveMonth < 0){ eleveMonth = 11; eleveYear--; }
+  renderCalEleve();
+};
+window.nextMonthEleve = function(){
+  eleveMonth++;
+  if(eleveMonth > 11){ eleveMonth = 0; eleveYear++; }
+  renderCalEleve();
+};
+document.addEventListener('DOMContentLoaded', function(){
+  renderCalEleve();
+});
+
 document.querySelectorAll('.db-nav-item').forEach(function(item){
   item.addEventListener('click', function(e){
     e.preventDefault();
