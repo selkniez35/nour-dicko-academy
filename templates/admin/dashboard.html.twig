@@ -280,8 +280,8 @@
           <span>09/07/2026</span>
           <span class="db-eleve-badge db-badge-pending">En attente</span>
           <span class="admin-actions">
-            <button class="admin-btn-sm admin-btn-success">Accepter</button>
-            <button class="admin-btn-sm admin-btn-danger">Refuser</button>
+            <button class="admin-btn-sm admin-btn-success" onclick="openModal('modal-accept-fatima')">Accepter</button>
+<button class="admin-btn-sm admin-btn-danger" onclick="openModal('modal-refuse-fatima')">Refuser</button>
           </span>
         </div>
         <div class="admin-table-row">
@@ -290,8 +290,8 @@
           <span>08/07/2026</span>
           <span class="db-eleve-badge db-badge-pending">En attente</span>
           <span class="admin-actions">
-            <button class="admin-btn-sm admin-btn-success">Accepter</button>
-            <button class="admin-btn-sm admin-btn-danger">Refuser</button>
+            <button class="admin-btn-sm admin-btn-success" onclick="openModal('modal-accept-karim')">Accepter</button>
+<button class="admin-btn-sm admin-btn-danger" onclick="openModal('modal-refuse-karim')">Refuser</button>
           </span>
         </div>
       </div>
@@ -588,12 +588,8 @@
         </div>
       </div>
       <div class="actions-en-attente" style="display:flex;gap:12px;flex-wrap:wrap;padding-bottom:28px;">
-        <button class="admin-btn-success" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:none;cursor:pointer;background:rgba(34,197,94,.12);color:#16a34a;">
-          ✅ Accepter la demande
-        </button>
-        <button class="admin-btn-danger" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:none;cursor:pointer;background:rgba(220,38,38,.08);color:#dc2626;">
-          ❌ Refuser la demande
-        </button>
+        <button class="admin-btn-success" style="..." onclick="openModal('modal-accept-sarah')">✅ Accepter la demande</button>
+<button class="admin-btn-danger" style="..." onclick="openModal('modal-refuse-sarah')">❌ Refuser la demande</button>
       </div>
       <div class="actions-confirme" style="display:none;padding-bottom:28px;">
         <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.1);color:#16a34a;font-size:14px;font-weight:600;padding:12px 20px;border-radius:999px;">
@@ -1061,14 +1057,14 @@
 </div>
 
     <!-- Actions -->
-    <div style="display:flex;gap:12px;justify-content:flex-end;padding-bottom:8px;">
-      <button onclick="closeModal('modal-gerer-arabe')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
-        Fermer
-      </button>
-      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
-        Modifier la classe
-      </button>
-    </div>
+    <div style="display:flex;gap:12px;justify-content:flex-end;padding:0 0 8px;">
+  <button onclick="closeModal('modal-gerer-arabe')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+    Fermer
+  </button>
+  <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+    Modifier la classe
+  </button>
+</div>
 
   </div>
 </div>
@@ -1131,7 +1127,7 @@
           Sarah Dupont
         </span>
         <span><span style="background:rgba(234,179,8,.12);color:#a16207;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;">En attente</span></span>
-        <span><button style="font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid rgba(220,38,38,.2);background:rgba(220,38,38,.06);color:#dc2626;cursor:pointer;">Retirer</button></span>
+        <button onclick="openModal('modal-retirer-ahmed')" class="admin-btn-sm admin-btn-danger">Retirer</button>
       
 </div>
       
@@ -1139,14 +1135,14 @@
     </div>
 
     <!-- Actions -->
-    <div style="display:flex;gap:12px;justify-content:flex-end;padding-bottom:8px;">
-      <button onclick="closeModal('modal-gerer-education')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
-        Fermer
-      </button>
-      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
-        Modifier la classe
-      </button>
-    </div>
+    <div style="display:flex;gap:12px;justify-content:flex-end;padding:0 0 8px;">
+  <button onclick="closeModal('modal-gerer-arabe')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+    Fermer
+  </button>
+  <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+    Modifier la classe
+  </button>
+</div>
 
   </div>
 </div>
@@ -1467,6 +1463,162 @@
   </div>
 </div>
 
+<!-- ══ MODAL RETIRER AHMED ══ -->
+<div class="modal-overlay" id="modal-retirer-ahmed">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-retirer-ahmed')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" width="28" height="28"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 18h-6M20 15v6"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Retirer Ahmed Martin ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      Ahmed Martin sera retiré de la <strong>Classe A — Langue arabe</strong>. Cette action peut être annulée.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-retirer-ahmed')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">Annuler</button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#dc2626;color:#fff;cursor:pointer;">Retirer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL RETIRER MOHAMED ══ -->
+<div class="modal-overlay" id="modal-retirer-mohamed">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-retirer-mohamed')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" width="28" height="28"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 18h-6M20 15v6"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Retirer Mohamed Ali ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      Mohamed Ali sera retiré de la <strong>Classe A — Langue arabe</strong>. Cette action peut être annulée.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-retirer-mohamed')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">Annuler</button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#dc2626;color:#fff;cursor:pointer;">Retirer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL RETIRER SARAH ══ -->
+<div class="modal-overlay" id="modal-retirer-sarah">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-retirer-sarah')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" width="28" height="28"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 18h-6M20 15v6"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Retirer Sarah Dupont ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      Sarah Dupont sera retirée de la classe <strong>Éducation islamique</strong>. Cette action peut être annulée.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-retirer-sarah')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">Annuler</button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#dc2626;color:#fff;cursor:pointer;">Retirer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODALS ACCEPTER/REFUSER INSCRIPTIONS ══ -->
+<div class="modal-overlay" id="modal-accept-fatima">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-accept-fatima')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" width="28" height="28"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Accepter Fatima Ndiaye ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      Un email sera envoyé à Fatima Ndiaye avec le lien de paiement pour <strong>Lecture du Coran</strong>.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-accept-fatima')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">Annuler</button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#16a34a;color:#fff;cursor:pointer;">Confirmer</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-refuse-fatima">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-refuse-fatima')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" width="28" height="28"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Refuser Fatima Ndiaye ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      La demande de Fatima Ndiaye sera refusée. Un email lui sera envoyé pour l'en informer.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-refuse-fatima')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">Annuler</button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#dc2626;color:#fff;cursor:pointer;">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-accept-karim">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-accept-karim')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" width="28" height="28"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Accepter Karim Leblanc ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      Un email sera envoyé à Karim Leblanc avec le lien de paiement pour le <strong>Pack complet</strong>.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-accept-karim')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">Annuler</button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#16a34a;color:#fff;cursor:pointer;">Confirmer</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-refuse-karim">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-refuse-karim')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" width="28" height="28"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Refuser Karim Leblanc ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      La demande de Karim Leblanc sera refusée. Un email lui sera envoyé pour l'en informer.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-refuse-karim')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">Annuler</button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#dc2626;color:#fff;cursor:pointer;">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-accept-sarah">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-accept-sarah')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" width="28" height="28"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Accepter Sarah Dupont ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      Un email sera envoyé à Sarah Dupont avec le lien de paiement pour <strong>Éducation islamique</strong>.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-accept-sarah')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">Annuler</button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#16a34a;color:#fff;cursor:pointer;">Confirmer</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-refuse-sarah">
+  <div class="modal-box" style="max-width:460px;text-align:center;padding:40px 36px;">
+    <button class="modal-close" onclick="closeModal('modal-refuse-sarah')">×</button>
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" width="28" height="28"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+    </div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px;">Refuser Sarah Dupont ?</h3>
+    <p style="font-size:14.5px;color:var(--ink);opacity:.7;line-height:1.6;margin:0 0 28px;">
+      La demande de Sarah Dupont sera refusée. Un email lui sera envoyé pour l'en informer.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button onclick="closeModal('modal-refuse-sarah')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">Annuler</button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:#dc2626;color:#fff;cursor:pointer;">Refuser</button>
+    </div>
+  </div>
+</div>
 
   </main>
 </div>
