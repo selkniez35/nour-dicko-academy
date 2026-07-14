@@ -196,3 +196,13 @@ window.addEventListener('scroll', function(){
     cta.classList.remove('visible');
   }
 });
+
+// ═══ Auto-hide welcome toast ═══
+document.addEventListener('DOMContentLoaded', function(){
+  const toast = document.getElementById('welcome-toast');
+  if(toast){
+    setTimeout(function(){
+      toast.style.display = 'none';
+    }, 4000);
+  }
+});
