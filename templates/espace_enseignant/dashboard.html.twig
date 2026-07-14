@@ -188,32 +188,63 @@
     </section>
 
     <!-- Section : Calendrier -->
-    <section class="db-section" id="section-calendrier">
-      <h2 class="db-section-title">Calendrier des cours</h2>
-      <div class="db-calendar">
-        <div class="db-cal-header">
-          <button class="db-cal-nav">‹</button>
-          <span class="db-cal-month">Juillet 2026</span>
-          <button class="db-cal-nav">›</button>
-        </div>
-        <div class="db-cal-days">
-          <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
-        </div>
-        <div class="db-cal-grid">
-          {% for i in 1..31 %}
-            <div class="db-cal-day {% if i in [7, 14, 21, 28] %}db-cal-cours{% endif %}">
-              {{ i }}
-              {% if i in [7, 14, 21, 28] %}
-                <span class="db-cal-dot"></span>
-              {% endif %}
-            </div>
-          {% endfor %}
-        </div>
-        <div class="db-cal-legend">
-          <span class="db-cal-dot"></span> Cours prévu
-        </div>
-      </div>
-    </section>
+   <section class="db-section" id="section-calendrier">
+  <h2 class="db-section-title">Calendrier des cours 2026–2027</h2>
+
+  <!-- Stats -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;">
+    <div class="db-stat-mini">
+      <div class="db-stat-mini-val">148</div>
+      <div class="db-stat-mini-label">Séances prévues</div>
+    </div>
+    <div class="db-stat-mini">
+      <div class="db-stat-mini-val">10</div>
+      <div class="db-stat-mini-label">Mois de cours</div>
+    </div>
+    <div class="db-stat-mini">
+      <div class="db-stat-mini-val">19h–20h</div>
+      <div class="db-stat-mini-label">Horaire habituel</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:24px;">
+    <button onclick="prevMonth()" style="background:var(--black);color:var(--gold);border:none;cursor:pointer;width:38px;height:38px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;">‹</button>
+    <div id="nav-title" style="font-family:var(--font-display);font-size:24px;font-weight:700;min-width:220px;text-align:center;"></div>
+    <button onclick="nextMonth()" style="background:var(--black);color:var(--gold);border:none;cursor:pointer;width:38px;height:38px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;">›</button>
+  </div>
+
+  <!-- Grille -->
+  <div style="background:var(--white);border-radius:18px;border:1px solid var(--gold-pale);overflow:hidden;box-shadow:var(--shadow);">
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);background:var(--black);">
+      <div class="nda-cal-dayname">Lun</div>
+      <div class="nda-cal-dayname">Mar</div>
+      <div class="nda-cal-dayname">Mer</div>
+      <div class="nda-cal-dayname">Jeu</div>
+      <div class="nda-cal-dayname">Ven</div>
+      <div class="nda-cal-dayname">Sam</div>
+      <div class="nda-cal-dayname">Dim</div>
+    </div>
+    <div id="cal-days" style="display:grid;grid-template-columns:repeat(7,1fr);"></div>
+  </div>
+
+  <!-- Légende -->
+  <div style="display:flex;align-items:center;gap:24px;margin-top:18px;justify-content:center;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.7;">
+      <div style="width:12px;height:12px;border-radius:50%;background:rgba(201,146,42,.3);border:1px solid var(--gold);"></div>
+      Jour de cours
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.7;">
+      <div style="width:12px;height:12px;border-radius:50%;background:#f5f5f5;border:1px solid #ddd;"></div>
+      Week-end
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.7;">
+      <div style="width:12px;height:12px;border-radius:50%;border:2px solid var(--gold);"></div>
+      Aujourd'hui
+    </div>
+  </div>
+
+</section>
 
     <!-- Section : Évaluations -->
     <section class="db-section" id="section-evaluations">
@@ -226,7 +257,7 @@
               <h4>Ahmed Martin</h4>
               <span>Langue arabe — Classe A</span>
             </div>
-            <button class="db-eval-add-btn">+ Ajouter</button>
+            <button class="db-eval-add-btn" onclick="openModal('modal-add-eval')">+ Ajouter</button>
           </div>
           <div class="db-eval-body">
             <div class="db-eval-row">
@@ -357,6 +388,68 @@
   </div>
 </div>
 
+<!-- ══ MODAL AJOUTER ÉVALUATION ══ -->
+<div class="modal-overlay" id="modal-add-eval">
+  <div class="modal-box" style="max-width:560px;max-height:90vh;overflow-y:auto;">
+    <button class="modal-close" onclick="closeModal('modal-add-eval')">×</button>
+    <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--ink);margin:0 0 6px;">Ajouter une évaluation</h3>
+    <p style="font-size:14px;color:var(--ink);opacity:.6;margin:0 0 24px;">Saisir les notes et commentaire pour un élève</p>
+
+    <!-- Élève + séance -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Élève <span style="color:var(--gold);">*</span></label>
+        <select style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+          <option value="" disabled selected>Choisir...</option>
+          <option>Ahmed Martin</option>
+          <option>Sarah Dupont</option>
+          <option>Mohamed Ali</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Séance <span style="color:var(--gold);">*</span></label>
+        <input type="text" placeholder="Ex : Séance 4 — 28/07/2026" style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;">
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;">Notes /20</div>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <label style="font-size:13.5px;color:var(--ink);width:140px;flex-shrink:0;">Lecture</label>
+        <input type="range" min="0" max="20" value="14" oninput="this.nextElementSibling.textContent=this.value+'/20'" style="flex-grow:1;accent-color:var(--gold);">
+        <span style="font-size:14px;font-weight:700;color:var(--gold-deep);width:44px;text-align:right;">14/20</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <label style="font-size:13.5px;color:var(--ink);width:140px;flex-shrink:0;">Compréhension</label>
+        <input type="range" min="0" max="20" value="12" oninput="this.nextElementSibling.textContent=this.value+'/20'" style="flex-grow:1;accent-color:var(--gold);">
+        <span style="font-size:14px;font-weight:700;color:var(--gold-deep);width:44px;text-align:right;">12/20</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <label style="font-size:13.5px;color:var(--ink);width:140px;flex-shrink:0;">Expression orale</label>
+        <input type="range" min="0" max="20" value="10" oninput="this.nextElementSibling.textContent=this.value+'/20'" style="flex-grow:1;accent-color:var(--gold);">
+        <span style="font-size:14px;font-weight:700;color:var(--gold-deep);width:44px;text-align:right;">10/20</span>
+      </div>
+    </div>
+
+    <!-- Commentaire -->
+    <div style="margin-bottom:28px;">
+      <label style="font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;">Commentaire pour l'élève</label>
+      <textarea rows="4" placeholder="Commentaire sur la progression, les points à améliorer..." style="width:100%;font-family:var(--font-body);font-size:14px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:11px 14px;box-sizing:border-box;resize:vertical;"></textarea>
+    </div>
+
+    <!-- Boutons -->
+    <div style="display:flex;gap:12px;justify-content:flex-end;">
+      <button onclick="closeModal('modal-add-eval')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
+        Annuler
+      </button>
+      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
+        Enregistrer
+      </button>
+    </div>
+  </div>
+</div>
+
   </main>
 </div>
 {% endblock %}
@@ -365,6 +458,139 @@
 {{ parent() }}
 {% verbatim %}
 <script>
+
+// ═══ Calendrier NDA ═══
+
+// ═══ Calendrier Enseignant ═══
+// Youssef Ben Ali enseigne Langue arabe Classe A (lundi) et Classe B (mardi)
+// Ton dev remplacera par les vraies classes de l'enseignant connecté
+const CLASSES_ENSEIGNANT = ['lundi', 'mardi']; // à adapter selon l'enseignant
+
+const TOUS_COURS_ENS = {
+  "2026-09-07":"19h-20h","2026-09-08":"19h-20h","2026-09-09":"19h-20h","2026-09-10":"19h-20h",
+  "2026-09-14":"19h-20h","2026-09-15":"19h-20h","2026-09-16":"19h-20h","2026-09-17":"19h-20h",
+  "2026-09-21":"19h-20h","2026-09-22":"19h-20h","2026-09-23":"19h-20h","2026-09-24":"19h-20h",
+  "2026-09-28":"18h30-19h30","2026-09-29":"18h30-19h30","2026-09-30":"18h30-19h30",
+  "2026-10-01":"18h30-19h30","2026-10-05":"18h30-19h30","2026-10-06":"18h30-19h30",
+  "2026-10-07":"18h30-19h30","2026-10-08":"18h30-19h30",
+  "2026-10-12":"19h30-20h30","2026-10-13":"19h30-20h30","2026-10-14":"19h30-20h30","2026-10-15":"19h30-20h30",
+  "2026-10-19":"19h30-20h30","2026-10-20":"19h30-20h30","2026-10-21":"19h30-20h30","2026-10-22":"19h30-20h30",
+  "2026-10-26":"19h30-20h30","2026-10-27":"19h30-20h30","2026-10-28":"19h30-20h30","2026-10-29":"19h30-20h30",
+  "2026-11-02":"19h30-20h30","2026-11-03":"19h30-20h30","2026-11-04":"19h30-20h30","2026-11-05":"19h30-20h30",
+  "2026-11-09":"19h30-20h30","2026-11-10":"19h30-20h30","2026-11-11":"19h30-20h30","2026-11-12":"19h30-20h30",
+  "2026-11-16":"19h30-20h30","2026-11-17":"19h30-20h30","2026-11-18":"19h30-20h30","2026-11-19":"19h30-20h30",
+  "2026-11-23":"19h30-20h30","2026-11-24":"19h30-20h30","2026-11-25":"19h30-20h30","2026-11-26":"19h30-20h30",
+  "2026-11-30":"19h30-20h30",
+  "2026-12-01":"19h30-20h30","2026-12-02":"19h30-20h30","2026-12-03":"19h30-20h30",
+  "2026-12-07":"19h30-20h30","2026-12-08":"19h30-20h30","2026-12-09":"19h30-20h30","2026-12-10":"19h30-20h30",
+  "2026-12-14":"19h30-20h30","2026-12-15":"19h30-20h30","2026-12-16":"19h30-20h30","2026-12-17":"19h30-20h30",
+  "2026-12-21":"19h30-20h30","2026-12-22":"19h30-20h30","2026-12-23":"19h30-20h30","2026-12-24":"19h30-20h30",
+  "2026-12-28":"19h30-20h30","2026-12-29":"19h30-20h30","2026-12-30":"19h30-20h30","2026-12-31":"19h30-20h30",
+  "2027-01-04":"19h30-20h30","2027-01-05":"19h30-20h30","2027-01-06":"19h30-20h30","2027-01-07":"19h30-20h30",
+  "2027-01-11":"19h30-20h30","2027-01-12":"19h30-20h30","2027-01-13":"19h30-20h30","2027-01-14":"19h30-20h30",
+  "2027-01-18":"19h30-20h30","2027-01-19":"19h30-20h30","2027-01-20":"19h30-20h30","2027-01-21":"19h30-20h30",
+  "2027-01-25":"19h30-20h30","2027-01-26":"19h30-20h30","2027-01-27":"19h30-20h30","2027-01-28":"19h30-20h30",
+  "2027-02-01":"19h30-20h30","2027-02-02":"19h30-20h30","2027-02-03":"19h30-20h30","2027-02-04":"19h30-20h30",
+  "2027-03-15":"19h30-20h30","2027-03-16":"19h30-20h30","2027-03-17":"19h30-20h30","2027-03-18":"19h30-20h30",
+  "2027-03-22":"19h30-20h30","2027-03-23":"19h30-20h30","2027-03-24":"19h30-20h30","2027-03-25":"19h30-20h30",
+  "2027-03-29":"19h30-20h30","2027-03-30":"19h30-20h30","2027-03-31":"19h30-20h30",
+  "2027-04-01":"19h30-20h30","2027-04-05":"19h30-20h30","2027-04-06":"19h30-20h30","2027-04-07":"19h30-20h30","2027-04-08":"19h30-20h30",
+  "2027-04-12":"19h30-20h30","2027-04-13":"19h30-20h30","2027-04-14":"19h30-20h30","2027-04-15":"19h30-20h30",
+  "2027-04-19":"19h30-20h30","2027-04-20":"19h30-20h30","2027-04-21":"19h30-20h30","2027-04-22":"19h30-20h30",
+  "2027-04-26":"19h30-20h30","2027-04-27":"19h30-20h30","2027-04-28":"19h30-20h30","2027-04-29":"19h30-20h30",
+  "2027-05-03":"19h30-20h30","2027-05-04":"19h30-20h30","2027-05-05":"19h30-20h30","2027-05-06":"19h30-20h30",
+  "2027-05-10":"19h30-20h30","2027-05-11":"19h30-20h30","2027-05-12":"19h30-20h30","2027-05-13":"19h30-20h30",
+  "2027-05-17":"19h30-20h30","2027-05-18":"19h30-20h30","2027-05-19":"19h30-20h30","2027-05-20":"19h30-20h30",
+  "2027-05-24":"19h30-20h30","2027-05-25":"19h30-20h30","2027-05-26":"19h30-20h30","2027-05-27":"19h30-20h30",
+  "2027-05-31":"19h30-20h30",
+  "2027-06-01":"19h30-20h30","2027-06-02":"19h30-20h30","2027-06-03":"19h30-20h30",
+  "2027-06-07":"19h30-20h30","2027-06-08":"19h30-20h30","2027-06-09":"19h30-20h30","2027-06-10":"19h30-20h30",
+  "2027-06-14":"19h30-20h30","2027-06-15":"19h30-20h30","2027-06-16":"19h30-20h30","2027-06-17":"19h30-20h30",
+  "2027-06-21":"19h30-20h30","2027-06-22":"19h30-20h30","2027-06-23":"19h30-20h30","2027-06-24":"19h30-20h30"
+};
+
+const JOUR_MAP_ENS = { 'lundi':1, 'mardi':2, 'mercredi':3, 'jeudi':4 };
+const JOUR_LABEL_ENS = { 'lundi':'Lundi', 'mardi':'Mardi', 'mercredi':'Mercredi', 'jeudi':'Jeudi' };
+const MONTHS_ENS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+let calYearEns = 2026, calMonthEns = 8;
+
+function getCoursFiltresEns(){
+  const jours = CLASSES_ENSEIGNANT.map(j => JOUR_MAP_ENS[j]);
+  const filtered = {};
+  Object.keys(TOUS_COURS_ENS).forEach(function(dateStr){
+    const d = new Date(dateStr);
+    if(jours.includes(d.getDay())) filtered[dateStr] = TOUS_COURS_ENS[dateStr];
+  });
+  return filtered;
+}
+
+function padEns(n){ return String(n).padStart(2,'0'); }
+
+function renderCal(){
+  const title = document.getElementById('nav-title');
+  const grid = document.getElementById('cal-days');
+  if(!title || !grid) return;
+  title.textContent = MONTHS_ENS[calMonthEns] + ' ' + calYearEns;
+  grid.innerHTML = '';
+  const cours = getCoursFiltresEns();
+  const firstDay = new Date(calYearEns, calMonthEns, 1).getDay();
+  const offset = (firstDay === 0) ? 6 : firstDay - 1;
+  const daysInMonth = new Date(calYearEns, calMonthEns+1, 0).getDate();
+  const today = new Date();
+  for(let i = 0; i < offset; i++){
+    const d = document.createElement('div');
+    d.className = 'nda-cal-day empty';
+    grid.appendChild(d);
+  }
+  for(let day = 1; day <= daysInMonth; day++){
+    const date = new Date(calYearEns, calMonthEns, day);
+    const dow = date.getDay();
+    const dateStr = calYearEns+'-'+padEns(calMonthEns+1)+'-'+padEns(day);
+    const isWeekend = dow === 0 || dow === 6;
+    const isCours = cours[dateStr];
+    const isToday = date.toDateString() === today.toDateString();
+    const d = document.createElement('div');
+    let cls = 'nda-cal-day';
+    if(isWeekend) cls += ' weekend';
+    if(isCours) cls += ' has-cours';
+    if(isToday) cls += ' today';
+    d.className = cls;
+    // Ajouter label du jour si cours
+    let label = '';
+    if(isCours){
+      const jourNom = Object.keys(JOUR_MAP_ENS).find(j => JOUR_MAP_ENS[j] === dow);
+      label = jourNom === 'lundi' ? 'Cl. A' : jourNom === 'mardi' ? 'Cl. B' : '';
+    }
+    let inner = '<div class="nda-cal-num">'+day+'</div>';
+    if(isCours){
+      inner += '<div class="nda-cal-dot"></div>';
+      inner += '<div class="nda-cal-time">'+(label ? label+' · ' : '')+cours[dateStr]+'</div>';
+    }
+    d.innerHTML = inner;
+    grid.appendChild(d);
+  }
+  // Stats
+  const total = Object.keys(getCoursFiltresEns()).length;
+  const statEl = document.getElementById('stat-seances');
+  if(statEl) statEl.textContent = total;
+  const jourEl = document.getElementById('stat-jour');
+  if(jourEl) jourEl.textContent = CLASSES_ENSEIGNANT.map(j => JOUR_LABEL_ENS[j]).join(' & ');
+}
+
+window.prevMonth = function(){
+  calMonthEns--;
+  if(calMonthEns < 0){ calMonthEns = 11; calYearEns--; }
+  renderCal();
+};
+window.nextMonth = function(){
+  calMonthEns++;
+  if(calMonthEns > 11){ calMonthEns = 0; calYearEns++; }
+  renderCal();
+};
+document.addEventListener('DOMContentLoaded', function(){
+  renderCal();
+});
+
 document.querySelectorAll('.db-nav-item').forEach(function(item){
   item.addEventListener('click', function(e){
     e.preventDefault();

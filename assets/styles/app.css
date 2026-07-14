@@ -2146,3 +2146,32 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
 .welcome-toast-sub{
   font-size:13px;color:var(--ink);opacity:.6;
 }
+
+/* ═══════════════ CALENDRIER NDA ═══════════════ */
+.db-stat-mini{
+  background:var(--white);border:1px solid var(--gold-pale);
+  border-radius:14px;padding:16px 20px;text-align:center;
+  box-shadow:var(--shadow);
+}
+.db-stat-mini-val{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold-deep);}
+.db-stat-mini-label{font-size:11px;opacity:.6;margin-top:2px;letter-spacing:.06em;text-transform:uppercase;}
+.nda-cal-dayname{
+  text-align:center;padding:12px 4px;
+  font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);
+}
+.nda-cal-day{
+  min-height:64px;padding:8px;
+  border-right:1px solid var(--gold-pale);
+  border-bottom:1px solid var(--gold-pale);
+}
+.nda-cal-day:nth-child(7n){border-right:none;}
+.nda-cal-day.empty{background:var(--paper);}
+.nda-cal-day.weekend{background:#fdf9f0;}
+.nda-cal-day.has-cours{background:rgba(201,146,42,.08);cursor:pointer;}
+.nda-cal-day.has-cours:hover{background:rgba(201,146,42,.18);}
+.nda-cal-day.today{outline:2px solid var(--gold);outline-offset:-2px;}
+.nda-cal-num{font-size:13px;font-weight:600;color:var(--ink);}
+.nda-cal-day.weekend .nda-cal-num{color:#bbb;}
+.nda-cal-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:6px;}
+.nda-cal-time{font-size:10px;font-weight:600;color:var(--gold-deep);margin-top:4px;line-height:1.2;}

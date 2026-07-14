@@ -48,6 +48,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
         Paiements
       </a>
+      <a href="#" class="db-nav-item" data-section="calendrier">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+  Calendrier
+</a>
       <a href="#" class="db-nav-item" data-section="actualites">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
         Actualités
@@ -340,6 +344,68 @@
         </div>
       </div>
     </section>
+
+<section class="db-section" id="section-calendrier">
+  <h2 class="db-section-title">Calendrier des cours 2026–2027</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;">
+    <div class="db-stat-mini">
+      <div class="db-stat-mini-val">148</div>
+      <div class="db-stat-mini-label">Séances totales</div>
+    </div>
+    <div class="db-stat-mini">
+      <div class="db-stat-mini-val" style="font-size:18px;">Lun · Mar</div>
+      <div class="db-stat-mini-label">Langue arabe</div>
+    </div>
+    <div class="db-stat-mini">
+      <div class="db-stat-mini-val" style="font-size:18px;">Mer</div>
+      <div class="db-stat-mini-label">Éducation islamique</div>
+    </div>
+    <div class="db-stat-mini">
+      <div class="db-stat-mini-val" style="font-size:18px;">Jeu</div>
+      <div class="db-stat-mini-label">Lecture du Coran</div>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:24px;">
+    <button onclick="prevMonthAdmin()" style="background:var(--black);color:var(--gold);border:none;cursor:pointer;width:38px;height:38px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;">‹</button>
+    <div id="nav-title-admin" style="font-family:var(--font-display);font-size:24px;font-weight:700;min-width:220px;text-align:center;"></div>
+    <button onclick="nextMonthAdmin()" style="background:var(--black);color:var(--gold);border:none;cursor:pointer;width:38px;height:38px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;">›</button>
+  </div>
+
+  <div style="background:var(--white);border-radius:18px;border:1px solid var(--gold-pale);overflow:hidden;box-shadow:var(--shadow);">
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);background:var(--black);">
+      <div class="nda-cal-dayname">Lun</div>
+      <div class="nda-cal-dayname">Mar</div>
+      <div class="nda-cal-dayname">Mer</div>
+      <div class="nda-cal-dayname">Jeu</div>
+      <div class="nda-cal-dayname">Ven</div>
+      <div class="nda-cal-dayname">Sam</div>
+      <div class="nda-cal-dayname">Dim</div>
+    </div>
+    <div id="cal-days-admin" style="display:grid;grid-template-columns:repeat(7,1fr);"></div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:24px;margin-top:18px;justify-content:center;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.7;">
+      <div style="width:12px;height:12px;border-radius:50%;background:rgba(201,146,42,.12);border:1px solid var(--gold);"></div>
+      Lundi — Langue arabe Cl. A
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.7;">
+      <div style="width:12px;height:12px;border-radius:50%;background:rgba(168,119,24,.2);border:1px solid var(--gold-deep);"></div>
+      Mardi — Langue arabe Cl. B
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.7;">
+      <div style="width:12px;height:12px;border-radius:50%;background:rgba(12,12,12,.1);border:1px solid #555;"></div>
+      Mercredi — Éducation islamique
+    </div>  
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;opacity:.7;">
+      <div style="width:12px;height:12px;border-radius:50%;background:rgba(26,23,18,.08);border:1px solid #888;"></div>
+      Jeudi — Lecture du Coran
+    </div>
+  </div>
+
+</section>
 
     <!-- Section : Actualités -->
     <section class="db-section" id="section-actualites">
@@ -1373,6 +1439,110 @@
 {{ parent() }}
 {% verbatim %}
 <script>
+
+// ═══ Calendrier Admin (complet) ═══
+const TOUS_COURS_ADMIN = {
+  "2026-09-07":"19h-20h","2026-09-08":"19h-20h","2026-09-09":"19h-20h","2026-09-10":"19h-20h",
+  "2026-09-14":"19h-20h","2026-09-15":"19h-20h","2026-09-16":"19h-20h","2026-09-17":"19h-20h",
+  "2026-09-21":"19h-20h","2026-09-22":"19h-20h","2026-09-23":"19h-20h","2026-09-24":"19h-20h",
+  "2026-09-28":"18h30-19h30","2026-09-29":"18h30-19h30","2026-09-30":"18h30-19h30",
+  "2026-10-01":"18h30-19h30","2026-10-05":"18h30-19h30","2026-10-06":"18h30-19h30",
+  "2026-10-07":"18h30-19h30","2026-10-08":"18h30-19h30",
+  "2026-10-12":"19h30-20h30","2026-10-13":"19h30-20h30","2026-10-14":"19h30-20h30","2026-10-15":"19h30-20h30",
+  "2026-10-19":"19h30-20h30","2026-10-20":"19h30-20h30","2026-10-21":"19h30-20h30","2026-10-22":"19h30-20h30",
+  "2026-10-26":"19h30-20h30","2026-10-27":"19h30-20h30","2026-10-28":"19h30-20h30","2026-10-29":"19h30-20h30",
+  "2026-11-02":"19h30-20h30","2026-11-03":"19h30-20h30","2026-11-04":"19h30-20h30","2026-11-05":"19h30-20h30",
+  "2026-11-09":"19h30-20h30","2026-11-10":"19h30-20h30","2026-11-11":"19h30-20h30","2026-11-12":"19h30-20h30",
+  "2026-11-16":"19h30-20h30","2026-11-17":"19h30-20h30","2026-11-18":"19h30-20h30","2026-11-19":"19h30-20h30",
+  "2026-11-23":"19h30-20h30","2026-11-24":"19h30-20h30","2026-11-25":"19h30-20h30","2026-11-26":"19h30-20h30",
+  "2026-11-30":"19h30-20h30",
+  "2026-12-01":"19h30-20h30","2026-12-02":"19h30-20h30","2026-12-03":"19h30-20h30",
+  "2026-12-07":"19h30-20h30","2026-12-08":"19h30-20h30","2026-12-09":"19h30-20h30","2026-12-10":"19h30-20h30",
+  "2026-12-14":"19h30-20h30","2026-12-15":"19h30-20h30","2026-12-16":"19h30-20h30","2026-12-17":"19h30-20h30",
+  "2026-12-21":"19h30-20h30","2026-12-22":"19h30-20h30","2026-12-23":"19h30-20h30","2026-12-24":"19h30-20h30",
+  "2026-12-28":"19h30-20h30","2026-12-29":"19h30-20h30","2026-12-30":"19h30-20h30","2026-12-31":"19h30-20h30",
+  "2027-01-04":"19h30-20h30","2027-01-05":"19h30-20h30","2027-01-06":"19h30-20h30","2027-01-07":"19h30-20h30",
+  "2027-01-11":"19h30-20h30","2027-01-12":"19h30-20h30","2027-01-13":"19h30-20h30","2027-01-14":"19h30-20h30",
+  "2027-01-18":"19h30-20h30","2027-01-19":"19h30-20h30","2027-01-20":"19h30-20h30","2027-01-21":"19h30-20h30",
+  "2027-01-25":"19h30-20h30","2027-01-26":"19h30-20h30","2027-01-27":"19h30-20h30","2027-01-28":"19h30-20h30",
+  "2027-02-01":"19h30-20h30","2027-02-02":"19h30-20h30","2027-02-03":"19h30-20h30","2027-02-04":"19h30-20h30",
+  "2027-03-15":"19h30-20h30","2027-03-16":"19h30-20h30","2027-03-17":"19h30-20h30","2027-03-18":"19h30-20h30",
+  "2027-03-22":"19h30-20h30","2027-03-23":"19h30-20h30","2027-03-24":"19h30-20h30","2027-03-25":"19h30-20h30",
+  "2027-03-29":"19h30-20h30","2027-03-30":"19h30-20h30","2027-03-31":"19h30-20h30",
+  "2027-04-01":"19h30-20h30","2027-04-05":"19h30-20h30","2027-04-06":"19h30-20h30","2027-04-07":"19h30-20h30","2027-04-08":"19h30-20h30",
+  "2027-04-12":"19h30-20h30","2027-04-13":"19h30-20h30","2027-04-14":"19h30-20h30","2027-04-15":"19h30-20h30",
+  "2027-04-19":"19h30-20h30","2027-04-20":"19h30-20h30","2027-04-21":"19h30-20h30","2027-04-22":"19h30-20h30",
+  "2027-04-26":"19h30-20h30","2027-04-27":"19h30-20h30","2027-04-28":"19h30-20h30","2027-04-29":"19h30-20h30",
+  "2027-05-03":"19h30-20h30","2027-05-04":"19h30-20h30","2027-05-05":"19h30-20h30","2027-05-06":"19h30-20h30",
+  "2027-05-10":"19h30-20h30","2027-05-11":"19h30-20h30","2027-05-12":"19h30-20h30","2027-05-13":"19h30-20h30",
+  "2027-05-17":"19h30-20h30","2027-05-18":"19h30-20h30","2027-05-19":"19h30-20h30","2027-05-20":"19h30-20h30",
+  "2027-05-24":"19h30-20h30","2027-05-25":"19h30-20h30","2027-05-26":"19h30-20h30","2027-05-27":"19h30-20h30",
+  "2027-05-31":"19h30-20h30",
+  "2027-06-01":"19h30-20h30","2027-06-02":"19h30-20h30","2027-06-03":"19h30-20h30",
+  "2027-06-07":"19h30-20h30","2027-06-08":"19h30-20h30","2027-06-09":"19h30-20h30","2027-06-10":"19h30-20h30",
+  "2027-06-14":"19h30-20h30","2027-06-15":"19h30-20h30","2027-06-16":"19h30-20h30","2027-06-17":"19h30-20h30",
+  "2027-06-21":"19h30-20h30","2027-06-22":"19h30-20h30","2027-06-23":"19h30-20h30","2027-06-24":"19h30-20h30"
+};
+
+const COURS_COLORS = { 1:'rgba(201,146,42,.15)', 2:'rgba(168,119,24,.2)', 3:'rgba(12,12,12,.08)', 4:'rgba(26,23,18,.06)' };
+const COURS_LABELS = { 1:'Cl. A', 2:'Cl. B', 3:'Éd. isl.', 4:'Coran' };
+const MONTHS_ADMIN = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+let adminYear = 2026, adminMonth = 8;
+
+function padAdmin(n){ return String(n).padStart(2,'0'); }
+
+function renderCalAdmin(){
+  const title = document.getElementById('nav-title-admin');
+  const grid = document.getElementById('cal-days-admin');
+  if(!title || !grid) return;
+  title.textContent = MONTHS_ADMIN[adminMonth] + ' ' + adminYear;
+  grid.innerHTML = '';
+  const firstDay = new Date(adminYear, adminMonth, 1).getDay();
+  const offset = (firstDay === 0) ? 6 : firstDay - 1;
+  const daysInMonth = new Date(adminYear, adminMonth+1, 0).getDate();
+  const today = new Date();
+  for(let i = 0; i < offset; i++){
+    const d = document.createElement('div');
+    d.className = 'nda-cal-day empty';
+    grid.appendChild(d);
+  }
+  for(let day = 1; day <= daysInMonth; day++){
+    const date = new Date(adminYear, adminMonth, day);
+    const dow = date.getDay();
+    const dateStr = adminYear+'-'+padAdmin(adminMonth+1)+'-'+padAdmin(day);
+    const isWeekend = dow === 0 || dow === 6;
+    const isCours = TOUS_COURS_ADMIN[dateStr];
+    const isToday = date.toDateString() === today.toDateString();
+    const d = document.createElement('div');
+    let cls = 'nda-cal-day';
+    if(isWeekend) cls += ' weekend';
+    if(isCours) cls += ' has-cours';
+    if(isToday) cls += ' today';
+    if(isCours && COURS_COLORS[dow]) d.style.background = COURS_COLORS[dow];
+    d.className = cls;
+    let inner = '<div class="nda-cal-num">'+day+'</div>';
+    if(isCours){
+      inner += '<div class="nda-cal-dot"></div>';
+      inner += '<div class="nda-cal-time">'+(COURS_LABELS[dow]||'')+' '+TOUS_COURS_ADMIN[dateStr]+'</div>';
+    }
+    d.innerHTML = inner;
+    grid.appendChild(d);
+  }
+}
+
+window.prevMonthAdmin = function(){
+  adminMonth--;
+  if(adminMonth < 0){ adminMonth = 11; adminYear--; }
+  renderCalAdmin();
+};
+window.nextMonthAdmin = function(){
+  adminMonth++;
+  if(adminMonth > 11){ adminMonth = 0; adminYear++; }
+  renderCalAdmin();
+};
+document.addEventListener('DOMContentLoaded', function(){
+  renderCalAdmin();
+});
 
 window.openSubModal = function(id){
   const modal = document.getElementById(id);
