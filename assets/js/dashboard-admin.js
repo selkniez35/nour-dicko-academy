@@ -58,17 +58,33 @@ window.nextMonthAdmin = function(){ adminMonth++; if(adminMonth>11){adminMonth=0
 window.openSubModal = function(id){ const m = document.getElementById(id); if(m) m.style.display='flex'; };
 window.closeSubModal = function(id){ const m = document.getElementById(id); if(m) m.style.display='none'; };
 
+function activateAdminSection(section){
+  const nav = document.querySelector('.db-nav-item[data-section="'+section+'"]');
+  const target = document.getElementById('section-'+section);
+  if(!nav || !target) return false;
+  document.querySelectorAll('.db-nav-item').forEach(i => i.classList.remove('active'));
+  document.querySelectorAll('.db-section').forEach(s => s.classList.remove('active'));
+  nav.classList.add('active');
+  target.classList.add('active');
+  return true;
+}
+
 document.querySelectorAll('.db-nav-item').forEach(function(item){
   item.addEventListener('click', function(e){
     e.preventDefault();
     const section = this.dataset.section;
-    document.querySelectorAll('.db-nav-item').forEach(i => i.classList.remove('active'));
-    document.querySelectorAll('.db-section').forEach(s => s.classList.remove('active'));
-    this.classList.add('active');
-    const target = document.getElementById('section-'+section);
-    if(target) target.classList.add('active');
+    if(activateAdminSection(section)){
+      history.replaceState(null, '', '#' + section);
+    }
   });
 });
+
+// Ouvre directement la section demandee via le hash de l'URL (ex: /admin#eleves),
+// utilise apres une redirection depuis un formulaire admin.
+(function(){
+  const hash = window.location.hash.replace('#', '');
+  if(hash) activateAdminSection(hash);
+})();
 
 window.toggleAvatarMenu = function(){
   document.getElementById('avatar-menu').classList.toggle('open');

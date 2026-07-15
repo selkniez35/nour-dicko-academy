@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -22,6 +23,7 @@ class SecurityController extends AbstractController
     public function __construct(private readonly MailService $brevoService){}
 
     /**
+     * @throws TransportExceptionInterface
      */
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserService $userService, UserAuthenticatorInterface $authenticator, LoginFormAuthenticator $loginAuthenticator): Response {
@@ -38,7 +40,7 @@ class SecurityController extends AbstractController
 
             $user = $userService->createUser($dto);
 
-            $this->brevoService->sendWelcomeMail(
+            $this->brevoService->sendWelcome(
                 $user->getEmail(),
                 $user->getProfile()->getFullName(),
             );

@@ -22,6 +22,7 @@ use App\Repository\UserRepository;
 use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -62,51 +63,39 @@ final class AdminController extends AbstractController
     }
 
     #[Route('/students', name: 'students')]
-    public function students(UserRepository $userRepository): Response
+    public function students(): Response
     {
-        return $this->render('admin/partials/_students.html.twig', [
-            'students' => $userRepository->findStudents(),
-        ]);
+        return $this->redirectToDashboardSection('eleves');
     }
 
     #[Route('/teachers', name: 'teachers')]
-    public function teachers(UserRepository $userRepository): Response
+    public function teachers(): Response
     {
-        return $this->render('admin/partials/_teachers.html.twig', [
-            'teachers' => $userRepository->findTeachers(),
-        ]);
+        return $this->redirectToDashboardSection('enseignants');
     }
 
     #[Route('/trainings', name: 'trainings')]
-    public function trainings(MembershipPlanRepository $planRepository): Response
+    public function trainings(): Response
     {
-        return $this->render('admin/partials/_trainings.html.twig', [
-            'plans' => $planRepository->findAllOrdered(),
-        ]);
+        return $this->redirectToDashboardSection('classes');
     }
 
     #[Route('/registrations', name: 'registrations')]
-    public function registrations(MembershipRepository $membershipRepository): Response
+    public function registrations(): Response
     {
-        return $this->render('admin/partials/_registrations.html.twig', [
-            'memberships' => $membershipRepository->findLatest(20),
-        ]);
+        return $this->redirectToDashboardSection('inscriptions');
     }
 
     #[Route('/payments', name: 'payments')]
-    public function payments(PaymentRepository $paymentRepository): Response
+    public function payments(): Response
     {
-        return $this->render('admin/partials/_payments.html.twig', [
-            'payments' => $paymentRepository->findLatest(20),
-        ]);
+        return $this->redirectToDashboardSection('paiements');
     }
 
     #[Route('/news', name: 'news')]
-    public function news(AnnouncementRepository $announcementRepository): Response
+    public function news(): Response
     {
-        return $this->render('admin/partials/_news.html.twig', [
-            'announcements' => $announcementRepository->findLatest(20),
-        ]);
+        return $this->redirectToDashboardSection('actualites');
     }
 
     #[Route('/students/new', name: 'student_new')]
@@ -123,21 +112,29 @@ final class AdminController extends AbstractController
     }
 
     #[Route('/users/{id}/edit', name: 'user_edit')]
-    public function userEdit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function userEdit(Request $request, User $user, EntityManagerInterface $entityManager, Security $security): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+
+            // Si l'admin modifie son propre compte, on rafraîchit le token de
+            // sécurité pour éviter que Symfony ne le déconnecte (les données de
+            // sécurité de l'utilisateur en session ne correspondraient plus).
+            if ($user === $this->getUser()) {
+                $security->login($user);
+            }
+
             $this->addFlash('success', 'Utilisateur mis à jour.');
 
-            return $this->redirectToRoute($this->getUserBackRoute($user));
+            return $this->redirectToDashboardSection('utilisateurs');
         }
 
         return $this->render('admin/form.html.twig', [
             'title' => 'Modifier un utilisateur',
-            'back_route' => $this->getUserBackRoute($user),
+            'back_route' => 'app_admin_dashboard',
             'submit_label' => 'Enregistrer',
             'form' => $form->createView(),
         ]);
@@ -153,7 +150,7 @@ final class AdminController extends AbstractController
         if (!$user->getPayments()->isEmpty()) {
             $this->addFlash('error', 'Impossible de supprimer cet utilisateur tant qu’il a des paiements associés.');
 
-            return $this->redirectToRoute($this->getUserBackRoute($user));
+            return $this->redirectToDashboardSection('utilisateurs');
         }
 
         $entityManager->remove($user);
@@ -161,7 +158,7 @@ final class AdminController extends AbstractController
 
         $this->addFlash('success', 'Utilisateur supprimé.');
 
-        return $this->redirectToRoute($this->getUserBackRoute($user));
+        return $this->redirectToDashboardSection('utilisateurs');
     }
 
     #[Route('/users/{id}/role', name: 'user_role_update', methods: ['POST'])]
@@ -365,10 +362,12 @@ final class AdminController extends AbstractController
         ]);
     }
 
-    private function getUserBackRoute(User $user): string
+    /**
+     * Redirige vers le tableau de bord en ouvrant directement la section voulue
+     * (les sections sont affichées côté client via le hash de l'URL).
+     */
+    private function redirectToDashboardSection(string $section): Response
     {
-        return in_array(UserRole::TEACHER->value, $user->getRoles(), true)
-            ? 'app_admin_teachers'
-            : 'app_admin_students';
+        return $this->redirect($this->generateUrl('app_admin_dashboard') . '#' . $section);
     }
 }
