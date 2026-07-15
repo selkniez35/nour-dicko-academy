@@ -9,6 +9,10 @@ Encore
     .setPublicPath('/build')
 
     .addEntry('app', './assets/app.js')
+    .addEntry('dashboard-eleve', './assets/js/dashboard-eleve.js')
+    .addEntry('dashboard-enseignant', './assets/js/dashboard-enseignant.js')
+    .addEntry('dashboard-admin', './assets/js/dashboard-admin.js')
+    .addEntry('admin-students', './assets/js/admin-students.js')
 
     .splitEntryChunks()
     .enableSingleRuntimeChunk()

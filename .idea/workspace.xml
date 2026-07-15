@@ -8,15 +8,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="fix: &#10;&#10;correction of dashboard admin">
-      <change afterPath="$PROJECT_DIR$/templates/admin/partials/dashboard/_sidebar.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/partials/dashboard/_welcome_toast.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/AdminDashboardSmokeTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/runtime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/vendors-node_modules_core-js_modules_es_iterator_constructor_js-node_modules_core-js_modules_-af7644.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MembershipRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MembershipRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PaymentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PaymentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/82.fea25515.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/app.470d4a54.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/app.873a01f2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/runtime.1400881c.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/partials/_students.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/partials/_students.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/espace_eleve/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/espace_eleve/dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/espace_enseignant/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/espace_enseignant/dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,7 +317,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "phpstorm.mcp.settings",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -353,14 +362,6 @@
       <workItem from="1783840332814" duration="4923000" />
       <workItem from="1783878395965" duration="7064000" />
       <workItem from="1783951298139" duration="3210000" />
-    </task>
-    <task id="LOCAL-00002" summary="Remove `MembershipRepository` and update configuration files for Stripe and database setup adjustments.">
-      <option name="closed" value="true" />
-      <created>1782984309525</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1782984309525</updated>
     </task>
     <task id="LOCAL-00003" summary="Add Docker setup and GitHub CI workflow for Symfony project">
       <option name="closed" value="true" />
@@ -746,7 +747,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784068895237</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="fix: &#10;&#10;correction of dashboard admin">
+      <option name="closed" value="true" />
+      <created>1784115108540</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1784115108540</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

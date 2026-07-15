@@ -1,5 +1,29 @@
 import './styles/app.css';
 
+function openModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = 'flex';
+    }
+}
+function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+function togglePassword() {
+    const pwd = document.getElementById('mcf-password');
+    if (pwd) {
+        pwd.type = pwd.type === 'password' ? 'text' : 'password';
+    }
+}
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.location.hash === '#modal-connexion') {
+        openModal('modal-connexion');
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const els = document.querySelectorAll('.reveal');
