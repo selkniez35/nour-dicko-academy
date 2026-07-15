@@ -31,6 +31,8 @@ body{
   line-height:1.65;
   font-size:16px;
   -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
   background-color:var(--cream);
   background-image:url(/build/images/motif-fond.c5d6db6f.png);
   background-repeat:repeat;
@@ -154,7 +156,10 @@ img,svg{display:block;max-width:100%}
 /* ═══════════════ SECTIONS COMMUNES ═══════════════ */
 section{padding:84px 24px}
 .wrap{max-width:1120px;margin:0 auto}
-.sec-head{text-align:center;margin-bottom:52px}
+.sec-head{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;margin-bottom:52px;
+}
 .sec-tag{
   display:inline-block;background:var(--black);color:var(--cream);
   font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
@@ -162,9 +167,13 @@ section{padding:84px 24px}
 }
 .sec-title{
   font-family:var(--font-display);font-size:clamp(30px,4.5vw,44px);
-  font-weight:600;margin-top:20px;line-height:1.15;
+  font-weight:600;margin-top:20px;line-height:1.12;letter-spacing:-.01em;
+  text-wrap:balance;
 }
-.sec-sub{max-width:560px;margin:12px auto 0;font-size:15px;opacity:.75}
+.sec-sub{
+  max-width:580px;margin:14px auto 0;font-size:15px;line-height:1.65;
+  opacity:.75;text-wrap:pretty;
+}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
   font-family:var(--font-body);font-weight:600;font-size:13.5px;letter-spacing:.06em;
@@ -328,8 +337,9 @@ section{padding:84px 24px}
 /* ═══════════════ TARIFS v2 (4 cartes + garanties) ═══════════════ */
 .tar-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit, 270px);
+    grid-template-columns:repeat(4, 1fr);
     justify-content:center;
+    align-items:stretch;
     gap:20px;
 }
 .tar-card{
@@ -962,6 +972,18 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
   text-align:center;font-size:12px;
   color:var(--ink);opacity:.6;
   margin-top:14px;line-height:1.6;
+}
+.insc-alert{
+  margin:0 auto 28px;max-width:680px;
+  padding:16px 22px;border-radius:12px;
+  font-family:var(--font-body);font-size:14.5px;font-weight:600;
+  text-align:center;border:1.5px solid transparent;
+}
+.insc-alert-success{
+  background:rgba(34,197,94,.1);color:#15803d;border-color:rgba(34,197,94,.35);
+}
+.insc-alert-error{
+  background:rgba(220,38,38,.08);color:#b91c1c;border-color:rgba(220,38,38,.3);
 }
 @media (max-width:640px){
   .insc-form{padding:28px 18px}

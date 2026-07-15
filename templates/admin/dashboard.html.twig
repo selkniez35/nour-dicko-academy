@@ -447,9 +447,6 @@
 
         <h3 class="db-section-title" style="font-size:18px;margin:32px 0 16px;">Liste des séances</h3>
         <div class="admin-table">
-            <div class="admin-table-header" style="grid-template-columns:1.4fr 2fr 1.6fr 1.2fr 1.4fr;">
-                <span>Date</span><span>Classe</span><span>Enseignant</span><span>Salle</span><span>Actions</span>
-            </div>
             {% for session in courseSessions %}
                 <div class="admin-table-row" style="grid-template-columns:1.4fr 2fr 1.6fr 1.2fr 1.4fr;">
                     <span>{{ session.startsAt|date('d/m/Y H:i') }}{% if session.endsAt %} – {{ session.endsAt|date('H:i') }}{% endif %}</span>

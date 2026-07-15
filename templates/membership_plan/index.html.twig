@@ -525,6 +525,16 @@
                 <p class="sec-sub">Remplissez le formulaire ci-dessous pour vous inscrire. Nous vous contacterons dans les plus brefs délais pour confirmer votre place.</p>
             </div>
 
+            {% for message in app.flashes('success') %}
+                <div class="insc-alert insc-alert-success">{{ message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="insc-alert insc-alert-error">{{ message }}</div>
+            {% endfor %}
+
+            <form method="post" action="{{ path('app_registration') }}" class="insc-form">
+                <input type="hidden" name="_token" value="{{ csrf_token('inscription') }}">
+
             <!-- Informations personnelles -->
             <div class="insc-section-title">Informations personnelles</div>
             <div class="insc-row">
@@ -614,6 +624,7 @@
 
             <button type="submit" class="insc-submit">Envoyer ma demande d'inscription</button>
             <p class="insc-note">* Champs obligatoires. Nous vous contacterons dans les plus brefs délais pour confirmer votre place.</p>
+            </form>
         </div>
     </section>
 

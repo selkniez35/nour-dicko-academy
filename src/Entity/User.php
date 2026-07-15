@@ -34,9 +34,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Payment::class, mappedBy: 'user')]
     private Collection $payments;
 
+    #[ORM\OneToMany(targetEntity: CourseSession::class, mappedBy: 'teacher')]
+    private Collection $sessions;
+
     public function __construct()
     {
         $this->payments = new ArrayCollection();
+        $this->sessions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,9 +113,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->payments;
     }
 
-    public function setPayments(Collection $payments): void
+    public function getSessions(): Collection
     {
-        $this->payments = $payments;
+        return $this->sessions;
+    }
+
+    public function setSessions(Collection $sessions): void
+    {
+        $this->sessions = $sessions;
     }
 
     private function normalizeRoles(array $roles): array

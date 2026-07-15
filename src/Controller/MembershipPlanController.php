@@ -67,12 +67,19 @@ class MembershipPlanController extends AbstractController
     public function registration(Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         if ($request->isMethod('POST')) {
+            if (!$this->isCsrfTokenValid('inscription', (string) $request->request->get('_token'))) {
+                $this->addFlash('error', 'Session expirée, merci de renvoyer le formulaire.');
+
+                return $this->redirect($this->generateUrl('app_membership-plan_index') . '#inscription');
+            }
+
             $data = $request->request->all();
             $email = $data['email'] ?? null;
 
             if (!$email) {
                 $this->addFlash('error', 'L\'adresse e-mail est obligatoire.');
-                return $this->render('membership_plan/registration.html.twig');
+
+                return $this->redirect($this->generateUrl('app_membership-plan_index') . '#inscription');
             }
 
             // 1. Gestion de l'utilisateur (User)
@@ -161,7 +168,7 @@ class MembershipPlanController extends AbstractController
 
             $this->addFlash('success', 'Votre demande d\'inscription a bien été envoyée. Nous vous contacterons prochainement.');
 
-            return $this->redirectToRoute('app_membership-plan_index');
+            return $this->redirect($this->generateUrl('app_membership-plan_index') . '#inscription');
         }
 
         return $this->render('membership_plan/registration.html.twig');

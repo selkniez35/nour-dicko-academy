@@ -4,17 +4,22 @@ namespace App\Form;
 
 use App\Entity\CourseSession;
 use App\Entity\MembershipPlan;
-use App\Entity\Teacher;
+use App\Entity\User;
+use App\Enum\UserRole;
+use App\Repository\UserRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CourseSessionType extends AbstractType
 {
+
+    public function __construct(private readonly UserRepository $userRepository)
+    {
+    }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -25,11 +30,13 @@ class CourseSessionType extends AbstractType
                 'placeholder' => 'Sélectionner une classe',
             ])
             ->add('teacher', EntityType::class, [
-                'class' => Teacher::class,
-                'choice_label' => static fn (Teacher $t): string => trim($t->getFirstName() . ' ' . $t->getLastName()),
+                'class' => User::class,
+                'choices' => array_filter(
+                    $this->userRepository->findAll(),
+                    fn (User $u) => in_array(UserRole::TEACHER->value, $u->getRoles(), true)
+                ),
+                'choice_label' => static fn (User $u): string => trim($u->getProfile()->getFullName()),
                 'label' => 'Enseignant',
-                'required' => false,
-                'placeholder' => 'Aucun enseignant',
             ])
             ->add('startsAt', DateTimeType::class, [
                 'label' => 'Début',
@@ -43,11 +50,6 @@ class CourseSessionType extends AbstractType
                 'input' => 'datetime_immutable',
                 'required' => false,
                 'attr' => ['class' => 'form-control'],
-            ])
-            ->add('room', TextType::class, [
-                'label' => 'Salle',
-                'required' => false,
-                'attr' => ['class' => 'form-control', 'placeholder' => 'Ex: Salle 1, en ligne...'],
             ])
             ->add('notes', TextareaType::class, [
                 'label' => 'Notes',

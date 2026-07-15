@@ -24,15 +24,12 @@ class CourseSession
     #[ORM\JoinColumn(nullable: false)]
     private ?MembershipPlan $plan = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Teacher $teacher = null;
-
-    #[ORM\Column(length: 100, nullable: true)]
-    private ?string $room = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $notes = null;
+
+    //teacher
+    #[ORM\ManyToOne(inversedBy: 'sessions')]
+    private ?User $teacher = null;
 
     public function getId(): ?int
     {
@@ -72,28 +69,6 @@ class CourseSession
         return $this;
     }
 
-    public function getTeacher(): ?Teacher
-    {
-        return $this->teacher;
-    }
-
-    public function setTeacher(?Teacher $teacher): static
-    {
-        $this->teacher = $teacher;
-        return $this;
-    }
-
-    public function getRoom(): ?string
-    {
-        return $this->room;
-    }
-
-    public function setRoom(?string $room): static
-    {
-        $this->room = $room;
-        return $this;
-    }
-
     public function getNotes(): ?string
     {
         return $this->notes;
@@ -104,4 +79,15 @@ class CourseSession
         $this->notes = $notes;
         return $this;
     }
+
+    public function getTeacher(): ?User
+    {
+        return $this->teacher;
+    }
+
+    public function setTeacher(?User $teacher): void
+    {
+        $this->teacher = $teacher;
+    }
+
 }
