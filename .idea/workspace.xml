@@ -7,14 +7,10 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="fix: dashboard #7">
-      <change beforePath="$PROJECT_DIR$/assets/js/dashboard-admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/dashboard-admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/dashboard-admin.8119ccea.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
+    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="back: dashboard #1">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20260715180559.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20260715180559.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/espace_enseignant/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/espace_enseignant/dashboard.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,23 +63,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000000002007" />
-      <entry key="MS500" value="1.0028874266235817" />
-      <entry key="S2" value="1.2318076366088655" />
-      <entry key="S5" value="1.5572513068618858" />
-      <entry key="S10" value="1.746492670333665" />
-      <entry key="S30" value="1.9071418071836508" />
-      <entry key="S60" value="1.952439923136179" />
-      <entry key="M2" value="1.9759302860021197" />
-      <entry key="M5" value="1.9903016855873572" />
-      <entry key="M10" value="1.9951394913664993" />
-      <entry key="M15" value="1.9968639440924743" />
-      <entry key="M30" value="2.029550836358558" />
-      <entry key="H1" value="2.7241635852280837" />
-      <entry key="H2" value="6.036143735391385" />
-      <entry key="H4" value="12.994485836499843" />
-      <entry key="D1" value="55.261433776907545" />
-      <entry key="W1" value="96.60156123198615" />
+      <entry key="MS100" value="1.0005125569744275" />
+      <entry key="MS500" value="1.221022320352624" />
+      <entry key="S2" value="1.969555071181328" />
+      <entry key="S5" value="2.7666798288951266" />
+      <entry key="S10" value="3.271599624820484" />
+      <entry key="S30" value="3.749956710456686" />
+      <entry key="S60" value="4.1657096574580255" />
+      <entry key="M2" value="5.0359602305742595" />
+      <entry key="M5" value="6.3694883526500545" />
+      <entry key="M10" value="7.181906320791627" />
+      <entry key="M15" value="7.636718985034906" />
+      <entry key="M30" value="8.421332679859665" />
+      <entry key="H1" value="9.490812940418111" />
+      <entry key="H2" value="12.627207916620586" />
+      <entry key="H4" value="19.43924633852442" />
+      <entry key="D1" value="62.12650047744732" />
+      <entry key="W1" value="104.31641605768947" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -91,37 +87,37 @@
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
       <entry key="S10" value="0.0" />
-      <entry key="S30" value="5.904976659107925E-204" />
-      <entry key="S60" value="2.430015773427802E-102" />
-      <entry key="M2" value="1.5588507861357258E-51" />
-      <entry key="M5" value="4.754778483499857E-21" />
-      <entry key="M10" value="6.925875112592822E-11" />
-      <entry key="M15" value="1.7268035011951625E-7" />
-      <entry key="M30" value="4.7734391631583774E-4" />
-      <entry key="H1" value="0.028492419574729387" />
-      <entry key="H2" value="0.2614820525831109" />
-      <entry key="H4" value="1.4597681655562862" />
-      <entry key="D1" value="15.934828477318241" />
-      <entry key="W1" value="27.97404638788019" />
+      <entry key="S30" value="9.619054936230405E-230" />
+      <entry key="S60" value="3.101460129718E-115" />
+      <entry key="M2" value="5.569075443669644E-58" />
+      <entry key="M5" value="1.2540698036418844E-23" />
+      <entry key="M10" value="3.556889448193462E-12" />
+      <entry key="M15" value="2.385833109349348E-8" />
+      <entry key="M30" value="1.7743118875262706E-4" />
+      <entry key="H1" value="0.01737115183169273" />
+      <entry key="H2" value="0.2041698115931552" />
+      <entry key="H4" value="1.2899079210352113" />
+      <entry key="D1" value="15.609651122259562" />
+      <entry key="W1" value="27.891772858273345" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9075191553172852" />
-      <entry key="MS500" value="0.9834030341169131" />
-      <entry key="S2" value="1.2214897639650548" />
-      <entry key="S5" value="1.5500074403890858" />
-      <entry key="S10" value="1.7419609970523238" />
-      <entry key="S30" value="1.905373342583734" />
-      <entry key="S60" value="1.9515192961772176" />
-      <entry key="M2" value="1.9754605331910284" />
-      <entry key="M5" value="1.9901114741172605" />
-      <entry key="M10" value="1.9950439955860604" />
-      <entry key="M15" value="1.9968001792932397" />
-      <entry key="M30" value="2.029974006151919" />
-      <entry key="H1" value="2.752443551373075" />
-      <entry key="H2" value="6.297150548274315" />
-      <entry key="H4" value="14.453634881458685" />
-      <entry key="D1" value="71.19573039131518" />
-      <entry key="W1" value="124.57547381547074" />
+      <entry key="MS100" value="0.9206400862019718" />
+      <entry key="MS500" value="1.1990807644333306" />
+      <entry key="S2" value="1.9592213336288142" />
+      <entry key="S5" value="2.760275064576221" />
+      <entry key="S10" value="3.2676470273746068" />
+      <entry key="S30" value="3.7483988003030952" />
+      <entry key="S60" value="4.164830727229857" />
+      <entry key="M2" value="5.035417479065045" />
+      <entry key="M5" value="6.369207626670291" />
+      <entry key="M10" value="7.181744283674383" />
+      <entry key="M15" value="7.63660095264071" />
+      <entry key="M30" value="8.421432932289589" />
+      <entry key="H1" value="9.508025396046452" />
+      <entry key="H2" value="12.830991901383271" />
+      <entry key="H4" value="20.728599762452173" />
+      <entry key="D1" value="77.73562934806958" />
+      <entry key="W1" value="132.20805532747738" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -310,6 +306,11 @@
     "settings.editor.selected.configurable": "phpstorm.mcp.settings",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -352,14 +353,6 @@
       <workItem from="1783840332814" duration="4923000" />
       <workItem from="1783878395965" duration="7064000" />
       <workItem from="1783951298139" duration="3210000" />
-    </task>
-    <task id="LOCAL-00006" summary="migrate CI from MySQL to PostgreSQL in deploy_dev workflow">
-      <option name="closed" value="true" />
-      <created>1782989123481</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1782989123481</updated>
     </task>
     <task id="LOCAL-00007" summary="update Dockerfile for PHP 8.4 migration, improve dependency installation, and adjust deploy_dev workflow for updated PHP version and opcache support">
       <option name="closed" value="true" />
@@ -745,7 +738,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784137496029</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="back: dashboard #1">
+      <option name="closed" value="true" />
+      <created>1784139187121</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1784139187121</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -790,7 +791,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor website structure: add header, footer, and new pages for About, News, Courses, Prices, and Contact; update navigation links and improve layout" />
     <MESSAGE value="Implement login modal and update header structure: add login button, remove redundant header includes from pages" />
     <MESSAGE value="Add registration page and update links to registration in footer, header, and various templates" />
     <MESSAGE value="Add registration form template for Nour Dicko Academy" />
@@ -815,6 +815,7 @@
     <MESSAGE value="fix: dashboard #5" />
     <MESSAGE value="fix: dashboard #6" />
     <MESSAGE value="fix: dashboard #7" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: dashboard #7" />
+    <MESSAGE value="back: dashboard #1" />
+    <option name="LAST_COMMIT_MESSAGE" value="back: dashboard #1" />
   </component>
 </project>

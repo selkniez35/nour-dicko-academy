@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Dto\User\UserCreateDto;
 use App\Entity\Announcement;
+use App\Entity\CourseSession;
 use App\Entity\Membership;
 use App\Entity\MembershipPlan;
 use App\Entity\Payment;
@@ -11,10 +12,12 @@ use App\Entity\User;
 use App\Enum\UserRole;
 use App\Form\AdminUserType;
 use App\Form\AnnouncementType;
+use App\Form\CourseSessionType;
 use App\Form\MembershipAdminType;
 use App\Form\MembershipPlanType;
 use App\Form\UserType;
 use App\Repository\AnnouncementRepository;
+use App\Repository\CourseSessionRepository;
 use App\Repository\MembershipPlanRepository;
 use App\Repository\MembershipRepository;
 use App\Repository\PaymentRepository;
@@ -33,7 +36,9 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class AdminController extends AbstractController
 {
     #[Route('', name: 'dashboard')]
-    public function dashboard(UserRepository $userRepository, MembershipRepository $membershipRepository, PaymentRepository $paymentRepository, MembershipPlanRepository $planRepository, AnnouncementRepository $announcementRepository): Response {
+    public function dashboard(UserRepository $userRepository, MembershipRepository $membershipRepository, PaymentRepository $paymentRepository, MembershipPlanRepository $planRepository, AnnouncementRepository $announcementRepository, CourseSessionRepository $courseSessionRepository): Response {
+
+        $courseSessions = $courseSessionRepository->findAllOrdered();
 
         return $this->render('admin/dashboard.html.twig', [
             'stats' => [
@@ -59,6 +64,10 @@ final class AdminController extends AbstractController
             ],
             'plans' => $planRepository->findAllOrdered(),
             'pendingMemberships' => $membershipRepository->findPending(20),
+            'courseSessions' => $courseSessions,
+            'calendarStats' => [
+                'totalSessions' => count($courseSessions),
+            ],
         ]);
     }
 
@@ -287,12 +296,39 @@ final class AdminController extends AbstractController
         return $this->redirectToRoute('app_admin_news');
     }
 
-    #[Route('/payments/{id}', name: 'payment_show')]
+    #[Route('/payments/{id}', name: 'payment_show', requirements: ['id' => '\d+'])]
     public function paymentShow(Payment $payment): Response
     {
         return $this->render('admin/payment_show.html.twig', [
             'payment' => $payment,
         ]);
+    }
+
+    #[Route('/sessions/new', name: 'session_new')]
+    public function sessionNew(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        return $this->handleCourseSessionForm($request, new CourseSession(), $entityManager, 'Ajouter une séance');
+    }
+
+    #[Route('/sessions/{id}/edit', name: 'session_edit', requirements: ['id' => '\d+'])]
+    public function sessionEdit(Request $request, CourseSession $courseSession, EntityManagerInterface $entityManager): Response
+    {
+        return $this->handleCourseSessionForm($request, $courseSession, $entityManager, 'Modifier une séance');
+    }
+
+    #[Route('/sessions/{id}/delete', name: 'session_delete', methods: ['POST'], requirements: ['id' => '\d+'])]
+    public function sessionDelete(Request $request, CourseSession $courseSession, EntityManagerInterface $entityManager): Response
+    {
+        if (!$this->isCsrfTokenValid('delete-session-' . $courseSession->getId(), (string) $request->request->get('_token'))) {
+            throw $this->createAccessDeniedException('Jeton CSRF invalide.');
+        }
+
+        $entityManager->remove($courseSession);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Séance supprimée.');
+
+        return $this->redirectToDashboardSection('calendrier');
     }
 
     private function handleUserCreate(Request $request, UserService $userService, array $roles, string $title, string $backRoute): Response
@@ -357,6 +393,28 @@ final class AdminController extends AbstractController
         return $this->render('admin/form.html.twig', [
             'title' => $title,
             'back_route' => $backRoute,
+            'submit_label' => 'Enregistrer',
+            'form' => $form->createView(),
+        ]);
+    }
+
+    private function handleCourseSessionForm(Request $request, CourseSession $courseSession, EntityManagerInterface $entityManager, string $title): Response
+    {
+        $form = $this->createForm(CourseSessionType::class, $courseSession);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($courseSession);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Séance enregistrée.');
+
+            return $this->redirectToDashboardSection('calendrier');
+        }
+
+        return $this->render('admin/form.html.twig', [
+            'title' => $title,
+            'back_route' => 'app_admin_dashboard',
             'submit_label' => 'Enregistrer',
             'form' => $form->createView(),
         ]);
