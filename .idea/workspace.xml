@@ -7,15 +7,18 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="fix: &#10;&#10;extraction of js an style of twig">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="fix: dashboard #7">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/app.470d4a54.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CoachGroupType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TrainingSessionType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/MembershipType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MembershipType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/UserProfileType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserProfileType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CoachGroupRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CoachNoteRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/form.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,61 +71,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0000000000006353" />
-      <entry key="M5" value="1.000063927509198" />
-      <entry key="M10" value="1.0323002671580987" />
-      <entry key="M15" value="1.2618096037573976" />
-      <entry key="M30" value="3.1510228624452714" />
-      <entry key="H1" value="7.2067868018417185" />
-      <entry key="H2" value="11.744066664794346" />
-      <entry key="H4" value="17.47203595255815" />
-      <entry key="D1" value="55.0618135988531" />
-      <entry key="W1" value="91.24258283555423" />
+      <entry key="MS100" value="1.0000000000002007" />
+      <entry key="MS500" value="1.0028874266235817" />
+      <entry key="S2" value="1.2318076366088655" />
+      <entry key="S5" value="1.5572513068618858" />
+      <entry key="S10" value="1.746492670333665" />
+      <entry key="S30" value="1.9071418071836508" />
+      <entry key="S60" value="1.952439923136179" />
+      <entry key="M2" value="1.9759302860021197" />
+      <entry key="M5" value="1.9903016855873572" />
+      <entry key="M10" value="1.9951394913664993" />
+      <entry key="M15" value="1.9968639440924743" />
+      <entry key="M30" value="2.029550836358558" />
+      <entry key="H1" value="2.7241635852280837" />
+      <entry key="H2" value="6.036143735391385" />
+      <entry key="H4" value="12.994485836499843" />
+      <entry key="D1" value="55.261433776907545" />
+      <entry key="W1" value="96.60156123198615" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="6.87148443E-314" />
-      <entry key="S10" value="2.6213516418366087E-157" />
-      <entry key="S30" value="6.399928093134652E-53" />
-      <entry key="S60" value="7.99995505808292E-27" />
-      <entry key="M2" value="8.944246786683493E-14" />
-      <entry key="M5" value="6.03428724487553E-6" />
-      <entry key="M10" value="0.002467303083748237" />
-      <entry key="M15" value="0.01869568939437719" />
-      <entry key="M30" value="0.15706545390864715" />
-      <entry key="H1" value="0.5168374463212408" />
-      <entry key="H2" value="1.1136640638174506" />
-      <entry key="H4" value="3.012590127932784" />
-      <entry key="D1" value="17.98001652120082" />
-      <entry key="W1" value="28.460800040546896" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="5.904976659107925E-204" />
+      <entry key="S60" value="2.430015773427802E-102" />
+      <entry key="M2" value="1.5588507861357258E-51" />
+      <entry key="M5" value="4.754778483499857E-21" />
+      <entry key="M10" value="6.925875112592822E-11" />
+      <entry key="M15" value="1.7268035011951625E-7" />
+      <entry key="M30" value="4.7734391631583774E-4" />
+      <entry key="H1" value="0.028492419574729387" />
+      <entry key="H2" value="0.2614820525831109" />
+      <entry key="H4" value="1.4597681655562862" />
+      <entry key="D1" value="15.934828477318241" />
+      <entry key="W1" value="27.97404638788019" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.5987393523094643" />
-      <entry key="MS500" value="0.90250072746243" />
-      <entry key="S2" value="0.9746796308915489" />
-      <entry key="S5" value="0.9897938614695402" />
-      <entry key="S10" value="0.9948838432045924" />
-      <entry key="S30" value="0.9982916977667883" />
-      <entry key="S60" value="0.9991454837844128" />
-      <entry key="M2" value="0.9995726505791628" />
-      <entry key="M5" value="0.9998988816969585" />
-      <entry key="M10" value="1.034657705125673" />
-      <entry key="M15" value="1.2803258446593548" />
-      <entry key="M30" value="3.307569106022736" />
-      <entry key="H1" value="7.722856575995838" />
-      <entry key="H2" value="12.857008422052994" />
-      <entry key="H4" value="20.483960193701147" />
-      <entry key="D1" value="73.04132731939507" />
-      <entry key="W1" value="119.70326054038065" />
+      <entry key="MS100" value="0.9075191553172852" />
+      <entry key="MS500" value="0.9834030341169131" />
+      <entry key="S2" value="1.2214897639650548" />
+      <entry key="S5" value="1.5500074403890858" />
+      <entry key="S10" value="1.7419609970523238" />
+      <entry key="S30" value="1.905373342583734" />
+      <entry key="S60" value="1.9515192961772176" />
+      <entry key="M2" value="1.9754605331910284" />
+      <entry key="M5" value="1.9901114741172605" />
+      <entry key="M10" value="1.9950439955860604" />
+      <entry key="M15" value="1.9968001792932397" />
+      <entry key="M30" value="2.029974006151919" />
+      <entry key="H1" value="2.752443551373075" />
+      <entry key="H2" value="6.297150548274315" />
+      <entry key="H4" value="14.453634881458685" />
+      <entry key="D1" value="71.19573039131518" />
+      <entry key="W1" value="124.57547381547074" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -353,14 +356,6 @@
       <workItem from="1783840332814" duration="4923000" />
       <workItem from="1783878395965" duration="7064000" />
       <workItem from="1783951298139" duration="3210000" />
-    </task>
-    <task id="LOCAL-00004" summary="reset front stack: removed old assets, configurations, and workflows; added webpack setup with Stimulus and Turbo">
-      <option name="closed" value="true" />
-      <created>1782988657029</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1782988657031</updated>
     </task>
     <task id="LOCAL-00005" summary="add database schema migration for membership plans, payments, stripe events, and messenger messages">
       <option name="closed" value="true" />
@@ -746,7 +741,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784116029863</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="fix: dashboard #5">
+      <option name="closed" value="true" />
+      <created>1784122094706</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1784122094708</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -791,9 +794,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor membership plans: implement dynamic rendering for courses and modals, enhance feature handling in MembershipFeature and MembershipPlan entities" />
-    <MESSAGE value="Refactor membership feature and plan structures: remove unused properties and simplify rendering logic" />
-    <MESSAGE value="Update membership description rendering in index.html.twig" />
     <MESSAGE value="Refactor website structure: add header, footer, and new pages for About, News, Courses, Prices, and Contact; update navigation links and improve layout" />
     <MESSAGE value="Implement login modal and update header structure: add login button, remove redundant header includes from pages" />
     <MESSAGE value="Add registration page and update links to registration in footer, header, and various templates" />
@@ -816,6 +816,9 @@
     <MESSAGE value="Connexion front &lt;=&gt; back #1" />
     <MESSAGE value="fix: &#10;&#10;correction of dashboard admin" />
     <MESSAGE value="fix: &#10;&#10;extraction of js an style of twig" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: &#10;&#10;extraction of js an style of twig" />
+    <MESSAGE value="fix: dashboard #5" />
+    <MESSAGE value="fix: dashboard #6" />
+    <MESSAGE value="fix: dashboard #7" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: dashboard #7" />
   </component>
 </project>

@@ -2,16 +2,35 @@
 
 {% block title %}{{ title }} — Nour Dicko Academy{% endblock %}
 
+{% form_theme form _self %}
+
+{% block choice_widget_expanded %}
+    <div class="role-selector" id="{{ id }}">
+        {%- for child in form -%}
+            <label class="role-option">
+                {{- form_widget(child) -}}
+                <span class="role-option-box"></span>
+                <span class="role-option-label">{{ child.vars.label|default(child.vars.value) }}</span>
+            </label>
+        {%- endfor -%}
+    </div>
+{% endblock %}
+
 {% block body %}
 <main class="admin-form-page">
     <div class="admin-form-card">
-        <a href="{{ path(back_route) }}" class="admin-back-link">← Retour</a>
+        <a href="{{ path(back_route) }}" class="admin-back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Retour
+        </a>
 
-        <h1>{{ title }}</h1>
+        <h1 class="admin-form-title">{{ title }}</h1>
 
-        {{ form_start(form) }}
+        {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
             {{ form_widget(form) }}
-            <button type="submit" class="admin-btn-primary">{{ submit_label|default('Enregistrer') }}</button>
+            <div class="admin-form-actions">
+                <button type="submit" class="admin-btn-primary">{{ submit_label|default('Enregistrer') }}</button>
+            </div>
         {{ form_end(form) }}
     </div>
 </main>

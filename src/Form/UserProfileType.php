@@ -7,6 +7,7 @@ use DateTime;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,11 +19,11 @@ class UserProfileType extends AbstractType
         $builder
             ->add('lastName', null, [
                 'label' => 'Nom',
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Nom']
             ])
             ->add('firstName', null, [
                 'label' => 'Prénom',
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Prénom']
             ])
             ->add('dateOfBirth', null, [
                 'label' => 'Date de naissance',
@@ -44,32 +45,14 @@ class UserProfileType extends AbstractType
             ->add('address', null, [
                 'label' => 'Adresse',
                 'required' => false,
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Adresse'],
             ])
-            ->add('preferredGroup', ChoiceType::class, [
-                'label' => 'Groupe principal',
-                'required' => false,
-                'choices' => [
-                    'Debutant' => 'BEGINNER',
-                    'Intermediaire' => 'INTERMEDIATE',
-                    'Competition' => 'COMPETITION',
-                    'Inclusif / adapte' => 'INCLUSIVE',
-                ],
-                'placeholder' => 'Selectionner',
-            ])
-            ->add('adaptedSupport', null, [
-                'label' => 'Besoin de séances adaptees',
-                'required' => false,
-            ])
-            ->add('specificNeeds', TextareaType::class, [
-                'label' => 'Besoins specifiques',
-                'required' => false,
-                'attr' => ['rows' => 3],
-            ])
-            ->add('personalObjective', null, [
-                'label' => 'Objectif personnel',
-                'required' => false,
-                'attr' => ['placeholder' => 'Ex: remise en forme, confiance, competition douce'],
+            ->add('memberships', CollectionType::class, [
+                'entry_type' => MembershipType::class,
+                'allow_add' => true,
+                'by_reference' => false,
+                'label' => false,
+                'prototype' => true,
             ]);
     }
 
