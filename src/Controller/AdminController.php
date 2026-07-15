@@ -42,10 +42,17 @@ final class AdminController extends AbstractController
                 'registrations' => $membershipRepository->countPending(),
                 'revenue' => $paymentRepository->getTotalPaidAmount(),
             ],
+            'paymentStats' => [
+                'received' => $paymentRepository->getTotalPaidAmount(),
+                'pending' => $paymentRepository->getTotalPendingAmount(),
+            ],
             'latestRegistrations' => $membershipRepository->findLatest(5),
             'latestPayments' => $paymentRepository->findLatest(5),
-            'latestPlans' => $planRepository->findLatest(5),
             'latestNews' => $announcementRepository->findLatest(5),
+            'students' => $userRepository->findStudents(),
+            'teachers' => $userRepository->findTeachers(),
+            'plans' => $planRepository->findAllOrdered(),
+            'pendingMemberships' => $membershipRepository->findPending(20),
         ]);
     }
 

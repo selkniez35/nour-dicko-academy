@@ -40,4 +40,14 @@ class PaymentRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    public function getTotalPendingAmount(): float
+    {
+        return (float) $this->createQueryBuilder('p')
+            ->select('COALESCE(SUM(p.amount), 0)')
+            ->andWhere('p.status = :status')
+            ->setParameter('status', PaymentStatus::PENDING->value)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

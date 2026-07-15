@@ -33,6 +33,22 @@ class MembershipRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return Membership[]
+     */
+    public function findPending(int $limit = 20): array
+    {
+        return $this->createQueryBuilder('m')
+            ->leftJoin('m.userProfile', 'profile')->addSelect('profile')
+            ->leftJoin('m.plan', 'plan')->addSelect('plan')
+            ->andWhere('m.status = :status')
+            ->setParameter('status', MembershipStatus::PENDING->value)
+            ->orderBy('m.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
     public function countPending(): int
     {
         return (int) $this->createQueryBuilder('m')
