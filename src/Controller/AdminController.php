@@ -204,13 +204,13 @@ final class AdminController extends AbstractController
     #[Route('/trainings/new', name: 'plan_new')]
     public function planNew(Request $request, EntityManagerInterface $entityManager): Response
     {
-        return $this->handleMembershipPlanForm($request, new MembershipPlan(), $entityManager, 'Ajouter une formation', 'app_admin_trainings');
+        return $this->handleMembershipPlanForm($request, new MembershipPlan(), $entityManager, 'Ajouter une formation');
     }
 
     #[Route('/trainings/{id}/edit', name: 'plan_edit')]
     public function planEdit(Request $request, MembershipPlan $membershipPlan, EntityManagerInterface $entityManager): Response
     {
-        return $this->handleMembershipPlanForm($request, $membershipPlan, $entityManager, 'Modifier une formation', 'app_admin_trainings');
+        return $this->handleMembershipPlanForm($request, $membershipPlan, $entityManager, 'Modifier une formation');
     }
 
     #[Route('/trainings/{id}/delete', name: 'plan_delete', methods: ['POST'])]
@@ -328,7 +328,7 @@ final class AdminController extends AbstractController
         ]);
     }
 
-    private function handleMembershipPlanForm(Request $request, MembershipPlan $membershipPlan, EntityManagerInterface $entityManager, string $title, string $backRoute): Response
+    private function handleMembershipPlanForm(Request $request, MembershipPlan $membershipPlan, EntityManagerInterface $entityManager, string $title): Response
     {
         $form = $this->createForm(MembershipPlanType::class, $membershipPlan);
         $form->handleRequest($request);
@@ -339,12 +339,12 @@ final class AdminController extends AbstractController
 
             $this->addFlash('success', 'Formation enregistrée.');
 
-            return $this->redirectToRoute($backRoute);
+            return $this->redirectToRoute('app_admin_trainings');
         }
 
         return $this->render('admin/form.html.twig', [
             'title' => $title,
-            'back_route' => $backRoute,
+            'back_route' => 'app_admin_trainings',
             'submit_label' => 'Enregistrer',
             'form' => $form->createView(),
         ]);

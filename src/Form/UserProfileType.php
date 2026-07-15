@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\CoachGroup;
 use App\Entity\UserProfile;
 use DateTime;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -71,15 +70,7 @@ class UserProfileType extends AbstractType
                 'label' => 'Objectif personnel',
                 'required' => false,
                 'attr' => ['placeholder' => 'Ex: remise en forme, confiance, competition douce'],
-            ])
-            ->add('coachGroup', EntityType::class, [
-                'class' => CoachGroup::class,
-                'choice_label' => 'name',
-                'label' => 'Groupe coach',
-                'required' => false,
-                'placeholder' => 'Aucun groupe',
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
