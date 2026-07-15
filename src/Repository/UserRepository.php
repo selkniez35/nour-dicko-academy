@@ -88,7 +88,7 @@ class UserRepository extends ServiceEntityRepository
      */
     public function findTeachers(): array
     {
-        return $this->findByRole(UserRole::COACH->value);
+        return $this->findByRole(UserRole::TEACHER->value);
     }
 
     public function countStudents(): int
@@ -104,7 +104,7 @@ class UserRepository extends ServiceEntityRepository
     /**
      * @return User[]
      */
-    private function findByRole(string $role): array
+    public function findAllOrdered(): array
     {
         $users = $this->createQueryBuilder('u')
             ->leftJoin('u.profile', 'p')
@@ -112,9 +112,7 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
 
-        $filtered = array_filter($users, static fn (User $user): bool => in_array($role, $user->getRoles(), true));
-
-        usort($filtered, static function (User $a, User $b): int {
+        usort($users, static function (User $a, User $b): int {
             $aProfile = $a->getProfile();
             $bProfile = $b->getProfile();
 
@@ -123,6 +121,19 @@ class UserRepository extends ServiceEntityRepository
 
             return strcasecmp($aName, $bName);
         });
+
+        return array_values($users);
+    }
+
+    /**
+     * @return User[]
+     */
+    private function findByRole(string $role): array
+    {
+        $filtered = array_filter(
+            $this->findAllOrdered(),
+            static fn (User $user): bool => in_array($role, $user->getRoles(), true)
+        );
 
         return array_values($filtered);
     }

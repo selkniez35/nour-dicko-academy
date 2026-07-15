@@ -6,14 +6,16 @@ enum UserRole: string
 {
     case USER = 'ROLE_USER';
     case ADMIN = 'ROLE_ADMIN';
-    case COACH = 'ROLE_COACH';
+    case TEACHER = 'ROLE_TEACHER';
+    case STUDENT = 'ROLE_STUDENT';
 
     public function label(): string
     {
         return match ($this) {
             self::USER => 'Utilisateur',
             self::ADMIN => 'Admin',
-            self::COACH => 'Coach',
+            self::TEACHER => 'Enseignant',
+            self::STUDENT => 'Étudiant'
         };
     }
 
@@ -22,7 +24,8 @@ enum UserRole: string
         return [
             'Utilisateur' => self::USER->value,
             'Admin' => self::ADMIN->value,
-            'Coach' => self::COACH->value,
+            'Enseignant' => self::TEACHER->value,
+            'Étudiant' => self::STUDENT->value,
         ];
     }
 }

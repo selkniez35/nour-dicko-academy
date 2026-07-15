@@ -51,6 +51,12 @@ final class AdminController extends AbstractController
             'latestNews' => $announcementRepository->findLatest(5),
             'students' => $userRepository->findStudents(),
             'teachers' => $userRepository->findTeachers(),
+            'allUsers' => $userRepository->findAllOrdered(),
+            'availableRoles' => [
+                'Utilisateur' => UserRole::USER->value,
+                'Enseignant' => UserRole::TEACHER->value,
+                'Admin' => UserRole::ADMIN->value,
+            ],
             'plans' => $planRepository->findAllOrdered(),
             'pendingMemberships' => $membershipRepository->findPending(20),
         ]);
@@ -114,7 +120,7 @@ final class AdminController extends AbstractController
     #[Route('/teachers/new', name: 'teacher_new')]
     public function teacherNew(Request $request, UserService $userService): Response
     {
-        return $this->handleUserCreate($request, $userService, [UserRole::COACH->value], 'Ajouter un enseignant', 'app_admin_teachers');
+        return $this->handleUserCreate($request, $userService, [UserRole::TEACHER->value], 'Ajouter un enseignant', 'app_admin_teachers');
     }
 
     #[Route('/users/{id}/edit', name: 'user_edit')]
@@ -163,6 +169,36 @@ final class AdminController extends AbstractController
         $this->addFlash('success', 'Utilisateur supprimé.');
 
         return $this->redirectToRoute($this->getUserBackRoute($user));
+    }
+
+    #[Route('/users/{id}/role', name: 'user_role_update', methods: ['POST'])]
+    public function userRoleUpdate(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        if (!$this->isCsrfTokenValid('change-role-' . $user->getId(), (string) $request->request->get('_token'))) {
+            throw $this->createAccessDeniedException('Jeton CSRF invalide.');
+        }
+
+        if ($user === $this->getUser()) {
+            $this->addFlash('error', 'Vous ne pouvez pas modifier votre propre rôle.');
+
+            return $this->redirectToRoute('app_admin_dashboard', [], Response::HTTP_SEE_OTHER);
+        }
+
+        $role = (string) $request->request->get('role');
+        $validRoles = array_map(static fn (UserRole $r): string => $r->value, UserRole::cases());
+
+        if (!in_array($role, $validRoles, true)) {
+            $this->addFlash('error', 'Rôle invalide.');
+
+            return $this->redirectToRoute('app_admin_dashboard', [], Response::HTTP_SEE_OTHER);
+        }
+
+        $user->setRoles([$role]);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Rôle mis à jour.');
+
+        return $this->redirectToRoute('app_admin_dashboard', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/trainings/new', name: 'plan_new')]
@@ -338,7 +374,7 @@ final class AdminController extends AbstractController
 
     private function getUserBackRoute(User $user): string
     {
-        return in_array(UserRole::COACH->value, $user->getRoles(), true)
+        return in_array(UserRole::TEACHER->value, $user->getRoles(), true)
             ? 'app_admin_teachers'
             : 'app_admin_students';
     }

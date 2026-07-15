@@ -48,12 +48,12 @@ class UserType extends AbstractType
                 ],
                 'invalid_message' => 'Les mots de passe doivent correspondre.',
                 'constraints' => [
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
+                    new Length(
+                        min: 6,
+                        minMessage: 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
+                        max: 4096,
+                    ),
                 ],
             ])
             ->add('profile', UserProfileType::class, [

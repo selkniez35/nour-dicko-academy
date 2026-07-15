@@ -37,7 +37,7 @@ class AdminUserType extends AbstractType
                 'label' => 'Rôle',
                 'choices' => [
                     'Adhérent' => UserRole::USER->value,
-                    'Coach' => UserRole::COACH->value,
+                    'Enseignant' => UserRole::TEACHER->value,
                     'Administrateur' => UserRole::ADMIN->value,
                 ],
                 'multiple' => true,
