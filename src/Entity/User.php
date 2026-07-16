@@ -75,7 +75,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $roles = $this->normalizeRoles($this->roles ?? []);
 
         if (empty($roles)) {
-            $roles = [UserRole::USER->value];
+            $roles = [UserRole::STUDENT->value];
         }
 
         return array_unique($roles);

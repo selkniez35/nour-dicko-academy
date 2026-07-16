@@ -80,7 +80,7 @@ class UserRepository extends ServiceEntityRepository
      */
     public function findStudents(): array
     {
-        return $this->findByRole(UserRole::USER->value);
+        return $this->findByRole(UserRole::STUDENT->value);
     }
 
     /**

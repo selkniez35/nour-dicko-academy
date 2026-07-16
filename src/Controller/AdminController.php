@@ -44,7 +44,7 @@ final class AdminController extends AbstractController
         $courseSessions = $courseSessionRepository->findAllOrdered();
 
         $studentCreateDto = new UserCreateDto();
-        $studentCreateDto->roles = [UserRole::USER->value];
+        $studentCreateDto->roles = [UserRole::STUDENT->value];
         $teacherCreateDto = new UserCreateDto();
         $teacherCreateDto->roles = [UserRole::TEACHER->value];
 
@@ -103,7 +103,7 @@ final class AdminController extends AbstractController
             'teachers' => $userRepository->findTeachers(),
             'allUsers' => $allUsers,
             'availableRoles' => [
-                'Utilisateur' => UserRole::USER->value,
+                'Étudiant' => UserRole::STUDENT->value,
                 'Enseignant' => UserRole::TEACHER->value,
                 'Admin' => UserRole::ADMIN->value,
             ],
@@ -167,7 +167,7 @@ final class AdminController extends AbstractController
     public function studentNew(Request $request, UserService $userService): Response
     {
 
-        return $this->handleUserCreate($request, $userService, [UserRole::USER->value], 'Ajouter un élève', 'app_admin_students');
+        return $this->handleUserCreate($request, $userService, [UserRole::STUDENT->value], 'Ajouter un élève', 'app_admin_students');
     }
 
     #[Route('/teachers/new', name: 'teacher_new')]

@@ -119,7 +119,7 @@ class MembershipPlanController extends AbstractController
                 // On génère un mot de passe temporaire car c'est une pré-inscription
                 $temporaryPassword = bin2hex(random_bytes(8));
                 $user->setPassword($passwordHasher->hashPassword($user, $temporaryPassword));
-                $user->setRoles(['ROLE_USER']);
+                $user->setRoles(['ROLE_STUDENT']);
                 $this->entityManager->persist($user);
             }
 

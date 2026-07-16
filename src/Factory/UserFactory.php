@@ -24,7 +24,7 @@ readonly class UserFactory
             $this->hasher->hashPassword($user, $dto->password)
         );
 
-        $user->setRoles($dto->roles ?? ['ROLE_USER']);
+        $user->setRoles($dto->roles ?? ['ROLE_STUDENT']);
 
         // 👤 Profile
         $profile = new UserProfile();

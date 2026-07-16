@@ -12,11 +12,11 @@ class UserCreationPolicy
     public function resolveRoles(array $roles, bool $isAdminContext): array
     {
         if (!$isAdminContext) {
-            return ['ROLE_USER'];
+            return ['ROLE_STUDENT'];
         }
 
         if (empty($roles)) {
-            return ['ROLE_USER'];
+            return ['ROLE_STUDENT'];
         }
 
         return $roles;
@@ -31,8 +31,8 @@ class UserCreationPolicy
             return true;
         }
 
-        // en public, seul ROLE_USER est autorisé
-        return empty(array_diff($roles, ['ROLE_USER']));
+        // en public, seul ROLE_STUDENT est autorisé
+        return empty(array_diff($roles, ['ROLE_STUDENT']));
     }
 
     /**
@@ -40,7 +40,7 @@ class UserCreationPolicy
      */
     public function getDefaultRoles(): array
     {
-        return ['ROLE_USER'];
+        return ['ROLE_STUDENT'];
     }
 
     /**
@@ -67,9 +67,9 @@ class UserCreationPolicy
         $isAdmin = in_array('ROLE_ADMIN', $actor?->getRoles() ?? [], true);
 
         if (!$isAdmin) {
-            return ['ROLE_USER'];
+            return ['ROLE_STUDENT'];
         }
 
-        return $roles ?: ['ROLE_USER'];
+        return $roles ?: ['ROLE_STUDENT'];
     }
 }

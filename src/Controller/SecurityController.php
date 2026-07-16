@@ -35,7 +35,7 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $dto->roles = ['ROLE_USER'];
+            $dto->roles = ['ROLE_STUDENT'];
             $dto->autoLogin = true;
 
             $user = $userService->createUser($dto);
