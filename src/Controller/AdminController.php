@@ -61,6 +61,24 @@ final class AdminController extends AbstractController
             ];
         }, $courseSessions);
 
+        $plans = $planRepository->findAllOrdered();
+        $latestNews = $announcementRepository->findLatest(5);
+
+        $planEditForms = [];
+        foreach ($plans as $plan) {
+            $planEditForms[$plan->getId()] = $this->createForm(MembershipPlanType::class, $plan)->createView();
+        }
+
+        $announcementEditForms = [];
+        foreach ($latestNews as $news) {
+            $announcementEditForms[$news->getId()] = $this->createForm(AnnouncementType::class, $news)->createView();
+        }
+
+        $sessionEditForms = [];
+        foreach ($courseSessions as $session) {
+            $sessionEditForms[$session->getId()] = $this->createForm(CourseSessionType::class, $session)->createView();
+        }
+
         return $this->render('admin/dashboard.html.twig', [
             'stats' => [
                 'students' => $userRepository->countStudents(),
@@ -74,7 +92,7 @@ final class AdminController extends AbstractController
             ],
             'latestRegistrations' => $membershipRepository->findLatest(5),
             'latestPayments' => $paymentRepository->findLatest(5),
-            'latestNews' => $announcementRepository->findLatest(5),
+            'latestNews' => $latestNews,
             'students' => $userRepository->findStudents(),
             'teachers' => $userRepository->findTeachers(),
             'allUsers' => $userRepository->findAllOrdered(),
@@ -83,7 +101,7 @@ final class AdminController extends AbstractController
                 'Enseignant' => UserRole::TEACHER->value,
                 'Admin' => UserRole::ADMIN->value,
             ],
-            'plans' => $planRepository->findAllOrdered(),
+            'plans' => $plans,
             'pendingMemberships' => $membershipRepository->findPending(20),
             'allMemberships' => $membershipRepository->findAllOrdered(100),
             'courseSessions' => $courseSessions,
@@ -96,6 +114,9 @@ final class AdminController extends AbstractController
             'sessionNewForm' => $this->createForm(CourseSessionType::class, new CourseSession())->createView(),
             'studentNewForm' => $this->createForm(AdminUserType::class, $studentCreateDto)->createView(),
             'teacherNewForm' => $this->createForm(AdminUserType::class, $teacherCreateDto)->createView(),
+            'planEditForms' => $planEditForms,
+            'announcementEditForms' => $announcementEditForms,
+            'sessionEditForms' => $sessionEditForms,
         ]);
     }
 

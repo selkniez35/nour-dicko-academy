@@ -265,10 +265,11 @@
                         <span class="db-cours-badge">💰 {{ plan.price|number_format(2, ',', ' ') }} €</span>
                     </div>
                     <div class="admin-actions">
-                        <a href="{{ path('app_admin_plan_edit', {id: plan.id}) }}" class="admin-btn-sm">Gérer</a>
+                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-plan-edit-{{ plan.id }}')">Gérer</button>
                         {{ admin.delete_button('app_admin_plan_delete', plan.id, 'delete-plan', 'Supprimer cette classe ?') }}
                     </div>
                 </div>
+                {{ admin.form_modal('modal-plan-edit-' ~ plan.id, 'Modifier « ' ~ plan.label ~ ' »', planEditForms[plan.id], path('app_admin_plan_edit', {id: plan.id})) }}
             {% else %}
                 <div class="db-cours-card"><div class="db-cours-info"><h3>Aucune classe disponible</h3></div></div>
             {% endfor %}
@@ -377,10 +378,11 @@
                     <span>{{ session.plan ? session.plan.label : '-' }}</span>
                     <span>{{ session.teacher ? session.teacher.firstName ~ ' ' ~ session.teacher.lastName : '—' }}</span>
                     <span class="admin-actions">
-                        <a href="{{ path('app_admin_session_edit', {id: session.id}) }}" class="admin-btn-sm">Modifier</a>
+                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-session-edit-{{ session.id }}')">Modifier</button>
                         {{ admin.delete_button('app_admin_session_delete', session.id, 'delete-session', 'Supprimer cette séance ?') }}
                     </span>
                 </div>
+                {{ admin.form_modal('modal-session-edit-' ~ session.id, 'Modifier la séance', sessionEditForms[session.id], path('app_admin_session_edit', {id: session.id})) }}
             {% else %}
                 <div class="admin-table-row"><span style="grid-column:1/-1;text-align:center">Aucune séance programmée. Cliquez sur « Ajouter une séance ».</span></div>
             {% endfor %}
@@ -408,10 +410,11 @@
                         <span class="db-resource-date">Publié le {{ news.createdAt|date('d/m/Y') }}</span>
                     </div>
                     <div class="admin-actions">
-                        <a href="{{ path('app_admin_announcement_edit', {id: news.id}) }}" class="admin-btn-sm">Modifier</a>
+                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-announcement-edit-{{ news.id }}')">Modifier</button>
                         {{ admin.delete_button('app_admin_announcement_delete', news.id, 'delete-announcement', 'Supprimer cette actualité ?') }}
                     </div>
                 </div>
+                {{ admin.form_modal('modal-announcement-edit-' ~ news.id, 'Modifier « ' ~ news.title ~ ' »', announcementEditForms[news.id], path('app_admin_announcement_edit', {id: news.id})) }}
             {% else %}
                 <div class="db-resource-item"><div class="db-resource-info"><span class="db-resource-name">Aucune actualité publiée.</span></div></div>
             {% endfor %}
