@@ -188,7 +188,7 @@ section{padding:84px 24px}
 .btn-wa{background:#1FAF57;color:#fff}
 .btn-wa:hover{box-shadow:0 8px 22px rgba(31,175,87,.35)}
 /* ═══════════════ COURS ═══════════════ */
-.courses{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.courses{display:grid;grid-template-columns:repeat(var(--course-count,3),1fr);gap:22px}
 .course{
   background:var(--white);border:1px solid var(--gold-pale);border-radius:var(--radius);
   padding:34px 28px 28px;display:flex;flex-direction:column;box-shadow:var(--shadow);
@@ -337,7 +337,7 @@ section{padding:84px 24px}
 /* ═══════════════ TARIFS v2 (4 cartes + garanties) ═══════════════ */
 .tar-grid{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    grid-template-columns:repeat(var(--tar-count,4),1fr);
     justify-content:center;
     align-items:stretch;
     gap:20px;

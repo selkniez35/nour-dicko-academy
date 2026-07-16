@@ -2,40 +2,41 @@
   "entrypoints": {
     "app": {
       "js": [
-        "/build/runtime.1400881c.js",
-        "/build/82.fea25515.js",
-        "/build/app.81e875d2.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_modules_es_iterator_constructor_js-node_modules_core-js_modules_-af7644.js",
+        "/build/app.js"
       ],
       "css": [
-        "/build/app.cc0a8aff.css"
+        "/build/app.css"
       ]
     },
     "dashboard-eleve": {
       "js": [
-        "/build/runtime.1400881c.js",
-        "/build/82.fea25515.js",
-        "/build/dashboard-eleve.0e980f7c.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_modules_es_iterator_constructor_js-node_modules_core-js_modules_-af7644.js",
+        "/build/dashboard-eleve.js"
       ]
     },
     "dashboard-enseignant": {
       "js": [
-        "/build/runtime.1400881c.js",
-        "/build/82.fea25515.js",
-        "/build/dashboard-enseignant.843ef4ab.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_modules_es_iterator_constructor_js-node_modules_core-js_modules_-af7644.js",
+        "/build/dashboard-enseignant.js"
       ]
     },
     "dashboard-admin": {
       "js": [
-        "/build/runtime.1400881c.js",
-        "/build/82.fea25515.js",
-        "/build/dashboard-admin.e3149b81.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_modules_es_iterator_constructor_js-node_modules_core-js_modules_-af7644.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_push_js-node_modules_core-js_modules_es_iterato-dced45.js",
+        "/build/dashboard-admin.js"
       ]
     },
     "admin-students": {
       "js": [
-        "/build/runtime.1400881c.js",
-        "/build/82.fea25515.js",
-        "/build/admin-students.5f14940d.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_modules_es_iterator_constructor_js-node_modules_core-js_modules_-af7644.js",
+        "/build/admin-students.js"
       ]
     }
   }

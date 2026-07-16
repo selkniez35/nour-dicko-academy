@@ -11,7 +11,7 @@
           <p class="sec-sub">Trois parcours au choix, une inscription pour toute l'année. Cliquez sur un cours pour découvrir le programme détaillé.</p>
         </div>
 
-        <div class="tar-grid">
+        <div class="tar-grid" style="--tar-count: {{ membershipPlans|length }}">
             {% for membership in membershipPlans %}
                 <article class="tar-card reveal">
                     <div class="tar-kind">{{ membership.level }}</div>

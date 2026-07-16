@@ -23,7 +23,7 @@
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </DataSourceFromHistory>
-  <DataSourceFromHistory isRemovedFromProject="false">
+  <DataSourceFromHistory isRemovedFromProject="true">
     <data-source source="LOCAL" name="nour-dicko-academy@localhost" uuid="b9910379-2073-4ad3-b036-c2e39c820cbe">
       <database-info product="MySQL" version="11.8.6-MariaDB-5 from Ubuntu" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-j-9.7.0 (Revision: 0aade1f13bcc98faf7dda5c02e782481eb291f62)" dbms="MARIADB" exact-version="11.8.6" exact-driver-version="9.7">
         <extra-name-characters>$</extra-name-characters>

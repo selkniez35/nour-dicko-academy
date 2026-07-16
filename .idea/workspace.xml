@@ -8,16 +8,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="back: SPA">
-      <change afterPath="$PROJECT_DIR$/public/build/app.996d720b.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MembershipPlanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MembershipPlanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/CourseSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CourseSession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/MembershipPlan.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MembershipPlan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/UserProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/UserProfile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MembershipPlanType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MembershipPlanType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CourseSessionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CourseSessionRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MembershipRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MembershipRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/82.fea25515.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/admin-students.5f14940d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/app.81e875d2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/app.cc0a8aff.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/dashboard-admin.e3149b81.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/dashboard-eleve.0e980f7c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/dashboard-enseignant.843ef4ab.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/runtime.1400881c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/membership_plan/courses.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/membership_plan/courses.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/membership_plan/prices.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/membership_plan/prices.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

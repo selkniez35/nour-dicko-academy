@@ -11,7 +11,7 @@
           <p class="sec-sub">Chaque cours a lieu une fois par semaine, en direct et en ligne, à horaire fixe en soirée.</p>
         </div>
 
-        <div class="courses">
+        <div class="courses" style="--course-count: {{ membershipPlans|length }}">
             {% for membership in membershipPlans %}
                 <article class="course reveal">
                     <h3>{{ membership.label }}{% if membership.id in fullPlanIds %} <span class="badge-full">Complet</span>{% endif %}</h3>

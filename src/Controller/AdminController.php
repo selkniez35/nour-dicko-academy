@@ -9,6 +9,7 @@ use App\Entity\Membership;
 use App\Entity\MembershipPlan;
 use App\Entity\Payment;
 use App\Entity\User;
+use App\Enum\MembershipStatus;
 use App\Enum\UserRole;
 use App\Form\AdminUserType;
 use App\Form\AnnouncementType;
@@ -22,6 +23,7 @@ use App\Repository\MembershipPlanRepository;
 use App\Repository\MembershipRepository;
 use App\Repository\PaymentRepository;
 use App\Repository\UserRepository;
+use App\Service\MailService;
 use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -261,13 +263,24 @@ final class AdminController extends AbstractController
     }
 
     #[Route('/registrations/{id}/edit', name: 'membership_edit')]
-    public function membershipEdit(Request $request, Membership $membership, EntityManagerInterface $entityManager): Response
+    public function membershipEdit(Request $request, Membership $membership, EntityManagerInterface $entityManager, MailService $mailService): Response
     {
+        $previousStatus = $membership->getStatus();
+
         $form = $this->createForm(MembershipAdminType::class, $membership);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+
+            if ($membership->getStatus() !== $previousStatus) {
+                if ($membership->getStatus() === MembershipStatus::ACTIVE) {
+                    $mailService->sendMembershipApproved($membership);
+                } elseif ($membership->getStatus() === MembershipStatus::SUSPENDED) {
+                    $mailService->sendMembershipRejected($membership);
+                }
+            }
+
             $this->addFlash('success', 'Inscription mise à jour.');
 
             return $this->redirectToRoute('app_admin_registrations');

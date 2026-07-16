@@ -3,6 +3,8 @@
 namespace App\Service;
 
 use App\Entity\Announcement;
+use App\Entity\Membership;
+use App\Entity\MembershipPlan;
 use App\Entity\Payment;
 use App\Entity\TrainingSession;
 use App\Entity\User;
@@ -104,5 +106,61 @@ final readonly class MailService
                 'payment' => $payment,
             ]
         );
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendMembershipApproved(Membership $membership, string $paymentUrl = '#'): void
+    {
+        $profile = $membership->getUserProfile();
+        $courseLabel = $this->resolveCourseLabel($membership);
+
+        $this->send(
+            $profile->getUser()->getEmail(),
+            'Votre inscription a été approuvée',
+            'emails/inscription_accepted.html.twig',
+            [
+                'firstName' => $profile->getFirstName(),
+                'lastName' => $profile->getLastName(),
+                'course' => $courseLabel,
+                'paidAmount' => number_format($membership->getPrice(), 2, ',', ' ') . ' €',
+                'paymentMethod' => $membership->getPaymentMethod(),
+                'paymentUrl' => $paymentUrl,
+            ]
+        );
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendMembershipRejected(Membership $membership): void
+    {
+        $profile = $membership->getUserProfile();
+
+        $this->send(
+            $profile->getUser()->getEmail(),
+            'Votre demande d\'inscription',
+            'emails/inscription_rejected.html.twig',
+            [
+                'firstName' => $profile->getFirstName(),
+                'lastName' => $profile->getLastName(),
+                'reason' => $membership->getStatusReason()?->label(),
+            ]
+        );
+    }
+
+    private function resolveCourseLabel(Membership $membership): ?string
+    {
+        if ($membership->getPlan() !== null) {
+            return $membership->getPlan()->getLabel();
+        }
+
+        $labels = array_map(
+            static fn (MembershipPlan $plan): string => $plan->getLabel(),
+            $membership->getSelectedCourses()->toArray()
+        );
+
+        return $labels !== [] ? implode(' + ', $labels) : null;
     }
 }
