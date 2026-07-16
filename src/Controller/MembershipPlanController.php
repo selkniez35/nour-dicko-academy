@@ -33,7 +33,13 @@ class MembershipPlanController extends AbstractController
     #[Route('/', name: 'app_membership-plan_index', methods: ['GET'])]
     public function index(): Response
     {
-        return $this->render('membership_plan/index.html.twig');
+        $membershipPlans = $this->membershipPlanRepository->findAll();
+
+        return $this->render('membership_plan/index.html.twig', [
+            'membershipPlans' => $membershipPlans,
+            'fullPlanIds' => $this->getFullPlanIds($membershipPlans),
+            'fullFormules' => $this->getFullFormules(),
+        ]);
     }
 
     #[Route('/a-propos', name: 'app_about', methods: ['GET'])]
@@ -178,6 +184,16 @@ class MembershipPlanController extends AbstractController
             return $this->redirect($this->generateUrl('app_membership-plan_index') . '#inscription');
         }
 
+        return $this->render('membership_plan/registration.html.twig', [
+            'fullFormules' => $this->getFullFormules(),
+        ]);
+    }
+
+    /**
+     * @return string[] Valeurs de "formule" (arabe, coran, ...) dont la formation correspondante a atteint son nombre maximum d'inscrits
+     */
+    private function getFullFormules(): array
+    {
         $allPlans = $this->membershipPlanRepository->findAll();
         $fullFormules = [];
         foreach (['arabe', 'education', 'coran', 'pack-arabe', 'pack-coran'] as $formuleValue) {
@@ -187,9 +203,7 @@ class MembershipPlanController extends AbstractController
             }
         }
 
-        return $this->render('membership_plan/registration.html.twig', [
-            'fullFormules' => $fullFormules,
-        ]);
+        return $fullFormules;
     }
 
     /**
