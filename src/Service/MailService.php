@@ -41,7 +41,9 @@ final readonly class MailService
             'Bienvenue à la Nour Dicko Academy',
             'emails/welcome.html.twig',
             [
-                'user' => $user,
+                'firstName' => $user->getProfile()?->getFirstName(),
+                'lastName' => $user->getProfile()?->getLastName(),
+                'email' => $user->getEmail(),
             ]
         );
     }
