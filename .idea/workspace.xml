@@ -7,12 +7,211 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="back">
-      <change afterPath="$PROJECT_DIR$/src/Enum/StudentLevelEnum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix" afterDir="false" />
+    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="config claude">
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/36a445c42dcbe33e178162b749f8ca7d.json.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/3a5827bb5215a4971a5a2c423f5bc120.json.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/54dfd08af5b4d91022f526edc4f4d545.json.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/App_KernelDevDebugContainer.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/CHANGELOG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/CODEGEN_VERSION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/JetBrainsMono.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE10" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE11" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE12" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE13" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE14" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE15" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE16" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE17" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE18" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE19" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE20" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE21" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE22" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE23" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE24" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE26" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE27" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE28" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE29" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE30" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE31" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE32" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE33" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE34" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE35" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE36" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE37" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE38" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE39" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE40" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE41" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE42" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE43" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE44" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE45" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE46" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE47" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE48" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE49" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE50" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE51" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE52" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE53" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE54" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE55" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE56" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE57" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE58" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE59" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE60" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE61" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE62" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE63" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE64" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE65" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE66" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE67" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE68" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE69" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE70" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE71" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE72" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE73" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE74" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE75" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE76" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE77" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/LICENSE9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/OPENAPI_VERSION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/VERSION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/autoload_runtime.template" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/bullets-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/ca-certificates.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/completion.fish" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/compress" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/display.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/favicon.png.base64" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/hiddeninput.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/justfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/patch-type-declarations" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/php-cs-fixer.phar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/phpstan.dist.neon" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/phpunit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.af.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.ar.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.be.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.bs.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.cs.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.cy.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.de.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.el.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.en.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.es.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.eu.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.fa.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.fi.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.fr.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.gl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.hy.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.id.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.it.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.ja.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.lb.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.lt.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.lv.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.mk.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.mn.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.my.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.nb.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.nl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.nn.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.pl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.pt.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.ro.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.ru.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.sk.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.sl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.sq.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.sr_Cyrl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.sr_Latn.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.th.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.tl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.tr.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.uk.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.ur.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.vi.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.zh_CN.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/security.zh_TW.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/url_generating_routes.php.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/url_matching_routes.php.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/usage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.ar.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.az.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.be.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.bg.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.bs.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.ca.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.de.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.el.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.en.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.et.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.eu.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.fa.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.fi.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.fr.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.gl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.he.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.hr.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.hu.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.hy.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.ja.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.lb.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.lv.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.mk.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.my.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.nb.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.nl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.nn.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.no.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.pl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.pt.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.pt_BR.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.sk.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.sl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.sq.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.sr_Cyrl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.sr_Latn.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.sv.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.th.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.tl.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.uk.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.ur.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.uz.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.vi.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.zh_CN.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/validators.zh_TW.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Merge_at_05_07_2026_19_20_[Changes]/yaml-lint" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Update_at_10_07_2026_19_04_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Update_at_10_07_2026_21_25_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Update_at_12_07_2026_18_57_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix/.idea/shelf/Uncommitted_changes_before_Update_at_15_07_2026_00_02_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/worktrees/register-inscriptions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy_dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy_dev.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/MembershipPlan.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MembershipPlan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/UserProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/UserProfile.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,61 +274,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.000009801397682" />
-      <entry key="S5" value="1.0200719848202582" />
-      <entry key="S10" value="1.2981422607723605" />
-      <entry key="S30" value="2.9260169847075184" />
-      <entry key="S60" value="4.097827251454598" />
-      <entry key="M2" value="4.940189068541347" />
-      <entry key="M5" value="5.746223091524669" />
-      <entry key="M10" value="6.795613944185411" />
-      <entry key="M15" value="8.01059190442193" />
-      <entry key="M30" value="11.12344869470361" />
-      <entry key="H1" value="14.40460713632249" />
-      <entry key="H2" value="17.401808377793877" />
-      <entry key="H4" value="23.165165323579362" />
-      <entry key="D1" value="79.43326404422817" />
-      <entry key="W1" value="145.98373414484598" />
+      <entry key="MS100" value="1.0000925119974677" />
+      <entry key="MS500" value="1.1560413186127014" />
+      <entry key="S2" value="1.6285066872609142" />
+      <entry key="S5" value="1.8304700240908942" />
+      <entry key="S10" value="1.9113012806371414" />
+      <entry key="S30" value="1.9695138124238318" />
+      <entry key="S60" value="1.9849296067284328" />
+      <entry key="M2" value="2.0439631378753997" />
+      <entry key="M5" value="3.482717187312653" />
+      <entry key="M10" value="7.032404888190819" />
+      <entry key="M15" value="9.980865304667505" />
+      <entry key="M30" value="15.933730118648059" />
+      <entry key="H1" value="21.75513712853326" />
+      <entry key="H2" value="26.626048935141547" />
+      <entry key="H4" value="33.4168249886453" />
+      <entry key="D1" value="90.59707236558077" />
+      <entry key="W1" value="157.7724995952408" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="2.133953204855162E-90" />
-      <entry key="MS500" value="1.1636891319325073E-18" />
-      <entry key="S2" value="3.2844242089349285E-5" />
-      <entry key="S5" value="0.016091024564558565" />
-      <entry key="S10" value="0.12685040230349515" />
-      <entry key="S30" value="0.5024551280324667" />
-      <entry key="S60" value="0.7088406932869233" />
-      <entry key="M2" value="0.8419513161081158" />
-      <entry key="M5" value="0.9551957513223317" />
-      <entry key="M10" value="1.1745258329716843" />
-      <entry key="M15" value="1.4201213010187925" />
-      <entry key="M30" value="1.9296595546358106" />
-      <entry key="H1" value="2.366680274542576" />
-      <entry key="H2" value="2.693642679269485" />
-      <entry key="H4" value="3.2776318039811034" />
-      <entry key="D1" value="15.41864023410017" />
-      <entry key="W1" value="32.85682191453132" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="5.3405753777789844E-160" />
+      <entry key="S5" value="1.9545194445338132E-64" />
+      <entry key="S10" value="1.4026807374830705E-32" />
+      <entry key="S30" value="2.816348237784672E-11" />
+      <entry key="S60" value="7.497050097420233E-6" />
+      <entry key="M2" value="0.0044249635810393265" />
+      <entry key="M5" value="0.2184420902342619" />
+      <entry key="M10" value="0.8566627115025501" />
+      <entry key="M15" value="1.422632810186123" />
+      <entry key="M30" value="2.5265163843683887" />
+      <entry key="H1" value="3.497746710735203" />
+      <entry key="H2" value="4.199432507998498" />
+      <entry key="H4" value="4.990921331936902" />
+      <entry key="D1" value="17.25362616375439" />
+      <entry key="W1" value="34.80923021978773" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.6332123471510148E-4" />
-      <entry key="MS500" value="0.17482701034230766" />
-      <entry key="S2" value="0.6466391364390083" />
-      <entry key="S5" value="0.8670566813870806" />
-      <entry key="S10" value="1.2969935333906837" />
-      <entry key="S30" value="3.330238569923117" />
-      <entry key="S60" value="4.740835798530592" />
-      <entry key="M2" value="5.743631977718802" />
-      <entry key="M5" value="6.684172397307363" />
-      <entry key="M10" value="7.960424976668961" />
-      <entry key="M15" value="9.423506608934975" />
-      <entry key="M30" value="13.048693001552161" />
-      <entry key="H1" value="16.768686183735802" />
-      <entry key="H2" value="20.0939724168479" />
-      <entry key="H4" value="26.441827878454163" />
-      <entry key="D1" value="94.85123592235169" />
-      <entry key="W1" value="178.84036984214157" />
+      <entry key="MS100" value="0.668988565369019" />
+      <entry key="MS500" value="1.0426505075694563" />
+      <entry key="S2" value="1.5685527839512543" />
+      <entry key="S5" value="1.8008730794837486" />
+      <entry key="S10" value="1.8953661289015564" />
+      <entry key="S30" value="1.963927853547593" />
+      <entry key="S60" value="1.9821043976066286" />
+      <entry key="M2" value="2.0465624895807712" />
+      <entry key="M5" value="3.695457010815981" />
+      <entry key="M10" value="7.8799972282204855" />
+      <entry key="M15" value="11.394222382616308" />
+      <entry key="M30" value="18.452788834299813" />
+      <entry key="H1" value="25.247991237730357" />
+      <entry key="H2" value="30.822608450837684" />
+      <entry key="H4" value="38.406015517509836" />
+      <entry key="D1" value="107.84989504467651" />
+      <entry key="W1" value="192.58152349698588" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -368,14 +567,6 @@
       <workItem from="1783878395965" duration="7064000" />
       <workItem from="1783951298139" duration="3210000" />
       <workItem from="1784180760607" duration="2837000" />
-    </task>
-    <task id="LOCAL-00015" summary="update deploy_dev workflow: simplify cache clear command and clean up .env.test">
-      <option name="closed" value="true" />
-      <created>1782991090716</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1782991090716</updated>
     </task>
     <task id="LOCAL-00016" summary="update Dockerfile and configuration: switch to PHP CLI with refined dependencies, adjust build process, switch test database to SQLite, and streamline deploy_dev workflow">
       <option name="closed" value="true" />
@@ -761,7 +952,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784227873917</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="register">
+      <option name="closed" value="true" />
+      <created>1784229043296</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1784229043296</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -806,8 +1005,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor mail service and update environment configuration; remove Brevo API integration" />
-    <MESSAGE value="Update header and login modal; adjust authentication redirect to membership plan index" />
     <MESSAGE value="Update registration link in login modal to correct path" />
     <MESSAGE value="Add email templates for payment confirmation, welcome, and reminders; create base layout" />
     <MESSAGE value="Add MailPreviewController for email template previews; implement routes for welcome, payment, announcement, and booking confirmation" />
@@ -831,6 +1028,8 @@
     <MESSAGE value="back: SPA" />
     <MESSAGE value="Delete USER Role and replace with STUDENT" />
     <MESSAGE value="back" />
-    <option name="LAST_COMMIT_MESSAGE" value="back" />
+    <MESSAGE value="register" />
+    <MESSAGE value="config claude" />
+    <option name="LAST_COMMIT_MESSAGE" value="config claude" />
   </component>
 </project>
