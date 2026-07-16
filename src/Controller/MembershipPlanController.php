@@ -97,30 +97,38 @@ class MembershipPlanController extends AbstractController
 
             $phone = $data['telephone'] ?? null;
 
-            if ($this->userRepository->findOneBy(['email' => $email])) {
-                $this->addFlash('error', 'Un compte existe déjà avec cette adresse e-mail.');
+            // Une personne qui a déjà un compte (ex: inscrite à un autre cours) doit pouvoir
+            // s'inscrire à l'académie à nouveau : on réutilise son compte au lieu de bloquer.
+            $user = $this->userRepository->findOneBy(['email' => $email]);
 
-                return $this->redirect($this->generateUrl('app_membership-plan_index') . '#inscription');
+            // En revanche, si ce numéro de téléphone appartient au profil d'un AUTRE compte,
+            // on ne peut pas y rattacher cette inscription (conflit réel entre deux personnes).
+            if ($phone) {
+                $existingProfileForPhone = $this->userProfileRepository->findOneBy(['phoneNumber' => $phone]);
+                if ($existingProfileForPhone && (!$user || $existingProfileForPhone->getUser() !== $user)) {
+                    $this->addFlash('error', 'Un compte existe déjà avec ce numéro de téléphone.');
+
+                    return $this->redirect($this->generateUrl('app_membership-plan_index') . '#inscription');
+                }
             }
 
-            if ($phone && $this->userProfileRepository->findOneBy(['phoneNumber' => $phone])) {
-                $this->addFlash('error', 'Un compte existe déjà avec ce numéro de téléphone.');
-
-                return $this->redirect($this->generateUrl('app_membership-plan_index') . '#inscription');
+            // 1. Récupération ou création de l'utilisateur (User)
+            if (!$user) {
+                $user = new User();
+                $user->setEmail($email);
+                // On génère un mot de passe temporaire car c'est une pré-inscription
+                $temporaryPassword = bin2hex(random_bytes(8));
+                $user->setPassword($passwordHasher->hashPassword($user, $temporaryPassword));
+                $user->setRoles(['ROLE_USER']);
+                $this->entityManager->persist($user);
             }
 
-            // 1. Création de l'utilisateur (User)
-            $user = new User();
-            $user->setEmail($email);
-            // On génère un mot de passe temporaire car c'est une pré-inscription
-            $temporaryPassword = bin2hex(random_bytes(8));
-            $user->setPassword($passwordHasher->hashPassword($user, $temporaryPassword));
-            $user->setRoles(['ROLE_USER']);
-            $this->entityManager->persist($user);
-
-            // 2. Création du UserProfile
-            $userProfile = new UserProfile();
-            $userProfile->setUser($user);
+            // 2. Récupération ou création du UserProfile
+            $userProfile = $user->getProfile();
+            if (!$userProfile) {
+                $userProfile = new UserProfile();
+                $userProfile->setUser($user);
+            }
 
             $userProfile->setLastName($data['nom'] ?? $userProfile->getLastName());
             $userProfile->setFirstName($data['prenom'] ?? $userProfile->getFirstName());
