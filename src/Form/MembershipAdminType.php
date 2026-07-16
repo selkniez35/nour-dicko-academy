@@ -27,7 +27,6 @@ class MembershipAdminType extends AbstractType
                     'Actif' => MembershipStatus::ACTIVE,
                     'Suspendu' => MembershipStatus::SUSPENDED,
                     'En attente' => MembershipStatus::PENDING,
-                    'Séance d’essai' => MembershipStatus::TRIAL,
                 ],
                 'choice_value' => static fn (?MembershipStatus $status): ?string => $status?->value,
                 'choice_label' => static fn (MembershipStatus $status): string => $status->label(),

@@ -18,7 +18,6 @@ enum MembershipStatusReason: string
             self::UNPAID => 'Paiement non reçu',
             self::MISSING_MEDICAL_CERTIFICATE => 'Certificat médical manquant',
             self::DISCIPLINARY_SANCTION => 'Sanction disciplinaire',
-            self::TRIAL_SESSION => 'Séance d’essai',
             self::TRIAL_SESSIONS_REMAINING => 'Séances d’essai restantes',
         };
     }

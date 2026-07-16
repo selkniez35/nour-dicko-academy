@@ -40,10 +40,7 @@ class SecurityController extends AbstractController
 
             $user = $userService->createUser($dto);
 
-            $this->brevoService->sendWelcome(
-                $user->getEmail(),
-                $user->getProfile()->getFullName(),
-            );
+            $this->brevoService->sendWelcome($user);
 
             $this->addFlash('success', 'Compte créé !');
 
