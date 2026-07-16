@@ -2,6 +2,8 @@
 
 {% block title %}Administration — Nour Dicko Academy{% endblock %}
 
+{% import 'admin/_macros.html.twig' as admin %}
+
 {% block body %}
     <div class="dashboard">
 
@@ -59,10 +61,6 @@
                 Actualités
             </a>
         </nav>
-        <a href="{{ path('app_logout') }}" class="db-logout">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
-            Déconnexion
-        </a>
     </aside>
 
     <!-- ══ CONTENU PRINCIPAL ══ -->
@@ -90,42 +88,10 @@
         <h2 class="db-section-title">Vue d'ensemble</h2>
 
         <div class="admin-stats">
-            <div class="admin-stat-card">
-                <div class="admin-stat-icon" style="background:rgba(201,146,42,.12);color:var(--gold)">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                </div>
-                <div>
-                    <div class="admin-stat-val">{{ stats.students|default(0) }}</div>
-                    <div class="admin-stat-label">Élèves inscrits</div>
-                </div>
-            </div>
-            <div class="admin-stat-card">
-                <div class="admin-stat-icon" style="background:rgba(26,42,74,.1);color:#1a2a4a">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>
-                </div>
-                <div>
-                    <div class="admin-stat-val">{{ stats.teachers|default(0) }}</div>
-                    <div class="admin-stat-label">Enseignants</div>
-                </div>
-            </div>
-            <div class="admin-stat-card">
-                <div class="admin-stat-icon" style="background:rgba(34,197,94,.1);color:#16a34a">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
-                </div>
-                <div>
-                    <div class="admin-stat-val">{{ (stats.revenue|default(0) / 100)|number_format(2, ',', ' ') }} €</div>
-                    <div class="admin-stat-label">Revenus annuels</div>
-                </div>
-            </div>
-            <div class="admin-stat-card">
-                <div class="admin-stat-icon" style="background:rgba(239,68,68,.1);color:#dc2626">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>
-                </div>
-                <div>
-                    <div class="admin-stat-val">{{ stats.registrations|default(0) }}</div>
-                    <div class="admin-stat-label">Nouvelles inscriptions <span style="opacity:.6">(7 derniers jours)</span></div>
-                </div>
-            </div>
+            {{ admin.stat_card('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>', 'background:rgba(201,146,42,.12);color:var(--gold)', stats.students|default(0), 'Élèves inscrits') }}
+            {{ admin.stat_card('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>', 'background:rgba(26,42,74,.1);color:#1a2a4a', stats.teachers|default(0), 'Enseignants') }}
+            {{ admin.stat_card('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>', 'background:rgba(34,197,94,.1);color:#16a34a', (stats.revenue|default(0) / 100)|number_format(2, ',', ' ') ~ ' €', 'Revenus annuels') }}
+            {{ admin.stat_card('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>', 'background:rgba(239,68,68,.1);color:#dc2626', stats.registrations|default(0), 'Nouvelles inscriptions <span style="opacity:.6">(7 derniers jours)</span>'|raw) }}
         </div>
 
         <h3 class="db-subsection-title">Dernières inscriptions</h3>
@@ -141,9 +107,7 @@
             </span>
                     <span>{{ registration.plan ? registration.plan.label : (registration.studentLevel ?: '-') }}</span>
                     <span>{{ registration.createdAt|date('d/m/Y') }}</span>
-                    <span class="db-eleve-badge {% if registration.status.value == 'active' %}db-badge-actif{% elseif registration.status.value == 'pending' %}db-badge-pending{% else %}db-badge-refuse{% endif %}">
-              {{ registration.status.label }}
-            </span>
+                    <span>{{ admin.status_badge(registration.status) }}</span>
                     <span>
               <a href="{{ path('app_admin_membership_edit', {id: registration.id}) }}" class="admin-btn-sm">Voir</a>
             </span>
@@ -178,13 +142,7 @@
                         {% else %}
                             {% set primaryRole = 'ROLE_USER' %}
                         {% endif %}
-                        {% if primaryRole == 'ROLE_ADMIN' %}
-                            <span class="db-eleve-badge db-badge-actif">Admin</span>
-                        {% elseif primaryRole == 'ROLE_TEACHER' %}
-                            <span class="db-eleve-badge db-badge-pending">Enseignant</span>
-                        {% else %}
-                            <span class="db-eleve-badge" style="background:rgba(26,42,74,.08);color:#1a2a4a;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px;display:inline-block;">Utilisateur</span>
-                        {% endif %}
+                        {{ admin.role_badge(primaryRole) }}
                     </span>
                     <span>
                         {% if oneUser == app.user %}
@@ -203,10 +161,7 @@
                     </span>
                     <span class="admin-actions">
                         <a href="{{ path('app_admin_user_edit', {id: oneUser.id}) }}" class="admin-btn-sm">Modifier</a>
-                        <form method="post" action="{{ path('app_admin_user_delete', {id: oneUser.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer cet utilisateur ?');">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete-user-' ~ oneUser.id) }}">
-                            <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
-                        </form>
+                        {{ admin.delete_button('app_admin_user_delete', oneUser.id, 'delete-user', 'Supprimer cet utilisateur ?') }}
                     </span>
                 </div>
             {% else %}
@@ -248,15 +203,12 @@
                   <span class="db-badge-pending">En attente</span>
               {% endif %}
             </span>
-                    <span class="db-eleve-badge {% if membership and membership.status.value == 'active' %}db-badge-actif{% else %}db-badge-pending{% endif %}">
-              {{ membership ? membership.status.label : 'Aucune inscription' }}
+                    <span>
+              {% if membership %}{{ admin.status_badge(membership.status) }}{% else %}<span class="db-eleve-badge db-badge-neutral">Aucune inscription</span>{% endif %}
             </span>
                     <span class="admin-actions">
               <a href="{{ path('app_admin_user_edit', {id: student.id}) }}" class="admin-btn-sm">Modifier</a>
-              <form method="post" action="{{ path('app_admin_user_delete', {id: student.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer cet élève ?');">
-                  <input type="hidden" name="_token" value="{{ csrf_token('delete-user-' ~ student.id) }}">
-                  <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
-              </form>
+              {{ admin.delete_button('app_admin_user_delete', student.id, 'delete-user', 'Supprimer cet élève ?') }}
             </span>
                 </div>
             {% else %}
@@ -287,10 +239,7 @@
                     <span class="db-eleve-badge db-badge-actif">Actif</span>
                     <span class="admin-actions">
               <a href="{{ path('app_admin_user_edit', {id: teacher.id}) }}" class="admin-btn-sm">Modifier</a>
-              <form method="post" action="{{ path('app_admin_user_delete', {id: teacher.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer cet enseignant ?');">
-                  <input type="hidden" name="_token" value="{{ csrf_token('delete-user-' ~ teacher.id) }}">
-                  <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
-              </form>
+              {{ admin.delete_button('app_admin_user_delete', teacher.id, 'delete-user', 'Supprimer cet enseignant ?') }}
             </span>
                 </div>
             {% else %}
@@ -323,10 +272,7 @@
                     </div>
                     <div class="admin-actions">
                         <a href="{{ path('app_admin_plan_edit', {id: plan.id}) }}" class="admin-btn-sm">Gérer</a>
-                        <form method="post" action="{{ path('app_admin_plan_delete', {id: plan.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer cette classe ?');">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete-plan-' ~ plan.id) }}">
-                            <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
-                        </form>
+                        {{ admin.delete_button('app_admin_plan_delete', plan.id, 'delete-plan', 'Supprimer cette classe ?') }}
                     </div>
                 </div>
             {% else %}
@@ -353,15 +299,10 @@
             </span>
                     <span>{{ membership.plan ? membership.plan.label : (membership.studentLevel ?: '-') }}</span>
                     <span>{{ membership.createdAt|date('d/m/Y') }}</span>
-                    <span class="db-eleve-badge {% if membership.status.value == 'active' %}db-badge-actif{% elseif membership.status.value == 'pending' %}db-badge-pending{% else %}db-badge-refuse{% endif %}">
-              {{ membership.status.label }}
-            </span>
+                    <span>{{ admin.status_badge(membership.status) }}</span>
                     <span class="admin-actions">
               <a href="{{ path('app_admin_membership_edit', {id: membership.id}) }}" class="admin-btn-sm">Modifier</a>
-              <form method="post" action="{{ path('app_admin_membership_delete', {id: membership.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer cette inscription ?');">
-                  <input type="hidden" name="_token" value="{{ csrf_token('delete-membership-' ~ membership.id) }}">
-                  <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
-              </form>
+              {{ admin.delete_button('app_admin_membership_delete', membership.id, 'delete-membership', 'Supprimer cette inscription ?') }}
             </span>
                 </div>
             {% else %}
@@ -374,24 +315,8 @@
     <section class="db-section" id="section-paiements">
         <h2 class="db-section-title">Paiements</h2>
         <div class="admin-stats" style="margin-bottom:28px">
-            <div class="admin-stat-card">
-                <div class="admin-stat-icon" style="background:rgba(34,197,94,.1);color:#16a34a">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                </div>
-                <div>
-                    <div class="admin-stat-val">{{ (paymentStats.received|default(0) / 100)|number_format(2, ',', ' ') }} €</div>
-                    <div class="admin-stat-label">Reçus</div>
-                </div>
-            </div>
-            <div class="admin-stat-card">
-                <div class="admin-stat-icon" style="background:rgba(239,68,68,.1);color:#dc2626">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-                </div>
-                <div>
-                    <div class="admin-stat-val">{{ (paymentStats.pending|default(0) / 100)|number_format(2, ',', ' ') }} €</div>
-                    <div class="admin-stat-label">En attente</div>
-                </div>
-            </div>
+            {{ admin.stat_card('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>', 'background:rgba(34,197,94,.1);color:#16a34a', (paymentStats.received|default(0) / 100)|number_format(2, ',', ' ') ~ ' €', 'Reçus') }}
+            {{ admin.stat_card('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>', 'background:rgba(239,68,68,.1);color:#dc2626', (paymentStats.pending|default(0) / 100)|number_format(2, ',', ' ') ~ ' €', 'En attente') }}
         </div>
         <div class="admin-table">
             <div class="admin-table-header">
@@ -459,10 +384,7 @@
                     <span>{{ session.teacher ? session.teacher.firstName ~ ' ' ~ session.teacher.lastName : '—' }}</span>
                     <span class="admin-actions">
                         <a href="{{ path('app_admin_session_edit', {id: session.id}) }}" class="admin-btn-sm">Modifier</a>
-                        <form method="post" action="{{ path('app_admin_session_delete', {id: session.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer cette séance ?');">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete-session-' ~ session.id) }}">
-                            <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
-                        </form>
+                        {{ admin.delete_button('app_admin_session_delete', session.id, 'delete-session', 'Supprimer cette séance ?') }}
                     </span>
                 </div>
             {% else %}
@@ -493,10 +415,7 @@
                     </div>
                     <div class="admin-actions">
                         <a href="{{ path('app_admin_announcement_edit', {id: news.id}) }}" class="admin-btn-sm">Modifier</a>
-                        <form method="post" action="{{ path('app_admin_announcement_delete', {id: news.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer cette actualité ?');">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete-announcement-' ~ news.id) }}">
-                            <button class="admin-btn-sm admin-btn-danger" type="submit">Supprimer</button>
-                        </form>
+                        {{ admin.delete_button('app_admin_announcement_delete', news.id, 'delete-announcement', 'Supprimer cette actualité ?') }}
                     </div>
                 </div>
             {% else %}

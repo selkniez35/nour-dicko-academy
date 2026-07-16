@@ -1,0 +1,38 @@
+{# Bouton "Supprimer" avec confirmation JS + protection CSRF, utilisé sur toutes les listes admin #}
+{% macro delete_button(route, id, token_prefix, confirm_message, label = 'Supprimer') %}
+    <form method="post" action="{{ path(route, {id: id}) }}" style="display:inline" onsubmit="return confirm('{{ confirm_message }}');">
+        <input type="hidden" name="_token" value="{{ csrf_token(token_prefix ~ '-' ~ id) }}">
+        <button class="admin-btn-sm admin-btn-danger" type="submit">{{ label }}</button>
+    </form>
+{% endmacro %}
+
+{# Badge de statut d'une inscription (Membership) #}
+{% macro status_badge(status) %}
+    <span class="db-eleve-badge {% if status.value == 'active' %}db-badge-actif{% elseif status.value == 'pending' %}db-badge-pending{% else %}db-badge-refuse{% endif %}">
+        {{ status.label }}
+    </span>
+{% endmacro %}
+
+{# Carte statistique (icône + valeur + libellé) utilisée dans "Vue d'ensemble" et "Paiements" #}
+{% macro stat_card(icon_svg, icon_style, value, label) %}
+    <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="{{ icon_style }}">
+            {{ icon_svg|raw }}
+        </div>
+        <div>
+            <div class="admin-stat-val">{{ value }}</div>
+            <div class="admin-stat-label">{{ label }}</div>
+        </div>
+    </div>
+{% endmacro %}
+
+{# Badge de rôle principal d'un utilisateur (Admin / Enseignant / Utilisateur) #}
+{% macro role_badge(primaryRole) %}
+    {% if primaryRole == 'ROLE_ADMIN' %}
+        <span class="db-eleve-badge db-badge-actif">Admin</span>
+    {% elseif primaryRole == 'ROLE_TEACHER' %}
+        <span class="db-eleve-badge db-badge-pending">Enseignant</span>
+    {% else %}
+        <span class="db-eleve-badge db-badge-neutral">Utilisateur</span>
+    {% endif %}
+{% endmacro %}

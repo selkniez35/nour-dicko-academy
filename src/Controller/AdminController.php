@@ -28,6 +28,7 @@ use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -169,9 +170,7 @@ final class AdminController extends AbstractController
     #[Route('/users/{id}/delete', name: 'user_delete', methods: ['POST'])]
     public function userDelete(Request $request, User $user, CourseSessionRepository $courseSessionRepository, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isCsrfTokenValid('delete-user-' . $user->getId(), (string) $request->request->get('_token'))) {
-            throw $this->createAccessDeniedException('Jeton CSRF invalide.');
-        }
+        $this->verifyCsrfOrDeny('delete-user-' . $user->getId(), $request);
 
         if (!$user->getPayments()->isEmpty()) {
             $this->addFlash('error', 'Impossible de supprimer cet utilisateur tant qu’il a des paiements associés.');
@@ -185,20 +184,13 @@ final class AdminController extends AbstractController
             return $this->redirectToDashboardSection('utilisateurs');
         }
 
-        $entityManager->remove($user);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'Utilisateur supprimé.');
-
-        return $this->redirectToDashboardSection('utilisateurs');
+        return $this->removeAndRedirect($user, $entityManager, 'Utilisateur supprimé.', $this->redirectToDashboardSection('utilisateurs'));
     }
 
     #[Route('/users/{id}/role', name: 'user_role_update', methods: ['POST'])]
     public function userRoleUpdate(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isCsrfTokenValid('change-role-' . $user->getId(), (string) $request->request->get('_token'))) {
-            throw $this->createAccessDeniedException('Jeton CSRF invalide.');
-        }
+        $this->verifyCsrfOrDeny('change-role-' . $user->getId(), $request);
 
         if ($user === $this->getUser()) {
             $this->addFlash('error', 'Vous ne pouvez pas modifier votre propre rôle.');
@@ -238,9 +230,7 @@ final class AdminController extends AbstractController
     #[Route('/trainings/{id}/delete', name: 'plan_delete', methods: ['POST'])]
     public function planDelete(Request $request, MembershipPlan $membershipPlan, MembershipRepository $membershipRepository, CourseSessionRepository $courseSessionRepository, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isCsrfTokenValid('delete-plan-' . $membershipPlan->getId(), (string) $request->request->get('_token'))) {
-            throw $this->createAccessDeniedException('Jeton CSRF invalide.');
-        }
+        $this->verifyCsrfOrDeny('delete-plan-' . $membershipPlan->getId(), $request);
 
         if ($membershipRepository->countForPlan($membershipPlan) > 0) {
             $this->addFlash('error', 'Impossible de supprimer cette formation car elle est utilisée par des inscriptions.');
@@ -254,12 +244,7 @@ final class AdminController extends AbstractController
             return $this->redirectToRoute('app_admin_trainings');
         }
 
-        $entityManager->remove($membershipPlan);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'Formation supprimée.');
-
-        return $this->redirectToRoute('app_admin_trainings');
+        return $this->removeAndRedirect($membershipPlan, $entityManager, 'Formation supprimée.', $this->redirectToRoute('app_admin_trainings'));
     }
 
     #[Route('/registrations/{id}/edit', name: 'membership_edit')]
@@ -297,16 +282,9 @@ final class AdminController extends AbstractController
     #[Route('/registrations/{id}/delete', name: 'membership_delete', methods: ['POST'])]
     public function membershipDelete(Request $request, Membership $membership, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isCsrfTokenValid('delete-membership-' . $membership->getId(), (string) $request->request->get('_token'))) {
-            throw $this->createAccessDeniedException('Jeton CSRF invalide.');
-        }
+        $this->verifyCsrfOrDeny('delete-membership-' . $membership->getId(), $request);
 
-        $entityManager->remove($membership);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'Inscription supprimée.');
-
-        return $this->redirectToRoute('app_admin_registrations');
+        return $this->removeAndRedirect($membership, $entityManager, 'Inscription supprimée.', $this->redirectToRoute('app_admin_registrations'));
     }
 
     #[Route('/news/new', name: 'announcement_new')]
@@ -324,16 +302,9 @@ final class AdminController extends AbstractController
     #[Route('/news/{id}/delete', name: 'announcement_delete', methods: ['POST'])]
     public function announcementDelete(Request $request, Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isCsrfTokenValid('delete-announcement-' . $announcement->getId(), (string) $request->request->get('_token'))) {
-            throw $this->createAccessDeniedException('Jeton CSRF invalide.');
-        }
+        $this->verifyCsrfOrDeny('delete-announcement-' . $announcement->getId(), $request);
 
-        $entityManager->remove($announcement);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'Actualité supprimée.');
-
-        return $this->redirectToRoute('app_admin_news');
+        return $this->removeAndRedirect($announcement, $entityManager, 'Actualité supprimée.', $this->redirectToRoute('app_admin_news'));
     }
 
     #[Route('/payments/{id}', name: 'payment_show', requirements: ['id' => '\d+'])]
@@ -359,16 +330,9 @@ final class AdminController extends AbstractController
     #[Route('/sessions/{id}/delete', name: 'session_delete', methods: ['POST'], requirements: ['id' => '\d+'])]
     public function sessionDelete(Request $request, CourseSession $courseSession, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isCsrfTokenValid('delete-session-' . $courseSession->getId(), (string) $request->request->get('_token'))) {
-            throw $this->createAccessDeniedException('Jeton CSRF invalide.');
-        }
+        $this->verifyCsrfOrDeny('delete-session-' . $courseSession->getId(), $request);
 
-        $entityManager->remove($courseSession);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'Séance supprimée.');
-
-        return $this->redirectToDashboardSection('calendrier');
+        return $this->removeAndRedirect($courseSession, $entityManager, 'Séance supprimée.', $this->redirectToDashboardSection('calendrier'));
     }
 
     private function handleUserCreate(Request $request, UserService $userService, array $roles, string $title, string $backRoute): Response
@@ -377,87 +341,97 @@ final class AdminController extends AbstractController
         $dto->roles = $roles;
 
         $form = $this->createForm(AdminUserType::class, $dto);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        return $this->handleAdminForm($request, $form, function () use ($userService, $dto, $backRoute) {
             $userService->createUser($dto);
             $this->addFlash('success', 'Utilisateur créé.');
 
             return $this->redirectToRoute($backRoute);
-        }
-
-        return $this->render('admin/form.html.twig', [
-            'title' => $title,
-            'back_route' => $backRoute,
-            'submit_label' => 'Créer',
-            'form' => $form->createView(),
-        ]);
+        }, $title, $backRoute, 'Créer');
     }
 
     private function handleMembershipPlanForm(Request $request, MembershipPlan $membershipPlan, EntityManagerInterface $entityManager, string $title): Response
     {
         $form = $this->createForm(MembershipPlanType::class, $membershipPlan);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        return $this->handleAdminForm($request, $form, function () use ($entityManager, $membershipPlan) {
             $entityManager->persist($membershipPlan);
             $entityManager->flush();
-
             $this->addFlash('success', 'Formation enregistrée.');
 
             return $this->redirectToRoute('app_admin_trainings');
-        }
-
-        return $this->render('admin/form.html.twig', [
-            'title' => $title,
-            'back_route' => 'app_admin_trainings',
-            'submit_label' => 'Enregistrer',
-            'form' => $form->createView(),
-        ]);
+        }, $title, 'app_admin_trainings');
     }
 
     private function handleAnnouncementForm(Request $request, Announcement $announcement, EntityManagerInterface $entityManager, string $title, string $backRoute): Response
     {
         $form = $this->createForm(AnnouncementType::class, $announcement);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        return $this->handleAdminForm($request, $form, function () use ($entityManager, $announcement, $backRoute) {
             $entityManager->persist($announcement);
             $entityManager->flush();
-
             $this->addFlash('success', 'Actualité enregistrée.');
 
             return $this->redirectToRoute($backRoute);
-        }
-
-        return $this->render('admin/form.html.twig', [
-            'title' => $title,
-            'back_route' => $backRoute,
-            'submit_label' => 'Enregistrer',
-            'form' => $form->createView(),
-        ]);
+        }, $title, $backRoute);
     }
 
     private function handleCourseSessionForm(Request $request, CourseSession $courseSession, EntityManagerInterface $entityManager, string $title): Response
     {
         $form = $this->createForm(CourseSessionType::class, $courseSession);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        return $this->handleAdminForm($request, $form, function () use ($entityManager, $courseSession) {
             $entityManager->persist($courseSession);
             $entityManager->flush();
-
             $this->addFlash('success', 'Séance enregistrée.');
 
             return $this->redirectToDashboardSection('calendrier');
+        }, $title, 'app_admin_dashboard');
+    }
+
+    /**
+     * Squelette commun à tous les formulaires admin : soumission + validation,
+     * puis délégation de l'action de sauvegarde à $onValid, ou ré-affichage du
+     * formulaire avec les erreurs sinon.
+     */
+    private function handleAdminForm(Request $request, FormInterface $form, callable $onValid, string $title, string $backRoute, string $submitLabel = 'Enregistrer'): Response
+    {
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            return $onValid();
         }
 
         return $this->render('admin/form.html.twig', [
             'title' => $title,
-            'back_route' => 'app_admin_dashboard',
-            'submit_label' => 'Enregistrer',
+            'back_route' => $backRoute,
+            'submit_label' => $submitLabel,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * Vérifie le jeton CSRF d'une action de suppression, ou refuse l'accès.
+     */
+    private function verifyCsrfOrDeny(string $tokenId, Request $request): void
+    {
+        if (!$this->isCsrfTokenValid($tokenId, (string) $request->request->get('_token'))) {
+            throw $this->createAccessDeniedException('Jeton CSRF invalide.');
+        }
+    }
+
+    /**
+     * Supprime une entité et redirige avec un message de succès — squelette
+     * commun à toutes les actions de suppression admin.
+     */
+    private function removeAndRedirect(object $entity, EntityManagerInterface $entityManager, string $successMessage, Response $redirect): Response
+    {
+        $entityManager->remove($entity);
+        $entityManager->flush();
+
+        $this->addFlash('success', $successMessage);
+
+        return $redirect;
     }
 
     /**

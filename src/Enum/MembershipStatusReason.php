@@ -12,6 +12,9 @@ enum MembershipStatusReason: string
     case TRIAL_SESSION = 'trial_session';
     case TRIAL_SESSIONS_REMAINING = 'trial_sessions_remaining';
 
+    /**
+     * @throws \Exception
+     */
     public function label(): string
     {
         return match($this) {
@@ -19,6 +22,7 @@ enum MembershipStatusReason: string
             self::MISSING_MEDICAL_CERTIFICATE => 'Certificat médical manquant',
             self::DISCIPLINARY_SANCTION => 'Sanction disciplinaire',
             self::TRIAL_SESSIONS_REMAINING => 'Séances d’essai restantes',
+            self::TRIAL_SESSION => throw new \Exception('To be implemented'),
         };
     }
 }
