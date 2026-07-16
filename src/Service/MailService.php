@@ -43,7 +43,7 @@ final readonly class MailService
             [
                 'firstName' => $user->getProfile()?->getFirstName(),
                 'lastName' => $user->getProfile()?->getLastName(),
-                'email' => $user->getEmail(),
+                'userEmail' => $user->getEmail(),
             ]
         );
     }

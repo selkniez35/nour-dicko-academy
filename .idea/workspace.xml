@@ -8,7 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="back">
-      <change beforePath="$PROJECT_DIR$/src/Enum/MembershipStatusReason.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enum/MembershipStatusReason.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/MailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/MailService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/emails/welcome.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emails/welcome.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
