@@ -370,7 +370,7 @@ final class AdminController extends AbstractController
     {
         $this->verifyCsrfOrDeny('delete-session-' . $courseSession->getId(), $request);
 
-        return $this->removeAndRedirect($courseSession, $entityManager, 'Séance supprimée.', $this->redirectToDashboardSection('classes'));
+        return $this->removeAndRedirect($courseSession, $entityManager, 'Séance supprimée.', $this->redirectToDashboardSection('calendrier'));
     }
 
     private function handleUserCreate(Request $request, UserService $userService, array $roles, string $title, string $backRoute): Response
@@ -423,7 +423,7 @@ final class AdminController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'Séance enregistrée.');
 
-            return $this->redirectToDashboardSection('classes');
+            return $this->redirectToDashboardSection('calendrier');
         }, $title, 'app_admin_dashboard');
     }
 
