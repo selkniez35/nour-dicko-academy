@@ -223,7 +223,6 @@
                 {% for membership in membershipPlans %}
                     <article class="course reveal">
                         <h3>{{ membership.label }}{% if membership.id in fullPlanIds %} <span class="badge-full">Complet</span>{% endif %}</h3>
-                        <div class="course-level">{{ membership.level }}</div>
                         <div class="course-feats">
                             {% for feature in membership.features %}
                                 {% if feature.type == 'card' %}
@@ -279,7 +278,6 @@
             <div class="tar-grid" style="--tar-count: {{ membershipPlans|length }}">
                 {% for membership in membershipPlans %}
                     <article class="tar-card reveal">
-                        <div class="tar-kind">{{ membership.level }}</div>
                         <h3 class="tar-name">{{ membership.label }}{% if membership.id in fullPlanIds %} <span class="badge-full">Complet</span>{% endif %}</h3>
                         <div class="tar-price">{{ membership.price }} € <small>/an</small></div>
                         <div class="tar-sep"></div>
@@ -328,7 +326,6 @@
             <div class="modal-box">
                 <button class="modal-close" onclick="closeModal('modal-{{ membership.id }}')" aria-label="Fermer">×</button>
                 <h3 class="modal-title">{{ membership.label }}</h3>
-                <div class="modal-level">{{ membership.level }}</div>
                 <p class="modal-intro">{{ membership.description }}</p>
                 <div class="modal-prog-title">Programme détaillé</div>
                 <ul class="modal-list">
