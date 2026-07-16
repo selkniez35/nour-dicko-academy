@@ -5,6 +5,9 @@
 {% import 'admin/_macros.html.twig' as admin %}
 {% form_theme studentNewForm 'admin/_form_theme.html.twig' %}
 {% form_theme teacherNewForm 'admin/_form_theme.html.twig' %}
+{% for oneUserForm in userEditForms %}
+    {% form_theme oneUserForm 'admin/_form_theme.html.twig' %}
+{% endfor %}
 
 {% block body %}
     <div class="dashboard">
@@ -117,11 +120,11 @@
             <h2 class="db-section-title">Utilisateurs</h2>
         </div>
         <div class="admin-table">
-            <div class="admin-table-header" style="grid-template-columns:2fr 2fr 1.3fr 2fr 1.4fr;">
+            <div class="admin-table-header" style="grid-template-columns:1.7fr 1.7fr 1.1fr 1.8fr 1.8fr;">
                 <span>Nom</span><span>Email</span><span>Rôle actuel</span><span>Changer le rôle</span><span>Actions</span>
             </div>
             {% for oneUser in allUsers %}
-                <div class="admin-table-row" style="grid-template-columns:2fr 2fr 1.3fr 2fr 1.4fr;">
+                <div class="admin-table-row" style="grid-template-columns:1.7fr 1.7fr 1.1fr 1.8fr 1.8fr;">
                     <span class="db-eleve-name">
                         <div class="db-eleve-avatar">{{ (oneUser.profile ? oneUser.profile.fullName : oneUser.email)|first|upper }}</div>
                         {{ oneUser.profile ? oneUser.profile.fullName : oneUser.email }}
@@ -153,10 +156,11 @@
                         {% endif %}
                     </span>
                     <span class="admin-actions">
-                        <a href="{{ path('app_admin_user_edit', {id: oneUser.id}) }}" class="admin-btn-sm">Modifier</a>
+                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-user-edit-{{ oneUser.id }}')">Modifier</button>
                         {{ admin.delete_button('app_admin_user_delete', oneUser.id, 'delete-user', 'Supprimer cet utilisateur ?') }}
                     </span>
                 </div>
+                {{ admin.form_modal('modal-user-edit-' ~ oneUser.id, 'Modifier « ' ~ (oneUser.profile ? oneUser.profile.fullName : oneUser.email) ~ ' »', userEditForms[oneUser.id], path('app_admin_user_edit', {id: oneUser.id})) }}
             {% else %}
                 <div class="admin-table-row"><span>Aucun utilisateur trouvé.</span></div>
             {% endfor %}
@@ -176,13 +180,13 @@
             </label>
         </div>
         <div class="admin-table">
-            <div class="admin-table-header">
+            <div class="admin-table-header" style="grid-template-columns:1.8fr 1.8fr 1.2fr 1fr 1.3fr 1.6fr;">
                 <span>Nom</span><span>Email</span><span>Cours</span><span>Paiement</span><span>Statut</span><span>Actions</span>
             </div>
             {% for student in students %}
                 {% set profile = student.profile %}
                 {% set membership = profile and profile.memberships|length > 0 ? profile.memberships|last : null %}
-                <div class="admin-table-row">
+                <div class="admin-table-row" style="grid-template-columns:1.8fr 1.8fr 1.2fr 1fr 1.3fr 1.6fr;">
             <span class="db-eleve-name">
               <div class="db-eleve-avatar">{{ (profile ? profile.fullName : student.email)|first|upper }}</div>
 
@@ -201,7 +205,7 @@
               {% if membership %}{{ admin.status_badge(membership.status) }}{% else %}<span class="db-eleve-badge db-badge-neutral">Aucune inscription</span>{% endif %}
             </span>
                     <span class="admin-actions">
-              <a href="{{ path('app_admin_user_edit', {id: student.id}) }}" class="admin-btn-sm">Modifier</a>
+              <button type="button" class="admin-btn-sm" onclick="openModal('modal-user-edit-{{ student.id }}')">Modifier</button>
               {{ admin.delete_button('app_admin_user_delete', student.id, 'delete-user', 'Supprimer cet élève ?') }}
             </span>
                 </div>
@@ -232,7 +236,7 @@
                     <span>{{ profile and profile.phoneNumber ? profile.phoneNumber : '-' }}</span>
                     <span class="db-eleve-badge db-badge-actif">Actif</span>
                     <span class="admin-actions">
-              <a href="{{ path('app_admin_user_edit', {id: teacher.id}) }}" class="admin-btn-sm">Modifier</a>
+              <button type="button" class="admin-btn-sm" onclick="openModal('modal-user-edit-{{ teacher.id }}')">Modifier</button>
               {{ admin.delete_button('app_admin_user_delete', teacher.id, 'delete-user', 'Supprimer cet enseignant ?') }}
             </span>
                 </div>
@@ -372,8 +376,11 @@
 
         <h3 class="db-section-title" style="font-size:18px;margin:32px 0 16px;">Liste des séances</h3>
         <div class="admin-table">
+            <div class="admin-table-header" style="grid-template-columns:1.6fr 1.8fr 1.6fr 1.6fr;">
+                <span>Date</span><span>Cours</span><span>Enseignant</span><span>Actions</span>
+            </div>
             {% for session in courseSessions %}
-                <div class="admin-table-row" style="grid-template-columns:1.4fr 2fr 1.6fr 1.2fr 1.4fr;">
+                <div class="admin-table-row" style="grid-template-columns:1.6fr 1.8fr 1.6fr 1.6fr;">
                     <span>{{ session.startsAt|date('d/m/Y H:i') }}{% if session.endsAt %} – {{ session.endsAt|date('H:i') }}{% endif %}</span>
                     <span>{{ session.plan ? session.plan.label : '-' }}</span>
                     <span>{{ session.teacher ? session.teacher.firstName ~ ' ' ~ session.teacher.lastName : '—' }}</span>

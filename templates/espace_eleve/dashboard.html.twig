@@ -1,41 +1,38 @@
 {% extends 'base.html.twig' %}
-
-
-
 {% block title %}Mon espace — Nour Dicko Academy{% endblock %}
 
 {% block body %}
 <div class="dashboard">
 
-<div class="welcome-toast" id="welcome-toast">
+    <div class="welcome-toast" id="welcome-toast">
   <div class="welcome-toast-icon">
     <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 20V7M12 7c0-2.8 2-4.5 7-4.5v13c-5 0-7 1.2-7 4.5zm0 0c0-2.8-2-4.5-7-4.5v13c5 0 7 1.2 7 4.5z"/></svg>
   </div>
   <div class="welcome-toast-body">
-    <div class="welcome-toast-title">Bienvenue, Prénom 👋</div>
+    <div class="welcome-toast-title">Bienvenue, {{ app.user.fullName }} 👋</div>
     <div class="welcome-toast-sub">Vous êtes connecté à votre espace élève</div>
   </div>
 </div>
-
-  <!-- Sidebar -->
-  <aside class="db-sidebar">
-    <div class="db-brand">
-      <img src="{{ asset('images/logo-nda.png') }}" alt="NDA">
-    </div>
-    <nav class="db-nav">
-      <a href="#" class="db-nav-item active" data-section="cours">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V7M12 7c0-2.8 2-4.5 7-4.5v13c-5 0-7 1.2-7 4.5zm0 0c0-2.8-2-4.5-7-4.5v13c5 0 7 1.2 7 4.5z"/></svg>
-        Mes cours
-      </a>
-      <a href="#" class="db-nav-item" data-section="calendrier">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
-        Calendrier
-      </a>
-      <a href="#" class="db-nav-item" data-section="notes">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-  Mes évaluations
-</a>
-  </aside>
+    <!-- Sidebar -->
+        <aside class="db-sidebar">
+            <div class="db-brand">
+              <img src="{{ asset('images/logo-nda.png') }}" alt="NDA">
+            </div>
+            <nav class="db-nav">
+                <a href="#" class="db-nav-item active" data-section="cours">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V7M12 7c0-2.8 2-4.5 7-4.5v13c-5 0-7 1.2-7 4.5zm0 0c0-2.8-2-4.5-7-4.5v13c5 0 7 1.2 7 4.5z"/></svg>
+                Mes cours
+              </a>
+              <a href="#" class="db-nav-item" data-section="calendrier">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+                Calendrier
+              </a>
+              <a href="#" class="db-nav-item" data-section="notes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                    Mes évaluations
+              </a>
+            </nav>
+        </aside>
 
   <!-- Contenu principal -->
   <main class="db-main">
@@ -43,7 +40,7 @@
     <!-- Header -->
     <div class="db-header">
       <div>
-        <h1 class="db-welcome">Bienvenue, <span>Prénom</span> 👋</h1>
+        <h1 class="db-welcome">Bienvenue, <span>{{ app.user.fullName }}</span> 👋</h1>
         <p class="db-sub">Voici votre espace personnel Nour Dicko Academy</p>
       </div>
       <div class="db-header-right">
@@ -224,11 +221,11 @@
         <div class="db-profil-info">
           <div class="db-profil-field">
             <label>Nom complet</label>
-            <span>Prénom Nom</span>
+            <span>{{ app.user.fullName }}</span>
           </div>
           <div class="db-profil-field">
             <label>Adresse email</label>
-            <span>email@exemple.com</span>
+            <span>{{ app.user.email }}</span>
           </div>
           <div class="db-profil-field">
             <label>Cours suivi</label>

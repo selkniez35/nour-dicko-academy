@@ -79,6 +79,12 @@ final class AdminController extends AbstractController
             $sessionEditForms[$session->getId()] = $this->createForm(CourseSessionType::class, $session)->createView();
         }
 
+        $allUsers = $userRepository->findAllOrdered();
+        $userEditForms = [];
+        foreach ($allUsers as $oneUser) {
+            $userEditForms[$oneUser->getId()] = $this->createForm(UserType::class, $oneUser)->createView();
+        }
+
         return $this->render('admin/dashboard.html.twig', [
             'stats' => [
                 'students' => $userRepository->countStudents(),
@@ -95,7 +101,7 @@ final class AdminController extends AbstractController
             'latestNews' => $latestNews,
             'students' => $userRepository->findStudents(),
             'teachers' => $userRepository->findTeachers(),
-            'allUsers' => $userRepository->findAllOrdered(),
+            'allUsers' => $allUsers,
             'availableRoles' => [
                 'Utilisateur' => UserRole::USER->value,
                 'Enseignant' => UserRole::TEACHER->value,
@@ -117,6 +123,7 @@ final class AdminController extends AbstractController
             'planEditForms' => $planEditForms,
             'announcementEditForms' => $announcementEditForms,
             'sessionEditForms' => $sessionEditForms,
+            'userEditForms' => $userEditForms,
         ]);
     }
 
