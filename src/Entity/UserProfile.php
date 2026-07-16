@@ -58,7 +58,6 @@ class UserProfile
     public function __construct()
     {
         $this->registers = new ArrayCollection();
-        $this->membership = new ArrayCollection();
     }
 
     #[ORM\OneToOne(
@@ -66,12 +65,6 @@ class UserProfile
         orphanRemoval: true
     )]
     private ?EmergencyContact $emergencyContact = null;
-
-    /**
-     * @var Collection<int, Register>
-     */
-    #[ORM\OneToMany(targetEntity: Register::class, mappedBy: 'userProfile')]
-    private Collection $membership;
 
     public function getId(): ?int
     {
@@ -266,14 +259,6 @@ class UserProfile
     public function getFullName(): string
     {
         return $this->firstName . ' ' . $this->lastName;
-    }
-
-    /**
-     * @return Collection<int, Register>
-     */
-    public function getMembership(): Collection
-    {
-        return $this->membership;
     }
 
 }

@@ -14,11 +14,11 @@ class Register
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'userProfiles')]
+    #[ORM\ManyToOne(inversedBy: 'registers')]
     #[ORM\JoinColumn(nullable: false)]
     private ?UserProfile $userProfile = null;
 
-    #[ORM\ManyToOne(inversedBy: 'registers')]
+    #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?MembershipPlan $membershipPlan = null;
 
