@@ -411,6 +411,17 @@ section{padding:84px 24px}
 .tar-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.22)}
 .tar-btn-gold{background:var(--gold);color:#fff}
 .tar-btn-gold:hover{box-shadow:0 8px 20px rgba(201,146,42,.4)}
+.tar-btn-disabled{
+  display:block;text-align:center;
+  background:#ddd;color:#888;
+  cursor:not-allowed;pointer-events:none;
+}
+.badge-full{
+  display:inline-block;vertical-align:middle;
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  background:#c0392b;color:#fff;
+  padding:3px 8px;border-radius:999px;
+}
 .tar-featured{
   border:2px solid var(--gold);
   padding-top:52px;
@@ -942,6 +953,11 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
   transition:border-color .2s,background .2s;
 }
 .insc-radio:hover{border-color:var(--gold);background:rgba(201,146,42,.05)}
+.insc-radio-disabled{
+  cursor:not-allowed;opacity:.5;
+}
+.insc-radio-disabled:hover{border-color:var(--gold-pale);background:var(--paper)}
+.insc-radio-disabled input[type="radio"]{cursor:not-allowed}
 .insc-radio input[type="radio"]{
   width:16px;height:16px;flex-shrink:0;
   accent-color:var(--gold);

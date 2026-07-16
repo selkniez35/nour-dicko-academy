@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\CourseSession;
+use App\Entity\MembershipPlan;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -20,6 +22,26 @@ class CourseSessionRepository extends ServiceEntityRepository
     {
         return (int) $this->createQueryBuilder('s')
             ->select('COUNT(s.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countForPlan(MembershipPlan $plan): int
+    {
+        return (int) $this->createQueryBuilder('s')
+            ->select('COUNT(s.id)')
+            ->andWhere('s.plan = :plan')
+            ->setParameter('plan', $plan)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countForTeacher(User $teacher): int
+    {
+        return (int) $this->createQueryBuilder('s')
+            ->select('COUNT(s.id)')
+            ->andWhere('s.teacher = :teacher')
+            ->setParameter('teacher', $teacher)
             ->getQuery()
             ->getSingleScalarResult();
     }

@@ -165,7 +165,7 @@ final class AdminController extends AbstractController
     }
 
     #[Route('/users/{id}/delete', name: 'user_delete', methods: ['POST'])]
-    public function userDelete(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function userDelete(Request $request, User $user, CourseSessionRepository $courseSessionRepository, EntityManagerInterface $entityManager): Response
     {
         if (!$this->isCsrfTokenValid('delete-user-' . $user->getId(), (string) $request->request->get('_token'))) {
             throw $this->createAccessDeniedException('Jeton CSRF invalide.');
@@ -173,6 +173,12 @@ final class AdminController extends AbstractController
 
         if (!$user->getPayments()->isEmpty()) {
             $this->addFlash('error', 'Impossible de supprimer cet utilisateur tant qu’il a des paiements associés.');
+
+            return $this->redirectToDashboardSection('utilisateurs');
+        }
+
+        if ($courseSessionRepository->countForTeacher($user) > 0) {
+            $this->addFlash('error', 'Impossible de supprimer cet utilisateur car il est assigné comme enseignant à des séances.');
 
             return $this->redirectToDashboardSection('utilisateurs');
         }
@@ -228,7 +234,7 @@ final class AdminController extends AbstractController
     }
 
     #[Route('/trainings/{id}/delete', name: 'plan_delete', methods: ['POST'])]
-    public function planDelete(Request $request, MembershipPlan $membershipPlan, MembershipRepository $membershipRepository, EntityManagerInterface $entityManager): Response
+    public function planDelete(Request $request, MembershipPlan $membershipPlan, MembershipRepository $membershipRepository, CourseSessionRepository $courseSessionRepository, EntityManagerInterface $entityManager): Response
     {
         if (!$this->isCsrfTokenValid('delete-plan-' . $membershipPlan->getId(), (string) $request->request->get('_token'))) {
             throw $this->createAccessDeniedException('Jeton CSRF invalide.');
@@ -236,6 +242,12 @@ final class AdminController extends AbstractController
 
         if ($membershipRepository->countForPlan($membershipPlan) > 0) {
             $this->addFlash('error', 'Impossible de supprimer cette formation car elle est utilisée par des inscriptions.');
+
+            return $this->redirectToRoute('app_admin_trainings');
+        }
+
+        if ($courseSessionRepository->countForPlan($membershipPlan) > 0) {
+            $this->addFlash('error', 'Impossible de supprimer cette formation car des séances sont programmées pour elle.');
 
             return $this->redirectToRoute('app_admin_trainings');
         }

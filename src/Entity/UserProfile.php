@@ -31,7 +31,7 @@ class UserProfile
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $address = null;
 
-    #[ORM\Column(length: 20, nullable: true)]
+    #[ORM\Column(length: 20, nullable: true, unique: true)]
     private ?string $phoneNumber = null;
 
     #[ORM\Column(length: 10, nullable: true)]

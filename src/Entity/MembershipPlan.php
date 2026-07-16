@@ -41,6 +41,9 @@ class MembershipPlan
 
     private Collection $features;
 
+    #[ORM\Column]
+    private int $maxStudents = 0;
+
     public function __construct()
     {
         $this->features = new ArrayCollection();
@@ -124,5 +127,21 @@ class MembershipPlan
     public function setFeatures(Collection $features): void
     {
         $this->features = $features;
+    }
+
+    public function getMaxStudents(): int
+    {
+        return $this->maxStudents;
+    }
+
+    public function setMaxStudents(int $maxStudents): static
+    {
+        $this->maxStudents = $maxStudents;
+        return $this;
+    }
+
+    public function isFull(int $enrolledCount): bool
+    {
+        return $this->maxStudents > 0 && $enrolledCount >= $this->maxStudents;
     }
 }

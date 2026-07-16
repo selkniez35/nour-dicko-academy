@@ -14,7 +14,7 @@
         <div class="courses">
             {% for membership in membershipPlans %}
                 <article class="course reveal">
-                    <h3>{{ membership.label }}</h3>
+                    <h3>{{ membership.label }}{% if membership.id in fullPlanIds %} <span class="badge-full">Complet</span>{% endif %}</h3>
                     <div class="course-level">{{ membership.level }}</div>
                     <div class="course-feats">
                         {% for feature in membership.features %}

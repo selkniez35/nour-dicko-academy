@@ -104,4 +104,18 @@ class MembershipRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    /**
+     * Nombre d'inscriptions ayant sélectionné ce cours (via selectedCourses).
+     */
+    public function countStudentsForPlan(MembershipPlan $plan): int
+    {
+        return (int) $this->createQueryBuilder('m')
+            ->select('COUNT(DISTINCT m.id)')
+            ->innerJoin('m.selectedCourses', 'c')
+            ->andWhere('c = :plan')
+            ->setParameter('plan', $plan)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

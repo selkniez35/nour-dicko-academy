@@ -15,7 +15,7 @@
             {% for membership in membershipPlans %}
                 <article class="tar-card reveal">
                     <div class="tar-kind">{{ membership.level }}</div>
-                    <h3 class="tar-name">{{ membership.label }}</h3>
+                    <h3 class="tar-name">{{ membership.label }}{% if membership.id in fullPlanIds %} <span class="badge-full">Complet</span>{% endif %}</h3>
                     <div class="tar-price">{{ membership.price }} € <small>/an</small></div>
                     <div class="tar-sep"></div>
                     <p class="tar-prog">{{ membership.description }}</p>
@@ -26,7 +26,11 @@
                             {% endif %}
                         {% endfor %}
                     </ul>
-                    <a href="{{ path('app_registration') }}" class="tar-btn">S'inscrire ›</a>
+                    {% if membership.id in fullPlanIds %}
+                        <span class="tar-btn tar-btn-disabled" aria-disabled="true">Complet</span>
+                    {% else %}
+                        <a href="{{ path('app_registration') }}" class="tar-btn">S'inscrire ›</a>
+                    {% endif %}
                 </article>
             {% endfor %}
         </div>

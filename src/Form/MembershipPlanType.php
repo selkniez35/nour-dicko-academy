@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\MembershipPlan;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -36,6 +37,12 @@ class MembershipPlanType extends AbstractType
                 'label' => 'Description',
                 'required' => false,
                 'attr' => ['rows' => 5],
+            ])
+            ->add('maxStudents', IntegerType::class, [
+                'label' => 'Nombre maximum d\'inscrits',
+                'required' => false,
+                'help' => 'Laisser à 0 pour un nombre illimité de places.',
+                'attr' => ['min' => 0],
             ]);
     }
 
