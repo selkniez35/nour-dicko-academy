@@ -190,6 +190,19 @@ document.addEventListener('click', function(e){
   }
 });
 
+// ═══ Avatar du header public (étudiant connecté) ═══
+window.toggleHeaderAvatarMenu = function(){
+  const menu = document.getElementById('header-avatar-menu');
+  if(menu) menu.classList.toggle('open');
+};
+
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.topbar-avatar-wrap')){
+    const menu = document.getElementById('header-avatar-menu');
+    if(menu) menu.classList.remove('open');
+  }
+});
+
 // ═══ Popup lancement ═══
 window.closeLaunchPopup = function(){
   const popup = document.getElementById('launch-popup');

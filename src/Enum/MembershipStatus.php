@@ -6,7 +6,6 @@ enum MembershipStatus: string
     case ACTIVE = 'active';
     case SUSPENDED = 'suspended';
     case PENDING = 'pending';
-    case TRIAL = 'trial';
 
     function label(): string
     {
@@ -14,7 +13,6 @@ enum MembershipStatus: string
             self::ACTIVE => 'Actif',
             self::SUSPENDED => 'Suspendu',
             self::PENDING => 'En attente',
-            self::TRIAL => 'Séance d’essai',
         };
     }
 }
