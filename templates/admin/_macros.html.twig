@@ -26,14 +26,14 @@
     </div>
 {% endmacro %}
 
-{# Badge de rôle principal d'un utilisateur (Admin / Enseignant / Utilisateur) #}
+{# Badge de rôle principal d'un utilisateur (Admin / Enseignant / Étudiant) #}
 {% macro role_badge(primaryRole) %}
     {% if primaryRole == 'ROLE_ADMIN' %}
         <span class="db-eleve-badge db-badge-actif">Admin</span>
     {% elseif primaryRole == 'ROLE_TEACHER' %}
         <span class="db-eleve-badge db-badge-pending">Enseignant</span>
     {% else %}
-        <span class="db-eleve-badge db-badge-neutral">Utilisateur</span>
+        <span class="db-eleve-badge db-badge-neutral">Étudiant</span>
     {% endif %}
 {% endmacro %}
 

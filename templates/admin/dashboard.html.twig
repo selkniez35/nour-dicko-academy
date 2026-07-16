@@ -45,9 +45,9 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                 Enseignants
             </a>
-            <a href="#" class="db-nav-item" data-section="classes">
+            <a href="#" class="db-nav-item" data-section="formules">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
-                Classes
+                Formules
             </a>
             <a href="#" class="db-nav-item" data-section="inscriptions">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>
@@ -136,7 +136,7 @@
                         {% elseif 'ROLE_TEACHER' in oneUser.roles %}
                             {% set primaryRole = 'ROLE_TEACHER' %}
                         {% else %}
-                            {% set primaryRole = 'ROLE_USER' %}
+                            {% set primaryRole = 'ROLE_STUDENT' %}
                         {% endif %}
                         {{ admin.role_badge(primaryRole) }}
                     </span>
@@ -246,11 +246,11 @@
         </div>
     </section>
 
-    <!-- ══ SECTION : Classes ══ -->
-    <section class="db-section" id="section-classes">
+    <!-- ══ SECTION : Formules ══ -->
+    <section class="db-section" id="section-formules">
         <div class="admin-section-head">
-            <h2 class="db-section-title">Classes</h2>
-            <button type="button" class="admin-btn-primary" onclick="openModal('modal-plan-new')">+ Créer une classe</button>
+            <h2 class="db-section-title">Formules</h2>
+            <button type="button" class="admin-btn-primary" onclick="openModal('modal-plan-new')">+ Créer une formule</button>
         </div>
         <div class="db-cours-grid">
             {% for plan in plans %}
@@ -270,12 +270,12 @@
                     </div>
                     <div class="admin-actions">
                         <button type="button" class="admin-btn-sm" onclick="openModal('modal-plan-edit-{{ plan.id }}')">Gérer</button>
-                        {{ admin.delete_button('app_admin_plan_delete', plan.id, 'delete-plan', 'Supprimer cette classe ?') }}
+                        {{ admin.delete_button('app_admin_plan_delete', plan.id, 'delete-plan', 'Supprimer cette formule ?') }}
                     </div>
                 </div>
                 {{ admin.form_modal('modal-plan-edit-' ~ plan.id, 'Modifier « ' ~ plan.label ~ ' »', planEditForms[plan.id], path('app_admin_plan_edit', {id: plan.id})) }}
             {% else %}
-                <div class="db-cours-card"><div class="db-cours-info"><h3>Aucune classe disponible</h3></div></div>
+                <div class="db-cours-card"><div class="db-cours-info"><h3>Aucune formule disponible</h3></div></div>
             {% endfor %}
         </div>
     </section>

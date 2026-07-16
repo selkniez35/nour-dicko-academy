@@ -36,7 +36,7 @@ class AdminUserType extends AbstractType
             ->add('roles', ChoiceType::class, [
                 'label' => 'Rôle',
                 'choices' => [
-                    'Adhérent' => UserRole::USER->value,
+                    'Étudiant' => UserRole::STUDENT->value,
                     'Enseignant' => UserRole::TEACHER->value,
                     'Administrateur' => UserRole::ADMIN->value,
                 ],

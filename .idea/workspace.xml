@@ -7,11 +7,12 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="back">
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enum/UserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enum/UserRole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/Policy/UserCreationPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/Policy/UserCreationPolicy.php" afterDir="false" />
+    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="Delete USER Role and replace with STUDENT">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AdminUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AdminUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/_macros.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/_macros.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,56 +80,56 @@
       <entry key="S2" value="1.0" />
       <entry key="S5" value="1.0" />
       <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.0" />
-      <entry key="M10" value="1.0000000000000098" />
-      <entry key="M15" value="1.000000000951181" />
-      <entry key="M30" value="1.0000946836375049" />
-      <entry key="H1" value="1.034038506982576" />
-      <entry key="H2" value="1.853306825964478" />
-      <entry key="H4" value="6.85322245553472" />
-      <entry key="D1" value="62.594031003612834" />
-      <entry key="W1" value="127.58039674784844" />
+      <entry key="S30" value="1.0000000438828764" />
+      <entry key="S60" value="1.0002094987416001" />
+      <entry key="M2" value="1.014877978319419" />
+      <entry key="M5" value="1.3610738550038173" />
+      <entry key="M10" value="2.800848926513865" />
+      <entry key="M15" value="4.299571788814099" />
+      <entry key="M30" value="7.216866249498433" />
+      <entry key="H1" value="9.633473194716082" />
+      <entry key="H2" value="11.824078967349212" />
+      <entry key="H4" value="17.205785001479352" />
+      <entry key="D1" value="73.15977533881538" />
+      <entry key="W1" value="139.1808651801871" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="2.97788394534035E-200" />
-      <entry key="M2" value="2.4400840194460234E-100" />
-      <entry key="M5" value="2.165531578931314E-40" />
-      <entry key="M10" value="2.081110358800517E-20" />
-      <entry key="M15" value="9.53340139609475E-14" />
-      <entry key="M30" value="4.4091185070017187E-7" />
-      <entry key="H1" value="0.0010273607189656376" />
-      <entry key="H2" value="0.057878181640444074" />
-      <entry key="H4" value="0.551629476685779" />
-      <entry key="D1" value="12.837719706930566" />
-      <entry key="W1" value="29.99243246448242" />
+      <entry key="S2" value="5.057369887245492E-110" />
+      <entry key="S5" value="2.7087577665380177E-44" />
+      <entry key="S10" value="2.2979300251171636E-22" />
+      <entry key="S30" value="9.694660627698185E-8" />
+      <entry key="S60" value="4.4017172740291123E-4" />
+      <entry key="M2" value="0.02966786229284034" />
+      <entry key="M5" value="0.3711273340578001" />
+      <entry key="M10" value="0.8615388691943398" />
+      <entry key="M15" value="1.1407563505114577" />
+      <entry key="M30" value="1.5104672561938592" />
+      <entry key="H1" value="1.7387068412949722" />
+      <entry key="H2" value="1.9095384747468402" />
+      <entry key="H4" value="2.4179265958034395" />
+      <entry key="D1" value="14.561716828030507" />
+      <entry key="W1" value="31.901749152450357" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.5268724699461315E-9" />
-      <entry key="MS500" value="0.019077289260455224" />
-      <entry key="S2" value="0.37164574610775375" />
-      <entry key="S5" value="0.6730567226967108" />
-      <entry key="S10" value="0.8204003429403908" />
-      <entry key="S30" value="0.9361424615370638" />
-      <entry key="S60" value="0.9675445527401122" />
-      <entry key="M2" value="0.983638425815153" />
-      <entry key="M5" value="0.9934229628553605" />
-      <entry key="M10" value="0.996706056395455" />
-      <entry key="M15" value="0.9978028312171101" />
-      <entry key="M30" value="0.9989959295458861" />
-      <entry key="H1" value="1.0345138732371022" />
-      <entry key="H2" value="1.9108565908045863" />
-      <entry key="H4" value="7.404467425963426" />
-      <entry key="D1" value="75.43117682480393" />
-      <entry key="W1" value="157.57265831105363" />
+      <entry key="MS100" value="6.31031655584713E-4" />
+      <entry key="MS500" value="0.22909216116883782" />
+      <entry key="S2" value="0.6918350447163317" />
+      <entry key="S5" value="0.8629805803984641" />
+      <entry key="S10" value="0.9289674808078398" />
+      <entry key="S30" value="0.9757387756401014" />
+      <entry key="S60" value="0.9884321240438858" />
+      <entry key="M2" value="1.038005118264026" />
+      <entry key="M5" value="1.7276202936256104" />
+      <entry key="M10" value="3.658524569321764" />
+      <entry key="M15" value="5.437018273411715" />
+      <entry key="M30" value="8.725055781123817" />
+      <entry key="H1" value="11.370793951259841" />
+      <entry key="H2" value="13.732803934146608" />
+      <entry key="H4" value="19.623084882764857" />
+      <entry key="D1" value="87.72088098488814" />
+      <entry key="W1" value="171.08243689186844" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -292,39 +293,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-ClaudeCodePluginSetup&quot;: &quot;ClaudeCodePluginSetup&quot;,
-    &quot;Notification.DoNotAsk-ClaudeCodePluginSetup&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;samyoussama&quot;,
-    &quot;git.auto.fetch.suggestion.counter&quot;: &quot;1&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;junie.plugin.stays.banner.dismissed&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu/var/www/nour-dicko-academy/templates/emails&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.anthropic.code.plugin.settings&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Working.Tree.Tab.closed.by.user": "closed",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-ClaudeCodePluginSetup": "ClaudeCodePluginSetup",
+    "Notification.DoNotAsk-ClaudeCodePluginSetup": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "samyoussama",
+    "git.auto.fetch.suggestion.counter": "1",
+    "junie.onboarding.icon.badge.shown": "true",
+    "junie.plugin.stays.banner.dismissed": "true",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu/var/www/nour-dicko-academy/templates/emails",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl.localhost\Ubuntu\var\www\nour-dicko-academy\templates\emails" />
@@ -366,14 +368,6 @@
       <workItem from="1783878395965" duration="7064000" />
       <workItem from="1783951298139" duration="3210000" />
       <workItem from="1784180760607" duration="2837000" />
-    </task>
-    <task id="LOCAL-00013" summary="update deploy_dev workflow: replace migrations with schema sync task">
-      <option name="closed" value="true" />
-      <created>1782990092326</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1782990092326</updated>
     </task>
     <task id="LOCAL-00014" summary="update .env to set APP_ENV to dev and enable APP_DEBUG for development">
       <option name="closed" value="true" />
@@ -759,7 +753,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784224959045</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Delete USER Role and replace with STUDENT">
+      <option name="closed" value="true" />
+      <created>1784225869813</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1784225869815</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -804,7 +806,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add CurrencyEnum, BrevoService, UserFactory, and various form types; update services and configuration files" />
     <MESSAGE value="Refactor mail service and update environment configuration; remove Brevo API integration" />
     <MESSAGE value="Update header and login modal; adjust authentication redirect to membership plan index" />
     <MESSAGE value="Update registration link in login modal to correct path" />
@@ -829,6 +830,7 @@
     <MESSAGE value="back: inscription ok" />
     <MESSAGE value="back: SPA" />
     <MESSAGE value="back" />
-    <option name="LAST_COMMIT_MESSAGE" value="back" />
+    <MESSAGE value="Delete USER Role and replace with STUDENT" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete USER Role and replace with STUDENT" />
   </component>
 </project>
