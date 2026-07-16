@@ -21,9 +21,6 @@ class MembershipPlan
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\Column(length:100)]
-    private ?string $level = null;
-
     #[ORM\Column(length:255)]
     private ?string $description = null;
 
@@ -77,16 +74,6 @@ class MembershipPlan
     public function setPrice(?float $price): void
     {
         $this->price = $price;
-    }
-
-    public function getLevel(): ?string
-    {
-        return $this->level;
-    }
-
-    public function setLevel(?string $level): void
-    {
-        $this->level = $level;
     }
 
     public function getDescription(): ?string

@@ -7,12 +7,12 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="Delete USER Role and replace with STUDENT">
+    <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="back">
+      <change afterPath="$PROJECT_DIR$/src/Enum/StudentLevelEnum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/worktrees/classes-formules-fix" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AdminUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AdminUserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/_macros.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/_macros.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/MembershipPlan.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MembershipPlan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/UserProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/UserProfile.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,59 +77,59 @@
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0000000438828764" />
-      <entry key="S60" value="1.0002094987416001" />
-      <entry key="M2" value="1.014877978319419" />
-      <entry key="M5" value="1.3610738550038173" />
-      <entry key="M10" value="2.800848926513865" />
-      <entry key="M15" value="4.299571788814099" />
-      <entry key="M30" value="7.216866249498433" />
-      <entry key="H1" value="9.633473194716082" />
-      <entry key="H2" value="11.824078967349212" />
-      <entry key="H4" value="17.205785001479352" />
-      <entry key="D1" value="73.15977533881538" />
-      <entry key="W1" value="139.1808651801871" />
+      <entry key="S2" value="1.000009801397682" />
+      <entry key="S5" value="1.0200719848202582" />
+      <entry key="S10" value="1.2981422607723605" />
+      <entry key="S30" value="2.9260169847075184" />
+      <entry key="S60" value="4.097827251454598" />
+      <entry key="M2" value="4.940189068541347" />
+      <entry key="M5" value="5.746223091524669" />
+      <entry key="M10" value="6.795613944185411" />
+      <entry key="M15" value="8.01059190442193" />
+      <entry key="M30" value="11.12344869470361" />
+      <entry key="H1" value="14.40460713632249" />
+      <entry key="H2" value="17.401808377793877" />
+      <entry key="H4" value="23.165165323579362" />
+      <entry key="D1" value="79.43326404422817" />
+      <entry key="W1" value="145.98373414484598" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="5.057369887245492E-110" />
-      <entry key="S5" value="2.7087577665380177E-44" />
-      <entry key="S10" value="2.2979300251171636E-22" />
-      <entry key="S30" value="9.694660627698185E-8" />
-      <entry key="S60" value="4.4017172740291123E-4" />
-      <entry key="M2" value="0.02966786229284034" />
-      <entry key="M5" value="0.3711273340578001" />
-      <entry key="M10" value="0.8615388691943398" />
-      <entry key="M15" value="1.1407563505114577" />
-      <entry key="M30" value="1.5104672561938592" />
-      <entry key="H1" value="1.7387068412949722" />
-      <entry key="H2" value="1.9095384747468402" />
-      <entry key="H4" value="2.4179265958034395" />
-      <entry key="D1" value="14.561716828030507" />
-      <entry key="W1" value="31.901749152450357" />
+      <entry key="MS100" value="2.133953204855162E-90" />
+      <entry key="MS500" value="1.1636891319325073E-18" />
+      <entry key="S2" value="3.2844242089349285E-5" />
+      <entry key="S5" value="0.016091024564558565" />
+      <entry key="S10" value="0.12685040230349515" />
+      <entry key="S30" value="0.5024551280324667" />
+      <entry key="S60" value="0.7088406932869233" />
+      <entry key="M2" value="0.8419513161081158" />
+      <entry key="M5" value="0.9551957513223317" />
+      <entry key="M10" value="1.1745258329716843" />
+      <entry key="M15" value="1.4201213010187925" />
+      <entry key="M30" value="1.9296595546358106" />
+      <entry key="H1" value="2.366680274542576" />
+      <entry key="H2" value="2.693642679269485" />
+      <entry key="H4" value="3.2776318039811034" />
+      <entry key="D1" value="15.41864023410017" />
+      <entry key="W1" value="32.85682191453132" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.31031655584713E-4" />
-      <entry key="MS500" value="0.22909216116883782" />
-      <entry key="S2" value="0.6918350447163317" />
-      <entry key="S5" value="0.8629805803984641" />
-      <entry key="S10" value="0.9289674808078398" />
-      <entry key="S30" value="0.9757387756401014" />
-      <entry key="S60" value="0.9884321240438858" />
-      <entry key="M2" value="1.038005118264026" />
-      <entry key="M5" value="1.7276202936256104" />
-      <entry key="M10" value="3.658524569321764" />
-      <entry key="M15" value="5.437018273411715" />
-      <entry key="M30" value="8.725055781123817" />
-      <entry key="H1" value="11.370793951259841" />
-      <entry key="H2" value="13.732803934146608" />
-      <entry key="H4" value="19.623084882764857" />
-      <entry key="D1" value="87.72088098488814" />
-      <entry key="W1" value="171.08243689186844" />
+      <entry key="MS100" value="1.6332123471510148E-4" />
+      <entry key="MS500" value="0.17482701034230766" />
+      <entry key="S2" value="0.6466391364390083" />
+      <entry key="S5" value="0.8670566813870806" />
+      <entry key="S10" value="1.2969935333906837" />
+      <entry key="S30" value="3.330238569923117" />
+      <entry key="S60" value="4.740835798530592" />
+      <entry key="M2" value="5.743631977718802" />
+      <entry key="M5" value="6.684172397307363" />
+      <entry key="M10" value="7.960424976668961" />
+      <entry key="M15" value="9.423506608934975" />
+      <entry key="M30" value="13.048693001552161" />
+      <entry key="H1" value="16.768686183735802" />
+      <entry key="H2" value="20.0939724168479" />
+      <entry key="H4" value="26.441827878454163" />
+      <entry key="D1" value="94.85123592235169" />
+      <entry key="W1" value="178.84036984214157" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -368,14 +368,6 @@
       <workItem from="1783878395965" duration="7064000" />
       <workItem from="1783951298139" duration="3210000" />
       <workItem from="1784180760607" duration="2837000" />
-    </task>
-    <task id="LOCAL-00014" summary="update .env to set APP_ENV to dev and enable APP_DEBUG for development">
-      <option name="closed" value="true" />
-      <created>1782990667452</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1782990667452</updated>
     </task>
     <task id="LOCAL-00015" summary="update deploy_dev workflow: simplify cache clear command and clean up .env.test">
       <option name="closed" value="true" />
@@ -761,7 +753,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784225869815</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="back">
+      <option name="closed" value="true" />
+      <created>1784227873917</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1784227873917</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -829,8 +829,8 @@
     <MESSAGE value="back: dashboard #3 - Update dashboard" />
     <MESSAGE value="back: inscription ok" />
     <MESSAGE value="back: SPA" />
-    <MESSAGE value="back" />
     <MESSAGE value="Delete USER Role and replace with STUDENT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete USER Role and replace with STUDENT" />
+    <MESSAGE value="back" />
+    <option name="LAST_COMMIT_MESSAGE" value="back" />
   </component>
 </project>

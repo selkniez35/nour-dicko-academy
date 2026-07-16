@@ -31,7 +31,7 @@ class UserProfile
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $address = null;
 
-    #[ORM\Column(length: 20, nullable: true, unique: true)]
+    #[ORM\Column(length: 20, unique: true, nullable: true)]
     private ?string $phoneNumber = null;
 
     #[ORM\Column(length: 10, nullable: true)]
@@ -52,12 +52,13 @@ class UserProfile
     #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
-    #[ORM\OneToMany(targetEntity: Membership::class, mappedBy: 'userProfile', cascade: ['persist', 'remove'])]
-    private Collection $memberships;
+    #[ORM\OneToMany(targetEntity: Register::class, mappedBy: 'userProfile', cascade: ['persist', 'remove'])]
+    private Collection $registers;
 
     public function __construct()
     {
-        $this->memberships = new ArrayCollection();
+        $this->registers = new ArrayCollection();
+        $this->membership = new ArrayCollection();
     }
 
     #[ORM\OneToOne(
@@ -65,6 +66,12 @@ class UserProfile
         orphanRemoval: true
     )]
     private ?EmergencyContact $emergencyContact = null;
+
+    /**
+     * @var Collection<int, Register>
+     */
+    #[ORM\OneToMany(targetEntity: Register::class, mappedBy: 'userProfile')]
+    private Collection $membership;
 
     public function getId(): ?int
     {
@@ -225,31 +232,31 @@ class UserProfile
         $this->emergencyContact = $emergencyContact;
     }
 
-    public function getMemberships(): Collection
+    public function getRegisters(): Collection
     {
-        return $this->memberships;
+        return $this->registers;
     }
 
-    public function setMemberships(Collection $memberships): void
+    public function setRegisters(Collection $registers): void
     {
-        $this->memberships = $memberships;
+        $this->registers = $registers;
     }
 
-    public function addMembership(Membership $membership): self
+    public function addRegister(Register $register): self
     {
-        if (!$this->memberships->contains($membership)) {
-            $this->memberships->add($membership);
-            $membership->setUserProfile($this);
+        if (!$this->registers->contains($register)) {
+            $this->registers->add($register);
+            $register->setUserProfile($this);
         }
 
         return $this;
     }
 
-    public function removeMembership(Membership $membership): self
+    public function removeRegister(Register $register): self
     {
-        if ($this->memberships->removeElement($membership)) {
-            if ($membership->getUserProfile() === $this) {
-                $membership->setUserProfile(null);
+        if ($this->registers->removeElement($register)) {
+            if ($register->getUserProfile() === $this) {
+                $register->setUserProfile(null);
             }
         }
 
@@ -259,6 +266,14 @@ class UserProfile
     public function getFullName(): string
     {
         return $this->firstName . ' ' . $this->lastName;
+    }
+
+    /**
+     * @return Collection<int, Register>
+     */
+    public function getMembership(): Collection
+    {
+        return $this->membership;
     }
 
 }
