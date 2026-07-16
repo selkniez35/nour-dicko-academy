@@ -37,6 +37,26 @@
     {{- labels[code]|default(code|default('-')) -}}
 {% endmacro %}
 
+{# Libellé lisible du mode de paiement choisi à l'inscription (Membership::paymentMode) #}
+{% macro payment_mode_label(code) %}
+    {%- set labels = {
+        '1fois': 'En 1 fois',
+        '2fois': 'En 2 fois',
+        '4fois': 'En 4 fois',
+        '10fois': 'En 10 fois',
+    } -%}
+    {{- labels[code]|default(code|default('-')) -}}
+{% endmacro %}
+
+{# Libellé lisible du moyen de paiement choisi à l'inscription (Membership::paymentMethod) #}
+{% macro payment_method_label(code) %}
+    {%- set labels = {
+        'virement': 'Virement bancaire',
+        'especes': 'Espèces',
+    } -%}
+    {{- labels[code]|default(code|default('-')) -}}
+{% endmacro %}
+
 {# Badge de rôle principal d'un utilisateur (Admin / Enseignant / Utilisateur) #}
 {% macro role_badge(primaryRole) %}
     {% if primaryRole == 'ROLE_ADMIN' %}

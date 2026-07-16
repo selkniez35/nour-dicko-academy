@@ -42,13 +42,25 @@ class MembershipAdminType extends AbstractType
                     "Je ne sais pas lire l'arabe ni le Coran" => 'rien',
                 ],
             ])
-            ->add('paymentMode', TextType::class, [
+            ->add('paymentMode', ChoiceType::class, [
                 'label' => 'Mode de paiement',
                 'required' => false,
+                'placeholder' => 'Non renseigné',
+                'choices' => [
+                    'En 1 fois' => '1fois',
+                    'En 2 fois' => '2fois',
+                    'En 4 fois' => '4fois',
+                    'En 10 fois' => '10fois',
+                ],
             ])
-            ->add('paymentMethod', TextType::class, [
+            ->add('paymentMethod', ChoiceType::class, [
                 'label' => 'Moyen de paiement',
                 'required' => false,
+                'placeholder' => 'Non renseigné',
+                'choices' => [
+                    'Virement bancaire' => 'virement',
+                    'Espèces' => 'especes',
+                ],
             ])
             ->add('price', MoneyType::class, [
                 'label' => 'Prix',

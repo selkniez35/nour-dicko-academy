@@ -286,13 +286,14 @@
             <h2 class="db-section-title">Inscriptions</h2>
             <span class="db-eleve-badge db-badge-pending">{{ stats.registrations|default(0) }} nouvelle(s) sur 7 jours</span>
         </div>
-        <div class="admin-table">
-            <div class="admin-table-header" style="grid-template-columns:1.4fr 1.7fr 1.5fr 1.5fr 1fr 1fr 1.2fr;">
-                <span>Élève</span><span>Contact</span><span>Niveau</span><span>Formule(s)</span><span>Date</span><span>Statut</span><span>Actions</span>
+        {% set insc_cols = '1.6fr 1.9fr 1.1fr 0.8fr 1.6fr 1.6fr 1.2fr 1.2fr 1fr 1fr 1.2fr' %}
+        <div class="admin-table" style="overflow-x:auto;">
+            <div class="admin-table-header" style="grid-template-columns:{{ insc_cols }};min-width:1500px;">
+                <span>Élève</span><span>Contact</span><span>Naissance</span><span>Sexe</span><span>Niveau</span><span>Formule(s)</span><span>Mode paiement</span><span>Moyen paiement</span><span>Date</span><span>Statut</span><span>Actions</span>
             </div>
             {% for membership in allMemberships %}
                 {% set profile = membership.userProfile %}
-                <div class="admin-table-row" style="grid-template-columns:1.4fr 1.7fr 1.5fr 1.5fr 1fr 1fr 1.2fr;">
+                <div class="admin-table-row" style="grid-template-columns:{{ insc_cols }};min-width:1500px;">
             <span class="db-eleve-name">
               <div class="db-eleve-avatar">{{ (profile ? profile.fullName : '-')|first|upper }}</div>
               {{ profile ? profile.fullName : '-' }}
@@ -301,6 +302,8 @@
                         {{ profile and profile.user ? profile.user.email : '-' }}<br>
                         {{ profile and profile.phoneNumber ? profile.phoneNumber : '-' }}
                     </span>
+                    <span>{{ profile and profile.dateOfBirth ? profile.dateOfBirth|date('d/m/Y') : '-' }}</span>
+                    <span>{{ profile and profile.gender == 'homme' ? 'Homme' : (profile and profile.gender == 'femme' ? 'Femme' : '-') }}</span>
                     <span>{{ admin.student_level_label(membership.studentLevel) }}</span>
                     <span>
                         {% if membership.selectedCourses|length > 0 %}
@@ -309,6 +312,8 @@
                             {{ membership.plan ? membership.plan.label : '-' }}
                         {% endif %}
                     </span>
+                    <span>{{ admin.payment_mode_label(membership.paymentMode) }}</span>
+                    <span>{{ admin.payment_method_label(membership.paymentMethod) }}</span>
                     <span>{{ membership.createdAt|date('d/m/Y') }}</span>
                     <span>{{ admin.status_badge(membership.status) }}</span>
                     <span class="admin-actions">
