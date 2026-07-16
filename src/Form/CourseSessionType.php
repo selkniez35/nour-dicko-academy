@@ -26,8 +26,8 @@ class CourseSessionType extends AbstractType
             ->add('plan', EntityType::class, [
                 'class' => MembershipPlan::class,
                 'choice_label' => 'label',
-                'label' => 'Classe',
-                'placeholder' => 'Sélectionner une classe',
+                'label' => 'Formule',
+                'placeholder' => 'Sélectionner une formule',
             ])
             ->add('teacher', EntityType::class, [
                 'class' => User::class,
@@ -37,6 +37,17 @@ class CourseSessionType extends AbstractType
                 ),
                 'choice_label' => static fn (User $u): string => trim($u->getProfile()->getFullName()),
                 'label' => 'Enseignant',
+            ])
+            ->add('students', EntityType::class, [
+                'class' => User::class,
+                'choices' => array_filter(
+                    $this->userRepository->findAll(),
+                    fn (User $u) => in_array(UserRole::STUDENT->value, $u->getRoles(), true)
+                ),
+                'choice_label' => static fn (User $u): string => trim($u->getProfile()->getFullName()),
+                'label' => 'Élèves',
+                'multiple' => true,
+                'required' => false,
             ])
             ->add('startsAt', DateTimeType::class, [
                 'label' => 'Début',

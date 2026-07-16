@@ -45,9 +45,9 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                 Enseignants
             </a>
-            <a href="#" class="db-nav-item" data-section="classes">
+            <a href="#" class="db-nav-item" data-section="formules">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
-                Classes
+                Formules
             </a>
             <a href="#" class="db-nav-item" data-section="inscriptions">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>
@@ -57,9 +57,9 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
                 Paiements
             </a>
-            <a href="#" class="db-nav-item" data-section="calendrier">
+            <a href="#" class="db-nav-item" data-section="classes">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
-                Calendrier
+                Classes
             </a>
             <a href="#" class="db-nav-item" data-section="actualites">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
@@ -246,11 +246,11 @@
         </div>
     </section>
 
-    <!-- ══ SECTION : Classes ══ -->
-    <section class="db-section" id="section-classes">
+    <!-- ══ SECTION : Formules ══ -->
+    <section class="db-section" id="section-formules">
         <div class="admin-section-head">
-            <h2 class="db-section-title">Classes</h2>
-            <button type="button" class="admin-btn-primary" onclick="openModal('modal-plan-new')">+ Créer une classe</button>
+            <h2 class="db-section-title">Formules</h2>
+            <button type="button" class="admin-btn-primary" onclick="openModal('modal-plan-new')">+ Créer une formule</button>
         </div>
         <div class="db-cours-grid">
             {% for plan in plans %}
@@ -270,12 +270,12 @@
                     </div>
                     <div class="admin-actions">
                         <button type="button" class="admin-btn-sm" onclick="openModal('modal-plan-edit-{{ plan.id }}')">Gérer</button>
-                        {{ admin.delete_button('app_admin_plan_delete', plan.id, 'delete-plan', 'Supprimer cette classe ?') }}
+                        {{ admin.delete_button('app_admin_plan_delete', plan.id, 'delete-plan', 'Supprimer cette formule ?') }}
                     </div>
                 </div>
                 {{ admin.form_modal('modal-plan-edit-' ~ plan.id, 'Modifier « ' ~ plan.label ~ ' »', planEditForms[plan.id], path('app_admin_plan_edit', {id: plan.id})) }}
             {% else %}
-                <div class="db-cours-card"><div class="db-cours-info"><h3>Aucune classe disponible</h3></div></div>
+                <div class="db-cours-card"><div class="db-cours-info"><h3>Aucune formule disponible</h3></div></div>
             {% endfor %}
         </div>
     </section>
@@ -287,16 +287,28 @@
             <span class="db-eleve-badge db-badge-pending">{{ stats.registrations|default(0) }} nouvelle(s) sur 7 jours</span>
         </div>
         <div class="admin-table">
-            <div class="admin-table-header">
-                <span>Nom</span><span>Cours souhaité</span><span>Date</span><span>Statut</span><span>Actions</span>
+            <div class="admin-table-header" style="grid-template-columns:1.5fr 1.8fr 1.7fr 1.3fr 1fr 1fr 1.3fr;">
+                <span>Élève</span><span>Contact</span><span>Formule(s)</span><span>Paiement</span><span>Date</span><span>Statut</span><span>Actions</span>
             </div>
             {% for membership in allMemberships %}
-                <div class="admin-table-row">
+                {% set profile = membership.userProfile %}
+                <div class="admin-table-row" style="grid-template-columns:1.5fr 1.8fr 1.7fr 1.3fr 1fr 1fr 1.3fr;">
             <span class="db-eleve-name">
-              <div class="db-eleve-avatar">{{ (membership.userProfile ? membership.userProfile.fullName : '-')|first|upper }}</div>
-              {{ membership.userProfile ? membership.userProfile.fullName : '-' }}
+              <div class="db-eleve-avatar">{{ (profile ? profile.fullName : '-')|first|upper }}</div>
+              {{ profile ? profile.fullName : '-' }}
             </span>
-                    <span>{{ membership.plan ? membership.plan.label : (membership.studentLevel ?: '-') }}</span>
+                    <span>
+                        {{ profile and profile.user ? profile.user.email : '-' }}<br>
+                        {{ profile and profile.phoneNumber ? profile.phoneNumber : '-' }}
+                    </span>
+                    <span>
+                        {% if membership.selectedCourses|length > 0 %}
+                            {% for course in membership.selectedCourses %}{{ course.label }}{% if not loop.last %}, {% endif %}{% endfor %}
+                        {% else %}
+                            {{ membership.plan ? membership.plan.label : (membership.studentLevel ?: '-') }}
+                        {% endif %}
+                    </span>
+                    <span>{{ membership.paymentMode ?: '-' }}{% if membership.paymentMethod %} / {{ membership.paymentMethod }}{% endif %}</span>
                     <span>{{ membership.createdAt|date('d/m/Y') }}</span>
                     <span>{{ admin.status_badge(membership.status) }}</span>
                     <span class="admin-actions">
@@ -305,7 +317,7 @@
             </span>
                 </div>
             {% else %}
-                <div class="admin-table-row"><span colspan="5">Aucune inscription.</span></div>
+                <div class="admin-table-row"><span style="grid-column:1/-1;text-align:center">Aucune inscription.</span></div>
             {% endfor %}
         </div>
     </section>
@@ -340,10 +352,10 @@
         </div>
     </section>
 
-    <!-- ══ SECTION : Calendrier ══ -->
-    <section class="db-section" id="section-calendrier">
+    <!-- ══ SECTION : Classes ══ -->
+    <section class="db-section" id="section-classes">
         <div class="admin-section-head">
-            <h2 class="db-section-title">Calendrier des cours</h2>
+            <h2 class="db-section-title">Classes</h2>
             <button type="button" class="admin-btn-primary" onclick="openModal('modal-session-new')">+ Ajouter une séance</button>
         </div>
 
@@ -376,16 +388,17 @@
 
         <h3 class="db-section-title" style="font-size:18px;margin:32px 0 16px;">Liste des séances</h3>
         <div class="admin-table">
-            <div class="admin-table-header" style="grid-template-columns:1.6fr 1.8fr 1.6fr 1.6fr;">
-                <span>Date</span><span>Cours</span><span>Enseignant</span><span>Actions</span>
+            <div class="admin-table-header" style="grid-template-columns:1.5fr 1.6fr 1.4fr 1.2fr 1.6fr;">
+                <span>Date</span><span>Cours</span><span>Enseignant</span><span>Élèves</span><span>Actions</span>
             </div>
             {% for session in courseSessions %}
-                <div class="admin-table-row" style="grid-template-columns:1.6fr 1.8fr 1.6fr 1.6fr;">
+                <div class="admin-table-row" style="grid-template-columns:1.5fr 1.6fr 1.4fr 1.2fr 1.6fr;">
                     <span>{{ session.startsAt|date('d/m/Y H:i') }}{% if session.endsAt %} – {{ session.endsAt|date('H:i') }}{% endif %}</span>
                     <span>{{ session.plan ? session.plan.label : '-' }}</span>
                     <span>{{ session.teacher ? session.teacher.firstName ~ ' ' ~ session.teacher.lastName : '—' }}</span>
+                    <span>{{ session.students|length }}</span>
                     <span class="admin-actions">
-                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-session-edit-{{ session.id }}')">Modifier</button>
+                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-session-edit-{{ session.id }}')">Gérer les élèves</button>
                         {{ admin.delete_button('app_admin_session_delete', session.id, 'delete-session', 'Supprimer cette séance ?') }}
                     </span>
                 </div>
@@ -434,7 +447,7 @@
 
     {{ admin.form_modal('modal-student-new', 'Ajouter un élève', studentNewForm, path('app_admin_student_new')) }}
     {{ admin.form_modal('modal-teacher-new', 'Ajouter un enseignant', teacherNewForm, path('app_admin_teacher_new')) }}
-    {{ admin.form_modal('modal-plan-new', 'Créer une classe', planNewForm, path('app_admin_plan_new')) }}
+    {{ admin.form_modal('modal-plan-new', 'Créer une formule', planNewForm, path('app_admin_plan_new')) }}
     {{ admin.form_modal('modal-session-new', 'Ajouter une séance', sessionNewForm, path('app_admin_session_new')) }}
     {{ admin.form_modal('modal-announcement-new', 'Nouvelle actualité', announcementNewForm, path('app_admin_announcement_new')) }}
 {% endblock %}
