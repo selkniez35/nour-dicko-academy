@@ -1,0 +1,19 @@
+Index: templates/partials/_login_modal.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><div class=\"modal-overlay\" id=\"modal-connexion\">\n  <div class=\"modal-box modal-connexion-box\">\n    <button class=\"modal-close\" onclick=\"closeModal('modal-connexion')\" aria-label=\"Fermer\">×</button>\n\n    <div class=\"modal-connexion-header\">\n      <img src=\"{{ asset('images/logo-nda.png') }}\" alt=\"NDA\" class=\"modal-connexion-logo\">\n      <h3>Connexion</h3>\n      <p>Accédez à votre espace personnel</p>\n    </div>\n\n    {% for message in app.flashes('login_error') %}\n      <div class=\"login-error\">{{ message }}</div>\n    {% endfor %}\n\n    <form class=\"modal-connexion-form\" method=\"post\" action=\"{{ path('app_login') }}\">\n      <div class=\"mcf-field\">\n        <label for=\"mcf-email\">Adresse email</label>\n        <input type=\"email\" id=\"mcf-email\" name=\"email\" placeholder=\"votre@email.com\" required autocomplete=\"email\">\n      </div>\n      <div class=\"mcf-field\">\n        <label for=\"mcf-password\">Mot de passe</label>\n        <div class=\"mcf-password-wrap\">\n          <input type=\"password\" id=\"mcf-password\" name=\"password\" placeholder=\"Votre mot de passe\" required autocomplete=\"current-password\">\n          <button type=\"button\" class=\"mcf-eye\" onclick=\"togglePassword()\">\n            <svg id=\"eye-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>\n          </button>\n        </div>\n      </div>\n      <input type=\"hidden\" name=\"_csrf_token\" value=\"{{ csrf_token('authenticate') }}\">\n      <a href=\"#\" class=\"mcf-forgot\">Mot de passe oublié ?</a>\n      <button type=\"submit\" class=\"mcf-submit\">Se connecter</button>\n      <p class=\"mcf-signup\">Pas encore inscrit ? <a href=\"{{ path('app_registration') }}\" onclick=\"closeModal('modal-connexion')\">S'inscrire</a></p>\n    </form>\n  </div>\n</div>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/partials/_login_modal.html.twig b/templates/partials/_login_modal.html.twig
+--- a/templates/partials/_login_modal.html.twig	(revision dd695f4f9cd1f5b33ae4fd95f7eede06ffc87e0b)
++++ b/templates/partials/_login_modal.html.twig	(date 1783840675346)
+@@ -29,7 +29,7 @@
+       <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+       <a href="#" class="mcf-forgot">Mot de passe oublié ?</a>
+       <button type="submit" class="mcf-submit">Se connecter</button>
+-      <p class="mcf-signup">Pas encore inscrit ? <a href="{{ path('app_registration') }}" onclick="closeModal('modal-connexion')">S'inscrire</a></p>
++      <p class="mcf-signup">Pas encore inscrit ? <a href="{{ path('app_register') }}" onclick="closeModal('modal-connexion')">S'inscrire</a></p>
+     </form>
+   </div>
+ </div>
