@@ -14,7 +14,6 @@
         <div class="tar-grid" style="--tar-count: {{ membershipPlans|length }}">
             {% for membership in membershipPlans %}
                 <article class="tar-card reveal">
-                    <div class="tar-kind">{{ membership.level }}</div>
                     <h3 class="tar-name">{{ membership.label }}{% if membership.id in fullPlanIds %} <span class="badge-full">Complet</span>{% endif %}</h3>
                     <div class="tar-price">{{ membership.price }} € <small>/an</small></div>
                     <div class="tar-sep"></div>

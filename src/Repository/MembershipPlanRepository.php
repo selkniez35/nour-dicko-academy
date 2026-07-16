@@ -36,8 +36,7 @@ class MembershipPlanRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('m')
             ->leftJoin('m.features', 'f')->addSelect('f')
-            ->orderBy('m.level', 'ASC')
-            ->addOrderBy('m.label', 'ASC')
+            ->orderBy('m.label', 'ASC')
             ->getQuery()
             ->getResult();
     }

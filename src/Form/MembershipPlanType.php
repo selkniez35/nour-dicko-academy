@@ -19,9 +19,6 @@ class MembershipPlanType extends AbstractType
             ->add('label', TextType::class, [
                 'label' => 'Nom',
             ])
-            ->add('level', TextType::class, [
-                'label' => 'Niveau',
-            ])
             ->add('price', MoneyType::class, [
                 'label' => 'Prix',
                 'currency' => 'EUR',
