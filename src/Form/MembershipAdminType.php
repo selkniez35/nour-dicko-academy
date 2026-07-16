@@ -31,9 +31,16 @@ class MembershipAdminType extends AbstractType
                 'choice_value' => static fn (?MembershipStatus $status): ?string => $status?->value,
                 'choice_label' => static fn (MembershipStatus $status): string => $status->label(),
             ])
-            ->add('studentLevel', TextType::class, [
+            ->add('studentLevel', ChoiceType::class, [
                 'label' => 'Niveau',
                 'required' => false,
+                'placeholder' => 'Non renseigné',
+                'choices' => [
+                    "Lire l'arabe et le Coran de manière fluide" => 'fluide',
+                    "Lire l'arabe et le Coran mais avec quelques difficultés" => 'difficultes',
+                    'Reconnaître quelques lettres' => 'quelques-lettres',
+                    "Je ne sais pas lire l'arabe ni le Coran" => 'rien',
+                ],
             ])
             ->add('paymentMode', TextType::class, [
                 'label' => 'Mode de paiement',

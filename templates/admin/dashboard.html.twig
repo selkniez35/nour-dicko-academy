@@ -101,7 +101,7 @@
               <div class="db-eleve-avatar">{{ (registration.userProfile ? registration.userProfile.fullName : '-')|first|upper }}</div>
               {{ registration.userProfile ? registration.userProfile.fullName : '-' }}
             </span>
-                    <span>{{ registration.plan ? registration.plan.label : (registration.studentLevel ?: '-') }}</span>
+                    <span>{{ registration.plan ? registration.plan.label : admin.student_level_label(registration.studentLevel) }}</span>
                     <span>{{ registration.createdAt|date('d/m/Y') }}</span>
                     <span>{{ admin.status_badge(registration.status) }}</span>
                     <span>
@@ -287,12 +287,12 @@
             <span class="db-eleve-badge db-badge-pending">{{ stats.registrations|default(0) }} nouvelle(s) sur 7 jours</span>
         </div>
         <div class="admin-table">
-            <div class="admin-table-header" style="grid-template-columns:1.5fr 1.8fr 1.7fr 1.3fr 1fr 1fr 1.3fr;">
-                <span>Élève</span><span>Contact</span><span>Formule(s)</span><span>Paiement</span><span>Date</span><span>Statut</span><span>Actions</span>
+            <div class="admin-table-header" style="grid-template-columns:1.4fr 1.7fr 1.5fr 1.5fr 1fr 1fr 1.2fr;">
+                <span>Élève</span><span>Contact</span><span>Niveau</span><span>Formule(s)</span><span>Date</span><span>Statut</span><span>Actions</span>
             </div>
             {% for membership in allMemberships %}
                 {% set profile = membership.userProfile %}
-                <div class="admin-table-row" style="grid-template-columns:1.5fr 1.8fr 1.7fr 1.3fr 1fr 1fr 1.3fr;">
+                <div class="admin-table-row" style="grid-template-columns:1.4fr 1.7fr 1.5fr 1.5fr 1fr 1fr 1.2fr;">
             <span class="db-eleve-name">
               <div class="db-eleve-avatar">{{ (profile ? profile.fullName : '-')|first|upper }}</div>
               {{ profile ? profile.fullName : '-' }}
@@ -301,14 +301,14 @@
                         {{ profile and profile.user ? profile.user.email : '-' }}<br>
                         {{ profile and profile.phoneNumber ? profile.phoneNumber : '-' }}
                     </span>
+                    <span>{{ admin.student_level_label(membership.studentLevel) }}</span>
                     <span>
                         {% if membership.selectedCourses|length > 0 %}
                             {% for course in membership.selectedCourses %}{{ course.label }}{% if not loop.last %}, {% endif %}{% endfor %}
                         {% else %}
-                            {{ membership.plan ? membership.plan.label : (membership.studentLevel ?: '-') }}
+                            {{ membership.plan ? membership.plan.label : '-' }}
                         {% endif %}
                     </span>
-                    <span>{{ membership.paymentMode ?: '-' }}{% if membership.paymentMethod %} / {{ membership.paymentMethod }}{% endif %}</span>
                     <span>{{ membership.createdAt|date('d/m/Y') }}</span>
                     <span>{{ admin.status_badge(membership.status) }}</span>
                     <span class="admin-actions">

@@ -26,6 +26,17 @@
     </div>
 {% endmacro %}
 
+{# Libellé lisible du niveau de lecture déclaré par l'étudiant à l'inscription (Membership::studentLevel) #}
+{% macro student_level_label(code) %}
+    {%- set labels = {
+        'fluide': "Lire l'arabe et le Coran de manière fluide",
+        'difficultes': "Lire l'arabe et le Coran mais avec quelques difficultés",
+        'quelques-lettres': 'Reconnaître quelques lettres',
+        'rien': "Je ne sais pas lire l'arabe ni le Coran",
+    } -%}
+    {{- labels[code]|default(code|default('-')) -}}
+{% endmacro %}
+
 {# Badge de rôle principal d'un utilisateur (Admin / Enseignant / Utilisateur) #}
 {% macro role_badge(primaryRole) %}
     {% if primaryRole == 'ROLE_ADMIN' %}
