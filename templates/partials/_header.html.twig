@@ -34,11 +34,13 @@
             </a>
             Salam {{ app.user.fullName }}
         {% else %}
+            {% set spaceRoute = is_granted('ROLE_TEACHER') ? 'app_espace_enseignant' : 'app_espace_eleve' %}
+            {% set avatarClass = is_granted('ROLE_TEACHER') ? 'db-avatar db-avatar-prof' : 'db-avatar' %}
             <div class="db-avatar-wrap topbar-avatar-wrap">
-                <div class="db-avatar" onclick="toggleHeaderAvatarMenu()">{{ app.user.fullName|first|upper }}</div>
+                <div class="{{ avatarClass }}" onclick="toggleHeaderAvatarMenu()">{{ app.user.fullName|first|upper }}</div>
                 <div class="db-avatar-menu" id="header-avatar-menu">
                     <div class="topbar-avatar-greeting">Salam {{ app.user.fullName }}</div>
-                    <a href="{{ path('app_espace_eleve') }}">
+                    <a href="{{ path(spaceRoute) }}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
                         Mon espace
                     </a>
