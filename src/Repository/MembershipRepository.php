@@ -49,6 +49,34 @@ class MembershipRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return Membership[]
+     */
+    public function findAllOrdered(int $limit = 100): array
+    {
+        return $this->createQueryBuilder('m')
+            ->leftJoin('m.userProfile', 'profile')->addSelect('profile')
+            ->leftJoin('profile.user', 'user')->addSelect('user')
+            ->leftJoin('m.plan', 'plan')->addSelect('plan')
+            ->orderBy('m.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Compte les inscriptions créées sur les {$days} derniers jours.
+     */
+    public function countRecent(int $days = 7): int
+    {
+        return (int) $this->createQueryBuilder('m')
+            ->select('COUNT(m.id)')
+            ->andWhere('m.createdAt >= :since')
+            ->setParameter('since', new \DateTimeImmutable('-' . $days . ' days'))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     public function countPending(): int
     {
         return (int) $this->createQueryBuilder('m')

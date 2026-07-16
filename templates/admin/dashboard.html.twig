@@ -123,7 +123,7 @@
                 </div>
                 <div>
                     <div class="admin-stat-val">{{ stats.registrations|default(0) }}</div>
-                    <div class="admin-stat-label">Nouvelles inscriptions</div>
+                    <div class="admin-stat-label">Nouvelles inscriptions <span style="opacity:.6">(7 derniers jours)</span></div>
                 </div>
             </div>
         </div>
@@ -337,12 +337,15 @@
 
     <!-- ══ SECTION : Inscriptions ══ -->
     <section class="db-section" id="section-inscriptions">
-        <h2 class="db-section-title">Demandes d'inscription</h2>
+        <div class="admin-section-head">
+            <h2 class="db-section-title">Inscriptions</h2>
+            <span class="db-eleve-badge db-badge-pending">{{ stats.registrations|default(0) }} nouvelle(s) sur 7 jours</span>
+        </div>
         <div class="admin-table">
             <div class="admin-table-header">
                 <span>Nom</span><span>Cours souhaité</span><span>Date</span><span>Statut</span><span>Actions</span>
             </div>
-            {% for membership in pendingMemberships %}
+            {% for membership in allMemberships %}
                 <div class="admin-table-row">
             <span class="db-eleve-name">
               <div class="db-eleve-avatar">{{ (membership.userProfile ? membership.userProfile.fullName : '-')|first|upper }}</div>
@@ -350,7 +353,9 @@
             </span>
                     <span>{{ membership.plan ? membership.plan.label : (membership.studentLevel ?: '-') }}</span>
                     <span>{{ membership.createdAt|date('d/m/Y') }}</span>
-                    <span class="db-eleve-badge db-badge-pending">En attente</span>
+                    <span class="db-eleve-badge {% if membership.status.value == 'active' %}db-badge-actif{% elseif membership.status.value == 'pending' %}db-badge-pending{% else %}db-badge-refuse{% endif %}">
+              {{ membership.status.label }}
+            </span>
                     <span class="admin-actions">
               <a href="{{ path('app_admin_membership_edit', {id: membership.id}) }}" class="admin-btn-sm">Modifier</a>
               <form method="post" action="{{ path('app_admin_membership_delete', {id: membership.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer cette inscription ?');">
@@ -360,7 +365,7 @@
             </span>
                 </div>
             {% else %}
-                <div class="admin-table-row"><span colspan="5">Aucune demande d'inscription.</span></div>
+                <div class="admin-table-row"><span colspan="5">Aucune inscription.</span></div>
             {% endfor %}
         </div>
     </section>
@@ -452,7 +457,6 @@
                     <span>{{ session.startsAt|date('d/m/Y H:i') }}{% if session.endsAt %} – {{ session.endsAt|date('H:i') }}{% endif %}</span>
                     <span>{{ session.plan ? session.plan.label : '-' }}</span>
                     <span>{{ session.teacher ? session.teacher.firstName ~ ' ' ~ session.teacher.lastName : '—' }}</span>
-                    <span>{{ session.room|default('—') }}</span>
                     <span class="admin-actions">
                         <a href="{{ path('app_admin_session_edit', {id: session.id}) }}" class="admin-btn-sm">Modifier</a>
                         <form method="post" action="{{ path('app_admin_session_delete', {id: session.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer cette séance ?');">

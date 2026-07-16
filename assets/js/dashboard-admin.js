@@ -78,7 +78,7 @@ function renderCalAdmin(){
     sessions.forEach(function(s){
       const time = s.start ? (s.end ? s.start + '-' + s.end : s.start) : '';
       const label = s.label || 'Séance';
-      const tip = label + (s.teacher ? ' — ' + s.teacher : '') + (s.room ? ' (' + s.room + ')' : '');
+      const tip = label + (s.teacher ? ' — ' + s.teacher : '');
       inner += '<div class="nda-cal-cours" title="' + escAdminHtml(tip).replace(/"/g,'&quot;') + '">'
              + (time ? '<span class="nda-cal-time">' + escAdminHtml(time) + '</span>' : '')
              + '<span class="nda-cal-label">' + escAdminHtml(label) + '</span></div>';

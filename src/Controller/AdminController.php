@@ -50,7 +50,6 @@ final class AdminController extends AbstractController
                 'end' => $session->getEndsAt()?->format('H:i'),
                 'label' => $session->getPlan()?->getLabel(),
                 'teacher' => $teacher ? trim($teacher->getFirstName() . ' ' . $teacher->getLastName()) : null,
-                'room' => $session->getRoom(),
             ];
         }, $courseSessions);
 
@@ -58,7 +57,7 @@ final class AdminController extends AbstractController
             'stats' => [
                 'students' => $userRepository->countStudents(),
                 'teachers' => $userRepository->countTeachers(),
-                'registrations' => $membershipRepository->countPending(),
+                'registrations' => $membershipRepository->countRecent(7),
                 'revenue' => $paymentRepository->getTotalPaidAmount(),
             ],
             'paymentStats' => [
@@ -78,6 +77,7 @@ final class AdminController extends AbstractController
             ],
             'plans' => $planRepository->findAllOrdered(),
             'pendingMemberships' => $membershipRepository->findPending(20),
+            'allMemberships' => $membershipRepository->findAllOrdered(100),
             'courseSessions' => $courseSessions,
             'courseSessionsData' => $courseSessionsData,
             'calendarStats' => [
