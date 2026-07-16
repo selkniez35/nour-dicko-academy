@@ -55,9 +55,13 @@ class UserProfile
     #[ORM\OneToMany(targetEntity: Register::class, mappedBy: 'userProfile', cascade: ['persist', 'remove'])]
     private Collection $registers;
 
+    #[ORM\OneToMany(targetEntity: Membership::class, mappedBy: 'userProfile')]
+    private Collection $memberships;
+
     public function __construct()
     {
         $this->registers = new ArrayCollection();
+        $this->memberships = new ArrayCollection();
     }
 
     #[ORM\OneToOne(
@@ -259,6 +263,14 @@ class UserProfile
     public function getFullName(): string
     {
         return $this->firstName . ' ' . $this->lastName;
+    }
+
+    /**
+     * @return Collection<int, Membership>
+     */
+    public function getMemberships(): Collection
+    {
+        return $this->memberships;
     }
 
 }

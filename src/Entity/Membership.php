@@ -16,7 +16,7 @@ class Membership
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'memberships')]
     #[ORM\JoinColumn(nullable: false)]
     private ?UserProfile $userProfile = null;
 
