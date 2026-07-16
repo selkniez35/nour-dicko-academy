@@ -43,6 +43,11 @@ final class AdminController extends AbstractController
 
         $courseSessions = $courseSessionRepository->findAllOrdered();
 
+        $studentCreateDto = new UserCreateDto();
+        $studentCreateDto->roles = [UserRole::USER->value];
+        $teacherCreateDto = new UserCreateDto();
+        $teacherCreateDto->roles = [UserRole::TEACHER->value];
+
         $courseSessionsData = array_map(static function (CourseSession $session): array {
             $teacher = $session->getTeacher();
 
@@ -86,6 +91,11 @@ final class AdminController extends AbstractController
             'calendarStats' => [
                 'totalSessions' => count($courseSessions),
             ],
+            'planNewForm' => $this->createForm(MembershipPlanType::class, new MembershipPlan())->createView(),
+            'announcementNewForm' => $this->createForm(AnnouncementType::class, new Announcement())->createView(),
+            'sessionNewForm' => $this->createForm(CourseSessionType::class, new CourseSession())->createView(),
+            'studentNewForm' => $this->createForm(AdminUserType::class, $studentCreateDto)->createView(),
+            'teacherNewForm' => $this->createForm(AdminUserType::class, $teacherCreateDto)->createView(),
         ]);
     }
 

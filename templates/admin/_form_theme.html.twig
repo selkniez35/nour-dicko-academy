@@ -1,0 +1,11 @@
+{% block choice_widget_expanded %}
+    <div class="role-selector" id="{{ id }}">
+        {%- for child in form -%}
+            <label class="role-option">
+                {{- form_widget(child) -}}
+                <span class="role-option-box"></span>
+                <span class="role-option-label">{{ child.vars.label|default(child.vars.value) }}</span>
+            </label>
+        {%- endfor -%}
+    </div>
+{% endblock %}

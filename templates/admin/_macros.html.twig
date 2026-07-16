@@ -36,3 +36,19 @@
         <span class="db-eleve-badge db-badge-neutral">Utilisateur</span>
     {% endif %}
 {% endmacro %}
+
+{# Modal contenant un formulaire de création/édition — remplace la navigation vers une page dédiée #}
+{% macro form_modal(id, title, form, action) %}
+    <div class="modal-overlay admin-modal" id="{{ id }}">
+        <div class="modal-box admin-modal-box admin-form-card">
+            <button type="button" class="modal-close" onclick="closeModal('{{ id }}')" aria-label="Fermer">×</button>
+            <h3 class="modal-title">{{ title }}</h3>
+            {{ form_start(form, {action: action, method: 'POST', attr: {novalidate: 'novalidate'}}) }}
+                {{ form_widget(form) }}
+                <div class="admin-form-actions">
+                    <button type="submit" class="admin-btn-primary">Enregistrer</button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endmacro %}

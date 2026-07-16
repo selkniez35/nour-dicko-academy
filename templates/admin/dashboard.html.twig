@@ -3,6 +3,8 @@
 {% block title %}Administration — Nour Dicko Academy{% endblock %}
 
 {% import 'admin/_macros.html.twig' as admin %}
+{% form_theme studentNewForm 'admin/_form_theme.html.twig' %}
+{% form_theme teacherNewForm 'admin/_form_theme.html.twig' %}
 
 {% block body %}
     <div class="dashboard">
@@ -165,6 +167,7 @@
     <section class="db-section" id="section-eleves">
         <div class="admin-section-head">
             <h2 class="db-section-title">Élèves</h2>
+            <button type="button" class="admin-btn-primary" onclick="openModal('modal-student-new')">+ Ajouter un élève</button>
         </div>
         <div class="admin-search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -212,7 +215,7 @@
     <section class="db-section" id="section-enseignants">
         <div class="admin-section-head">
             <h2 class="db-section-title">Enseignants</h2>
-            <a href="{{ path('app_admin_teacher_new') }}" class="admin-btn-primary">+ Ajouter un enseignant</a>
+            <button type="button" class="admin-btn-primary" onclick="openModal('modal-teacher-new')">+ Ajouter un enseignant</button>
         </div>
         <div class="admin-table">
             <div class="admin-table-header">
@@ -243,7 +246,7 @@
     <section class="db-section" id="section-classes">
         <div class="admin-section-head">
             <h2 class="db-section-title">Classes</h2>
-            <a href="{{ path('app_admin_plan_new') }}" class="admin-btn-primary">+ Créer une classe</a>
+            <button type="button" class="admin-btn-primary" onclick="openModal('modal-plan-new')">+ Créer une classe</button>
         </div>
         <div class="db-cours-grid">
             {% for plan in plans %}
@@ -336,7 +339,7 @@
     <section class="db-section" id="section-calendrier">
         <div class="admin-section-head">
             <h2 class="db-section-title">Calendrier des cours</h2>
-            <a href="{{ path('app_admin_session_new') }}" class="admin-btn-primary">+ Ajouter une séance</a>
+            <button type="button" class="admin-btn-primary" onclick="openModal('modal-session-new')">+ Ajouter une séance</button>
         </div>
 
         <script type="application/json" id="admin-sessions-data">{{ courseSessionsData|default([])|json_encode|raw }}</script>
@@ -388,7 +391,7 @@
     <section class="db-section" id="section-actualites">
         <div class="admin-section-head">
             <h2 class="db-section-title">Actualités</h2>
-            <a href="{{ path('app_admin_announcement_new') }}" class="admin-btn-primary">+ Nouvelle actualité</a>
+            <button type="button" class="admin-btn-primary" onclick="openModal('modal-announcement-new')">+ Nouvelle actualité</button>
         </div>
         <div class="db-resources">
             {% for news in latestNews %}
@@ -418,6 +421,12 @@
     </main>{# fin .db-main #}
 
     </div>{# fin .dashboard #}
+
+    {{ admin.form_modal('modal-student-new', 'Ajouter un élève', studentNewForm, path('app_admin_student_new')) }}
+    {{ admin.form_modal('modal-teacher-new', 'Ajouter un enseignant', teacherNewForm, path('app_admin_teacher_new')) }}
+    {{ admin.form_modal('modal-plan-new', 'Créer une classe', planNewForm, path('app_admin_plan_new')) }}
+    {{ admin.form_modal('modal-session-new', 'Ajouter une séance', sessionNewForm, path('app_admin_session_new')) }}
+    {{ admin.form_modal('modal-announcement-new', 'Nouvelle actualité', announcementNewForm, path('app_admin_announcement_new')) }}
 {% endblock %}
 
 {% block javascripts %}
