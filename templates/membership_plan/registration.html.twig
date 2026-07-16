@@ -20,6 +20,7 @@
     {% endfor %}
 
     <form method="POST" action="{{ path('app_registration') }}">
+        <input type="hidden" name="_token" value="{{ csrf_token('inscription') }}">
         <!-- Informations personnelles -->
         <div class="insc-section-title">Informations personnelles</div>
         <div class="insc-row">
