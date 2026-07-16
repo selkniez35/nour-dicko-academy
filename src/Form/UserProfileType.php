@@ -4,11 +4,7 @@ namespace App\Form;
 
 use App\Entity\UserProfile;
 use DateTime;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -46,13 +42,6 @@ class UserProfileType extends AbstractType
                 'label' => 'Adresse',
                 'required' => false,
                 'attr' => ['class' => 'form-control', 'placeholder' => 'Adresse'],
-            ])
-            ->add('memberships', CollectionType::class, [
-                'entry_type' => MembershipType::class,
-                'allow_add' => true,
-                'by_reference' => false,
-                'label' => false,
-                'prototype' => true,
             ]);
     }
 
