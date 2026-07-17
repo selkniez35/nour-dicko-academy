@@ -121,7 +121,7 @@
         </div>
         <div class="admin-table">
             <div class="admin-table-header" style="grid-template-columns:1.7fr 1.7fr 1.1fr 1.8fr 1.8fr;">
-                <span>Nom</span><span>Email</span><span>Rôle actuel</span><span>Changer le rôle</span><span>Actions</span>
+                <span>Nom</span><span>Email</span><span>Rôles</span><span>Actions</span>
             </div>
             {% for oneUser in allUsers %}
                 <div class="admin-table-row" style="grid-template-columns:1.7fr 1.7fr 1.1fr 1.8fr 1.8fr;">
@@ -131,29 +131,9 @@
                     </span>
                     <span>{{ oneUser.email }}</span>
                     <span>
-                        {% if 'ROLE_ADMIN' in oneUser.roles %}
-                            {% set primaryRole = 'ROLE_ADMIN' %}
-                        {% elseif 'ROLE_TEACHER' in oneUser.roles %}
-                            {% set primaryRole = 'ROLE_TEACHER' %}
-                        {% else %}
-                            {% set primaryRole = 'ROLE_STUDENT' %}
-                        {% endif %}
-                        {{ admin.role_badge(primaryRole) }}
-                    </span>
-                    <span>
-                        {% if oneUser == app.user %}
-                            <span style="font-size:12px;opacity:.5;">— vous-même —</span>
-                        {% else %}
-                            <form method="post" action="{{ path('app_admin_user_role_update', {id: oneUser.id}) }}" style="display:flex;gap:6px;">
-                                <input type="hidden" name="_token" value="{{ csrf_token('change-role-' ~ oneUser.id) }}">
-                                <select name="role" style="font-family:var(--font-body);font-size:13px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:8px;padding:6px 10px;">
-                                    {% for label, value in availableRoles %}
-                                        <option value="{{ value }}" {% if value == primaryRole %}selected{% endif %}>{{ label }}</option>
-                                    {% endfor %}
-                                </select>
-                                <button type="submit" class="admin-btn-sm">Changer</button>
-                            </form>
-                        {% endif %}
+                        {% for role in oneUser.roles %}
+                            {{ admin.role_badge(role) }}
+                        {% endfor %}
                     </span>
                     <span class="admin-actions">
                         <button type="button" class="admin-btn-sm" onclick="openModal('modal-user-edit-{{ oneUser.id }}')">Modifier</button>
