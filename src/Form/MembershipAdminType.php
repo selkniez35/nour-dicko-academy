@@ -48,11 +48,15 @@ class MembershipAdminType extends AbstractType
                 'currency' => 'EUR',
                 'required' => false,
             ])
-            ->add('plan', EntityType::class, [
+            ->add('selectedCourses', EntityType::class, [
                 'class' => MembershipPlan::class,
                 'choice_label' => 'label',
-                'label' => 'Formation',
+                'label' => 'Formations',
+                'multiple' => true,
                 'required' => false,
+                'attr' => [
+                    'class' => 'tom-select',
+                ],
             ]);
     }
 

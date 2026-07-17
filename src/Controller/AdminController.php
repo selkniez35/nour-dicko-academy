@@ -85,6 +85,12 @@ final class AdminController extends AbstractController
             $userEditForms[$oneUser->getId()] = $this->createForm(UserType::class, $oneUser)->createView();
         }
 
+        $allMemberships = $membershipRepository->findAllOrdered(100);
+        $membershipEditForms = [];
+        foreach ($allMemberships as $oneMembership) {
+            $membershipEditForms[$oneMembership->getId()] = $this->createForm(MembershipAdminType::class, $oneMembership)->createView();
+        }
+
         return $this->render('admin/dashboard.html.twig', [
             'stats' => [
                 'students' => $userRepository->countStudents(),
@@ -109,7 +115,7 @@ final class AdminController extends AbstractController
             ],
             'plans' => $plans,
             'pendingMemberships' => $membershipRepository->findPending(20),
-            'allMemberships' => $membershipRepository->findAllOrdered(100),
+            'allMemberships' => $allMemberships,
             'courseSessions' => $courseSessions,
             'courseSessionsData' => $courseSessionsData,
             'calendarStats' => [
@@ -124,6 +130,7 @@ final class AdminController extends AbstractController
             'announcementEditForms' => $announcementEditForms,
             'sessionEditForms' => $sessionEditForms,
             'userEditForms' => $userEditForms,
+            'membershipEditForms' => $membershipEditForms,
         ]);
     }
 
@@ -270,7 +277,7 @@ final class AdminController extends AbstractController
     {
         $this->verifyCsrfOrDeny('delete-plan-' . $membershipPlan->getId(), $request);
 
-        if ($membershipRepository->countForPlan($membershipPlan) > 0) {
+        if ($membershipRepository->countStudentsForPlan($membershipPlan) > 0) {
             $this->addFlash('error', 'Impossible de supprimer cette formation car elle est utilisée par des inscriptions.');
 
             return $this->redirectToRoute('app_admin_trainings');

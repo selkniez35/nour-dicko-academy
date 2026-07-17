@@ -95,16 +95,6 @@ class MembershipRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    public function countForPlan(MembershipPlan $plan): int
-    {
-        return (int) $this->createQueryBuilder('m')
-            ->select('COUNT(m.id)')
-            ->andWhere('m.plan = :plan')
-            ->setParameter('plan', $plan)
-            ->getQuery()
-            ->getSingleScalarResult();
-    }
-
     /**
      * Nombre d'inscriptions ayant sélectionné ce cours (via selectedCourses).
      */

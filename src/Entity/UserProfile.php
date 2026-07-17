@@ -52,15 +52,12 @@ class UserProfile
     #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
-    #[ORM\OneToMany(targetEntity: Register::class, mappedBy: 'userProfile', cascade: ['persist', 'remove'])]
-    private Collection $registers;
 
     #[ORM\OneToMany(targetEntity: Membership::class, mappedBy: 'userProfile')]
     private Collection $memberships;
 
     public function __construct()
     {
-        $this->registers = new ArrayCollection();
         $this->memberships = new ArrayCollection();
     }
 
@@ -227,37 +224,6 @@ class UserProfile
     public function setEmergencyContact(?EmergencyContact $emergencyContact): void
     {
         $this->emergencyContact = $emergencyContact;
-    }
-
-    public function getRegisters(): Collection
-    {
-        return $this->registers;
-    }
-
-    public function setRegisters(Collection $registers): void
-    {
-        $this->registers = $registers;
-    }
-
-    public function addRegister(Register $register): self
-    {
-        if (!$this->registers->contains($register)) {
-            $this->registers->add($register);
-            $register->setUserProfile($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRegister(Register $register): self
-    {
-        if ($this->registers->removeElement($register)) {
-            if ($register->getUserProfile() === $this) {
-                $register->setUserProfile(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getFullName(): string
