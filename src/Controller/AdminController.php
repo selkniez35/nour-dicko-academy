@@ -57,7 +57,7 @@ final class AdminController extends AbstractController
                 'start' => $session->getStartsAt()?->format('H:i'),
                 'end' => $session->getEndsAt()?->format('H:i'),
                 'label' => $session->getPlan()?->getLabel(),
-                'teacher' => $teacher ? trim($teacher->getFirstName() . ' ' . $teacher->getLastName()) : null,
+                'teacher' => $teacher ? trim($teacher->getProfile()->getFullName()) : null,
             ];
         }, $courseSessions);
 
