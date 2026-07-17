@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Enum\MembershipStatusReason;
+use App\Enum\PaymentMethod;
+use App\Enum\PaymentModeEnum;
+use App\Enum\StudentLevelEnum;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -52,14 +55,14 @@ class Membership
     #[ORM\ManyToOne]
     private ?MembershipPlan $plan = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $studentLevel = null;
+    #[ORM\Column(length: 255, nullable: true, enumType: StudentLevelEnum::class)]
+    private ?StudentLevelEnum $studentLevel = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
-    private ?string $paymentMode = null;
+    #[ORM\Column(length: 50, nullable: true, enumType: PaymentModeEnum::class)]
+    private ?PaymentModeEnum $paymentMode = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
-    private ?string $paymentMethod = null;
+    #[ORM\Column(length: 50, nullable: true, enumType: PaymentMethod::class)]
+    private ?PaymentMethod $paymentMethod = null;
 
     #[ORM\ManyToMany(targetEntity: MembershipPlan::class)]
     #[ORM\JoinTable(name: 'membership_selected_plans')]
@@ -234,32 +237,32 @@ class Membership
         $this->plan = $plan;
     }
 
-    public function getStudentLevel(): ?string
+    public function getStudentLevel(): ?StudentLevelEnum
     {
         return $this->studentLevel;
     }
 
-    public function setStudentLevel(?string $studentLevel): void
+    public function setStudentLevel(?StudentLevelEnum $studentLevel): void
     {
         $this->studentLevel = $studentLevel;
     }
 
-    public function getPaymentMode(): ?string
+    public function getPaymentMode(): ?PaymentModeEnum
     {
         return $this->paymentMode;
     }
 
-    public function setPaymentMode(?string $paymentMode): void
+    public function setPaymentMode(?PaymentModeEnum $paymentMode): void
     {
         $this->paymentMode = $paymentMode;
     }
 
-    public function getPaymentMethod(): ?string
+    public function getPaymentMethod(): ?PaymentMethod
     {
         return $this->paymentMethod;
     }
 
-    public function setPaymentMethod(?string $paymentMethod): void
+    public function setPaymentMethod(?PaymentMethod $paymentMethod): void
     {
         $this->paymentMethod = $paymentMethod;
     }

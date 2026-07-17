@@ -127,7 +127,7 @@ final readonly class MailService
                 'lastName' => $profile->getLastName(),
                 'course' => $courseLabel,
                 'paidAmount' => number_format($membership->getPrice(), 2, ',', ' ') . ' €',
-                'paymentMethod' => $membership->getPaymentMethod(),
+                'paymentMethod' => $membership->getPaymentMethod()?->label(),
                 'paymentUrl' => $paymentUrl,
             ]
         );

@@ -7,6 +7,9 @@ use App\Entity\MembershipPlan;
 use App\Entity\User;
 use App\Entity\UserProfile;
 use App\Enum\MembershipStatus;
+use App\Enum\PaymentMethod;
+use App\Enum\PaymentModeEnum;
+use App\Enum\StudentLevelEnum;
 use App\Repository\MembershipPlanRepository;
 use App\Repository\MembershipRepository;
 use App\Repository\UserProfileRepository;
@@ -143,9 +146,13 @@ class MembershipPlanController extends AbstractController
             $membership->setUserProfile($userProfile);
             $membership->setSeason(date('Y') . '-' . (date('Y') + 1));
             $membership->setStatus(MembershipStatus::PENDING);
-            $membership->setStudentLevel($data['niveau'] ?? null);
-            $membership->setPaymentMode($data['mode_paiement'] ?? null);
-            $membership->setPaymentMethod($data['moyen_paiement'] ?? null);
+            $membership->setStudentLevel(isset($data['niveau']) ? StudentLevelEnum::tryFrom($data['niveau']) : null);
+            $membership->setPaymentMode(isset($data['mode_paiement']) ? PaymentModeEnum::tryFrom($data['mode_paiement']) : null);
+            $paymentMethodMap = [
+                'virement' => PaymentMethod::BANK_TRANSFER,
+                'especes' => PaymentMethod::CASH,
+            ];
+            $membership->setPaymentMethod($paymentMethodMap[$data['moyen_paiement'] ?? null] ?? null);
 
             // Gestion des cours sélectionnés (selectedCourses est une relation ManyToMany vers MembershipPlan)
             $allPlans = $this->membershipPlanRepository->findAll();

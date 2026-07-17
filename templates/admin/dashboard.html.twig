@@ -101,11 +101,11 @@
               <div class="db-eleve-avatar">{{ (registration.userProfile ? registration.userProfile.fullName : '-')|first|upper }}</div>
               {{ registration.userProfile ? registration.userProfile.fullName : '-' }}
             </span>
-                    <span>{{ registration.plan ? registration.plan.label : (registration.studentLevel ?: '-') }}</span>
+                    <span>{{ registration.selectedCourses|length > 0 ? registration.selectedCourses|map(c => c.label)|join(', ') : '-' }}</span>
                     <span>{{ registration.createdAt|date('d/m/Y') }}</span>
                     <span>{{ admin.status_badge(registration.status) }}</span>
                     <span>
-              <a href="{{ path('app_admin_membership_edit', {id: registration.id}) }}" class="admin-btn-sm">Voir</a>
+              <button type="button" class="admin-btn-sm" onclick="openModal('modal-membership-edit-{{ registration.id }}')">Voir</button>
             </span>
                 </div>
             {% else %}

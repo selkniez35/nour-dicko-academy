@@ -1,4 +1,17 @@
 import './styles/app.css';
+import TomSelect from 'tom-select';
+import 'tom-select/dist/css/tom-select.css';
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.tom-select').forEach((element) => {
+        new TomSelect(element, {
+            plugins: ['remove_button'],
+            maxOptions: null,
+            hideSelected: false,
+            closeAfterSelect: false,
+        });
+    });
+});
 
 function openModal(id) {
     const modal = document.getElementById(id);
