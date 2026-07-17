@@ -59,15 +59,6 @@
         <h1 class="db-welcome">Bonjour, <span>{{ app.user.fullName }}</span> 👋</h1>
         <p class="db-sub">Espace enseignant — Nour Dicko Academy</p>
       </div>
-      <div class="db-avatar-wrap">
-        <div class="db-avatar db-avatar-prof" onclick="toggleAvatarMenu()">{{ app.user.fullName|first|upper }}</div>
-        <div class="db-avatar-menu" id="avatar-menu">
-          <a href="#" onclick="showSection('profil'); toggleAvatarMenu()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            Mon profil
-          </a>
-        </div>
-      </div>
     </div>
 
     <!-- Section : Mes classes -->
