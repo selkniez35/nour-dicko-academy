@@ -74,4 +74,35 @@ class CourseSessionRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @return CourseSession[]
+     */
+    public function findForStudent(User $student): array
+    {
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.plan', 'p')->addSelect('p')
+            ->leftJoin('s.teacher', 't')->addSelect('t')
+            ->innerJoin('s.students', 'st')
+            ->andWhere('st = :student')
+            ->setParameter('student', $student)
+            ->orderBy('s.startsAt', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return CourseSession[]
+     */
+    public function findForTeacher(User $teacher): array
+    {
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.plan', 'p')->addSelect('p')
+            ->leftJoin('s.students', 'st')->addSelect('st')
+            ->andWhere('s.teacher = :teacher')
+            ->setParameter('teacher', $teacher)
+            ->orderBy('s.startsAt', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

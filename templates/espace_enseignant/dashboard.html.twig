@@ -12,7 +12,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
   </div>
   <div class="welcome-toast-body">
-    <div class="welcome-toast-title">Bienvenue, Enseignant 👋</div>
+    <div class="welcome-toast-title">Bienvenue, {{ app.user.fullName }} 👋</div>
     <div class="welcome-toast-sub">Vous êtes connecté à votre espace enseignant</div>
   </div>
 </div>
@@ -56,11 +56,11 @@
     <!-- Header -->
     <div class="db-header">
       <div>
-        <h1 class="db-welcome">Bonjour, <span>Enseignant</span> 👋</h1>
+        <h1 class="db-welcome">Bonjour, <span>{{ app.user.fullName }}</span> 👋</h1>
         <p class="db-sub">Espace enseignant — Nour Dicko Academy</p>
       </div>
       <div class="db-avatar-wrap">
-        <div class="db-avatar db-avatar-prof" onclick="toggleAvatarMenu()">E</div>
+        <div class="db-avatar db-avatar-prof" onclick="toggleAvatarMenu()">{{ app.user.fullName|first|upper }}</div>
         <div class="db-avatar-menu" id="avatar-menu">
           <a href="#" onclick="showSection('profil'); toggleAvatarMenu()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
@@ -74,46 +74,40 @@
     <section class="db-section active" id="section-classes">
       <h2 class="db-section-title">Mes classes</h2>
       <div class="db-cours-grid">
-        <div class="db-cours-card">
-          <div class="db-cours-icon"><span class="glyph" lang="ar">ض</span></div>
-          <div class="db-cours-info">
-            <h3>Langue arabe — Classe A</h3>
-            <span class="db-cours-badge">Lundi · 19h00 · 8 élèves</span>
+        {% for plan in plans %}
+          <div class="db-cours-card">
+            <div class="db-cours-icon"><span class="glyph" lang="ar">ض</span></div>
+            <div class="db-cours-info">
+              <h3>{{ plan.label }}</h3>
+              <span class="db-cours-badge">{{ plan.schedule }}</span>
+            </div>
+            <a href="#" class="db-btn-zoom">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              Démarrer le cours
+            </a>
           </div>
-          <a href="#" class="db-btn-zoom">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            Démarrer le cours
-          </a>
-        </div>
+        {% else %}
+          <p>Aucune classe pour le moment.</p>
+        {% endfor %}
       </div>
 
       <!-- Liste des élèves -->
       <h3 class="db-subsection-title">Mes élèves</h3>
 <div class="admin-table">
-  <div class="admin-table-header" style="grid-template-columns:2fr 2fr 1.5fr 1.2fr;">
+  <div class="admin-table-header" style="grid-template-columns:2fr 2fr 1.2fr;">
     <span>Nom</span>
     <span>Email</span>
-    <span>Dernière séance</span>
     <span>Statut</span>
   </div>
-  <div class="admin-table-row" style="grid-template-columns:2fr 2fr 1.5fr 1.2fr;">
-    <span class="db-eleve-name"><div class="db-eleve-avatar">A</div>Ahmed Martin</span>
-    <span>ahmed@email.com</span>
-    <span>07/07/2026</span>
-    <span class="db-eleve-badge db-badge-actif">Actif</span>
-  </div>
-  <div class="admin-table-row" style="grid-template-columns:2fr 2fr 1.5fr 1.2fr;">
-    <span class="db-eleve-name"><div class="db-eleve-avatar">S</div>Sarah Dupont</span>
-    <span>sarah@email.com</span>
-    <span>07/07/2026</span>
-    <span class="db-eleve-badge db-badge-actif">Actif</span>
-  </div>
-  <div class="admin-table-row" style="grid-template-columns:2fr 2fr 1.5fr 1.2fr;">
-    <span class="db-eleve-name"><div class="db-eleve-avatar">M</div>Mohamed Ali</span>
-    <span>mohamed@email.com</span>
-    <span>30/06/2026</span>
-    <span class="db-eleve-badge db-badge-absent" style="background:rgba(239,68,68,.1);color:#dc2626;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px;display:inline-block;">Absent</span>
-  </div>
+  {% for student in students %}
+    <div class="admin-table-row" style="grid-template-columns:2fr 2fr 1.2fr;">
+      <span class="db-eleve-name"><div class="db-eleve-avatar">{{ student.fullName|first|upper }}</div>{{ student.fullName }}</span>
+      <span>{{ student.email }}</span>
+      <span class="db-eleve-badge db-badge-actif">Actif</span>
+    </div>
+  {% else %}
+    <div class="admin-table-row"><span>Aucun élève pour le moment.</span></div>
+  {% endfor %}
 </div>
 </section>
 
@@ -184,20 +178,18 @@
   <h2 class="db-section-title">Calendrier des cours {{ currentSeason|default('2026-2027') }}</h2>
 
   <!-- Stats -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;">
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px;">
     <div class="db-stat-mini">
-      <div class="db-stat-mini-val">148</div>
-      <div class="db-stat-mini-label">Séances prévues</div>
+      <div class="db-stat-mini-val">{{ sessions|length }}</div>
+      <div class="db-stat-mini-label">Séances au total</div>
     </div>
     <div class="db-stat-mini">
-      <div class="db-stat-mini-val">10</div>
-      <div class="db-stat-mini-label">Mois de cours</div>
-    </div>
-    <div class="db-stat-mini">
-      <div class="db-stat-mini-val">19h–20h</div>
-      <div class="db-stat-mini-label">Horaire habituel</div>
+      <div class="db-stat-mini-val">{{ sessions|filter(s => s.startsAt >= date())|length }}</div>
+      <div class="db-stat-mini-label">Séances à venir</div>
     </div>
   </div>
+
+  <script type="application/json" id="enseignant-sessions-data">{{ sessionsData|default([])|json_encode|raw }}</script>
 
   <!-- Navigation -->
   <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:24px;">
@@ -273,23 +265,19 @@
     <section class="db-section" id="section-profil">
       <h2 class="db-section-title">Mon profil</h2>
       <div class="db-profil-card">
-        <div class="db-profil-avatar db-avatar-prof">E</div>
+        <div class="db-profil-avatar db-avatar-prof">{{ app.user.fullName|first|upper }}</div>
         <div class="db-profil-info">
           <div class="db-profil-field">
             <label>Nom complet</label>
-            <span>Prénom Nom</span>
+            <span>{{ app.user.fullName }}</span>
           </div>
           <div class="db-profil-field">
             <label>Adresse email</label>
-            <span>enseignant@nda.com</span>
+            <span>{{ app.user.email }}</span>
           </div>
           <div class="db-profil-field">
-            <label>Cours enseigné</label>
-            <span>Langue arabe</span>
-          </div>
-          <div class="db-profil-field">
-            <label>Classes</label>
-            <span>Classe A · Classe B</span>
+            <label>Cours enseigné{{ plans|length > 1 ? 's' : '' }}</label>
+            <span>{{ plans|length > 0 ? plans|map(p => p.label)|join(', ') : '-' }}</span>
           </div>
           {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_ADMIN') %}
             <div class="db-profil-field">

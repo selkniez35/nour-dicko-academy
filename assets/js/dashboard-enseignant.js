@@ -1,65 +1,40 @@
 // ═══ Calendrier Enseignant ═══
-// Youssef Ben Ali enseigne Langue arabe Classe A (lundi) et Classe B (mardi)
-// Ton dev remplacera par les vraies classes de l'enseignant connecté
-const CLASSES_ENSEIGNANT = ['lundi', 'mardi']; // à adapter selon l'enseignant
 
-const TOUS_COURS_ENS = {
-  "2026-09-07":"19h-20h","2026-09-08":"19h-20h","2026-09-09":"19h-20h","2026-09-10":"19h-20h",
-  "2026-09-14":"19h-20h","2026-09-15":"19h-20h","2026-09-16":"19h-20h","2026-09-17":"19h-20h",
-  "2026-09-21":"19h-20h","2026-09-22":"19h-20h","2026-09-23":"19h-20h","2026-09-24":"19h-20h",
-  "2026-09-28":"18h30-19h30","2026-09-29":"18h30-19h30","2026-09-30":"18h30-19h30",
-  "2026-10-01":"18h30-19h30","2026-10-05":"18h30-19h30","2026-10-06":"18h30-19h30",
-  "2026-10-07":"18h30-19h30","2026-10-08":"18h30-19h30",
-  "2026-10-12":"19h30-20h30","2026-10-13":"19h30-20h30","2026-10-14":"19h30-20h30","2026-10-15":"19h30-20h30",
-  "2026-10-19":"19h30-20h30","2026-10-20":"19h30-20h30","2026-10-21":"19h30-20h30","2026-10-22":"19h30-20h30",
-  "2026-10-26":"19h30-20h30","2026-10-27":"19h30-20h30","2026-10-28":"19h30-20h30","2026-10-29":"19h30-20h30",
-  "2026-11-02":"19h30-20h30","2026-11-03":"19h30-20h30","2026-11-04":"19h30-20h30","2026-11-05":"19h30-20h30",
-  "2026-11-09":"19h30-20h30","2026-11-10":"19h30-20h30","2026-11-11":"19h30-20h30","2026-11-12":"19h30-20h30",
-  "2026-11-16":"19h30-20h30","2026-11-17":"19h30-20h30","2026-11-18":"19h30-20h30","2026-11-19":"19h30-20h30",
-  "2026-11-23":"19h30-20h30","2026-11-24":"19h30-20h30","2026-11-25":"19h30-20h30","2026-11-26":"19h30-20h30",
-  "2026-11-30":"19h30-20h30",
-  "2026-12-01":"19h30-20h30","2026-12-02":"19h30-20h30","2026-12-03":"19h30-20h30",
-  "2026-12-07":"19h30-20h30","2026-12-08":"19h30-20h30","2026-12-09":"19h30-20h30","2026-12-10":"19h30-20h30",
-  "2026-12-14":"19h30-20h30","2026-12-15":"19h30-20h30","2026-12-16":"19h30-20h30","2026-12-17":"19h30-20h30",
-  "2026-12-21":"19h30-20h30","2026-12-22":"19h30-20h30","2026-12-23":"19h30-20h30","2026-12-24":"19h30-20h30",
-  "2026-12-28":"19h30-20h30","2026-12-29":"19h30-20h30","2026-12-30":"19h30-20h30","2026-12-31":"19h30-20h30",
-  "2027-01-04":"19h30-20h30","2027-01-05":"19h30-20h30","2027-01-06":"19h30-20h30","2027-01-07":"19h30-20h30",
-  "2027-01-11":"19h30-20h30","2027-01-12":"19h30-20h30","2027-01-13":"19h30-20h30","2027-01-14":"19h30-20h30",
-  "2027-01-18":"19h30-20h30","2027-01-19":"19h30-20h30","2027-01-20":"19h30-20h30","2027-01-21":"19h30-20h30",
-  "2027-01-25":"19h30-20h30","2027-01-26":"19h30-20h30","2027-01-27":"19h30-20h30","2027-01-28":"19h30-20h30",
-  "2027-02-01":"19h30-20h30","2027-02-02":"19h30-20h30","2027-02-03":"19h30-20h30","2027-02-04":"19h30-20h30",
-  "2027-03-15":"19h30-20h30","2027-03-16":"19h30-20h30","2027-03-17":"19h30-20h30","2027-03-18":"19h30-20h30",
-  "2027-03-22":"19h30-20h30","2027-03-23":"19h30-20h30","2027-03-24":"19h30-20h30","2027-03-25":"19h30-20h30",
-  "2027-03-29":"19h30-20h30","2027-03-30":"19h30-20h30","2027-03-31":"19h30-20h30",
-  "2027-04-01":"19h30-20h30","2027-04-05":"19h30-20h30","2027-04-06":"19h30-20h30","2027-04-07":"19h30-20h30","2027-04-08":"19h30-20h30",
-  "2027-04-12":"19h30-20h30","2027-04-13":"19h30-20h30","2027-04-14":"19h30-20h30","2027-04-15":"19h30-20h30",
-  "2027-04-19":"19h30-20h30","2027-04-20":"19h30-20h30","2027-04-21":"19h30-20h30","2027-04-22":"19h30-20h30",
-  "2027-04-26":"19h30-20h30","2027-04-27":"19h30-20h30","2027-04-28":"19h30-20h30","2027-04-29":"19h30-20h30",
-  "2027-05-03":"19h30-20h30","2027-05-04":"19h30-20h30","2027-05-05":"19h30-20h30","2027-05-06":"19h30-20h30",
-  "2027-05-10":"19h30-20h30","2027-05-11":"19h30-20h30","2027-05-12":"19h30-20h30","2027-05-13":"19h30-20h30",
-  "2027-05-17":"19h30-20h30","2027-05-18":"19h30-20h30","2027-05-19":"19h30-20h30","2027-05-20":"19h30-20h30",
-  "2027-05-24":"19h30-20h30","2027-05-25":"19h30-20h30","2027-05-26":"19h30-20h30","2027-05-27":"19h30-20h30",
-  "2027-05-31":"19h30-20h30",
-  "2027-06-01":"19h30-20h30","2027-06-02":"19h30-20h30","2027-06-03":"19h30-20h30",
-  "2027-06-07":"19h30-20h30","2027-06-08":"19h30-20h30","2027-06-09":"19h30-20h30","2027-06-10":"19h30-20h30",
-  "2027-06-14":"19h30-20h30","2027-06-15":"19h30-20h30","2027-06-16":"19h30-20h30","2027-06-17":"19h30-20h30",
-  "2027-06-21":"19h30-20h30","2027-06-22":"19h30-20h30","2027-06-23":"19h30-20h30","2027-06-24":"19h30-20h30"
-};
-
-const JOUR_MAP_ENS = { 'lundi':1, 'mardi':2, 'mercredi':3, 'jeudi':4 };
-const JOUR_LABEL_ENS = { 'lundi':'Lundi', 'mardi':'Mardi', 'mercredi':'Mercredi', 'jeudi':'Jeudi' };
-const MONTHS_ENS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-let calYearEns = 2026, calMonthEns = 8;
-
-function getCoursFiltresEns(){
-  const jours = CLASSES_ENSEIGNANT.map(j => JOUR_MAP_ENS[j]);
-  const filtered = {};
-  Object.keys(TOUS_COURS_ENS).forEach(function(dateStr){
-    const d = new Date(dateStr);
-    if(jours.includes(d.getDay())) filtered[dateStr] = TOUS_COURS_ENS[dateStr];
-  });
-  return filtered;
+function escEnsHtml(str){
+  const span = document.createElement('span');
+  span.textContent = str == null ? '' : String(str);
+  return span.innerHTML;
 }
+
+// Charge les séances injectées par le serveur et les indexe par date (YYYY-MM-DD).
+function loadEnsSessions(){
+  const el = document.getElementById('enseignant-sessions-data');
+  const map = {};
+  if(!el) return map;
+  let list = [];
+  try { list = JSON.parse(el.textContent || '[]'); } catch(e){ list = []; }
+  list.forEach(function(s){
+    if(!s || !s.date) return;
+    (map[s.date] = map[s.date] || []).push(s);
+  });
+  return map;
+}
+const ENS_SESSIONS = loadEnsSessions();
+
+const MONTHS_ENS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const todayEns0 = new Date();
+let calYearEns = todayEns0.getFullYear(), calMonthEns = todayEns0.getMonth();
+
+// Ouvre le calendrier sur le mois de la prochaine séance à venir (sinon mois courant).
+(function(){
+  const dates = Object.keys(ENS_SESSIONS).sort();
+  if(!dates.length) return;
+  const todayStr = calYearEns + '-' + String(calMonthEns + 1).padStart(2, '0') + '-' + String(todayEns0.getDate()).padStart(2, '0');
+  const next = dates.find(d => d >= todayStr) || dates[dates.length - 1];
+  const parts = next.split('-');
+  calYearEns = parseInt(parts[0], 10);
+  calMonthEns = parseInt(parts[1], 10) - 1;
+})();
 
 function padEns(n){ return String(n).padStart(2,'0'); }
 
@@ -69,7 +44,6 @@ function renderCal(){
   if(!title || !grid) return;
   title.textContent = MONTHS_ENS[calMonthEns] + ' ' + calYearEns;
   grid.innerHTML = '';
-  const cours = getCoursFiltresEns();
   const firstDay = new Date(calYearEns, calMonthEns, 1).getDay();
   const offset = (firstDay === 0) ? 6 : firstDay - 1;
   const daysInMonth = new Date(calYearEns, calMonthEns+1, 0).getDate();
@@ -84,34 +58,24 @@ function renderCal(){
     const dow = date.getDay();
     const dateStr = calYearEns+'-'+padEns(calMonthEns+1)+'-'+padEns(day);
     const isWeekend = dow === 0 || dow === 6;
-    const isCours = cours[dateStr];
+    const sessions = ENS_SESSIONS[dateStr] || [];
     const isToday = date.toDateString() === today.toDateString();
     const d = document.createElement('div');
     let cls = 'nda-cal-day';
     if(isWeekend) cls += ' weekend';
-    if(isCours) cls += ' has-cours';
+    if(sessions.length) cls += ' has-cours';
     if(isToday) cls += ' today';
     d.className = cls;
-    // Ajouter label du jour si cours
-    let label = '';
-    if(isCours){
-      const jourNom = Object.keys(JOUR_MAP_ENS).find(j => JOUR_MAP_ENS[j] === dow);
-      label = jourNom === 'lundi' ? 'Cl. A' : jourNom === 'mardi' ? 'Cl. B' : '';
-    }
     let inner = '<div class="nda-cal-num">'+day+'</div>';
-    if(isCours){
+    sessions.forEach(function(s){
+      const time = s.start ? (s.end ? s.start + '-' + s.end : s.start) : '';
+      const label = s.label || 'Séance';
       inner += '<div class="nda-cal-dot"></div>';
-      inner += '<div class="nda-cal-time">'+(label ? label+' · ' : '')+cours[dateStr]+'</div>';
-    }
+      inner += '<div class="nda-cal-time">'+(time ? escEnsHtml(time)+' · ' : '')+escEnsHtml(label)+'</div>';
+    });
     d.innerHTML = inner;
     grid.appendChild(d);
   }
-  // Stats
-  const total = Object.keys(getCoursFiltresEns()).length;
-  const statEl = document.getElementById('stat-seances');
-  if(statEl) statEl.textContent = total;
-  const jourEl = document.getElementById('stat-jour');
-  if(jourEl) jourEl.textContent = CLASSES_ENSEIGNANT.map(j => JOUR_LABEL_ENS[j]).join(' & ');
 }
 
 window.prevMonth = function(){
