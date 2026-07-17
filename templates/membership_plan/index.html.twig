@@ -400,10 +400,9 @@
             <div class="insc-section-title">Je sais : <span>*</span></div>
             <div class="insc-field">
                 <div class="insc-radio-group insc-radio-col">
-                    <label class="insc-radio"><input type="radio" name="niveau" value="Lire l'arabe et le Coran de manière fluide" required><span>Lire l'arabe et le Coran de manière fluide</span></label>
-                    <label class="insc-radio"><input type="radio" name="niveau" value="Lire l'arabe et le Coran mais avec quelques difficultés"><span>Lire l'arabe et le Coran mais avec quelques difficultés</span></label>
-                    <label class="insc-radio"><input type="radio" name="niveau" value="Reconnaître quelques lettres"><span>Reconnaître quelques lettres</span></label>
-                    <label class="insc-radio"><input type="radio" name="niveau" value="Je ne sais pas lire l'arabe ni le Coran"><span>Je ne sais pas lire l'arabe ni le Coran</span></label>
+                    {% for level in studentLevels %}
+                      <label class="insc-radio"><input type="radio" name="niveau" value="{{ level.value }}"{% if loop.first %} required{% endif %}><span>{{ level.label }}</span></label>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -430,10 +429,9 @@
             <div class="insc-section-title">Mode de paiement souhaité</div>
             <div class="insc-field">
                 <div class="insc-radio-group insc-row-radio">
-                    <label class="insc-radio"><input type="radio" name="mode_paiement" value="1fois"><span>En 1 fois</span></label>
-                    <label class="insc-radio"><input type="radio" name="mode_paiement" value="2fois"><span>En 2 fois</span></label>
-                    <label class="insc-radio"><input type="radio" name="mode_paiement" value="4fois"><span>En 4 fois</span></label>
-                    <label class="insc-radio"><input type="radio" name="mode_paiement" value="10fois"><span>En 10 fois</span></label>
+                    {% for mode in paymentModes %}
+                      <label class="insc-radio"><input type="radio" name="mode_paiement" value="{{ mode.value }}"><span>{{ mode.label }}</span></label>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -441,8 +439,9 @@
             <div class="insc-section-title">Moyen de paiement</div>
             <div class="insc-field">
                 <div class="insc-radio-group insc-row-radio">
-                    <label class="insc-radio"><input type="radio" name="moyen_paiement" value="virement"><span>Virement bancaire</span></label>
-                    <label class="insc-radio"><input type="radio" name="moyen_paiement" value="especes"><span>Espèces</span></label>
+                    {% for method in paymentMethods %}
+                      <label class="insc-radio"><input type="radio" name="moyen_paiement" value="{{ method.value }}"><span>{{ method.label }}</span></label>
+                    {% endfor %}
                 </div>
             </div>
 

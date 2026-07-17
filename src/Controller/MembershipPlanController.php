@@ -42,6 +42,9 @@ class MembershipPlanController extends AbstractController
             'membershipPlans' => $membershipPlans,
             'fullPlanIds' => $this->getFullPlanIds($membershipPlans),
             'fullFormules' => $this->getFullFormules(),
+            'studentLevels' => StudentLevelEnum::cases(),
+            'paymentModes' => PaymentModeEnum::cases(),
+            'paymentMethods' => [PaymentMethod::BANK_TRANSFER, PaymentMethod::CASH],
         ]);
     }
 
@@ -148,11 +151,7 @@ class MembershipPlanController extends AbstractController
             $membership->setStatus(MembershipStatus::PENDING);
             $membership->setStudentLevel(isset($data['niveau']) ? StudentLevelEnum::tryFrom($data['niveau']) : null);
             $membership->setPaymentMode(isset($data['mode_paiement']) ? PaymentModeEnum::tryFrom($data['mode_paiement']) : null);
-            $paymentMethodMap = [
-                'virement' => PaymentMethod::BANK_TRANSFER,
-                'especes' => PaymentMethod::CASH,
-            ];
-            $membership->setPaymentMethod($paymentMethodMap[$data['moyen_paiement'] ?? null] ?? null);
+            $membership->setPaymentMethod(isset($data['moyen_paiement']) ? PaymentMethod::tryFrom($data['moyen_paiement']) : null);
 
             // Gestion des cours sélectionnés (selectedCourses est une relation ManyToMany vers MembershipPlan)
             $allPlans = $this->membershipPlanRepository->findAll();
@@ -201,6 +200,9 @@ class MembershipPlanController extends AbstractController
 
         return $this->render('membership_plan/registration.html.twig', [
             'fullFormules' => $this->getFullFormules(),
+            'studentLevels' => StudentLevelEnum::cases(),
+            'paymentModes' => PaymentModeEnum::cases(),
+            'paymentMethods' => [PaymentMethod::BANK_TRANSFER, PaymentMethod::CASH],
         ]);
     }
 
