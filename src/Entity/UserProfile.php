@@ -113,7 +113,7 @@ class UserProfile
         return $this->dateOfBirth;
     }
 
-    public function setDateOfBirth(\DateTime $dateOfBirth): static
+    public function setDateOfBirth(?\DateTime $dateOfBirth): static
     {
         $this->dateOfBirth = $dateOfBirth;
 
@@ -125,7 +125,7 @@ class UserProfile
         return $this->placeOfBirth;
     }
 
-    public function setPlaceOfBirth(string $placeOfBirth): static
+    public function setPlaceOfBirth(?string $placeOfBirth): static
     {
         $this->placeOfBirth = $placeOfBirth;
 
@@ -137,7 +137,7 @@ class UserProfile
         return $this->address;
     }
 
-    public function setAddress(string $address): static
+    public function setAddress(?string $address): static
     {
         $this->address = $address;
 
