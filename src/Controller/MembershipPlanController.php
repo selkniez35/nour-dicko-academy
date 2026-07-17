@@ -186,8 +186,12 @@ class MembershipPlanController extends AbstractController
                 $membership->addSelectedCourse($plan);
             }
 
-            // Extraction du prix de la formule si possible (optionnel car Membership a un prix par défaut)
-            // Mais MembershipPlan a aussi un prix. Ici on garde la logique simple.
+            if ($resolvedPlans) {
+                $membership->setPrice(array_sum(array_map(
+                    static fn (MembershipPlan $plan): float => $plan->getPrice() ?? 0,
+                    $resolvedPlans
+                )));
+            }
 
             $this->entityManager->persist($userProfile);
             $this->entityManager->persist($membership);
