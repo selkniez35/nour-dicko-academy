@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CourseSessionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -27,9 +29,18 @@ class CourseSession
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $notes = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class)]
+    #[ORM\JoinTable(name: 'course_session_students')]
+    private Collection $students;
+
     //teacher
     #[ORM\ManyToOne(inversedBy: 'sessions')]
     private ?User $teacher = null;
+
+    public function __construct()
+    {
+        $this->students = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +101,30 @@ class CourseSession
         $this->teacher = $teacher;
     }
 
+    public function getStudents(): Collection
+    {
+        return $this->students;
+    }
 
+    public function setStudents(Collection $students): void
+    {
+        $this->students = $students;
+    }
+
+    public function addStudent(User $student): static
+    {
+        if (!$this->students->contains($student)) {
+            $this->students->add($student);
+        }
+
+        return $this;
+    }
+
+    public function removeStudent(User $student): static
+    {
+        $this->students->removeElement($student);
+
+        return $this;
+    }
 
 }
