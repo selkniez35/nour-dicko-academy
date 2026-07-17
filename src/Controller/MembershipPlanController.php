@@ -166,6 +166,7 @@ class MembershipPlanController extends AbstractController
 
             // Gestion de la formule (optionnel, permet de forcer un cours si non coché ou de valider la cohérence)
             $formuleValue = $data['formule'] ?? null;
+            $planFormule = null;
             if ($formuleValue) {
                 $planFormule = $this->resolvePlan($formuleValue, $allPlans);
                 if ($planFormule) {
@@ -186,11 +187,8 @@ class MembershipPlanController extends AbstractController
                 $membership->addSelectedCourse($plan);
             }
 
-            if ($resolvedPlans) {
-                $membership->setPrice(array_sum(array_map(
-                    static fn (MembershipPlan $plan): float => $plan->getPrice() ?? 0,
-                    $resolvedPlans
-                )));
+            if ($planFormule) {
+                $membership->setPrice($planFormule->getPrice() ?? $membership->getPrice());
             }
 
             $this->entityManager->persist($userProfile);
