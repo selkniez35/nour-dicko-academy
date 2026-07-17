@@ -15,14 +15,14 @@
       "js": [
         "/build/runtime.1400881c.js",
         "/build/82.fea25515.js",
-        "/build/dashboard-eleve.0e980f7c.js"
+        "/build/dashboard-eleve.305923e7.js"
       ]
     },
     "dashboard-enseignant": {
       "js": [
         "/build/runtime.1400881c.js",
         "/build/82.fea25515.js",
-        "/build/dashboard-enseignant.843ef4ab.js"
+        "/build/dashboard-enseignant.d39a7788.js"
       ]
     },
     "dashboard-admin": {

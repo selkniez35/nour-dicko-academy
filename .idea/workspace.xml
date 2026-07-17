@@ -8,9 +8,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d2609c5-7865-4017-afe4-bfdc1f13cc87" name="Changes" comment="back : fix">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_07_2026_19_04_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_07_2026_21_25_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/membership_plan/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/membership_plan/prices.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/membership_plan/prices.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/dashboard-eleve.0e980f7c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/dashboard-enseignant.843ef4ab.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +31,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="408" />
+    <option name="cachedIndexableFilesCount" value="425" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -379,15 +383,7 @@
       <workItem from="1783878395965" duration="7064000" />
       <workItem from="1783951298139" duration="3210000" />
       <workItem from="1784180760607" duration="2837000" />
-      <workItem from="1784232369647" duration="10481000" />
-    </task>
-    <task id="LOCAL-00021" summary="clean up .gitignore: remove unnecessary entries for Symfony, PHPUnit, and asset management">
-      <option name="closed" value="true" />
-      <created>1783191388493</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1783191388493</updated>
+      <workItem from="1784232369647" duration="18060000" />
     </task>
     <task id="LOCAL-00022" summary="clean up .gitignore: remove unnecessary entries for Symfony, PHPUnit, and asset management">
       <option name="closed" value="true" />
@@ -773,7 +769,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784300664056</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="back : fix">
+      <option name="closed" value="true" />
+      <created>1784301451071</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1784301451071</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
