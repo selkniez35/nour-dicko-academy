@@ -235,6 +235,15 @@
             <label>Statut</label>
             <span class="db-profil-badge">Actif</span>
           </div>
+          {% if is_granted('ROLE_TEACHER') or is_granted('ROLE_ADMIN') %}
+            <div class="db-profil-field">
+              <label>Mes autres espaces</label>
+              <span>
+                {% if is_granted('ROLE_TEACHER') %}<a href="{{ path('app_espace_enseignant') }}">Espace enseignant</a>{% endif %}
+                {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('app_admin_dashboard') }}">Administration</a>{% endif %}
+              </span>
+            </div>
+          {% endif %}
         </div>
         <button class="db-profil-edit">Modifier mon profil</button>
       </div>
