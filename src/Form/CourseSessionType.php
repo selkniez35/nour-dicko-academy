@@ -52,6 +52,9 @@ class CourseSessionType extends AbstractType
                 'label' => 'Élèves',
                 'multiple' => true,
                 'required' => false,
+                'attr' => [
+                    'class' => 'tom-select',
+                ],
             ])
             ->add('startsAt', DateTimeType::class, [
                 'label' => 'Début',
