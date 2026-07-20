@@ -82,6 +82,36 @@ document.addEventListener('click', function(e){
   }
 });
 
+// ═══ Menu déroulant "Actions" des tableaux admin ═══
+function closeAllDropdowns(){
+  document.querySelectorAll('.admin-dropdown-menu.open').forEach(function(openMenu){
+    openMenu.classList.remove('open');
+  });
+}
+window.closeAllDropdowns = closeAllDropdowns;
+
+window.toggleDropdown = function(button){
+  const menu = button.nextElementSibling;
+  if(!menu) return;
+  const wasOpen = menu.classList.contains('open');
+  closeAllDropdowns();
+  if(wasOpen) return;
+
+  // position:fixed positionnée en JS (et non en CSS) pour ne pas être rognée
+  // par le overflow:hidden des conteneurs .admin-table (coins arrondis)
+  const rect = button.getBoundingClientRect();
+  menu.style.top = (rect.bottom + 4) + 'px';
+  menu.style.right = (window.innerWidth - rect.right) + 'px';
+  menu.style.left = 'auto';
+  menu.classList.add('open');
+};
+
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.admin-dropdown')) closeAllDropdowns();
+});
+window.addEventListener('scroll', closeAllDropdowns, true);
+window.addEventListener('resize', closeAllDropdowns);
+
 // Fermer avec la touche Échap
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){

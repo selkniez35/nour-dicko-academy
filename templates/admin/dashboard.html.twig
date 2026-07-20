@@ -362,10 +362,15 @@
                     <span>{{ session.startsAt|date('d/m/Y H:i') }}{% if session.endsAt %} – {{ session.endsAt|date('H:i') }}{% endif %}</span>
                     <span>{{ session.plan ? session.plan.label : '-' }}</span>
                     <span>{{ session.teacher ? session.teacher.profile.getFullName() : '—' }}</span>
-                    <span class="admin-actions">
-                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-session-edit-{{ session.id }}')">Modifier</button>
-                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-session-recordings-{{ session.id }}')">Vidéos ({{ session.recordings|length }})</button>
-                        {{ admin.delete_button('app_admin_session_delete', session.id, 'delete-session', 'Supprimer cette séance ?') }}
+                    <span class="admin-actions" style="justify-content:flex-start;">
+                        <div class="admin-dropdown">
+                            <button type="button" class="admin-btn-sm admin-dropdown-trigger" onclick="toggleDropdown(this)" aria-haspopup="true" aria-label="Actions">⋯</button>
+                            <div class="admin-dropdown-menu">
+                                <button type="button" onclick="closeAllDropdowns(); openModal('modal-session-edit-{{ session.id }}')">Modifier</button>
+                                <button type="button" onclick="closeAllDropdowns(); openModal('modal-session-recordings-{{ session.id }}')">Vidéos ({{ session.recordings|length }})</button>
+                                {{ admin.delete_button('app_admin_session_delete', session.id, 'delete-session', 'Supprimer cette séance ?') }}
+                            </div>
+                        </div>
                     </span>
                 </div>
                 {{ admin.form_modal('modal-session-edit-' ~ session.id, 'Modifier la séance', sessionEditForms[session.id], path('app_admin_session_edit', {id: session.id})) }}
