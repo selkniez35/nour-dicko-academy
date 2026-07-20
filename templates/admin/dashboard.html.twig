@@ -363,9 +363,14 @@
                     <span>{{ session.plan ? session.plan.label : '-' }}</span>
                     <span>{{ session.teacher ? session.teacher.profile.getFullName() : '—' }}</span>
                     <span class="admin-actions">
-                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-session-edit-{{ session.id }}')">Modifier</button>
-                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-session-recordings-{{ session.id }}')">Vidéos ({{ session.recordings|length }})</button>
-                        {{ admin.delete_button('app_admin_session_delete', session.id, 'delete-session', 'Supprimer cette séance ?') }}
+                        <div class="admin-dropdown">
+                            <button type="button" class="admin-btn-sm" onclick="toggleDropdown(this)">Actions ▾</button>
+                            <div class="admin-dropdown-menu">
+                                <button type="button" onclick="openModal('modal-session-edit-{{ session.id }}')">Modifier</button>
+                                <button type="button" onclick="openModal('modal-session-recordings-{{ session.id }}')">Vidéos ({{ session.recordings|length }})</button>
+                                {{ admin.delete_button('app_admin_session_delete', session.id, 'delete-session', 'Supprimer cette séance ?') }}
+                            </div>
+                        </div>
                     </span>
                 </div>
                 {{ admin.form_modal('modal-session-edit-' ~ session.id, 'Modifier la séance', sessionEditForms[session.id], path('app_admin_session_edit', {id: session.id})) }}

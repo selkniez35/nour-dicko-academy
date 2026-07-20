@@ -82,6 +82,24 @@ document.addEventListener('click', function(e){
   }
 });
 
+// ═══ Menu déroulant "Actions" des tableaux admin ═══
+window.toggleDropdown = function(button){
+  const menu = button.nextElementSibling;
+  if(!menu) return;
+  document.querySelectorAll('.admin-dropdown-menu.open').forEach(function(openMenu){
+    if(openMenu !== menu) openMenu.classList.remove('open');
+  });
+  menu.classList.toggle('open');
+};
+
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.admin-dropdown')){
+    document.querySelectorAll('.admin-dropdown-menu.open').forEach(function(openMenu){
+      openMenu.classList.remove('open');
+    });
+  }
+});
+
 // Fermer avec la touche Échap
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){
