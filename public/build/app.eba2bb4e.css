@@ -1531,11 +1531,17 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
 .admin-btn-danger:hover{background:rgba(220,38,38,.08)}
 .admin-btn-success{color:#16a34a;border-color:rgba(22,163,74,.2)}
 .admin-btn-success:hover{background:rgba(22,163,74,.08)}
-.admin-dropdown{position:relative;display:inline-block}
+.admin-dropdown{display:inline-flex}
+.admin-dropdown-trigger{
+  width:32px;height:32px;padding:0;display:flex;align-items:center;justify-content:center;
+  font-size:16px;line-height:1;letter-spacing:1px;
+}
 .admin-dropdown-menu{
-  display:none;position:absolute;right:0;top:calc(100% + 4px);
+  /* position:fixed (calculée en JS via getBoundingClientRect) pour ne pas être
+     rognée par le overflow:hidden de .admin-table (coins arrondis du tableau) */
+  display:none;position:fixed;
   background:var(--white);border:1px solid var(--gold-pale);border-radius:10px;
-  box-shadow:var(--shadow);min-width:170px;z-index:20;overflow:hidden;padding:4px;
+  box-shadow:var(--shadow);min-width:170px;z-index:200;padding:4px;
 }
 .admin-dropdown-menu.open{display:flex;flex-direction:column}
 .admin-dropdown-menu button,
