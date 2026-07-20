@@ -12,6 +12,8 @@ WORKDIR /app
 
 COPY . .
 
+COPY docker/php/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
+
 ENV APP_ENV=prod
 ENV APP_DEBUG=0
 ENV COMPOSER_ALLOW_SUPERUSER=1

@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% import 'admin/_macros.html.twig' as admin %}
 
 
 {% block title %}Espace enseignant — Nour Dicko Academy{% endblock %}
@@ -136,31 +136,25 @@
     <!-- Section : Enregistrements -->
     <section class="db-section" id="section-enregistrements">
       <h2 class="db-section-title">Enregistrements</h2>
-      <div class="db-upload-zone">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-        <span>Déposer un enregistrement</span>
-        <small>MP4, MOV acceptés</small>
-        <label class="db-upload-btn" style="cursor:pointer;">
-  Choisir un fichier
-  <input type="file" accept=".mp4,.mov,.avi" style="display:none;" onchange="this.parentElement.textContent = this.files[0] ? this.files[0].name : 'Choisir un fichier'">
-</label>
-      </div>
-      <div class="db-resources">
-        <div class="db-resource-item db-resource-video">
-          <div class="db-resource-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-          </div>
-          <div class="db-resource-info">
-            <span class="db-resource-name">Enregistrement — Séance 1</span>
-            <span class="db-resource-date">Durée : 58 min · Classe A</span>
-          </div>
-          <div class="db-resource-actions">
-            <button class="db-resource-share" onclick="openModal('modal-partager-enregistrement')">Partager</button>
-            <a href="#" class="db-resource-dl">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-            </a>
-          </div>
+      <p style="font-size:14px;color:var(--ink);opacity:.6;margin:-8px 0 20px;">
+        Déposez ici l'enregistrement (Teams, Zoom...) d'une séance pour le rendre accessible aux élèves inscrits.
+      </p>
+      <div class="admin-table">
+        <div class="admin-table-header" style="grid-template-columns:1.6fr 1.8fr 1fr;">
+          <span>Date</span><span>Cours</span><span>Actions</span>
         </div>
+        {% for session in sessions %}
+          <div class="admin-table-row" style="grid-template-columns:1.6fr 1.8fr 1fr;">
+            <span>{{ session.startsAt|date('d/m/Y H:i') }}{% if session.endsAt %} – {{ session.endsAt|date('H:i') }}{% endif %}</span>
+            <span>{{ session.plan ? session.plan.label : '-' }}</span>
+            <span class="admin-actions">
+              <button type="button" class="admin-btn-sm" onclick="openModal('modal-session-recordings-{{ session.id }}')">Vidéos ({{ session.recordings|length }})</button>
+            </span>
+          </div>
+          {{ admin.recording_modal('modal-session-recordings-' ~ session.id, session, session.recordings, recordingUploadForms[session.id], path('app_espace_enseignant_recording_new', {id: session.id})) }}
+        {% else %}
+          <div class="admin-table-row"><span style="grid-column:1/-1;text-align:center">Aucune séance pour le moment.</span></div>
+        {% endfor %}
       </div>
     </section>
 
@@ -317,48 +311,6 @@
 
     <div style="display:flex;gap:12px;justify-content:flex-end;">
       <button onclick="closeModal('modal-partager-support')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
-        Annuler
-      </button>
-      <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">
-        Partager
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ MODAL PARTAGER ENREGISTREMENT ══ -->
-<div class="modal-overlay" id="modal-partager-enregistrement">
-  <div class="modal-box" style="max-width:460px;">
-    <button class="modal-close" onclick="closeModal('modal-partager-enregistrement')">×</button>
-    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 6px;">Partager l'enregistrement</h3>
-    <p style="font-size:14px;color:var(--ink);opacity:.6;margin:0 0 24px;">Choisir les classes qui recevront cet enregistrement</p>
-
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
-      <label style="display:flex;align-items:center;gap:12px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:10px;padding:14px 16px;cursor:pointer;">
-        <input type="checkbox" style="width:18px;height:18px;accent-color:var(--gold);">
-        <div>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);">Langue arabe — Classe A</div>
-          <div style="font-size:12px;color:var(--ink);opacity:.5;">8 élèves · Lundi 19h00</div>
-        </div>
-      </label>
-      <label style="display:flex;align-items:center;gap:12px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:10px;padding:14px 16px;cursor:pointer;">
-        <input type="checkbox" style="width:18px;height:18px;accent-color:var(--gold);">
-        <div>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);">Langue arabe — Classe B</div>
-          <div style="font-size:12px;color:var(--ink);opacity:.5;">6 élèves · Mardi 19h00</div>
-        </div>
-      </label>
-      <label style="display:flex;align-items:center;gap:12px;background:var(--paper);border:1.5px solid var(--gold-pale);border-radius:10px;padding:14px 16px;cursor:pointer;">
-        <input type="checkbox" style="width:18px;height:18px;accent-color:var(--gold);">
-        <div>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);">Éducation islamique</div>
-          <div style="font-size:12px;color:var(--ink);opacity:.5;">12 élèves · Mercredi 19h00</div>
-        </div>
-      </label>
-    </div>
-
-    <div style="display:flex;gap:12px;justify-content:flex-end;">
-      <button onclick="closeModal('modal-partager-enregistrement')" style="padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--gold-pale);background:transparent;color:var(--ink);cursor:pointer;">
         Annuler
       </button>
       <button style="padding:12px 28px;border-radius:999px;font-size:14px;font-weight:600;border:none;background:var(--gold);color:#fff;cursor:pointer;">

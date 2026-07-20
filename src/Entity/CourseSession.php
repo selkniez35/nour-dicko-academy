@@ -37,9 +37,13 @@ class CourseSession
     #[ORM\ManyToOne(inversedBy: 'sessions')]
     private ?User $teacher = null;
 
+    #[ORM\OneToMany(mappedBy: 'courseSession', targetEntity: Recording::class, orphanRemoval: true)]
+    private Collection $recordings;
+
     public function __construct()
     {
         $this->students = new ArrayCollection();
+        $this->recordings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,6 +129,11 @@ class CourseSession
         $this->students->removeElement($student);
 
         return $this;
+    }
+
+    public function getRecordings(): Collection
+    {
+        return $this->recordings;
     }
 
 }

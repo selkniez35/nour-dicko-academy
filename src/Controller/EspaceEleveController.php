@@ -6,19 +6,23 @@ use App\Entity\CourseSession;
 use App\Entity\User;
 use App\Enum\MembershipStatus;
 use App\Repository\CourseSessionRepository;
+use App\Repository\RecordingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_STUDENT')]
 class EspaceEleveController extends AbstractController
 {
     #[Route('/espace-eleve', name: 'app_espace_eleve')]
-    public function dashboard(CourseSessionRepository $courseSessionRepository): Response
+    public function dashboard(CourseSessionRepository $courseSessionRepository, RecordingRepository $recordingRepository): Response
     {
         /** @var User $user */
         $user = $this->getUser();
 
         $sessions = $courseSessionRepository->findForStudent($user);
+        $recordings = $recordingRepository->findForStudent($user);
 
         $sessionsData = array_map(static function (CourseSession $session): array {
             return [
@@ -47,6 +51,7 @@ class EspaceEleveController extends AbstractController
             'membership' => $membership,
             'sessions' => $sessions,
             'sessionsData' => $sessionsData,
+            'recordings' => $recordings,
         ]);
     }
 }
