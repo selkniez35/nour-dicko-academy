@@ -364,10 +364,12 @@
                     <span>{{ session.teacher ? session.teacher.profile.getFullName() : '—' }}</span>
                     <span class="admin-actions">
                         <button type="button" class="admin-btn-sm" onclick="openModal('modal-session-edit-{{ session.id }}')">Modifier</button>
+                        <button type="button" class="admin-btn-sm" onclick="openModal('modal-session-recordings-{{ session.id }}')">Vidéos ({{ session.recordings|length }})</button>
                         {{ admin.delete_button('app_admin_session_delete', session.id, 'delete-session', 'Supprimer cette séance ?') }}
                     </span>
                 </div>
                 {{ admin.form_modal('modal-session-edit-' ~ session.id, 'Modifier la séance', sessionEditForms[session.id], path('app_admin_session_edit', {id: session.id})) }}
+                {{ admin.recording_modal('modal-session-recordings-' ~ session.id, session, session.recordings, recordingUploadForms[session.id], path('app_admin_recording_new', {id: session.id})) }}
             {% else %}
                 <div class="admin-table-row"><span style="grid-column:1/-1;text-align:center">Aucune séance programmée. Cliquez sur « Ajouter une séance ».</span></div>
             {% endfor %}

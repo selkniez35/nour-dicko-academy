@@ -8,6 +8,7 @@ use App\Entity\CourseSession;
 use App\Entity\Membership;
 use App\Entity\MembershipPlan;
 use App\Entity\Payment;
+use App\Entity\Recording;
 use App\Entity\User;
 use App\Enum\MembershipStatus;
 use App\Enum\UserRole;
@@ -16,6 +17,7 @@ use App\Form\AnnouncementType;
 use App\Form\CourseSessionType;
 use App\Form\MembershipAdminType;
 use App\Form\MembershipPlanType;
+use App\Form\RecordingType;
 use App\Form\UserType;
 use App\Repository\AnnouncementRepository;
 use App\Repository\CourseSessionRepository;
@@ -24,6 +26,7 @@ use App\Repository\MembershipRepository;
 use App\Repository\PaymentRepository;
 use App\Repository\UserRepository;
 use App\Service\MailService;
+use App\Service\RecordingUploadService;
 use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -75,8 +78,10 @@ final class AdminController extends AbstractController
         }
 
         $sessionEditForms = [];
+        $recordingUploadForms = [];
         foreach ($courseSessions as $session) {
             $sessionEditForms[$session->getId()] = $this->createForm(CourseSessionType::class, $session)->createView();
+            $recordingUploadForms[$session->getId()] = $this->createForm(RecordingType::class, new Recording())->createView();
         }
 
         $allUsers = $userRepository->findAllOrdered();
@@ -129,6 +134,7 @@ final class AdminController extends AbstractController
             'planEditForms' => $planEditForms,
             'announcementEditForms' => $announcementEditForms,
             'sessionEditForms' => $sessionEditForms,
+            'recordingUploadForms' => $recordingUploadForms,
             'userEditForms' => $userEditForms,
             'membershipEditForms' => $membershipEditForms,
         ]);
@@ -373,11 +379,46 @@ final class AdminController extends AbstractController
     }
 
     #[Route('/sessions/{id}/delete', name: 'session_delete', methods: ['POST'], requirements: ['id' => '\d+'])]
-    public function sessionDelete(Request $request, CourseSession $courseSession, EntityManagerInterface $entityManager): Response
+    public function sessionDelete(Request $request, CourseSession $courseSession, EntityManagerInterface $entityManager, RecordingUploadService $recordingStorage): Response
     {
         $this->verifyCsrfOrDeny('delete-session-' . $courseSession->getId(), $request);
 
+        foreach ($courseSession->getRecordings() as $recording) {
+            $recordingStorage->delete($recording);
+        }
+
         return $this->removeAndRedirect($courseSession, $entityManager, 'Séance supprimée.', $this->redirectToDashboardSection('calendrier'));
+    }
+
+    #[Route('/sessions/{id}/recordings/new', name: 'recording_new', requirements: ['id' => '\d+'])]
+    public function recordingNew(
+        Request $request,
+        CourseSession $courseSession,
+        EntityManagerInterface $entityManager,
+        RecordingUploadService $recordingStorage,
+    ): Response {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $recording = new Recording();
+        $form = $this->createForm(RecordingType::class, $recording);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $uploadedFile = $form->get('file')->getData();
+
+            $recording = $recordingStorage->store($courseSession, $uploadedFile, $user, $recording->getTitle());
+            $entityManager->persist($recording);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Vidéo mise en ligne.');
+        } else {
+            foreach ($form->getErrors(true) as $error) {
+                $this->addFlash('error', $error->getMessage());
+            }
+        }
+
+        return $this->redirectToDashboardSection('calendrier');
     }
 
     private function handleUserCreate(Request $request, UserService $userService, array $roles, string $title, string $backRoute): Response

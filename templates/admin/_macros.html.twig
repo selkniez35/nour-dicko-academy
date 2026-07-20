@@ -37,6 +37,41 @@
     {% endif %}
 {% endmacro %}
 
+{# Modal listant les vidéos d'une séance + formulaire d'upload. Réutilisée à l'identique côté admin et enseignant. #}
+{% macro recording_modal(id, session, recordings, uploadForm, uploadAction) %}
+    <div class="modal-overlay admin-modal" id="{{ id }}">
+        <div class="modal-box admin-modal-box admin-form-card">
+            <button type="button" class="modal-close" onclick="closeModal('{{ id }}')" aria-label="Fermer">×</button>
+            <h3 class="modal-title">Vidéos — {{ session.plan ? session.plan.label : 'Séance' }} du {{ session.startsAt|date('d/m/Y H:i') }}</h3>
+
+            <div class="admin-table" style="margin-bottom:20px;">
+                <div class="admin-table-header" style="grid-template-columns:2fr 1fr 1fr;">
+                    <span>Vidéo</span><span>Ajoutée le</span><span>Actions</span>
+                </div>
+                {% for recording in recordings %}
+                    <div class="admin-table-row" style="grid-template-columns:2fr 1fr 1fr;">
+                        <span>{{ recording.title|default(recording.originalFilename) }}</span>
+                        <span>{{ recording.uploadedAt|date('d/m/Y') }}</span>
+                        <span class="admin-actions">
+                            <a class="admin-btn-sm" href="{{ path('app_recording_stream', {id: recording.id}) }}" target="_blank" rel="noopener">Voir</a>
+                            {{ _self.delete_button('app_recording_delete', recording.id, 'delete-recording', 'Supprimer cette vidéo ?') }}
+                        </span>
+                    </div>
+                {% else %}
+                    <div class="admin-table-row"><span style="grid-column:1/-1;text-align:center">Aucune vidéo pour cette séance.</span></div>
+                {% endfor %}
+            </div>
+
+            {{ form_start(uploadForm, {action: uploadAction, method: 'POST', attr: {novalidate: 'novalidate'}}) }}
+                {{ form_widget(uploadForm) }}
+                <div class="admin-form-actions">
+                    <button type="submit" class="admin-btn-primary">Mettre en ligne</button>
+                </div>
+            {{ form_end(uploadForm) }}
+        </div>
+    </div>
+{% endmacro %}
+
 {# Modal contenant un formulaire de création/édition — remplace la navigation vers une page dédiée #}
 {% macro form_modal(id, title, form, action) %}
     <div class="modal-overlay admin-modal" id="{{ id }}">
