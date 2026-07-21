@@ -100,7 +100,7 @@ img,svg{display:block;max-width:100%}
 .nda-hero{
   position:relative;
   overflow:hidden;
-  padding:34px 24px 0;
+  padding:34px 24px 40px;
 }
 .nda-hero-grid{
   display:grid;
@@ -121,7 +121,7 @@ img,svg{display:block;max-width:100%}
 .nda-arch{
   position:relative;z-index:3;
   max-width:900px;margin:0 auto;
-  padding:34px 48px 120px;
+  padding:34px 48px 56px;
   text-align:center;
 }
 .nda-arch::before{
@@ -173,18 +173,6 @@ img,svg{display:block;max-width:100%}
 .nda-btn-gold:hover{box-shadow:0 8px 22px rgba(201,146,42,.42)}
 .nda-btn-outline{background:transparent;color:var(--gold-deep);border:2px solid var(--gold)}
 .nda-btn-outline:hover{background:var(--gold);color:#fff}
-.nda-wave{
-  position:absolute;left:0;right:0;bottom:0;z-index:2;height:180px;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200' preserveAspectRatio='none'%3E%3Cpath d='M0 120 C 240 60, 480 60, 720 110 S 1200 170, 1440 110 L1440 200 L0 200 Z' fill='%23D9AE52' fill-opacity='0.45'/%3E%3Cpath d='M0 150 C 300 100, 600 130, 900 150 S 1250 180, 1440 140 L1440 200 L0 200 Z' fill='%23C9922A' fill-opacity='0.85'/%3E%3Cpath d='M0 175 C 360 150, 720 185, 1080 170 S 1440 165, 1440 175 L1440 200 L0 200 Z' fill='%23A87718'/%3E%3C/svg%3E");
-  background-size:100% 100%;background-repeat:no-repeat;background-position:bottom;
-}
-/* Fondu doux entre la vague décorative et la section suivante (évite la coupure nette) */
-.nda-hero::after{
-  content:"";
-  position:absolute;left:0;right:0;bottom:0;height:110px;
-  background:linear-gradient(to bottom, transparent, var(--cream) 88%);
-  z-index:4;pointer-events:none;
-}
 /* ═══════════════ SECTIONS COMMUNES ═══════════════ */
 section{padding:84px 24px}
 .wrap{max-width:1120px;margin:0 auto}
@@ -552,8 +540,8 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
 }
 @media (max-width:640px){
   section{padding:64px 18px}
-  .nda-hero{padding:20px 14px 0}
-  .nda-arch{padding:30px 22px 100px}
+  .nda-hero{padding:20px 14px 32px}
+  .nda-arch{padding:30px 22px 44px}
   .nda-arch::before{border-radius:50% 50% 0 0 / 30% 30% 0 0}
   .nda-arch::after{border-radius:50% 50% 0 0 / 28% 28% 0 0}
   .nda-h1{white-space:normal;font-size:clamp(32px,8vw,44px)}
