@@ -2027,10 +2027,7 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
 .founder-section {
     position: relative;
     min-height: calc(100vh - 90px);
-    background:
-        radial-gradient(circle at 72% 48%, rgba(201, 146, 42, 0.22), transparent 28%),
-        linear-gradient(135deg, #0b0b0a 0%, #14110d 55%, #1b130b 100%);
-    color: #f8efdc;
+    color: var(--ink);
     overflow: hidden;
     padding: 70px 0 40px;
 }
@@ -2067,9 +2064,9 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
     align-items: center;
     justify-content: center;
     padding: 13px 34px;
-    border: 2px solid #c9922a;
+    border: 2px solid var(--gold);
     border-radius: 999px;
-    color: #d7a133;
+    color: var(--gold-deep);
     font-size: 14px;
     font-weight: 800;
     letter-spacing: 0.28em;
@@ -2083,11 +2080,11 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
     line-height: 0.95;
     font-weight: 700;
     letter-spacing: -0.03em;
-    color: #fbf2df;
+    color: var(--ink);
 }
 
 .founder-left h2 span {
-    color: #c9922a;
+    color: var(--gold-deep);
 }
 
 .gold-line {
@@ -2096,13 +2093,13 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
     width: 280px;
     height: 2px;
     margin: 34px 0;
-    background: linear-gradient(90deg, #c9922a, transparent);
+    background: linear-gradient(90deg, var(--gold), transparent);
 }
 
 .gold-line span {
     width: 10px;
     height: 10px;
-    background: #c9922a;
+    background: var(--gold);
     border-radius: 50%;
     margin-left: 130px;
     box-shadow: 0 0 16px rgba(201,146,42,.9);
@@ -2116,11 +2113,11 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
     font-size: clamp(25px, 2vw, 36px);
     line-height: 1.42;
     font-style: italic;
-    color: #efe5cf;
+    color: var(--ink);
 }
 
 .quote {
-    color: #d39a22;
+    color: var(--gold);
     font-size: 58px;
     line-height: 0;
     font-style: normal;
@@ -2140,7 +2137,7 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
 
 .founder-signature strong {
     display: block;
-    color: #d39a22;
+    color: var(--gold-deep);
     font-size: 20px;
     font-weight: 800;
     letter-spacing: 0.12em;
@@ -2148,7 +2145,8 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
 
 .founder-signature small {
     display: block;
-    color: rgba(248,239,220,.65);
+    color: var(--ink);
+    opacity: .65;
     font-size: 15px;
     margin-top: 8px;
 }
@@ -2164,16 +2162,16 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
     border: 1.5px solid rgba(201,146,42,.8);
     border-radius: 999px;
     padding: 14px 28px;
-    color: #f8efdc;
+    color: var(--ink);
     font-weight: 800;
-    background: rgba(0,0,0,.18);
+    background: var(--paper);
     backdrop-filter: blur(8px);
     transition: 0.25s ease;
 }
 
 .founder-tags span:hover {
-    background: #c9922a;
-    color: #0d0d0b;
+    background: var(--gold);
+    color: #fff;
     transform: translateY(-3px);
 }
 
@@ -2187,7 +2185,7 @@ footer{background:var(--black);color:var(--cream);padding:56px 24px 30px}
     position: relative;
     width: min(620px, 100%);
     height: 760px;
-    border: 3px solid #c9922a;
+    border: 3px solid var(--gold);
     border-bottom-width: 4px;
     border-radius: 330px 330px 0 0;
     overflow: hidden;
